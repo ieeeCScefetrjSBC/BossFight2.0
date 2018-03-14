@@ -25,14 +25,14 @@ public class MovimentoPlayer : MonoBehaviour {
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
 
-
+        
         player = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         float translation = Input.GetAxis("Vertical") * speed2;
         float straffe = Input.GetAxis("Horizontal") * speed2;
         translation *= Time.deltaTime;
@@ -52,8 +52,8 @@ public class MovimentoPlayer : MonoBehaviour {
         transform.Rotate(0, rotX, 0);
         eyes.transform.Rotate(-rotY, 0, 0);
 
-        movimento = transform.rotation * movimento;
-        player.Move(movimento * Time.deltaTime);
+       /* movimento = transform.rotation * movimento;
+        player.Move(movimento * Time.deltaTime);*/
 
         if (player.isGrounded)
         {
