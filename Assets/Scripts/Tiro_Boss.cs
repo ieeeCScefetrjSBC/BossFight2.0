@@ -12,7 +12,7 @@ public class Tiro_Boss : MonoBehaviour {
     private void Start()
     {
         GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"));
-        tiro.GetComponent<Rigidbody>().AddForce(player.transform.position - tiro.transform.position);
+        tiro.GetComponent<Rigidbody>().velocity = player.transform.position - tiro.transform.position;
     }
 
     // Update is called once per frame
