@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 
 public class Tiro_Boss : MonoBehaviour {
-    public float alcance = 100f;                   
-    public float dano_tiro1 = 10f;                 //Tiro que não destroi a plataforma 
-    public float dano_tiro2 = 20f;                 //Tiro mais forte que destroi a plataforma 
-    public float fireRate = 100f;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
-    public float tempoAtirar = 0f;
-    public Camera fpsCam;                          
-    public GameObject player;
-    public Rigidbody tiroPrefab;
+    private float alcance = 100f;                   
+    private float dano_tiro1 = 10f;                 //Tiro que não destroi a plataforma 
+    private float dano_tiro2 = 20f;                 //Tiro mais forte que destroi a plataforma 
+    private float fireRate = 2;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
+    private float tempoAtirar = 0f;                         
+    private GameObject player;
+    private Rigidbody tiroPrefab;
     private void Start()
     {
-        GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"));
-        tiro.GetComponent<Rigidbody>().velocity = player.transform.position - tiro.transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -28,25 +26,7 @@ public class Tiro_Boss : MonoBehaviour {
     void Atirar ()
     {
         GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"));
-        tiro.GetComponent<Rigidbody>().velocity = player.transform.position - tiro.transform.position;
-        Vector3 posicao = transform.position;//inicio do raycast
-        Vector3 pos_player = posicao;//destino do raycast
-        if (player)
-        {
-           pos_player  = player.transform.position; 
-        }
-        Vector3 direcao = pos_player - posicao;//direcao do raycast
-        RaycastHit hit;
-        if (Physics.Raycast(posicao, direcao, out hit, alcance)){//se o raycast bater em algo                                          
-            Debug.Log(hit.transform.name);                       //registrar nome do objeto atingido
-            if(hit.transform.name != "Player")                   
-            {
-                Destruir plataforma = hit.transform.GetComponent<Destruir>();
-                if(plataforma != null)
-                {
-                    plataforma.Vida_Plataforma(dano_tiro2);
-                }
-            }
-        }
+        tiro.GetComponent<Rigidbody>().velocity = (player.transform.position - tiro.transform.position) * 1;
+        
     }
 }
