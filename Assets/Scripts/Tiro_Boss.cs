@@ -27,6 +27,8 @@ public class Tiro_Boss : MonoBehaviour {
 
     void Atirar ()
     {
+        GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"));
+        tiro.GetComponent<Rigidbody>().velocity = player.transform.position - tiro.transform.position;
         Vector3 posicao = transform.position;//inicio do raycast
         Vector3 pos_player = posicao;//destino do raycast
         if (player)
