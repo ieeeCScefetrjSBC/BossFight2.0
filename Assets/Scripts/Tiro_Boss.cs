@@ -9,13 +9,16 @@ public class Tiro_Boss : MonoBehaviour {
     public Camera fpsCam;                          
     public GameObject player;
     public Rigidbody tiroPrefab;
+    private void Start()
+    {
+        GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"));
+        tiro.GetComponent<Rigidbody>().AddForce(player.transform.position - tiro.transform.position);
+    }
 
     // Update is called once per frame
     void Update () {
         if (Time.time >= tempoAtirar)
         {
-            GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"));
-            tiro.GetComponent<Rigidbody>().AddForce(player.transform.position - this.transform.position);
             tempoAtirar = Time.time + 1f / fireRate;
             Atirar();
         }
