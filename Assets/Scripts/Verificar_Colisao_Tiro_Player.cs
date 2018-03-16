@@ -21,11 +21,6 @@ public class Verificar_Colisao_Tiro_Player : MonoBehaviour {
         {
             collision.gameObject.GetComponent<Vida_Boss>().danoBoss(1);
             Destroy(this.gameObject);
-        }
-        else
-        if (collision.gameObject.name.Equals("TiroPlayer(Clone)"))
-        {
-
         }else
         {
             Destroy(this.gameObject);

@@ -20,6 +20,7 @@ public class Verificar_Colisao : MonoBehaviour {
         if (collision.gameObject.tag.Equals("Plataforma"))
         { //Se for plataforma ele destroi a plataforma
             Destroy(collision.gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
