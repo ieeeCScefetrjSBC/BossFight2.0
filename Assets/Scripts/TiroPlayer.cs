@@ -20,7 +20,7 @@ public class TiroPlayer : MonoBehaviour {
     {
 
         GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);
-
-        tiro.GetComponent<Rigidbody>().velocity = (boss.transform.position - tiro.transform.position);
+        tiro.transform.rotation = this.transform.rotation;
+        tiro.GetComponent<Rigidbody>().velocity = tiro.transform.forward * 12;
     }
 }

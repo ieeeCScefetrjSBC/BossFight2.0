@@ -6,11 +6,11 @@ public class Verificar_Colisao : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-
+        Physics.IgnoreCollision(this.gameObject.GetComponent<SphereCollider>(), GameObject.FindGameObjectWithTag("Boss").GetComponent<BoxCollider>()); //Ignora colisão com o Boss
 	}
     private void OnCollisionEnter(Collision collision) //Verifica em quem está batendo
     {
-        Debug.Log(collision.gameObject.name);
+       
         if (collision.gameObject.tag.Equals("Player")) //Se for player ele tira vida
         {
             collision.gameObject.GetComponent<Vida_Player>().danoPlayer(1);

@@ -6,7 +6,7 @@ public class Vida_Boss : MonoBehaviour {
     private int vida = 30;
 
     // Use this for initialization
-    void Start () {
+    void Update () {
         if (vida < 0)
         {
             Debug.Log("BOSS MORREU");
