@@ -8,23 +8,24 @@ public class Vida_Player : MonoBehaviour
 
     void Update()
     {
-        if(vida < 0)
+        if(vida < 0)                // Verifica a vida do player
         {
             Debug.Log("ACABOOOU");
             Destroy(this.gameObject);
         }
     }
 
-    public void danoPlayer(int dano)
+    public void danoPlayer(int dano) // Função que tira vida (chamada em outros scripts)
     {
         vida -= dano;
     }
-    public int getvida()
+
+    public int getvida() //Getter da vida pra ser usado em outros scripts
     {
         return vida;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) //Verifica colisão com o chão (BUGADO)
     {
         if (collision.gameObject.tag.Equals("Chao"))
         {
