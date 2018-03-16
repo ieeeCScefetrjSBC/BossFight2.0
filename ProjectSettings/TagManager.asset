@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Chao
   - Plataforma
+  - Boss
   layers:
   - Default
   - TransparentFX

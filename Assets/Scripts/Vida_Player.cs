@@ -24,4 +24,12 @@ public class Vida_Player : MonoBehaviour
         return vida;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Chao"))
+        {
+            Debug.Log("CAIIIIU");
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class Tiro_Boss : MonoBehaviour {
-    private float fireRate = 2;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
+    private float fireRate = 1;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
     private float tempoAtirar = 0f;
     private GameObject player;
     private void Start()
@@ -21,8 +21,9 @@ public class Tiro_Boss : MonoBehaviour {
 
     void Atirar ()
     {
-        GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"));
-        tiro.GetComponent<Rigidbody>().velocity = (player.transform.position - tiro.transform.position) * 4;
+        GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"), transform.position, Quaternion.identity);
+
+        tiro.GetComponent<Rigidbody>().velocity = (player.transform.position - tiro.transform.position);
         
     }
 

@@ -11,15 +11,17 @@ public class Verificar_Colisao : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) //Verifica em quem está batendo
     {
         Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.tag.Equals("Player")) //Se for player ele tira dano
+        if (collision.gameObject.tag.Equals("Player")) //Se for player ele tira vida
         {
             collision.gameObject.GetComponent<Vida_Player>().danoPlayer(1);
             Destroy(this.gameObject);
-        } else 
-        if (collision.gameObject.tag.Equals("Plataforma")){ //Se for plataforma ele destroi a plataforma
+        }
+        else
+        if (collision.gameObject.tag.Equals("Plataforma"))
+        { //Se for plataforma ele destroi a plataforma
             Destroy(collision.gameObject);
-        } else
-        if (collision.gameObject.tag.Equals("Chao")) //Se for chao ele se auto destroi
+        }
+        else
         {
             Destroy(this.gameObject);
         }
