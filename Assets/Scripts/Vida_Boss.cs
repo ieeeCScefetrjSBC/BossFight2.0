@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Vida_Boss : MonoBehaviour {
     private int vida = 30;
+    public AudioSource DanoBoss;
 
     // Use this for initialization
     void Update () {
@@ -17,6 +18,7 @@ public class Vida_Boss : MonoBehaviour {
     public void danoBoss(int dano)
     {
         vida -= dano;
+        DanoBoss.Play();
     }
 
     public int getvida()

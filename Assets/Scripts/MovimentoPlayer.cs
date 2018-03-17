@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovimentoPlayer : MonoBehaviour {
     public float sensitivity = 2f;
     public GameObject eyes;
+    
 
     float rotX;
     float rotY;
@@ -37,6 +38,7 @@ public class MovimentoPlayer : MonoBehaviour {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
+            
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
 
