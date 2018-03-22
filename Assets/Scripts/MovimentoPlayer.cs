@@ -11,8 +11,8 @@ public class MovimentoPlayer : MonoBehaviour {
     float rotY;
 
     private float speed = 6.0F;
-    private float jumpSpeed = 8.0F;
-    private float gravity = 20.0F;
+    private float jumpSpeed = 16.0F;
+    private float gravity = 30.0F;
     private Vector3 moveDirection = Vector3.zero;
 
     // Use this for initialization
