@@ -35,6 +35,12 @@ public class MovimentoPlayer : MonoBehaviour {
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                speed = 10.0F;
+            }
+            else { speed = 6.0F; }
+
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
