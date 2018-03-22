@@ -1580,12 +1580,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 674305326}
-  m_LocalRotation: {x: -0, y: 0.89332867, z: -0, w: 0.44940385}
-  m_LocalPosition: {x: -16.24, y: 1.4899998, z: -0.55}
-  m_LocalScale: {x: 6.5477085, y: 4.047129, z: 1}
+  m_LocalRotation: {x: -0, y: 0.45364726, z: -0, w: 0.89118135}
+  m_LocalPosition: {x: -0.86449975, y: 0.05, z: -0.7327694}
+  m_LocalScale: {x: 1.3095417, y: 0.80942583, z: 0.20000002}
   m_Children: []
-  m_Father: {fileID: 1007024629}
-  m_RootOrder: 5
+  m_Father: {fileID: 2001650030}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 126.589005, z: 0}
 --- !u!23 &674305328
 MeshRenderer:
@@ -2336,7 +2336,6 @@ GameObject:
   - component: {fileID: 1007024632}
   - component: {fileID: 1007024633}
   - component: {fileID: 1007024634}
-  - component: {fileID: 1007024635}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2401,9 +2400,6 @@ Transform:
   - {fileID: 1556970857}
   - {fileID: 1385308014}
   - {fileID: 993810631}
-  - {fileID: 1374736573}
-  - {fileID: 674305327}
-  - {fileID: 1521062081}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -72.633, z: 0}
@@ -2608,17 +2604,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1007024635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1007024625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0a415d727959b409faf641fff068fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1068422657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,12 +3149,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374736572}
-  m_LocalRotation: {x: -0, y: 0.7099395, z: -0, w: 0.7042628}
-  m_LocalPosition: {x: -5.68, y: 1.4899998, z: -4}
-  m_LocalScale: {x: 6.5477085, y: 4.047129, z: 1}
+  m_LocalRotation: {x: -0, y: 0.15494071, z: -0, w: 0.98792374}
+  m_LocalPosition: {x: 0.42444998, y: 0.05, z: 1.0769966}
+  m_LocalScale: {x: 1.3095421, y: 0.80942583, z: 0.20000006}
   m_Children: []
-  m_Father: {fileID: 1007024629}
-  m_RootOrder: 4
+  m_Father: {fileID: 2001650030}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90.46001, z: 0}
 --- !u!23 &1374736574
 MeshRenderer:
@@ -3736,12 +3721,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1521062080}
-  m_LocalRotation: {x: -0, y: 0.28156644, z: -0, w: 0.95954174}
-  m_LocalPosition: {x: -14.2, y: 1.4899998, z: -9.43}
-  m_LocalScale: {x: 6.547711, y: 4.04713, z: 1}
+  m_LocalRotation: {x: -0, y: -0.34141177, z: -0, w: 0.93991387}
+  m_LocalPosition: {x: 0.9523218, y: 0.05, z: -0.8734814}
+  m_LocalScale: {x: 1.3095424, y: 0.809426, z: 0.20000002}
   m_Children: []
-  m_Father: {fileID: 1007024629}
-  m_RootOrder: 6
+  m_Father: {fileID: 2001650030}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 32.707, z: 0}
 --- !u!23 &1521062082
 MeshRenderer:
@@ -5001,6 +4986,7 @@ GameObject:
   - component: {fileID: 2001650031}
   - component: {fileID: 2001650032}
   - component: {fileID: 2001650033}
+  - component: {fileID: 2001650034}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -5082,7 +5068,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.2, z: -8}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
+  m_Children:
+  - {fileID: 1374736573}
+  - {fileID: 674305327}
+  - {fileID: 1521062081}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5258,6 +5247,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &2001650034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2001650025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0a415d727959b409faf641fff068fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2013535311
 GameObject:
   m_ObjectHideFlags: 0
