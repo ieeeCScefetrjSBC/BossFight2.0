@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Mascara_Script : MonoBehaviour {
+    private GameObject player;
     private GameObject mascara_1;
     private GameObject mascara_2;
     private GameObject mascara_3;
+    private Vida_Boss vidaBoss;
     // Use this for initialization
     void Start () {
+        vidaBoss = this.gameObject.GetComponent<Vida_Boss>();
+        player = GameObject.FindGameObjectWithTag("Player");
         mascara_1 = GameObject.FindGameObjectWithTag("Mascara1"); //Objeto mascara 1 atribuido
         mascara_2 = GameObject.FindGameObjectWithTag("Mascara2"); //Objeto mascara 2 atribuido
         mascara_3 = GameObject.FindGameObjectWithTag("Mascara3"); //Objeto mascara 3 atribuido
@@ -15,7 +19,24 @@ public class Mascara_Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(Vector3.right * Time.deltaTime);
+        Vector3 direcaoPlayer = player.transform.position - transform.position;
+        direcaoPlayer.y = 0;
+
+        int vida = vidaBoss.getvida();
         
+        if (vida > 20)
+        {
+           // mascara_1.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
+        }
+        else if(vida > 10)
+        {
+            //mascara_2.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
+        }
+        else if(vida > 0)
+        {
+          //  mascara_3.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
+        }
+
+
     }
 }
