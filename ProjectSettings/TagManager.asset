@@ -10,6 +10,7 @@ TagManager:
   - Mascara1
   - Mascara2
   - Mascara3
+  - Bomba
   layers:
   - Default
   - TransparentFX

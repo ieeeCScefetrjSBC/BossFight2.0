@@ -2507,11 +2507,11 @@ GameObject:
   - component: {fileID: 806137623}
   m_Layer: 0
   m_Name: Bomba(NO)
-  m_TagString: Untagged
+  m_TagString: Bomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &806137623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3104,11 +3104,11 @@ GameObject:
   - component: {fileID: 981703535}
   m_Layer: 0
   m_Name: Bomba(NL)
-  m_TagString: Untagged
+  m_TagString: Bomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &981703535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3347,13 +3347,15 @@ GameObject:
   - component: {fileID: 1024712182}
   - component: {fileID: 1024712181}
   - component: {fileID: 1024712180}
+  - component: {fileID: 1024712189}
+  - component: {fileID: 1024712190}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1024712180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3543,7 +3545,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae2598b9f6bd79844925c58103d1990f, type: 3}
   m_Name: 
@@ -3618,6 +3620,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
+--- !u!114 &1024712189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1024712179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2abb3c0f82d26459d7215920e1b82c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomba_1: {fileID: 1218011884}
+  Bomba_2: {fileID: 806137622}
+  Bomba_3: {fileID: 981703534}
+  Bomba_4: {fileID: 1189480697}
+--- !u!114 &1024712190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1024712179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ba865e85675ed46b90736cc6892f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1064058655
 GameObject:
   m_ObjectHideFlags: 0
@@ -4240,11 +4268,11 @@ GameObject:
   - component: {fileID: 1189480698}
   m_Layer: 0
   m_Name: Bomba(SL)
-  m_TagString: Untagged
+  m_TagString: Bomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1189480698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4338,11 +4366,11 @@ GameObject:
   - component: {fileID: 1218011889}
   m_Layer: 0
   m_Name: Bomba(SO)
-  m_TagString: Untagged
+  m_TagString: Bomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1218011885
 MeshRenderer:
   m_ObjectHideFlags: 0
