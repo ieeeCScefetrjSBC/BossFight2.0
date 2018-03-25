@@ -9,7 +9,7 @@ public class Vida_Player : MonoBehaviour
 
     void Update()
     {
-        if(vida < 0)                // Verifica a vida do player
+        if(vida <= 0)                // Verifica a vida do player
         {
             Debug.Log("ACABOOOU");
             Destroy(this.gameObject);

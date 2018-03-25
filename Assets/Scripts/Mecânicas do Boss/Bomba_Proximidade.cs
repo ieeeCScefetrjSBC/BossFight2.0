@@ -1,0 +1,43 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bomba_Proximidade : MonoBehaviour {
+
+    // Use this for initialization
+    public Transform Jogador; // Adquire o valor da posição do jogador em X Y e Z
+    private float D= 5f; // Valor absoluto utilizado para formar a distância de ativação
+    private float Zona_Dano = 15f;// Valor absoluto utilizado para formar a distância de dano
+    private bool Triggered=false;// Booleana para indicar a ativação da bomba relógio
+    private float Tempo=10f;// Tempo para a detonação do ataque
+    private int Dano=3;// Dano que será causado pela habilidade
+    private GameObject PlayerOBJ;// Objeto do jogador na cena
+	void Start () {
+       PlayerOBJ = GameObject.FindGameObjectWithTag("Player");// Encontra o objeto via tag
+
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        if ((Mathf.Abs(transform.position.x - Jogador.transform.position.x) <= D)&&(Mathf.Abs(transform.position.y-Jogador.transform.position.y)<=D)&&(Mathf.Abs(transform.position.z-Jogador.transform.position.z)<=D)){// Verifica se o jogador está a uma distância D do objeto
+            Triggered = true;// Ativa o ataque
+
+        }
+        if (Triggered) // Caso esteja ativado, desce a contagem
+        {
+            Tempo -= Time.deltaTime;//Contagem descendo a cada frame
+            if(Tempo<=0)// Caso tenha acabado o tempo
+            {
+                Debug.Log("KABOOM");
+                Triggered = false;// Impede sucessivas explosões               
+                if ((Mathf.Abs(transform.position.x - Jogador.transform.position.x) <= Zona_Dano) && (Mathf.Abs(transform.position.y - Jogador.transform.position.y) <= Zona_Dano) && (Mathf.Abs(transform.position.z - Jogador.transform.position.z) <= Zona_Dano)) {// Verifica se o jogador está na zona de dano
+                    PlayerOBJ.GetComponent<Vida_Player>().danoPlayer(Dano);//Aplica dano ao jogador
+                    
+                }
+
+                }
+            
+        }
+		
+	}
+}
