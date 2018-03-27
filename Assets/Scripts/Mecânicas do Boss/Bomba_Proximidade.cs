@@ -11,6 +11,7 @@ public class Bomba_Proximidade : MonoBehaviour {
     private bool Triggered=false;// Booleana para indicar a ativação da bomba relógio
     private float Tempo=10f;// Tempo para a detonação do ataque
     private int Dano=3;// Dano que será causado pela habilidade
+    private float Duration = 6f;// Duração do objeto na cena
     private GameObject PlayerOBJ;// Objeto do jogador na cena
 	void Start () {
        PlayerOBJ = GameObject.FindGameObjectWithTag("Player");// Encontra o objeto via tag
@@ -34,9 +35,18 @@ public class Bomba_Proximidade : MonoBehaviour {
                     PlayerOBJ.GetComponent<Vida_Player>().danoPlayer(Dano);//Aplica dano ao jogador
                     
                 }
-
                 }
             
+        }
+        else
+        {
+            Duration -= Time.deltaTime;
+            if (Duration <= 0)
+            {
+                this.gameObject.SetActive(false);
+                Duration = 6f;
+            }
+                
         }
 		
 	}

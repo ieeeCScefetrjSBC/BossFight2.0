@@ -5,11 +5,9 @@ using UnityEngine;
 public class Comp_Bomba : MonoBehaviour {
 
     // Use this for initialization
-    public GameObject Bomba_1;// Bomba SO
-    public GameObject Bomba_2;// Bombaa NO
-    public GameObject Bomba_3;// Bomba NL
-    public GameObject Bomba_4;// Bomba SL
-    private float Ciclo = 20f;// Ciclo de ativação
+    public GameObject[] Bombas;
+    private int i=0;// Contador
+    private float Ciclo = 5f;// Ciclo de ativação
     private int Pattern_Bomba = 0;// Padrão de aparecimento, sendo 0= nada acontece;
 
     void Start () {
@@ -20,32 +18,38 @@ public class Comp_Bomba : MonoBehaviour {
         if (Pattern_Bomba==1)// Caso o padrão chamado seja 1
         {
             Ciclo -= Time.deltaTime;// Ciclo diminuindo contador
-            if (Ciclo <= 15f && Ciclo >= 10f)// Impede de ser reativado após 5 secs existindo
-                Bomba_1.SetActive(true);// Ativa a bomba SO
-            if (Ciclo <= 10f && Ciclo >= 5f)// Impede de ser reativado após 5 secs existindo
-                Bomba_2.SetActive(true);// Ativa a bomba NO
-            if (Ciclo <= 5f && Ciclo >= 0f)// Impede de ser reativado após 5 secs existindo
-                Bomba_3.SetActive(true);// Ativa a bomba NL
-            if (Ciclo <= 0f)// Fim do Ciclo
+            if (Ciclo <= 0)// Caso acabe o contador
             {
-                Bomba_4.SetActive(true);// Ativa a bomba SL
-                Pattern_Bomba = 0;// Fim do Padrão
+                Ciclo = 5f; // Recomeça a contar
+                Bombas[i].SetActive(true); // Ativa a bomba
+                i++; // Passa para a próxima bomba
             }
+            if (i==4) // Acabaram as bombas
+            {
+                Pattern_Bomba = 0; // Acabou o padrão
+                i = 0; // Reseta o contador
+            }     
+            
+            
         }
-        if (Pattern_Bomba == 2)// Caso o padrão chamado seja 1
+        if (Pattern_Bomba == 2)// Caso o padrão chamado seja 2
         {
             Ciclo -= Time.deltaTime;// Ciclo diminuindo contador
-            if (Ciclo <= 15f && Ciclo >= 10f)// Impede de ser reativado após 5 secs existindo
-                Bomba_4.SetActive(true);// Ativa a bomba SO
-            if (Ciclo <= 10f && Ciclo >= 5f)// Impede de ser reativado após 5 secs existindo
-                Bomba_3.SetActive(true);// Ativa a bomba NO
-            if (Ciclo <= 5f && Ciclo >= 0f)// Impede de ser reativado após 5 secs existindo
-                Bomba_2.SetActive(true);// Ativa a bomba NL
-            if (Ciclo <= 0f)// Fim do Ciclo
+            if (Ciclo <= 0) // Caso acabe o contador
             {
-                Bomba_1.SetActive(true);// Ativa a bomba SL
-                Pattern_Bomba = 0;// Fim do Padrão
+                Debug.Log(i);
+                Ciclo = 5f;// Recomeça a contar
+                Bombas[i+3].SetActive(true); // Ativa a bomba
+                i--;// Passa para a próxima
+                
             }
+            if (i==-4)// Acabaram as bombas
+            {
+                Pattern_Bomba = 0;// Acabou o padrão
+                i = 0;// Reseta o contador
+            }
+            
+
         }
 
     }
