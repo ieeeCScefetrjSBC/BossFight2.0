@@ -19,25 +19,23 @@ public class Mascara_Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 direcaoPlayer = player.transform.position - transform.position;
-        direcaoPlayer.y = 0;
 
         int vida = vidaBoss.getvida();
         
         if (vida > 20)
         {
+            //Boss vira na direçao do player usando a Mascara1 como principal
             this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_1.transform.position)).normalized);
-            // mascara_1.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
         }
         else if(vida > 10)
         {
+            //Boss vira na direçao do player usando a Mascara2 como principal
             this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_2.transform.position)).normalized);
-            //mascara_2.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
         }
         else if(vida > 0)
         {
+            //Boss vira na direçao do player usando a Mascara3 como principal
             this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_3.transform.position)).normalized);
-            //  mascara_3.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
         }
 
 
