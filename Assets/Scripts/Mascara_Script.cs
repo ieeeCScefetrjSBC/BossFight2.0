@@ -26,15 +26,18 @@ public class Mascara_Script : MonoBehaviour {
         
         if (vida > 20)
         {
-           // mascara_1.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
+            this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_1.transform.position)).normalized);
+            // mascara_1.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
         }
         else if(vida > 10)
         {
+            this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_2.transform.position)).normalized);
             //mascara_2.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
         }
         else if(vida > 0)
         {
-          //  mascara_3.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
+            this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_3.transform.position)).normalized);
+            //  mascara_3.transform.rotation = Quaternion.LookRotation(direcaoPlayer);
         }
 
 
