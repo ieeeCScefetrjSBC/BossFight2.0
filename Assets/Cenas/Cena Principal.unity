@@ -1567,6 +1567,7 @@ GameObject:
   - component: {fileID: 674305330}
   - component: {fileID: 674305329}
   - component: {fileID: 674305328}
+  - component: {fileID: 674305331}
   m_Layer: 0
   m_Name: Mascara2
   m_TagString: Mascara2
@@ -1640,6 +1641,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 674305326}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &674305331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 674305326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e0900d6884f6147bf5df185e63492b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &700153467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,6 +3148,7 @@ GameObject:
   - component: {fileID: 1374736576}
   - component: {fileID: 1374736575}
   - component: {fileID: 1374736574}
+  - component: {fileID: 1374736577}
   m_Layer: 0
   m_Name: Mascara1
   m_TagString: Mascara1
@@ -3209,6 +3222,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374736572}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1374736577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374736572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b46c6fce235d4e41aa3bf4e6902112d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1385308013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,6 +3732,7 @@ GameObject:
   - component: {fileID: 1521062084}
   - component: {fileID: 1521062083}
   - component: {fileID: 1521062082}
+  - component: {fileID: 1521062085}
   m_Layer: 0
   m_Name: Mascara3
   m_TagString: Mascara3
@@ -3781,6 +3806,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1521062080}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1521062085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1521062080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d720dccd826e14e89b6c42c3e3a50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1522110508
 GameObject:
   m_ObjectHideFlags: 0
