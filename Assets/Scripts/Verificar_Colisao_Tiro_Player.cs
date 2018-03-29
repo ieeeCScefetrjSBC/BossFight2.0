@@ -16,12 +16,26 @@ public class Verificar_Colisao_Tiro_Player : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) //Verifica em quem está batendo
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag.Equals("Boss")) //Se for player ele tira vida
         {
             collision.gameObject.GetComponent<Vida_Boss>().danoBoss(1);
             Destroy(this.gameObject);
-        }else
+        }else if (collision.gameObject.tag.Equals("Mascara1"))
+        {
+            collision.gameObject.GetComponent<Vida_Mascara_1>().setVida(1);
+            Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.tag.Equals("Mascara2"))
+        {
+            collision.gameObject.GetComponent<Vida_Mascara_2>().setVida(1);
+            Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.tag.Equals("Mascara3"))
+        {
+            collision.gameObject.GetComponent<Vida_Mascara_3>().setVida(1);
+            Destroy(this.gameObject);
+        }
+        else
         {
             Destroy(this.gameObject);
         }
