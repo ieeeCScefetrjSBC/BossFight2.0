@@ -8,6 +8,7 @@ public class Mascara_Script : MonoBehaviour {
     private GameObject mascara_2;
     private GameObject mascara_3;
     private Vida_Boss vidaBoss;
+    private bool setMascara = true;
     // Use this for initialization
     void Start () {
         vidaBoss = this.gameObject.GetComponent<Vida_Boss>();
@@ -22,23 +23,50 @@ public class Mascara_Script : MonoBehaviour {
 
         int vida = vidaBoss.getvida();
         
-        if (vida > 20)
+        if (mascara_1 != null)
         {
-            //Boss vira na direçao do player usando a Mascara1 como principal
-            this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_1.transform.position)).normalized);
-            Debug.Log(this.gameObject.GetComponent<Vida_Boss>().getvida());
+            //Boss vira na direçao do player
+            transform.LookAt(player.transform);
+            //Faz a mascara 1 ser a principal
+            if (setMascara == true)
+            {
+                this.transform.DetachChildren();
+                transform.LookAt(mascara_1.transform);
+                mascara_1.transform.SetParent(this.transform);
+                mascara_2.transform.SetParent(this.transform);
+                mascara_3.transform.SetParent(this.transform);
+                setMascara = false;
+            }
         }
-        else if(vida > 10)
+        else if(mascara_2 != null)
         {
-            //Boss vira na direçao do player usando a Mascara2 como principal
-            this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_2.transform.position)).normalized);
-            Debug.Log(this.gameObject.GetComponent<Vida_Boss>().getvida());
+            //Boss vira na direçao do player
+            transform.LookAt(player.transform);
+            //Faz a mascara 2 ser a principal
+            if (setMascara == false)
+            {
+                this.transform.DetachChildren();
+                transform.LookAt(mascara_2.transform);
+                //mascara_1.transform.SetParent(this.transform);
+                mascara_2.transform.SetParent(this.transform);
+                mascara_3.transform.SetParent(this.transform);
+                setMascara = true;
+            }
         }
-        else if(vida > 0)
+        else
         {
-            //Boss vira na direçao do player usando a Mascara3 como principal
-            this.transform.rotation = Quaternion.LookRotation(((player.transform.position - transform.position) + (player.transform.position - mascara_3.transform.position)).normalized);
-            Debug.Log(this.gameObject.GetComponent<Vida_Boss>().getvida());
+            //Boss vira na direçao do player
+            transform.LookAt(player.transform);
+            //Faz a mascara 2 ser a principal
+            if (setMascara == true)
+            {
+                this.transform.DetachChildren();
+                transform.LookAt(mascara_3.transform);
+                //mascara_1.transform.SetParent(this.transform);
+                //mascara_2.transform.SetParent(this.transform);
+                mascara_3.transform.SetParent(this.transform);
+                setMascara = false;
+            }
         }
 
 

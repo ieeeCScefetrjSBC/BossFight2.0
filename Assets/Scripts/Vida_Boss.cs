@@ -13,7 +13,6 @@ public class Vida_Boss : MonoBehaviour {
             Debug.Log("BOSS MORREU");
             Destroy(this.gameObject);
         }
-        Debug.Log(vida);
     }
 
     public void danoBoss(int dano)
