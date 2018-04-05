@@ -19,9 +19,15 @@ public class Sopro : MonoBehaviour {
     {
         direction = Boss.transform.position - Player.transform.position;
         direction = direction.normalized;
-
+	
         Timer += Time.deltaTime;
-        if (Timer > 5f && Timer < 10f)
+		
+	}
+	
+	void FixedUpdate
+	{
+     
+		if (Timer > 5f && Timer < 10f)
             Player.GetComponent<Rigidbody>().AddForce(direction * 30);     
         
 		
