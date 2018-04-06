@@ -24,7 +24,7 @@ public class Sopro : MonoBehaviour {
 		
 	}
 	
-	void FixedUpdate
+	void FixedUpdate()
 	{
      
 		if (Timer > 5f && Timer < 10f)
