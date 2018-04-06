@@ -1414,6 +1414,7 @@ GameObject:
   - component: {fileID: 599582884}
   - component: {fileID: 599582883}
   - component: {fileID: 599582887}
+  - component: {fileID: 599582888}
   m_Layer: 0
   m_Name: Plataforma(L)
   m_TagString: Plataforma
@@ -1465,8 +1466,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.2377954, z: 1}
-  m_Center: {x: 0, y: 0.11889768, z: 0}
+  m_Size: {x: 1, y: 2.190961, z: 1}
+  m_Center: {x: 0, y: 0.59548044, z: 0}
 --- !u!33 &599582885
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1497,6 +1498,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dda558dab45c3ba4da2177dbf3afb8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &599582888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 599582882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58296b38bba171549a8247f965a87f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &600528708
