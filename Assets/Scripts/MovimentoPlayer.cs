@@ -32,7 +32,7 @@ public class MovimentoPlayer : MonoBehaviour
 
         transform.Rotate(0, rotX, 0);
         eyes.transform.Rotate(-rotY, 0, 0);
-        
+        /*
                 //Movimentação do Player
                 CharacterController controller = GetComponent<CharacterController>();
                 if (controller.isGrounded)
@@ -54,6 +54,6 @@ public class MovimentoPlayer : MonoBehaviour
                 moveDirection.y -= gravity * Time.deltaTime;
                 controller.Move(moveDirection * Time.deltaTime);
 
-            }
+            }*/
     }
-
+}
