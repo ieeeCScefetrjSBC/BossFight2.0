@@ -28,7 +28,7 @@ public class Sopro : MonoBehaviour {
 	{
      
 		if (Timer > 5f && Timer < 10f) // Enquanto o timer estiver entre 5 e 10 segundos
-            Player.GetComponent<Rigidbody>().AddForce(direction * 25); // Aplica força de 30 no vetor direction
+            Player.GetComponent<Rigidbody>().AddForce(direction * 20); // Aplica força de 30 no vetor direction
         
 		
 	}
