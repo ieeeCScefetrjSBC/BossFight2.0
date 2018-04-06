@@ -1,65 +1,30 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovMentos : MonoBehaviour
 {
-    public float speed = 2f;
-    public float sensitivity = 2f;
+    public float speed = 7.0F;
 
-
-    public GameObject eyes;
-
-    float moveFB;
-    float moveLR;
-
-    float rotX;
-    float rotY;
-
-    float velocidadeVertical;
-    float gravidade;
-    float forcaPulo;
-    private Rigidbody rb;
-
-    public float speed2 = 10.0F;
-    // Use this for initialization
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
-
-
-        rb = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;   
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-        float translation = Input.GetAxis("Vertical") * speed2;
-        float straffe = Input.GetAxis("Horizontal") * speed2;
+        float translation = Input.GetAxis("Vertical") * speed;
+        float straffe = Input.GetAxis("Horizontal") * speed;
         translation *= Time.deltaTime;
-        straffe *= Time.deltaTime;
 
         transform.Translate(straffe, 0, translation);
-
-
-
-        moveFB = Input.GetAxis("Vertical");
-        moveLR = Input.GetAxis("Horizontal");
-
-        rotX = Input.GetAxis("Mouse X") * sensitivity;
-        rotY = Input.GetAxis("Mouse Y") * sensitivity;
-
-        Vector3 movimento = new Vector3(moveLR, 0, moveFB);
-        transform.Rotate(0, rotX, 0);
-        eyes.transform.Rotate(-rotY, 0, 0);
-
-
-
+        if (Input.GetKeyDown("escape"))
+            Cursor.lockState = CursorLockMode.None;
 
     }
- }
+
+
+}*/
 
 
 
@@ -91,7 +56,7 @@ public class MovMentos : MonoBehaviour
 
 
 
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -162,7 +127,7 @@ public class MovMentos : MonoBehaviour
         if (Down && Mathf.Abs(RB.velocity.x) <= Max)// Caso a magnitude em Y seja menor que o Máx
             RB.AddForce(Force, 0, 0, ForceMode.VelocityChange);// Força negativa
         if (Right && Mathf.Abs(RB.velocity.z) <= Max) // Caso a magnitude em X seja menor que o Máx
-            RB.AddForce(0, 0, Force, ForceMode.VelocityChange); // Força positiva
+            RB.AddForce(0, 0, -Force, ForceMode.VelocityChange); // Força positiva
 
         if (StopUp || StopDown) // Caso tenha que parar o movimento em Y
             RB.AddForce(-RB.velocity.x, 0, 0, ForceMode.VelocityChange);
@@ -175,4 +140,4 @@ public class MovMentos : MonoBehaviour
 
 
     }
-}*/
+}
