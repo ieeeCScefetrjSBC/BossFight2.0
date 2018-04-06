@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
->>>>>>> b5b6b4c7f8112f6d636e94ef730f2cce0d52b6bb
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2657,8 +2653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2491029fa38ffd40bbeff23e7054b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jogador: {fileID: 0}
-  Luz: {fileID: 0}
+  Jogador: {fileID: 1740260963}
+  Luz: {fileID: 1547658198}
 --- !u!23 &806137624
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3160,8 +3156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2491029fa38ffd40bbeff23e7054b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jogador: {fileID: 0}
-  Luz: {fileID: 0}
+  Jogador: {fileID: 1740260963}
+  Luz: {fileID: 766415114}
 --- !u!23 &981703536
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3580,7 +3576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b0091f33bbca242a8c07594ebf0ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DanoBoss: {fileID: 0}
+  DanoBoss: {fileID: 1024712181}
 --- !u!114 &1024712184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,7 +3588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2598b9f6bd79844925c58103d1990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtqBoss: {fileID: 0}
+  AtqBoss: {fileID: 1024712182}
 --- !u!23 &1024712185
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3673,7 +3669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2abb3c0f82d26459d7215920e1b82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bombas: []
+  Bombas:
+  - {fileID: 981703534}
+  - {fileID: 806137622}
+  - {fileID: 1218011884}
+  - {fileID: 1189480697}
 --- !u!114 &1024712190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4377,8 +4377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2491029fa38ffd40bbeff23e7054b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jogador: {fileID: 0}
-  Luz: {fileID: 0}
+  Jogador: {fileID: 1740260963}
+  Luz: {fileID: 622814284}
 --- !u!23 &1189480699
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4545,8 +4545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2491029fa38ffd40bbeff23e7054b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jogador: {fileID: 0}
-  Luz: {fileID: 0}
+  Jogador: {fileID: 1740260963}
+  Luz: {fileID: 1282488850}
 --- !u!1 &1218967409
 GameObject:
   m_ObjectHideFlags: 0
@@ -6314,7 +6314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a5c6aef8efa3b429048b5bf634905a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SomTiro: {fileID: 0}
+  SomTiro: {fileID: 1740260956}
 --- !u!143 &1740260958
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6343,7 +6343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e762ebe7e77a7499a2ecc3100aa085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DanoPlayer: {fileID: 0}
+  DanoPlayer: {fileID: 1740260955}
 --- !u!65 &1740260960
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6368,7 +6368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 2
-  eyes: {fileID: 0}
+  eyes: {fileID: 780153242}
 --- !u!95 &1740260962
 Animator:
   serializedVersion: 3
