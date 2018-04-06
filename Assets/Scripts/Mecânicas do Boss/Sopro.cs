@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class Sopro : MonoBehaviour {
 
-    private float Timer=0f; //Timer placeholder
-    private GameObject Player; //Objeto Player
-    private GameObject Boss;  //Objeto Boss
-    private Vector3 direction; //vetor direçao do player ao boss
+    private float Timer=0f;
+    private GameObject Player;
+    private GameObject Boss;
+    private Vector3 direction;
 
 	void Start ()
     {
-        Player = GameObject.FindGameObjectWithTag("Player"); //Encontra o objeto Player
-        Boss = GameObject.FindGameObjectWithTag("Boss"); //Encontra o objeto Boss
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Boss = GameObject.FindGameObjectWithTag("Boss");
 	}
 	
 	void Update ()
     {
-        direction = Boss.transform.position - Player.transform.position; //Traça o vetor
-        direction = direction.normalized; //Normaliza o vetor
+        direction = Boss.transform.position - Player.transform.position;
+        direction = direction.normalized;
 	
-        Timer += Time.deltaTime; //Inicia o timer
+        Timer += Time.deltaTime;
 		
 	}
 	
 	void FixedUpdate()
 	{
      
-		if (Timer > 5f && Timer < 10f) //Se o timer estiver entre 5 e 10 segundos:
-            Player.GetComponent<Rigidbody>().AddForce(direction * 30); //Adciona uma força de 30 na direçaodo boss    
+		if (Timer > 5f && Timer < 10f)
+            Player.GetComponent<Rigidbody>().AddForce(direction * 30);     
         
 		
 	}
