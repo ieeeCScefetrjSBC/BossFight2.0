@@ -27,12 +27,12 @@ public class Vida_Player : MonoBehaviour
         return vida;
     }
 
-    private void OnCollisionEnter(Collision collision) //Verifica colisão com o chão (BUGADO)
+    /*private void OnCollisionEnter(Collision collision) //Verifica colisão com o chão (BUGADO)
     {
         if (collision.gameObject.tag.Equals("Chao"))
         {
             Debug.Log("CAIIIIU");
             Destroy(this.gameObject);
         }
-    }
+    }*/
 }

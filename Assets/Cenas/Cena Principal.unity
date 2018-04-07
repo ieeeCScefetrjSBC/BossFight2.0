@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -875,13 +875,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 299842761}
-  m_LocalRotation: {x: -0.0010655831, y: -0.0011174007, z: -0.0014235645, w: 0.9999978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.43, y: -10, z: -7.68}
   m_LocalScale: {x: 57.93369, y: 1.175697, z: 46.8744}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: -0.12200001, y: -0.128, z: -0.163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &307681924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,6 +2266,7 @@ GameObject:
   - component: {fileID: 993810629}
   - component: {fileID: 993810628}
   - component: {fileID: 993810627}
+  - component: {fileID: 993810632}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2336,14 +2337,27 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 993810626}
-  m_LocalRotation: {x: -0.06357848, y: -0.008136176, z: 0.0049349535, w: -0.99793154}
-  m_LocalPosition: {x: -0.017015457, y: 1.4981184, z: 0.17094374}
-  m_LocalScale: {x: 0.2551103, y: 0.44848976, z: 0.87714463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 780834938}
   m_Father: {fileID: 1007024629}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 10.173, y: 9.860001, z: 3.5500002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993810632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 993810626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef73fa0f17470940b8918e14ef91642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 2
+  smoothing: 2
 --- !u!1 &1007024625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,15 +2367,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1007024629}
   - component: {fileID: 1007024628}
-  - component: {fileID: 1007024627}
   - component: {fileID: 1007024626}
   - component: {fileID: 1007024630}
-  - component: {fileID: 1007024631}
   - component: {fileID: 1007024632}
   - component: {fileID: 1007024633}
   - component: {fileID: 1007024634}
   - component: {fileID: 1007024635}
   - component: {fileID: 1007024636}
+  - component: {fileID: 1007024627}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2389,11 +2402,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1007024625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596e6e737b1248840a5e665a5e6f603c, type: 3}
+  m_Script: {fileID: 11500000, guid: feab148b5aa1e2242b8832ae4508ac5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 2
-  eyes: {fileID: 993810626}
+  RB: {fileID: 1007024635}
 --- !u!95 &1007024628
 Animator:
   serializedVersion: 3
@@ -2418,8 +2430,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400154, guid: bdd7a03fd93bf2d4cb6babd63ceabee8, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1007024625}
-  m_LocalRotation: {x: -0, y: -0.59224707, z: -0, w: 0.80575645}
-  m_LocalPosition: {x: 0, y: 4.96, z: 4}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1121868063}
@@ -2428,7 +2440,7 @@ Transform:
   - {fileID: 993810631}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -72.633, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1007024630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,23 +2453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DanoPlayer: {fileID: 1007024634}
---- !u!143 &1007024631
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1007024625}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1007024632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2643,7 +2638,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1007024636
 MonoBehaviour:
@@ -5069,7 +5064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2001650026
 MonoBehaviour:
   m_ObjectHideFlags: 0
