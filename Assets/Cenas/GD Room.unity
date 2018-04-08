@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44658017, g: 0.49641502, b: 0.57482153, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 3046674}
   - component: {fileID: 3046673}
   - component: {fileID: 3046672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 132003800}
   - component: {fileID: 132003799}
   - component: {fileID: 132003798}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 144880666}
   - component: {fileID: 144880665}
   - component: {fileID: 144880664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(Pulo)(O) (1)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 251989338}
   - component: {fileID: 251989337}
   - component: {fileID: 251989336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -973,7 +973,7 @@ GameObject:
   - component: {fileID: 347252949}
   - component: {fileID: 347252948}
   - component: {fileID: 347252947}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1059,7 +1059,7 @@ GameObject:
   - component: {fileID: 353002790}
   - component: {fileID: 353002789}
   - component: {fileID: 353002788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ponte(SL)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -1225,6 +1225,47 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.13891464, y: 0.043053024, z: 0.1821921}
     m_Extent: {x: 0.22831753, y: 0.17139369, z: 0.2825797}
   m_DirtyAABB: 0
+--- !u!1 &360543084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 360543085}
+  - component: {fileID: 360543086}
+  m_Layer: 0
+  m_Name: whatisground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &360543085
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 360543084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1953574520}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &360543086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 360543084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6f8b565d84c4c4d907d7fa0fd9f167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grounded: 0
 --- !u!1 &388713191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,7 +1278,7 @@ GameObject:
   - component: {fileID: 388713194}
   - component: {fileID: 388713193}
   - component: {fileID: 388713192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(N) (3)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -1333,7 +1374,7 @@ GameObject:
   - component: {fileID: 394038526}
   - component: {fileID: 394038525}
   - component: {fileID: 394038524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(Pulo)(L)(1)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -1471,7 +1512,7 @@ GameObject:
   - component: {fileID: 443223163}
   - component: {fileID: 443223162}
   - component: {fileID: 443223161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ponte(NL)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -1567,7 +1608,7 @@ GameObject:
   - component: {fileID: 450796463}
   - component: {fileID: 450796462}
   - component: {fileID: 450796461}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(SL) (2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -1664,7 +1705,7 @@ GameObject:
   - component: {fileID: 525378511}
   - component: {fileID: 525378510}
   - component: {fileID: 525378509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ponte(NO)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -2002,7 +2043,7 @@ GameObject:
   - component: {fileID: 714766153}
   - component: {fileID: 714766152}
   - component: {fileID: 714766151}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(S) (2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -2232,7 +2273,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -682829913
+  randomSeed: -1305000920
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5678,7 +5719,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 356323356
+  randomSeed: -648674892
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9046,7 +9087,7 @@ GameObject:
   - component: {fileID: 728425006}
   - component: {fileID: 728425005}
   - component: {fileID: 728425004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(O) (3)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -9426,7 +9467,7 @@ Transform:
   m_Children:
   - {fileID: 1262963338}
   m_Father: {fileID: 1953574520}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10.173, y: 9.860001, z: 3.5500002}
 --- !u!114 &780153248
 MonoBehaviour:
@@ -9481,7 +9522,7 @@ GameObject:
   - component: {fileID: 803595906}
   - component: {fileID: 803595905}
   - component: {fileID: 803595904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9723,7 +9764,7 @@ GameObject:
   - component: {fileID: 863629226}
   - component: {fileID: 863629225}
   - component: {fileID: 863629224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9984,7 +10025,7 @@ GameObject:
   - component: {fileID: 976064829}
   - component: {fileID: 976064828}
   - component: {fileID: 976064827}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10227,7 +10268,7 @@ GameObject:
   - component: {fileID: 1013843863}
   - component: {fileID: 1013843862}
   - component: {fileID: 1013843861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10683,7 +10724,7 @@ GameObject:
   - component: {fileID: 1064058658}
   - component: {fileID: 1064058657}
   - component: {fileID: 1064058656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(N) (2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -10780,7 +10821,7 @@ GameObject:
   - component: {fileID: 1067555367}
   - component: {fileID: 1067555366}
   - component: {fileID: 1067555365}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(S) (3)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -10905,7 +10946,7 @@ GameObject:
   - component: {fileID: 1073538422}
   - component: {fileID: 1073538421}
   - component: {fileID: 1073538420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11165,7 +11206,7 @@ GameObject:
   - component: {fileID: 1132143391}
   - component: {fileID: 1132143390}
   - component: {fileID: 1132143389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(Pulo)(N)(2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -11906,7 +11947,7 @@ GameObject:
   - component: {fileID: 1353520904}
   - component: {fileID: 1353520903}
   - component: {fileID: 1353520902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12050,7 +12091,7 @@ GameObject:
   - component: {fileID: 1373547434}
   - component: {fileID: 1373547433}
   - component: {fileID: 1373547432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(L)(1)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -12175,7 +12216,7 @@ GameObject:
   - component: {fileID: 1421901358}
   - component: {fileID: 1421901357}
   - component: {fileID: 1421901356}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(NL) (2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -12425,7 +12466,7 @@ GameObject:
   - component: {fileID: 1552675941}
   - component: {fileID: 1552675940}
   - component: {fileID: 1552675939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(NO) (2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -12648,7 +12689,7 @@ GameObject:
   - component: {fileID: 1654936521}
   - component: {fileID: 1654936520}
   - component: {fileID: 1654936519}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(O) (1)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -12774,7 +12815,7 @@ GameObject:
   - component: {fileID: 1703777231}
   - component: {fileID: 1703777230}
   - component: {fileID: 1703777229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(SO) (2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -12870,7 +12911,7 @@ GameObject:
   - component: {fileID: 1713783698}
   - component: {fileID: 1713783697}
   - component: {fileID: 1713783696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13348,7 +13389,7 @@ GameObject:
   - component: {fileID: 1773590841}
   - component: {fileID: 1773590840}
   - component: {fileID: 1773590839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13547,7 +13588,7 @@ GameObject:
   - component: {fileID: 1851340597}
   - component: {fileID: 1851340596}
   - component: {fileID: 1851340595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(Pulo)(S)(2)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -14124,8 +14165,9 @@ Transform:
   m_GameObject: {fileID: 1953574516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.90297085, y: 17.343126, z: 71.41}
-  m_LocalScale: {x: 0.6915747, y: 2.1784549, z: 0.69157434}
+  m_LocalScale: {x: 0.7, y: 2, z: 0.7}
   m_Children:
+  - {fileID: 360543085}
   - {fileID: 780153247}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -14138,10 +14180,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953574516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f53e88d40ee5bc4494746645dfab5f5, type: 3}
+  m_Script: {fileID: 11500000, guid: feab148b5aa1e2242b8832ae4508ac5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RB: {fileID: 0}
+  RB: {fileID: 1953574522}
 --- !u!54 &1953574522
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14152,10 +14194,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &2015811627
 GameObject:
@@ -14696,7 +14738,7 @@ GameObject:
   - component: {fileID: 2125772729}
   - component: {fileID: 2125772728}
   - component: {fileID: 2125772727}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma(L) (3)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}
@@ -14849,7 +14891,7 @@ GameObject:
   - component: {fileID: 2142561871}
   - component: {fileID: 2142561870}
   - component: {fileID: 2142561869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ponte(SO)
   m_TagString: Plataforma
   m_Icon: {fileID: 0}

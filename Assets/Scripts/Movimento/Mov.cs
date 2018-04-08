@@ -65,30 +65,36 @@ public class Mov : MonoBehaviour {
     }
     private void FixedUpdate()
     {
-        Final_Force_X += Extra_X;
-        Final_Force_Y += Extra_Y;
-        if (Up)
+        
+        if (Up)// Caso tecla W tenha sido pressionada
             Final_Force_Y += Force;
-        if (Down)
+        else if(StopUp)// Caso tecla W tenha sido solta
             Final_Force_Y -= Force;
-        if (Left)
+        if (Down)// Caso tecla S tenha sido pressionada
+            Final_Force_Y -= Force;
+        else if (StopDown) //Caso tecla S tenha sido solta
+            Final_Force_Y += Force;
+        if (Left) // Caso tecla A tenha sido pressionada
             Final_Force_X -= Force;
-        if (Right)
+        else if(StopLeft)// Caso tecla A tenha sido solta
             Final_Force_X += Force;
-            RB.AddForce(RB.transform.forward*Final_Force_Y+RB.transform.right*Final_Force_X + new Vector3(Extra_X,Extra_Y,Extra_Z), ForceMode.VelocityChange);
-        if (RB.velocity.x <= -Max)
+        if (Right)// Caso tecla D tenha sido pressionada
+            Final_Force_X += Force;
+        else if (StopRight)// Caso tecla D tenha sido solta
+            Final_Force_X -= Force;
+        //Somatório das forças no eixo "Frente/Trás", eixo "Esquerda/Direita" e forças Extras
+        RB.AddForce(RB.transform.forward*Final_Force_Y+RB.transform.right*Final_Force_X + new Vector3(Extra_X,Extra_Y,Extra_Z), ForceMode.VelocityChange);
+        if (RB.velocity.x <= -Max)// Velocidade máxima negativa em X
             RB.velocity = new Vector3(-Max, RB.velocity.y, RB.velocity.z);
-        if (RB.velocity.x >= Max)
+        if (RB.velocity.x >= Max)// Velocidade máxima positiva em X
             RB.velocity = new Vector3(Max, RB.velocity.y, RB.velocity.z);
-        if (RB.velocity.z >= Max)
+        if (RB.velocity.z >= Max)// Velocidade máxima positiva em Z
             RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y, Max);
-        if (RB.velocity.z <= -Max)
+        if (RB.velocity.z <= -Max)// Velocidade máxima negativa em Z
             RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y, -Max);
-        if (StopUp || StopDown) // Caso tenha que parar o movimento em Y
-            RB.AddForce(0, -RB.velocity.y, 0, ForceMode.VelocityChange);
-        if (StopLeft || StopRight) // Caso tenha que parar o movimento em X
-            RB.AddForce(-RB.velocity.x, 0, 0, ForceMode.VelocityChange);
-        Debug.Log(RB.velocity);
+        
+       
+
 
         StopRight = false; // Impede de aplicar várias vezes a força contrária
         StopUp = false;
@@ -99,10 +105,14 @@ public class Mov : MonoBehaviour {
     }
     public void setExtra_Y(float Extra)
     {
-        this.Extra_Y = Extra;
+        this.Extra_Y += Extra;
     }
     public void setExtra_X(float Extra)
     {
-        this.Extra_Y = Extra;
+        this.Extra_Y += Extra;
+    }
+    public void setExtra_Z(float Extra)
+    {
+        this.Extra_Z += Extra;
     }
 }
