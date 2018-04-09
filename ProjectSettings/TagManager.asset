@@ -11,6 +11,8 @@ TagManager:
   - Mascara2
   - Mascara3
   - Bomba
+  - CharacterController
+  - Grounder
   layers:
   - Default
   - TransparentFX

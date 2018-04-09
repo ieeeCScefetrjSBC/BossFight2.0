@@ -8,7 +8,7 @@ public class Mov : MonoBehaviour {
     private bool Left, Up, Down, Right; // Direções 2D
     private bool StopLeft, StopUp, StopDown, StopRight; // Anti-Direções 2D
     public Rigidbody RB; // Rigidbody do Objeto
-    private float Force = 0.5f, Max = 5f; // Força de aceleração e Velocidade Máxima
+    private float Force = 0.6f, Max = 9f; // Força de aceleração e Velocidade Máxima
     private float Extra_X=0f, Extra_Y=0f, Extra_Z=0f;
     private float Final_Force_X, Final_Force_Y;
     void Start()
@@ -106,6 +106,10 @@ public class Mov : MonoBehaviour {
     public void setExtra_Y(float Extra)
     {
         this.Extra_Y += Extra;
+    }
+    public float getExtra_Y()
+    {
+        return this.Extra_Y;
     }
     public void setExtra_X(float Extra)
     {
