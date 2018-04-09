@@ -5,42 +5,43 @@ using UnityEngine;
 public class Jump : MonoBehaviour {
 
 	private bool Jumping = false; // Está pulando
-	private bool JumpRequest = false;
-	private float JumpForce = 0.5f;
-	private float FallForce = -0.01f;
-	private GameObject Grounder;
+	private bool JumpRequest = false; // Identifica que o player deve pular
+	private float JumpForce = 0.5f; // Velocidade do pulo
+	private float FallForce = -0.01f;// Velocidade de queda
+	private float FallMultiplier = 1.1f;// Multiplicador da gravidade, deve ser sempre maior que 1
+	private GameObject Grounder; //Objeto do chão
 
 	void Start ()
 	{
 		
-		Grounder = GameObject.FindWithTag("Grounder");
+		Grounder = GameObject.FindWithTag("Grounder"); //Identifica o objeto Grounder
 	}
 	
 	void Update () 
 	{
 	
-		if(Input.GetKeyDown(KeyCode.Space) && Grounder.GetComponent<Grounded>().getGrounded())
+		if(Input.GetKeyDown(KeyCode.Space) && Grounder.GetComponent<Grounded>().getGrounded()) //Torna JumpRequest true quando a barra de espaço for pressionada e o player estiver no chão
 			JumpRequest = true;
 
 		if(JumpRequest)
 		{
-			if(!Jumping)
+			if(!Jumping) //Caso ele ja não esteja pulando, aplica a força JumpForce
 			{
 				GetComponent<Mov>().setExtra_Y(JumpForce);
 				Jumping = true;
 			}
 			else
 			{
-				if(GetComponent<Rigidbody>().velocity.y <= 0)
-						FallForce -= Time.deltaTime/15;
+				if(GetComponent<Rigidbody>().velocity.y <= 0) //Caso ele esteja caindo, aumenta a gravidade
+						FallForce += Physics.gravity.y * (FallMultiplier - 1) * Time.deltaTime;
 						
 				GetComponent<Mov>().setExtra_Y(FallForce);
 
-				if(Grounder.GetComponent<Grounded>().getGrounded() && FallForce <= -0.02f)
+				if(Grounder.GetComponent<Grounded>().getGrounded() && FallForce <= -0.02f) //Para ele quando estiver extremamente proximo ao chão
 				{
 					JumpRequest = false;
 					Jumping = false;
-					GetComponent<Mov>().setExtra_Y(-GetComponent<Mov>().getExtra_Y());
+					GetComponent<Mov>().setExtra_Y(-GetComponent<Mov>().getExtra_Y()); //Aplica uma força igual e reserva no eixo Y, negando o movimento
 					FallForce = -0.01f;
 				}
 			}
