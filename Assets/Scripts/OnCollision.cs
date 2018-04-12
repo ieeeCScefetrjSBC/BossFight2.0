@@ -2,20 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
- public class OnCollision : MonoBehaviour
-{
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Colidiu");
-    }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        Debug.Log("Está colidindo");
-    }
+public class OnCollision : MonoBehaviour { 
 
-    private void OnCollisionExit(Collision collision)
+    void Update()
     {
-        Debug.Log("Saiu da colisão");
-    }
+    CharacterController controller = GetComponent<CharacterController>();
+        if (controller.collisionFlags == CollisionFlags.None)
+            
+            print("Free floating!");
+
+        if ((controller.collisionFlags & CollisionFlags.Sides) != 0)
+            
+           print("Touching sides!");
+
+        if (controller.collisionFlags == CollisionFlags.Sides)
+            print("Only touching sides, nothing else!");
+
+        if ((controller.collisionFlags & CollisionFlags.Above) != 0)
+            print("Touching sides!");
+
+        if (controller.collisionFlags == CollisionFlags.Above)
+            print("Only touching Ceiling, nothing else!");
+
+        if ((controller.collisionFlags & CollisionFlags.Below) != 0)
+            
+        print("Touching ground!");
+
+        if (controller.collisionFlags == CollisionFlags.Below)
+            
+            print("Only touching ground, nothing else!");
+}
+
+   
 }
