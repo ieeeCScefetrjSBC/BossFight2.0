@@ -28,6 +28,7 @@ public class Bomba_Proximidade : MonoBehaviour {
         }
         if (Triggered) // Caso esteja ativado, desce a contagem
         {
+            Debug.Log(Tempo);
             Tempo -= Time.deltaTime;//Contagem descendo a cada frame
             if (Tempo<= 1f)
             {
@@ -36,15 +37,22 @@ public class Bomba_Proximidade : MonoBehaviour {
             }
             if(Tempo<=0f)// Caso tenha acabado o tempo
             {
+                
                 Debug.Log("KABOOM");
-                Triggered = false;// Impede sucessivas explosões
+                
                                
                 if ((Mathf.Abs(transform.position.x - Jogador.transform.position.x) <= Zona_Dano) && (Mathf.Abs(transform.position.y - Jogador.transform.position.y) <= Zona_Dano) && (Mathf.Abs(transform.position.z - Jogador.transform.position.z) <= Zona_Dano)) {// Verifica se o jogador está na zona de dano
                     PlayerOBJ.GetComponent<Vida_Player>().danoPlayer(Dano);//Aplica dano ao jogador
-                    Duration = 6f;
-                    
+ 
                 }
+                Triggered = false;// Impede sucessivas explosões
+                Duration = 6f;
+                Tempo = 10f;
+                Luz.areaSize = new Vector2(15f, 15f);
+                Luz.intensity = 5f;
+                Luz.enabled = false;
                 this.gameObject.SetActive(false);
+
             }
             
         }
@@ -53,12 +61,16 @@ public class Bomba_Proximidade : MonoBehaviour {
             Duration -= Time.deltaTime;
             if (Duration<= 1f)
             {
-                Luz.areaSize = new Vector2(15f, 15f);
-                Luz.intensity = 50f;
+                Luz.areaSize = new Vector2(200f, 200f);
+                Luz.intensity = 100f;
             }
             if (Duration <= 0f)
             {
+                Luz.areaSize = new Vector2(15f, 15f);
+                Luz.intensity = 5f;
                 Duration = 6f;
+                Tempo = 10f;
+                Luz.enabled = false;
                 this.gameObject.SetActive(false);
                
             }
