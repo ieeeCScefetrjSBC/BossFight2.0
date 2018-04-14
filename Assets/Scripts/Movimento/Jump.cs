@@ -6,7 +6,7 @@ public class Jump : MonoBehaviour {
 
 	private bool Jumping = false; // Está pulando
 	private bool JumpRequest = false; // Identifica que o player deve pular
-	private float JumpForce = 0.5f; // Velocidade do pulo
+	private float JumpForce = 0.65f; // Velocidade do pulo
 	private float FallForce = -0.01f;// Velocidade de queda
 	private float FallMultiplier = 1.1f;// Multiplicador da gravidade, deve ser sempre maior que 1
 	private GameObject Grounder; //Objeto do chão
