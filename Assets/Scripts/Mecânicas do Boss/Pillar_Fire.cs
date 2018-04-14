@@ -31,7 +31,7 @@ public class Pillar_Fire : MonoBehaviour
             {
             TimerGround += Time.deltaTime;
             TimeAir = 1f;
-            Debug.Log("batata");
+            
         }
         if (!Grounder.GetComponent<Grounded>().getGrounded() && TimeAir <= 0f)
         {
