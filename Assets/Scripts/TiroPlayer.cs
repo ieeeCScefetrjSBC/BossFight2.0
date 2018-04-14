@@ -6,7 +6,7 @@ public class TiroPlayer : MonoBehaviour {
     private GameObject boss;
     public AudioSource SomTiro;
     public Camera mira;
-    public float alcance = 200f;
+    public float alcance =9200000000000000f;
 
 
 
@@ -31,11 +31,13 @@ public class TiroPlayer : MonoBehaviour {
         SomTiro.Play();
         RaycastHit bang;
 
-        GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);
+        
         if (Physics.Raycast(mira.transform.position, mira.transform.forward, out bang, alcance))
         {
-            tiro.transform.rotation = mira.transform.rotation; 
-            tiro.GetComponent<Rigidbody>().velocity = tiro.transform.forward * 12;
+            GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);
+            tiro.transform.rotation = mira.transform.rotation;
+            tiro.transform.position = mira.transform.position;
+            tiro.GetComponent<Rigidbody>().velocity = tiro.transform.forward * 19;
             Debug.Log(bang.transform.name);
             
             
