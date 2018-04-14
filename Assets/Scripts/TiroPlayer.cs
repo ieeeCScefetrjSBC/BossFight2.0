@@ -5,10 +5,19 @@ public class TiroPlayer : MonoBehaviour {
 
     private GameObject boss;
     public AudioSource SomTiro;
+    public Camera mira;
+    public float alcance = 200f;
+
+
+
+
     private void Start()
     {
         boss = GameObject.FindGameObjectWithTag("Boss");
     }
+
+
+
     void Update () {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -19,10 +28,19 @@ public class TiroPlayer : MonoBehaviour {
 
     void Atira()
     {
+        SomTiro.Play();
+        RaycastHit bang;
 
         GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);
-        tiro.transform.rotation = this.transform.rotation;
-        tiro.GetComponent<Rigidbody>().velocity = tiro.transform.forward * 12;
-        SomTiro.Play();
+        if (Physics.Raycast(mira.transform.position, mira.transform.forward, out bang, alcance))
+        {
+            tiro.transform.rotation = mira.transform.rotation; 
+            tiro.GetComponent<Rigidbody>().velocity = tiro.transform.forward * 12;
+            Debug.Log(bang.transform.name);
+            
+            
+            
+        }
     }
 }
+
