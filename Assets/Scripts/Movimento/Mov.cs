@@ -92,7 +92,7 @@ public class Mov : MonoBehaviour {
             RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y, Max);
         if (RB.velocity.z <= -Max)// Velocidade máxima negativa em Z
             RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y, -Max);
-        Debug.Log(RB.velocity);
+
        
 
 

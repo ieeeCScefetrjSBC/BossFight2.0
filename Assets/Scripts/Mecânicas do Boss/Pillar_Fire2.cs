@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pillar_Fire : MonoBehaviour
+public class Pillar_Fire2 : MonoBehaviour
 {
     private bool done = false;
     private GameObject Ground;
@@ -26,12 +26,11 @@ public class Pillar_Fire : MonoBehaviour
         TimeAir -= Time.deltaTime;
         if (Grounder.GetComponent<Grounded>().getGrounded() && Player.transform.position.x <= (transform.position.x + transform.localScale.x / 2) &&
             Player.transform.position.x >= (transform.position.x - transform.localScale.x / 2) && Player.transform.position.z <= (transform.position.z + transform.localScale.z / 2) &&
-            Player.transform.position.z >= (transform.position.z - transform.localScale.z / 2) ) //Enquanto o player não sai do chão, inicia o timer 1
-            
-            {
+            Player.transform.position.z >= (transform.position.z - transform.localScale.z / 2)) //Enquanto o player não sai do chão, inicia o timer 1
+
+        {
             TimerGround += Time.deltaTime;
             TimeAir = 1f;
-            Debug.Log("batata");
         }
         if (!Grounder.GetComponent<Grounded>().getGrounded() && TimeAir <= 0f)
         {
@@ -41,8 +40,8 @@ public class Pillar_Fire : MonoBehaviour
         if (TimerGround > 10f && !done)
         {
             done = true;
-            GameObject Pillar_1 = Instantiate(Pilar, new Vector3(10, 0, 30), Quaternion.identity);
-            GameObject Pilar_2 = Instantiate(Pilar, new Vector3(-10, 0, 30), Quaternion.identity);
+            GameObject Pillar_1 = Instantiate(Pilar, new Vector3(10, 0, -30), Quaternion.identity);
+            GameObject Pilar_2 = Instantiate(Pilar, new Vector3(-10, 0, -30), Quaternion.identity);
         }
 
     }

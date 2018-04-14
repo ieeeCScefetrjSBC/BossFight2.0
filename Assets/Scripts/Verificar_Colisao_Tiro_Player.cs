@@ -6,7 +6,7 @@ public class Verificar_Colisao_Tiro_Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Physics.IgnoreCollision(this.gameObject.GetComponent<SphereCollider>(), GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider>()); //Ignora colisão com o player
+        Physics.IgnoreCollision(this.gameObject.GetComponent<SphereCollider>(), GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider>()); //Ignora colisão com o player
 	}
 	
 	// Update is called once per frame
