@@ -34,3 +34,4 @@ sysinfo.txt
 *.unitypackage
 Assets/LowPolyWater_Pack/LowPoly Island.meta
 Assets/LowPolyWater_Pack/Scripts.meta
+*.meta
