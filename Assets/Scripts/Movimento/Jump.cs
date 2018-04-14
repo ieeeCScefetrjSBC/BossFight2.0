@@ -7,11 +7,12 @@ public class Jump : MonoBehaviour
 
     private bool Jumping = false; // Está pulando
     private bool JumpRequest = false; // Identifica que o player deve pular
-    private float JumpForce = 0.48f; // Velocidade do pulo
+    private bool Colidiu = false;//Determina se o player colidiu com a plataforma de pulo
+    private float JumpForce = 0.6f; // Velocidade do pulo
     private float FallForce = -0.01f;// Velocidade de queda
     private float FallMultiplier = 1.1f;// Multiplicador da gravidade, deve ser sempre maior que 1
     private float Fator = 0f;//X da equação
-    private float MultiplicadorPulo = 2f;//Multiplicador do pulo na plataforma de pulo
+    private float MultiplicadorPulo = 2.6f;//Multiplicador do pulo na plataforma de pulo
     private GameObject Grounder; //Objeto do chão
 
     void Start()
@@ -22,6 +23,18 @@ public class Jump : MonoBehaviour
 
     void Update()
     {
+        if(Colidiu){//se ele colidiu ele faz o pulo da plataforma de pulo
+            if(Grounder.GetComponent<Grounded>().getGrounded()){
+                if (!Jumping){
+                    GetComponent<Mov>().setExtra_Y(MultiplicadorPulo*JumpForce);
+                    Jumping = true;
+                    JumpRequest = true;
+                    FallForce = -0.001f;//diminui a força da queda do normal porque ele tava acelerando demais na queda
+                    FallMultiplier = 1.01f;//idem pro multiplicador de queda
+                }
+            }
+            Colidiu = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && Grounder.GetComponent<Grounded>().getGrounded()) //Torna JumpRequest true quando a barra de espaço for pressionada e o player estiver no chão
             JumpRequest = true;
@@ -54,17 +67,13 @@ public class Jump : MonoBehaviour
                 }
             }
         }
+
+        FallForce = -0.01f;
+        FallMultiplier = 1.1f;
     }
     void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.tag == "PlataformaPulo"){ //o código é o mesmo do código acima pra pulo, só que não precisa apertar espaço pra ser ativado e a força do pulo é multiplicada
-            if(Grounder.GetComponent<Grounded>().getGrounded()){
-                if (!Jumping){
-
-                    GetComponent<Mov>().setExtra_Y(MultiplicadorPulo*JumpForce);
-                    Jumping = true;
-                    JumpRequest = true;
-                }
-            }
+        if(collision.gameObject.tag == "PlataformaPulo"){
+            Colidiu = true;
         }
     }
 }
