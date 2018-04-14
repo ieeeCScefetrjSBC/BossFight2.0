@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TiroPlayer : MonoBehaviour {
 
-    
+    private GameObject boss;
     public AudioSource SomTiro;
     public Camera mira;
     public float alcance = 200f;
