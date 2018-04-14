@@ -27,7 +27,7 @@ public class Grounded : MonoBehaviour
         Ground = Physics.OverlapSphere(transform.position, groundCheckRadius, layerMask);
         if (Ground.Length != 0)
         {
-            if (Ground[0].tag == "Plataforma")
+            if (Ground[0].tag == "Plataforma" || Ground[0].tag == "PlataformaPulo")
             {
                 grounded = true;
 

@@ -8,9 +8,10 @@ public class Jump : MonoBehaviour
     private bool Jumping = false; // Está pulando
     private bool JumpRequest = false; // Identifica que o player deve pular
     private float JumpForce = 0.48f; // Velocidade do pulo
-    private float FallForce = -0.015f;// Velocidade de queda
+    private float FallForce = -0.01f;// Velocidade de queda
     private float FallMultiplier = 1.1f;// Multiplicador da gravidade, deve ser sempre maior que 1
     private float Fator = 0f;//X da equação
+    private float MultiplicadorPulo = 2f;//Multiplicador do pulo na plataforma de pulo
     private GameObject Grounder; //Objeto do chão
 
     void Start()
@@ -50,6 +51,18 @@ public class Jump : MonoBehaviour
                     Fator = 0f;
                     GetComponent<Mov>().setExtra_Y(-GetComponent<Mov>().getExtra_Y()); //Aplica uma força igual e reserva no eixo Y, negando o movimento
                     FallForce = -0.01f;
+                }
+            }
+        }
+    }
+    void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.tag == "PlataformaPulo"){ //o código é o mesmo do código acima pra pulo, só que não precisa apertar espaço pra ser ativado e a força do pulo é multiplicada
+            if(Grounder.GetComponent<Grounded>().getGrounded()){
+                if (!Jumping){
+
+                    GetComponent<Mov>().setExtra_Y(MultiplicadorPulo*JumpForce);
+                    Jumping = true;
+                    JumpRequest = true;
                 }
             }
         }
