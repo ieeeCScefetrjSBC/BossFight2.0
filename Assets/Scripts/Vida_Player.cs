@@ -40,4 +40,10 @@ public class Vida_Player : MonoBehaviour
             SceneManager.LoadScene(nomeCena);
         }
     }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.tag == "Part.LavaBall")
+            danoPlayer(3);
+    }
 }
