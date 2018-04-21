@@ -9,6 +9,7 @@ public class LaserScript : MonoBehaviour
 
     void Start()
     {
+
         Line = gameObject.GetComponent<LineRenderer>(); 
         Line.enabled = false; //sumir a linha do line renderer
 
@@ -29,7 +30,7 @@ public class LaserScript : MonoBehaviour
 
         while (Input.GetButton("Fire1")) //para disparos contínuos enquanto o botão está sendo apertado. Loopception
         {
-            Ray ray = new Ray(transform.position, transform.forward); //ray inicia na ponta da arma e vai para frene, alinhado com a arma
+            Ray ray = new Ray(transform.position, transform.right); //ray inicia na ponta da arma e vai para frene, alinhado com a arma
             RaycastHit Hit;
 
             Line.SetPosition(0, ray.origin); //começa no começo( ponta da arma)

@@ -49,6 +49,20 @@ public class MovimentoPlayer : MonoBehaviour
                 moveDirection.y -= gravity * Time.deltaTime;
                 controller.Move(moveDirection * Time.deltaTime);
 
-            }
+            
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit) {
+        if(hit.gameObject.tag == "Plataforma"){
+            Debug.Log("PLATAFORMAAAAAAAA");
+        }
+        if(hit.gameObject.tag == "Chao"){
+            Debug.Log("CHAAAAAAAAAAAAAO");
+        }
+        if(hit.gameObject.tag == "PlataformaPulo"){
+            Debug.Log("PLATAFORMAAPULOOOOOO");
+            jumpSpeed = 10000000;
+        }
+
+    }
+}
