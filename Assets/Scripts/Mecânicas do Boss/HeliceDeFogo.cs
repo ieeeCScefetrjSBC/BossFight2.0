@@ -10,7 +10,7 @@ public class HeliceDeFogo : MonoBehaviour {
     public float Vel_Rotx, Vel_Roty, Vel_Rotz;
     void Start()
     {
-        
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
