@@ -30,7 +30,8 @@ public class LaserScript : MonoBehaviour
 
         while (Input.GetButton("Fire1")) //para disparos contínuos enquanto o botão está sendo apertado. Loopception
         {
-            Ray ray = new Ray(transform.position, transform.right); //ray inicia na ponta da arma e vai para frene, alinhado com a arma
+			//Line.material.mainTextureOffSet = new Vector2 (0, Time.time); //muda a textura de acordo com o tempo
+			Ray ray = new Ray(transform.position, transform.forward); //ray inicia na ponta da arma e vai para frene, alinhado com a arma
             RaycastHit Hit;
 
             Line.SetPosition(0, ray.origin); //começa no começo( ponta da arma)

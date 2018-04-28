@@ -32,7 +32,7 @@ public class TiroPlayer : MonoBehaviour {
         RaycastHit bang;
 
         
-        if (Physics.Raycast(mira.transform.position, mira.transform.forward, out bang, alcance))
+       /* if (Physics.Raycast(mira.transform.position, mira.transform.forward, out bang, alcance))
         {
             GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);
             tiro.transform.rotation = mira.transform.rotation;
@@ -42,7 +42,7 @@ public class TiroPlayer : MonoBehaviour {
             
             
             
-        }
+        }*/
     }
 }
 
