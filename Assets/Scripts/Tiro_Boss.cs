@@ -28,5 +28,13 @@ public class Tiro_Boss : MonoBehaviour {
         AtqBoss.Play();
         
     }
+    public void setfireRate(float Add)
+    {
+        this.fireRate = Add;
+    }
+    public float getfireRate()
+    {
+        return this.fireRate;
+    }
 
 }
