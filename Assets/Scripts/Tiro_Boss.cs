@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class Tiro_Boss : MonoBehaviour {
-    private float fireRate = 1;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
+    private float fireRate = 0.4f;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
     private float tempoAtirar = 0f;
     private GameObject player;
     public AudioSource AtqBoss;
@@ -24,7 +24,7 @@ public class Tiro_Boss : MonoBehaviour {
     {
         GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"), transform.position, Quaternion.identity);
 
-        tiro.GetComponent<Rigidbody>().velocity = (player.transform.position - tiro.transform.position);
+        //tiro.GetComponent<Rigidbody>().velocity = (player.transform.position - tiro.transform.position);
         AtqBoss.Play();
         
     }

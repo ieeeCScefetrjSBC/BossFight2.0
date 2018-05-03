@@ -17,6 +17,7 @@ public class Verificar_Colisao : MonoBehaviour {
         if (collision.gameObject.tag.Equals("Player")) //Se for player ele tira vida
         {
             collision.gameObject.GetComponent<Vida_Player>().danoPlayer(1);
+            Debug.Log("Atingiu");
             Destroy(this.gameObject);
         }
         else
