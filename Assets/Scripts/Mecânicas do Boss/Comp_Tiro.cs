@@ -11,7 +11,7 @@ public class Comp_Tiro : MonoBehaviour {
     private Vector3 Total_Force;
     private Rigidbody RB;// Rigidbody do Tiro
     
-    private float Velocity, Timer=2f;// Velocidade do Tiro e Tempo de atualização da direção
+    private float Velocity=0.5f, Timer=2f;// Velocidade do Tiro e Tempo de atualização da direção
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");// Define GameObject Player
         RB= GetComponent<Rigidbody>();// Define o Rigidbody RB
@@ -19,7 +19,7 @@ public class Comp_Tiro : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Total_Force = Total_Force * 0f;
+        Total_Force = Total_Force * 0f;// Reseta a força que será aplicada neste frame
         if(Timer>=0)// Caso ainda esteja atualizando:
             Direction = (Player.transform.position - this.transform.position).normalized; // Atualiza a direção para o jogador       
         if ((RB.velocity.normalized - Direction).magnitude >= 0.1f) // Se houver algum desvio no tiro
@@ -32,9 +32,12 @@ public class Comp_Tiro : MonoBehaviour {
             Wrong_Direction = Wrong_Direction * 0f; // Zera a direção do desvio
             Velocity = 0.5f;
         }
-        Total_Force += Direction * Velocity;
-        Total_Force -= Wrong_Direction * Velocity/1.2f;
-        RB.AddForce(Total_Force, ForceMode.VelocityChange);// Soma uma força em direção ao jogador com uma magnitude de "Velocity"
         Timer -= Time.deltaTime;// Decai o temporizador
 	}
+    private void FixedUpdate()
+    {
+        Total_Force += Direction * Velocity;//  Soma uma força em direção ao jogador com uma magnitude de "Velocity"
+        Total_Force -= Wrong_Direction * Velocity / 1.2f;// Soma uam força na direção oposta à direção "errada"
+        RB.AddForce(Total_Force, ForceMode.VelocityChange);// Aplica a força total ao objeto
+    }
 }
