@@ -8,12 +8,11 @@ using UnityEngine.SceneManagement;
 public class InGameMenu : MonoBehaviour {
     private GameObject Player;
     private Camera MainCamera;
-    private Canvas InGame_Menu;
+    public Canvas InGame_Menu;
     public Canvas Mira;
 
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
-        InGame_Menu = Player.GetComponentInChildren<Canvas>();
         MainCamera = Player.GetComponentInChildren<Camera>();
         InGame_Menu.enabled = false;
 	}
