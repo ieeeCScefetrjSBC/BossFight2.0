@@ -11,9 +11,7 @@ public class Sopro : MonoBehaviour {
     private GameObject Boss; // Objeto do boss na cena
     private GameObject Grounder; //Objeto do chão
     private Vector3 direction; // Vetor direção da força
-    private float ForceMultiplier = 0.1f; // Multiplicador da força
-    private float DuracaoSopro = 2f;
-    private float TempoAteSopro = 8f;
+    private float ForceMultiplier = 1f; // Multiplicador da força
 
     void Start ()
     {
@@ -34,18 +32,16 @@ public class Sopro : MonoBehaviour {
         else
             TimerGround = 0f;
 
-        if (TimerGround > TempoAteSopro && TimerGround < TempoAteSopro + DuracaoSopro)
+        if (TimerGround > 8f)
         {
             RequestForce = true;
             TimerForce += Time.deltaTime;
         }
 
-        if (TimerGround >= TempoAteSopro + DuracaoSopro)
+        if (TimerForce > 5f)
         {
             RequestForce = false;
             TimerForce = 0f;
-            if(TimerGround >= 10)
-                TimerGround = 0f;
         }
 
         if (RequestForce) // Enquanto o timer estiver entre 5 e 10 segundos

@@ -32,7 +32,7 @@ public class FallingPlatform : MonoBehaviour {
         {
             DownSpeed += Time.deltaTime/5;
         }
-        //Debug.Log(Touched);
+        Debug.Log(Touched);
     }
 
     private void FixedUpdate()
