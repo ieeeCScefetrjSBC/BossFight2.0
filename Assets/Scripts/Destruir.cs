@@ -7,9 +7,7 @@ public class Destruir : MonoBehaviour {
     public void Vida_Plataforma(float dano)
     {
         if(dano == 20)
-        {
             Kill();
-        }
     }
 
     // Use this for initialization
