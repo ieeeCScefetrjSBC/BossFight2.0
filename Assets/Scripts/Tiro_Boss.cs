@@ -4,7 +4,7 @@ public class Tiro_Boss : MonoBehaviour {
     private float fireRate = 0.4f;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
     private float tempoAtirar = 1.5f; // Tempo entre cada tiro, impede o boss de atirar assim que inicia, esperando 1.5 segundos;
     private float Timer=2.5f; // Contador
-    private string Pattern= "Sprayed_Shots";// Padrão, tem como início os tiros comuns
+    private string Pattern= "Regular_Shots";// Padrão, tem como início os tiros comuns
     private GameObject player; // Objeto Player
     public AudioSource AtqBoss;// Som do Tiro
     private void Start()

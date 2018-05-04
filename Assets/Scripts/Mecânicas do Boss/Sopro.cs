@@ -24,7 +24,6 @@ public class Sopro : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log("TimerGround: " + TimerGround + ", TimerForce: " + TimerForce);
 
         direction = Boss.transform.position - Player.transform.position; //Define o ponto inicial como a posição do jogador e o final como a posição do boss
         direction = direction.normalized; //normaliza o vetor
@@ -50,7 +49,7 @@ public class Sopro : MonoBehaviour {
 
         if (RequestForce) // Enquanto o timer estiver entre 5 e 10 segundos
         {
-            Debug.Log("Carai ta voando");
+            
             Player.GetComponent<CharacterController>().Move(direction*ForceMultiplier);
             //Player.GetComponent<Mov>().setExtra_Z(-ForceMultiplier);
         }

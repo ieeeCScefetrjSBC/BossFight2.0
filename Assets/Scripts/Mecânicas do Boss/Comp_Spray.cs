@@ -9,13 +9,13 @@ public class Comp_Spray : MonoBehaviour {
     private float Teta=0; // Ângulo horizontal
     private float Phi=0; // Ângulo Vertical
     private float Speed = 50f;// Velocidade do tiro
+    private float Convergence = 0.7f;// Fator de convergência
     private Vector3 Origin; // Origem do Tiro
     private Vector3 Finale; // Onde o tiro está mirando
     private Vector3 Center; // Vetor que guarda a posição do player no momento que o tiro é lançado
     private Vector3 Direction; // Direção do movimento
     private GameObject Player; // Objeto do Jogador
-    [SerializeField]
-    private float Convergence=0.7f;
+    
    
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player"); // Define GameObject Player
@@ -24,6 +24,7 @@ public class Comp_Spray : MonoBehaviour {
         Teta = Random.Range(0, Mathf.PI * 2f); // Ângulo horizontal aleatório
         Phi = Random.Range(0, Mathf.PI);// Ângulo vertical aleatório
         Radius = Random.Range(0, ((Center-Origin).magnitude/2f)-6);// Distância do player aleatória
+        Convergence = Radius / 40;// Fator de Correção proporcional ao erro
         Finale.x = Player.transform.position.x + Radius * Mathf.Cos(Teta) * Mathf.Sin(Phi); // Posição X do Jogador + Coordenada Esférica
         Finale.y = Player.transform.position.y + Radius * Mathf.Sin(Teta) * Mathf.Sin(Phi);// Posição Y do Jogador + Coordenada Esférica
         Finale.z = Player.transform.position.z + Radius * Mathf.Cos(Phi);// Posição Z do Jogador + Coordenada Esférica        
