@@ -11,7 +11,7 @@ public class Sopro : MonoBehaviour {
     private GameObject Boss; // Objeto do boss na cena
     private GameObject Grounder; //Objeto do chão
     private Vector3 direction; // Vetor direção da força
-    private float ForceMultiplier = 0.1f; // Multiplicador da força
+    private float ForceMultiplier = 1f; // Multiplicador da força
 
     void Start ()
     {
