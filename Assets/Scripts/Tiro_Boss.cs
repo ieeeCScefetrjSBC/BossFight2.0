@@ -2,10 +2,11 @@
 
 public class Tiro_Boss : MonoBehaviour {
     private float fireRate = 0.4f;                  //Quanto menor o fire rate mais tempo entre os tiros do boss 
-    private float tempoAtirar = 0f;
-    private string Pattern= "Sprayed_Shots";
-    private GameObject player;
-    public AudioSource AtqBoss;
+    private float tempoAtirar = 1.5f; // Tempo entre cada tiro, impede o boss de atirar assim que inicia, esperando 1.5 segundos;
+    private float Timer=2.5f; // Contador
+    private string Pattern= "Regular_Shots";// Padrão, tem como início os tiros comuns
+    private GameObject player; // Objeto Player
+    public AudioSource AtqBoss;// Som do Tiro
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -15,9 +16,11 @@ public class Tiro_Boss : MonoBehaviour {
     void Update () {
         if (Time.time >= tempoAtirar)
         {
-            tempoAtirar = Time.time + 1f / fireRate;
-            Atirar();
+            tempoAtirar = Time.time + 1f / fireRate; // Tempo entre cada tiro
+            Atirar();// Chama a função que define qual tiro será realizado
+            Debug.Log(fireRate);
         }
+
 
     }
 
@@ -27,12 +30,20 @@ public class Tiro_Boss : MonoBehaviour {
         {
             case "Regular_Shots": // Tiros lentos direcionados ao player
                 GameObject tiro = (GameObject)Instantiate(Resources.Load("Tiro"), transform.position, Quaternion.identity);
-                AtqBoss.Play();
+                AtqBoss.Play();// Som de tiro
                 break;
             case "Sprayed_Shots": // Tiros rápidos e imprecisos
-                fireRate = 8f;
-                GameObject tiro_spray = (GameObject)Instantiate(Resources.Load("Spray_Tiro"), transform.position, Quaternion.identity);
-                AtqBoss.Play();
+                fireRate = 8f; // Velocidade de tiro ampliada
+                GameObject tiro_spray = (GameObject)Instantiate(Resources.Load("Spray_Tiro"), transform.position, Quaternion.identity); // Instancia objeto
+                Timer -= Time.deltaTime;// Decai contador
+                
+                if (Timer <= 0)// Caso a mecânica tenha acabado:
+                {
+                    Timer = 5f;// Reseta o cotador
+                    fireRate = 0.4f;// Reseta a frequência de tiro
+                    Pattern = "Regular_Shots";// Retorna para os tiros comuns
+                }
+                AtqBoss.Play();// Som de tiro
                 break;
         }
         

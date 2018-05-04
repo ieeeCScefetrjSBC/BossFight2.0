@@ -30,4 +30,16 @@ public class Comp_Spray : MonoBehaviour {
         
         transform.Translate(Direction*Time.deltaTime*Speed); // Muda a posição do objeto no vetor Direction, usando escala temporal e com velocidade "Speed"
 	}
+    private void OnCollisionEnter(Collision collision) //Verifica em quem está batendo
+    {
+
+        if (collision.gameObject.tag.Equals("Player")) //Se for player ele tira vida
+        {
+            collision.gameObject.GetComponent<Vida_Player>().danoPlayer(1);
+            Debug.Log("Atingiu");
+            Destroy(this.gameObject);
+            
+        }
+       
+    }
 }
