@@ -12,7 +12,7 @@ public class LaserScript : MonoBehaviour
 
         Line = gameObject.GetComponent<LineRenderer>(); 
         Line.enabled = false; //sumir a linha do line renderer
-
+        gameObject.GetComponent<Light>().enabled=false;
     }
 
 
@@ -27,6 +27,7 @@ public class LaserScript : MonoBehaviour
     IEnumerator FireLaser() 
     {
         Line.enabled = true; //linha é ligada
+        gameObject.GetComponent<Light>().enabled = true;
 
         while (Input.GetButton("Fire1")) //para disparos contínuos enquanto o botão está sendo apertado. Loopception
         {
@@ -46,6 +47,6 @@ public class LaserScript : MonoBehaviour
             yield return null; 
         }
         Line.enabled = false; //para a linha quando o botão deixa de ser apertado
-        
+        gameObject.GetComponent<Light>().enabled = false;
     }
 }
