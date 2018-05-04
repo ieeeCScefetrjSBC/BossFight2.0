@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -337,9 +337,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 80664002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efbd293dcced5241bb74ec8d5e5cf5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 55745a32c324b0b4fac356eed6e292c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1740260954}
+  helice: {fileID: 80664004}
+  Mov_Vel: 0
+  Vel_Rotx: 0
+  Vel_Roty: 0
+  Vel_Rotz: 100
 --- !u!4 &80664004
 Transform:
   m_ObjectHideFlags: 0
@@ -366,7 +372,7 @@ GameObject:
   - component: {fileID: 99334265}
   - component: {fileID: 99334267}
   - component: {fileID: 99334266}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +628,7 @@ GameObject:
   - component: {fileID: 156986923}
   - component: {fileID: 156986925}
   - component: {fileID: 156986924}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +863,7 @@ GameObject:
   - component: {fileID: 266212652}
   - component: {fileID: 266212654}
   - component: {fileID: 266212653}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1721,7 +1727,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1985165211
+  randomSeed: 852138281
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5046,9 +5052,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 400194887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efbd293dcced5241bb74ec8d5e5cf5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 55745a32c324b0b4fac356eed6e292c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1740260954}
+  helice: {fileID: 400194889}
+  Mov_Vel: 0
+  Vel_Rotx: 0
+  Vel_Roty: 0
+  Vel_Rotz: 100
 --- !u!4 &400194889
 Transform:
   m_ObjectHideFlags: 0
@@ -5132,9 +5144,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 436150080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efbd293dcced5241bb74ec8d5e5cf5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 55745a32c324b0b4fac356eed6e292c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1740260954}
+  helice: {fileID: 436150082}
+  Mov_Vel: 0
+  Vel_Rotx: 0
+  Vel_Roty: 30
+  Vel_Rotz: 0
 --- !u!4 &436150082
 Transform:
   m_ObjectHideFlags: 0
@@ -5809,7 +5827,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1466156310
+  randomSeed: -856477983
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13168,7 +13186,7 @@ GameObject:
   - component: {fileID: 858047655}
   - component: {fileID: 858047657}
   - component: {fileID: 858047656}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18314,13 +18332,13 @@ GameObject:
   - component: {fileID: 1183718568}
   - component: {fileID: 1183718567}
   - component: {fileID: 1183718566}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InGameMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1183718565
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18373,7 +18391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 2
+  m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -18389,9 +18407,9 @@ Canvas:
   m_GameObject: {fileID: 1183718564}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 780153246}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -26102,7 +26120,7 @@ GameObject:
   - component: {fileID: 1438006581}
   - component: {fileID: 1438006583}
   - component: {fileID: 1438006582}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27160,9 +27178,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1740260954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468ec56bba8a2b344b9b126311e0d51e, type: 3}
+  m_Script: {fileID: 11500000, guid: 868683acd1bbbaa4bb1eb5d5bd9b4ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InGame_Menu: {fileID: 1183718568}
+  Mira: {fileID: 58741205}
 --- !u!114 &1740260966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27269,7 +27289,7 @@ GameObject:
   - component: {fileID: 1756470259}
   - component: {fileID: 1756470258}
   - component: {fileID: 1756470257}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Whatever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27465,7 +27485,7 @@ GameObject:
   - component: {fileID: 1801833202}
   - component: {fileID: 1801833201}
   - component: {fileID: 1801833200}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27576,7 +27596,7 @@ GameObject:
   - component: {fileID: 1809095136}
   - component: {fileID: 1809095135}
   - component: {fileID: 1809095134}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27933,7 +27953,7 @@ GameObject:
   - component: {fileID: 1993562778}
   - component: {fileID: 1993562777}
   - component: {fileID: 1993562776}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
