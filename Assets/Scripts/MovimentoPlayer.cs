@@ -11,12 +11,6 @@ public class MovimentoPlayer : MonoBehaviour
     float rotX;
     float rotY;
 
-    [SerializeField]
-    private float soproTime;
-    [SerializeField]
-    private float soproForce;
-    private float soproCounter = 0;
-
     private float speed = 9.0F;
     private float jumpSpeed = 25.0F;
     private float gravity = 45.0F;
@@ -74,17 +68,5 @@ public class MovimentoPlayer : MonoBehaviour
         yield return new WaitForSeconds(1);
         platPulo = false;
         jumpSpeed = 25f;
-    }
-
-    public void Knockback(Vector3 direcao)
-    {
-        soproCounter = soproTime;
-        while(soproCounter > 0)
-            moveDirection = direcao * soproForce;
-    }
-    
-    public void setMoveDirection(Vector3 move)
-    {
-        this.moveDirection = move;
     }
 }
