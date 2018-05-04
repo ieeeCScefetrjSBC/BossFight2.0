@@ -32,20 +32,18 @@ public class MovimentoPlayer : MonoBehaviour
         CharacterController controller = GetComponent<CharacterController>();
 
         if (Input.GetKey(KeyCode.LeftShift))
-        {
             speed = 15.0f;
-        }
+        else if (platPulo)
+            speed = 20f;
         else
-        {
             speed = 9.0F;
-        }
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= speed;
         if (controller.isGrounded)
         {
-            if (Input.GetButton("Jump") || platPulo == true)//faz o pulo do player quando o botão de pular for apertado, ou ele tenha colidido com a plataforma de pulo
+            if (Input.GetButton("Jump") || platPulo)//faz o pulo do player quando o botão de pular for apertado, ou ele tenha colidido com a plataforma de pulo
                 vertVel = jumpSpeed;
             else
                 vertVel = moveDirection.y;
@@ -59,7 +57,7 @@ public class MovimentoPlayer : MonoBehaviour
         if(hit.gameObject.tag == "PlataformaPulo")
         {
             Debug.Log("A");
-            jumpSpeed = 50f;
+            jumpSpeed = 45f;
             platPulo = true;
             StartCoroutine(TempoDepoisDaPlataformaPulo());
         }
@@ -67,7 +65,7 @@ public class MovimentoPlayer : MonoBehaviour
 
     IEnumerator TempoDepoisDaPlataformaPulo()//esse metodo serve para reiniciar os valores de pulo depois que o player passa da plataforma de pulo
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         platPulo = false;
         jumpSpeed = 25f;
     }
