@@ -25,17 +25,10 @@ public class Verificar_Colisao : MonoBehaviour {
         }
         else
         {
-            float Add= Boss.GetComponent<Tiro_Boss>().getfireRate(); ;
-            Boss.GetComponent<Tiro_Boss>().setfireRate(Add + 0.05f);
-            if (collision.gameObject.tag.Equals("Plataforma"))
-            { //Se for plataforma ele destroi a plataforma
-                Destroy(collision.gameObject);
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+            float Add= Boss.GetComponent<Tiro_Boss>().getfireRate(); // Adquire o valor do fireRate
+            Boss.GetComponent<Tiro_Boss>().setfireRate(Add + 0.05f); // Incrementa em 0.05  
+            Destroy(this.gameObject);
+            
         }
     }
     // Update is called once per frame
