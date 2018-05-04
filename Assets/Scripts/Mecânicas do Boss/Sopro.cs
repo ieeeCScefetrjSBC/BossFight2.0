@@ -11,7 +11,7 @@ public class Sopro : MonoBehaviour {
     private GameObject Boss; // Objeto do boss na cena
     private GameObject Grounder; //Objeto do chão
     private Vector3 direction; // Vetor direção da força
-    private float ForceMultiplier = 30f; // Multiplicador da força
+    private float ForceMultiplier = 0.1f; // Multiplicador da força
 
     void Start ()
     {
@@ -27,7 +27,7 @@ public class Sopro : MonoBehaviour {
         direction = Boss.transform.position - Player.transform.position; //Define o ponto inicial como a posição do jogador e o final como a posição do boss
         direction = direction.normalized; //normaliza o vetor
 
-        if (Grounder.GetComponent<Grounded>().getGrounded()) //Enquanto o player não sai do chão, inicia o timer 1
+        if (Player.GetComponent<CharacterController>().isGrounded) //Enquanto o player não sai do chão, inicia o timer 1
             TimerGround += Time.deltaTime;
         else
             TimerGround = 0f;
@@ -47,8 +47,8 @@ public class Sopro : MonoBehaviour {
         if (RequestForce) // Enquanto o timer estiver entre 5 e 10 segundos
         {
             Debug.Log("Carai ta voando");
-            Player.GetComponent<Mov>().setExtra_X(-ForceMultiplier);
-            Player.GetComponent<Mov>().setExtra_Z(-ForceMultiplier);
+            Player.GetComponent<CharacterController>().Move(direction*ForceMultiplier);
+            //Player.GetComponent<Mov>().setExtra_Z(-ForceMultiplier);
         }
     }
 

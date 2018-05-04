@@ -11,12 +11,18 @@ public class MovimentoPlayer : MonoBehaviour
     float rotX;
     float rotY;
 
+    [SerializeField]
+    private float soproTime;
+    [SerializeField]
+    private float soproForce;
+    private float soproCounter = 0;
+
     private float speed = 9.0F;
     private float jumpSpeed = 25.0F;
     private float gravity = 45.0F;
     private Vector3 moveDirection = Vector3.zero;
     private float vertVel = 0f;//velocidade vertical do player (precisa disso para poder mexer enquanto está no pulo)
-    private bool platPulo = false;//variavel que detecta a colisão com a plataforma de pulo
+    private bool platPulo = false;//vSariavel que detecta a colisão com a plataforma de pulo
 
     // Use this for initialization
     void Start()
@@ -68,5 +74,17 @@ public class MovimentoPlayer : MonoBehaviour
         yield return new WaitForSeconds(1);
         platPulo = false;
         jumpSpeed = 25f;
+    }
+
+    public void Knockback(Vector3 direcao)
+    {
+        soproCounter = soproTime;
+        while(soproCounter > 0)
+            moveDirection = direcao * soproForce;
+    }
+    
+    public void setMoveDirection(Vector3 move)
+    {
+        this.moveDirection = move;
     }
 }
