@@ -12,7 +12,7 @@ public class MovimentoPlayer : MonoBehaviour
     float rotY;
 
     private float speed = 9.0F;
-    private float jumpSpeed = 25.0F;
+    private float jumpSpeed = 20F;
     private float gravity = 45.0F;
     private Vector3 moveDirection = Vector3.zero;
     private float vertVel = 0f;//velocidade vertical do player (precisa disso para poder mexer enquanto está no pulo)
@@ -57,7 +57,7 @@ public class MovimentoPlayer : MonoBehaviour
         if(hit.gameObject.tag == "PlataformaPulo")
         {
             Debug.Log("A");
-            jumpSpeed = 45f;
+            jumpSpeed = 60f;
             platPulo = true;
             StartCoroutine(TempoDepoisDaPlataformaPulo());
         }
@@ -67,6 +67,6 @@ public class MovimentoPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         platPulo = false;
-        jumpSpeed = 25f;
+        jumpSpeed = 20f;
     }
 }

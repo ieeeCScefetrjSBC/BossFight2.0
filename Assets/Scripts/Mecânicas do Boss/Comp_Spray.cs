@@ -25,6 +25,7 @@ public class Comp_Spray : MonoBehaviour {
         Phi = Random.Range(0, Mathf.PI);// Ângulo vertical aleatório
         Radius = Random.Range(0, ((Center-Origin).magnitude/2f)-6);// Distância do player aleatória
         Convergence = Radius / 40;// Fator de Correção proporcional ao erro
+        Speed = 2*Mathf.Abs((Center - Origin).magnitude)/3;// Velocidade é dois terços da distância
         Finale.x = Player.transform.position.x + Radius * Mathf.Cos(Teta) * Mathf.Sin(Phi); // Posição X do Jogador + Coordenada Esférica
         Finale.y = Player.transform.position.y + Radius * Mathf.Sin(Teta) * Mathf.Sin(Phi);// Posição Y do Jogador + Coordenada Esférica
         Finale.z = Player.transform.position.z + Radius * Mathf.Cos(Phi);// Posição Z do Jogador + Coordenada Esférica        
