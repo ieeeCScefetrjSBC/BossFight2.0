@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -10644,6 +10644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 1547658198}
+  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
 --- !u!23 &806137624
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14706,6 +14707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 766415114}
+  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
 --- !u!23 &981703536
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15208,7 +15210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1024712180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23488,6 +23490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 622814284}
+  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
 --- !u!23 &1189480699
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23766,6 +23769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 1282488850}
+  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
 --- !u!1001 &1246819830
 Prefab:
   m_ObjectHideFlags: 0
