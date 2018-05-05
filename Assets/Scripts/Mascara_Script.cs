@@ -7,6 +7,7 @@ public class Mascara_Script : MonoBehaviour {
     private GameObject mascara_1;
     private GameObject mascara_2;
     private GameObject mascara_3;
+    private GameObject boss;
     private Vida_Boss vidaBoss;
     private bool setMascara = true;
 
@@ -20,6 +21,7 @@ public class Mascara_Script : MonoBehaviour {
         mascara_1 = GameObject.FindGameObjectWithTag("Mascara1"); //Objeto mascara 1 atribuido
         mascara_2 = GameObject.FindGameObjectWithTag("Mascara2"); //Objeto mascara 2 atribuido
         mascara_3 = GameObject.FindGameObjectWithTag("Mascara3"); //Objeto mascara 3 atribuido
+        boss = GameObject.FindGameObjectWithTag("Boss");
     }
 	
 	// Update is called once per frame
@@ -64,7 +66,7 @@ public class Mascara_Script : MonoBehaviour {
                 setMascara = true;
             }
         }
-        else
+        else if(mascara_3 != null)
         {
             //Boss vira na direçao do player
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
@@ -76,8 +78,13 @@ public class Mascara_Script : MonoBehaviour {
                 //mascara_1.transform.SetParent(this.transform);
                 //mascara_2.transform.SetParent(this.transform);
                 mascara_3.transform.SetParent(this.transform);
-                setMascara = false;
+                setMascara = true;
             }
+        }
+
+        else
+        {
+            Destroy(boss);
         }
 
 
