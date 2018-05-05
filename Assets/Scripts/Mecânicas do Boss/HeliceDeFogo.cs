@@ -9,9 +9,12 @@ public class HeliceDeFogo : MonoBehaviour {
     public float Mov_Vel;
     public float Mov_Vel_Perto;
     public float Vel_Rotx, Vel_Roty, Vel_Rotz;
+	public AudioSource HeliceSound;
+
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+		HeliceSound.Play ();
     }
 
     void Update()
