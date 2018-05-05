@@ -14,6 +14,7 @@ public class Sopro : MonoBehaviour {
     private float ForceMultiplier = 0.1f; // Multiplicador da força
     private float DuracaoSopro = 2f;
     private float TempoAteSopro = 8f;
+    private bool SoproAtivado = false;
 
     void Start ()
     {
@@ -31,12 +32,17 @@ public class Sopro : MonoBehaviour {
         if (Player.GetComponent<CharacterController>().isGrounded) //Enquanto o player não sai do chão, inicia o timer 1
             TimerGround += Time.deltaTime;
         else
-            TimerGround = 0f;
+        {
+            if (!SoproAtivado)
+                TimerGround = 0f;
+        }
 
+            
         if (TimerGround > TempoAteSopro && TimerGround < TempoAteSopro + DuracaoSopro)
         {
             RequestForce = true;
             TimerForce += Time.deltaTime;
+            SoproAtivado = true;
         }
 
         if (TimerGround >= TempoAteSopro + DuracaoSopro)
@@ -45,6 +51,7 @@ public class Sopro : MonoBehaviour {
             TimerForce = 0f;
             if(TimerGround >= 10)
                 TimerGround = 0f;
+            SoproAtivado = false;
         }
 
         if (RequestForce) // Enquanto o timer estiver entre 5 e 10 segundos
