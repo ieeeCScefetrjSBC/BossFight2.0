@@ -27,7 +27,8 @@ public class Vida_Player : MonoBehaviour
         if (vida <= 0)                // Verifica a vida do player
         {
             Debug.Log("ACABOOOU");
-            Destroy(this.gameObject);
+			SceneManager.LoadScene(nomeCena);
+			Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -49,7 +50,6 @@ public class Vida_Player : MonoBehaviour
         {
             Debug.Log("CAIIIIU");
             vida = 0;
-            SceneManager.LoadScene(nomeCena);
         }
     }
 
