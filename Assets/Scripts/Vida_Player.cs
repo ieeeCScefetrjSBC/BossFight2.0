@@ -62,4 +62,4 @@ public class Vida_Player : MonoBehaviour
         }
     }
 }
-}
+
