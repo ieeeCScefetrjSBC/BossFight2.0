@@ -629,6 +629,7 @@ PlayerSettings:
   XboxOneSplashScreen: {fileID: 0}
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
+  XboxOneXTitleMemory: 8
   xboxOneScriptCompiler: 0
   vrEditorSettings:
     daydream:
@@ -638,9 +639,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: c9dcc4a9-a91f-40a5-95cc-ce8697fd11d6
-  projectName: BossFight (1)
-  organizationId: traineers2017-2
+  cloudProjectId: 8fbd8d0e-21bf-42fc-98c9-7c03f799dc4a
+  projectName: 3rdPerson BasicLITE
+  organizationId: wolfbyte-games
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -7,7 +7,7 @@ public class InverterControles : MonoBehaviour {
     private float TimerInvert = 0f; // Timer que o player não sai do chão
     private float TempoAteInverterControles = 10f;//Tempo até o começo da inversão dos controles
     private float TempoDuracaoInversao = 5f;//Tempo de duração da inversão dos controles
-    private bool InverterControlesAtivado = false;
+    //private bool InverterControlesAtivado = false;
     private bool Colidiu = false;
     private MovimentoPlayer MovimentoPlayer;
 
