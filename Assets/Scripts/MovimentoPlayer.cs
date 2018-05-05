@@ -17,6 +17,8 @@ public class MovimentoPlayer : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private float vertVel = 0f;//velocidade vertical do player (precisa disso para poder mexer enquanto está no pulo)
     private bool platPulo = false;//vSariavel que detecta a colisão com a plataforma de pulo
+    private bool InverterControlesAtivado = false;
+
 
     // Use this for initialization
     void Start()
@@ -37,10 +39,18 @@ public class MovimentoPlayer : MonoBehaviour
             speed = 20f;
         else
             speed = 9.0F;
-
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
+        if (!InverterControlesAtivado)
+        {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+        }
+        else
+        {
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+        }
         if (controller.isGrounded)
         {
             if (Input.GetButton("Jump") || platPulo)//faz o pulo do player quando o botão de pular for apertado, ou ele tenha colidido com a plataforma de pulo
@@ -61,6 +71,16 @@ public class MovimentoPlayer : MonoBehaviour
             platPulo = true;
             StartCoroutine(TempoDepoisDaPlataformaPulo());
         }
+    }
+
+    public bool GetInverterControlesAtivado()
+    {
+        return InverterControlesAtivado;
+    }
+
+    public void SetInverterControlesAtivado(bool Inverter)
+    {
+        InverterControlesAtivado = Inverter;
     }
 
     IEnumerator TempoDepoisDaPlataformaPulo()//esse metodo serve para reiniciar os valores de pulo depois que o player passa da plataforma de pulo

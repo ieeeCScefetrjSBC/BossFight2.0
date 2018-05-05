@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -29368,6 +29368,7 @@ GameObject:
   - component: {fileID: 1740260966}
   - component: {fileID: 1740260967}
   - component: {fileID: 1740260961}
+  - component: {fileID: 1740260958}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -29549,6 +29550,17 @@ MonoBehaviour:
   SomTiro: {fileID: 1740260956}
   mira: {fileID: 780153246}
   alcance: 200
+--- !u!114 &1740260958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740260954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f3b10bd897fc645832506336cfa953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1740260959
 MonoBehaviour:
   m_ObjectHideFlags: 0
