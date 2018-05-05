@@ -18,10 +18,14 @@ public class Verificar_Colisao : MonoBehaviour {
 
         if (collision.gameObject.tag.Equals("Player")) //Se for player ele tira vida
         {
-            collision.gameObject.GetComponent<Vida_Player>().danoPlayer(1);
+            collision.gameObject.GetComponent<Vida_Player>().danoPlayer(100);// Aplica o dano 
             Debug.Log("Atingiu");
             Destroy(this.gameObject);
-            Boss.GetComponent<Tiro_Boss>().setfireRate(0.4f);
+            float fireRate = Boss.GetComponent<Tiro_Boss>().getfireRate();// Adquire o valor atual de fireRate
+            if(fireRate-0.15f>=0.4f) // Caso a redução leve a um valor igual ou superior ao fireRate mínimo
+                Boss.GetComponent<Tiro_Boss>().setfireRate(fireRate-0.15f);// Diminui o Fire Rate
+            else
+                Boss.GetComponent<Tiro_Boss>().setfireRate(0.4f);// Caso seja inferior, reduz apenas ao valor mínimo
         }
         else
         {
