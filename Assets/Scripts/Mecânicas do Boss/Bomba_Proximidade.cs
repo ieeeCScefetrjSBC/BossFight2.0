@@ -14,6 +14,7 @@ public class Bomba_Proximidade : MonoBehaviour {
     private float Duration = 6f;// Duração do objeto na cena
     private GameObject PlayerOBJ;// Objeto do jogador na cena
     public Light Luz;// Objeto gerador de luz na bomba
+    public GameObject Explosion; 
 	void Start () {
        PlayerOBJ = GameObject.FindGameObjectWithTag("Player");// Encontra o objeto via tag
         Luz.enabled= false;
@@ -37,10 +38,9 @@ public class Bomba_Proximidade : MonoBehaviour {
             }
             if(Tempo<=0f)// Caso tenha acabado o tempo
             {
-                
+                Instantiate(Explosion, transform.position, Quaternion.identity);
                 Debug.Log("KABOOM");
-                
-                               
+                                              
                 if ((Mathf.Abs(transform.position.x - Jogador.transform.position.x) <= Zona_Dano) && (Mathf.Abs(transform.position.y - Jogador.transform.position.y) <= Zona_Dano) && (Mathf.Abs(transform.position.z - Jogador.transform.position.z) <= Zona_Dano)) {// Verifica se o jogador está na zona de dano
                     PlayerOBJ.GetComponent<Vida_Player>().danoPlayer(Dano);//Aplica dano ao jogador
  
