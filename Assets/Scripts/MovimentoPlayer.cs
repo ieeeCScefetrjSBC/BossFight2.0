@@ -5,7 +5,8 @@ using UnityEngine;
 public class MovimentoPlayer : MonoBehaviour
 {
     public float sensitivity = 2f;
-    public GameObject eyes;
+	public AudioSource MoviSound; 
+    //public GameObject eyes;
 
 
     float rotX;
@@ -18,6 +19,9 @@ public class MovimentoPlayer : MonoBehaviour
     private float vertVel = 0f;//velocidade vertical do player (precisa disso para poder mexer enquanto está no pulo)
     private bool platPulo = false;//vSariavel que detecta a colisão com a plataforma de pulo
     private bool InverterControlesAtivado = false;
+
+	private bool isMoving = false;
+	private bool wasMoving = false;
 
 
     // Use this for initialization
@@ -33,15 +37,18 @@ public class MovimentoPlayer : MonoBehaviour
         //Movimentação do Player
         CharacterController controller = GetComponent<CharacterController>();
 
-        if (Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetKey(KeyCode.LeftShift))
             speed = 15.0f;
         else if (platPulo)
             speed = 20f;
         else
             speed = 9.0F;
+
+
+
         if (!InverterControlesAtivado)//se InverterControlesAtivado for false, a movimentação do player segue normal
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
         }
@@ -51,6 +58,22 @@ public class MovimentoPlayer : MonoBehaviour
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
         }
+
+		//////////////////////////////
+		if (moveDirection != Vector3.zero)
+			isMoving = true;
+		else
+			isMoving = false;
+
+		if (isMoving && !wasMoving)
+			MoviSound.Play ();
+
+		if (!isMoving && wasMoving)
+			MoviSound.Stop ();
+
+		wasMoving = isMoving;
+		//////////////////////////////
+
         if (controller.isGrounded)
         {
             if (Input.GetButton("Jump") || platPulo)//faz o pulo do player quando o botão de pular for apertado, ou ele tenha colidido com a plataforma de pulo

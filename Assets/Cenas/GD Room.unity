@@ -457,6 +457,7 @@ MonoBehaviour:
   Vel_Rotx: 0
   Vel_Roty: 0
   Vel_Rotz: 100
+  HeliceSound: {fileID: 0}
 --- !u!4 &80664004
 Transform:
   m_ObjectHideFlags: 0
@@ -5723,6 +5724,7 @@ MonoBehaviour:
   Vel_Rotx: 0
   Vel_Roty: 0
   Vel_Rotz: 100
+  HeliceSound: {fileID: 0}
 --- !u!4 &400194889
 Transform:
   m_ObjectHideFlags: 0
@@ -5774,6 +5776,7 @@ MonoBehaviour:
   Vel_Rotx: 0
   Vel_Roty: 10000
   Vel_Rotz: 0
+  HeliceSound: {fileID: 436150083}
 --- !u!4 &436150082
 Transform:
   m_ObjectHideFlags: 0
@@ -29598,6 +29601,7 @@ GameObject:
   - component: {fileID: 1740260955}
   - component: {fileID: 1740260965}
   - component: {fileID: 1740260966}
+  - component: {fileID: 1740260960}
   - component: {fileID: 1740260967}
   - component: {fileID: 1740260961}
   - component: {fileID: 1740260958}
@@ -29805,6 +29809,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DanoPlayer: {fileID: 1740260955}
+--- !u!82 &1740260960
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740260954}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ac5b73d6cd59113459434f71da82d651, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!65 &1740260961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29878,7 +29962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 2
-  eyes: {fileID: 0}
+  MoviSound: {fileID: 1740260960}
 --- !u!143 &1740260967
 CharacterController:
   m_ObjectHideFlags: 0
