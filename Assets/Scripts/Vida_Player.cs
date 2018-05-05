@@ -14,7 +14,14 @@ public class Vida_Player : MonoBehaviour
 
     void Update()
     {
-        if (Regen_Cooldown <= 0) // Caso tenha passado 3 segundos em receber dano, começa a regenerar
+		if (vida <= 0)                // Verifica a vida do player
+		{
+			Debug.Log("ACABOOOU");
+			SceneManager.LoadScene(nomeCena);
+			Cursor.lockState = CursorLockMode.None;
+		}
+
+		if (Regen_Cooldown <= 0) // Caso tenha passado 3 segundos em receber dano, começa a regenerar
         {
             vida += Regen_Factor * Time.deltaTime;// Recupera 100 de HP por segundo
             if (vida > Vida_Max)// Caso o regen tenha ultrapassado a vida máxima
@@ -24,12 +31,7 @@ public class Vida_Player : MonoBehaviour
         {
             Regen_Cooldown -= Time.deltaTime;// Decai contador para começar a regenerar
         }
-        if (vida <= 0)                // Verifica a vida do player
-        {
-            Debug.Log("ACABOOOU");
-			SceneManager.LoadScene(nomeCena);
-			Cursor.lockState = CursorLockMode.None;
-        }
+        
     }
 
     public void danoPlayer(float dano) // Função que tira vida (chamada em outros scripts)
@@ -50,6 +52,7 @@ public class Vida_Player : MonoBehaviour
         {
             Debug.Log("CAIIIIU");
             vida = 0;
+			//SceneManager.LoadScene(nomeCena);
         }
     }
 
