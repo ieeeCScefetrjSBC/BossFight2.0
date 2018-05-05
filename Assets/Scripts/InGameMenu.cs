@@ -21,6 +21,7 @@ public class InGameMenu : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
+			Cursor.lockState = CursorLockMode.None;
             MainCamera.GetComponent<CamMove>().enabled = false;
             Player.GetComponent<TiroPlayer>().enabled = false;
             InGame_Menu.enabled = true;

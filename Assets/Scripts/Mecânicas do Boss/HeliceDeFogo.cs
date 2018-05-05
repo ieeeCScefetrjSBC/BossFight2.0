@@ -31,7 +31,7 @@ public class HeliceDeFogo : MonoBehaviour {
         {
             helice.transform.Translate(new Vector3(Player.transform.position.x - transform.position.x, 0, Player.transform.position.z - transform.position.z) * Mov_Vel_Perto * Time.deltaTime, Space.World);
             Debug.Log("DANOUSE");
-			//Vida_Player.danoPlayer(1);
+			Vida_Player.danoPlayer(0.2f);
         }
     }
 	void OnParticleCollision(GameObject other)
