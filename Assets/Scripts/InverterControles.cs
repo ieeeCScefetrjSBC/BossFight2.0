@@ -27,11 +27,11 @@ public class InverterControles : MonoBehaviour {
         {
             TimerInvert = 0f;//zera o tempo
         }
-        if(TimerInvert >= TempoAteInverterControles && TimerInvert <= TempoAteInverterControles + TempoDuracaoInversao && Colidiu)//se o timer chegar até o tempo designado e o player ainda estiver la por tras
+        if(TimerInvert >= TempoAteInverterControles && TimerInvert <= TempoAteInverterControles + TempoDuracaoInversao)//se o timer chegar até o tempo designado e o player ainda estiver la por tras
         {
             MovimentoPlayer.SetInverterControlesAtivado(true);//o atributo InverterControlesAtivado, pertencente ao script MovimentoPlayer, vai ser setado como true
         }
-        if(TimerInvert > TempoDuracaoInversao + TempoAteInverterControles)//se o tempo de duração passou
+        if(TimerInvert > TempoDuracaoInversao + TempoAteInverterControles || !Colidiu)//se o tempo de duração passou
         {
             TimerInvert = 0f;
             MovimentoPlayer.SetInverterControlesAtivado(false);//o atributo InverterControlesAtivado, pertencente ao script MovimentoPlayer, vai ser setado como false
