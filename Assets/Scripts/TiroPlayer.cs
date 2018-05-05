@@ -26,7 +26,9 @@ public class TiroPlayer : MonoBehaviour {
 
 
     void Update () {
-        if (Input.GetButtonDown("Fire1"))
+
+
+        if (Input.GetButton("Fire1"))
         {
             Atira();
         }
@@ -42,16 +44,16 @@ public class TiroPlayer : MonoBehaviour {
          {
             if(bang.transform.name == "ThunderBlue" || bang.transform.name == "Boss")
             {
-                mascaraAzul.GetComponent<Vida_Mascara_1>().setVida(15);
+                mascaraAzul.GetComponent<Vida_Mascara_1>().setVida(2f);
             }
-            if(bang.transform.name == "ThunderGreen")
+			if(bang.transform.name == "ThunderGreen" || bang.transform.name == "Boss")
             {
-                mascaraVerde.GetComponent<Vida_Mascara_2>().setVida(15);
+				mascaraVerde.GetComponent<Vida_Mascara_2>().setVida(2f);
 
             }
-            if(bang.transform.name == "ThunderRed")
+			if(bang.transform.name == "ThunderRed" || bang.transform.name == "Boss")
             {
-                mascaraVermelho.GetComponent<Vida_Mascara_3>().setVida(15);
+				mascaraVermelho.GetComponent<Vida_Mascara_3>().setVida(2f);
             }
             /*GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);
             tiro.transform.rotation = mira.transform.rotation;

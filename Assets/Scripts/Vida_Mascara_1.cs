@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vida_Mascara_1 : MonoBehaviour {
-    private int vida = 30; //Vida da máscara1
+public class Vida_Mascara_1 : MonoBehaviour 
+{
+    private float vida = 400f; //Vida da máscara1
 
 	// Use this for initialization
-	void Start () {
+	void Start() 
+	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(this.vida < 1)
+	void Update() 
+	{
+		if(this.vida < 1f)
         {
             Destroy(this.gameObject);
         }
 	}
 
-    public void setVida(int dano)
+    public void setVida(float dano)
     {
         vida -= dano;
     }
 
-    public int getVida()
+    public float getVida()
     {
         return vida;
     }

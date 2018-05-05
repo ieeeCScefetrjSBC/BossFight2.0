@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vida_Mascara_3 : MonoBehaviour
 {
-    private int vida = 30; //Vida da máscara3
+    private float vida = 400f; //Vida da máscara3
 
     // Use this for initialization
     void Start()
@@ -15,18 +15,18 @@ public class Vida_Mascara_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.vida < 1)
+        if (this.vida < 1f)
         {
             Destroy(this.gameObject);
         }
     }
 
-    public void setVida(int dano)
+    public void setVida(float dano)
     {
         vida -= dano;
     }
 
-    public int getVida()
+    public float getVida()
     {
         return vida;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Vida_Boss : MonoBehaviour {
-    private int vida = 30;
+    private float vida = 1000F;
     public AudioSource DanoBoss;
 
     // Use this for initialization
@@ -15,13 +15,13 @@ public class Vida_Boss : MonoBehaviour {
         }
     }
 
-    public void danoBoss(int dano)
+    public void danoBoss(float dano)
     {
         vida -= dano;
         DanoBoss.Play();
     }
 
-    public int getvida()
+    public float getvida()
     {
         return vida;
     }

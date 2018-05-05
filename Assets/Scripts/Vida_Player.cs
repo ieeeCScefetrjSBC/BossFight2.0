@@ -11,6 +11,7 @@ public class Vida_Player : MonoBehaviour
     private float Regen_Factor = 100;// Fator de regeneração
     public AudioSource DanoPlayer;
     string nomeCena = "Menu";
+	private GameObject testepart;
 
     void Update()
     {
@@ -53,13 +54,5 @@ public class Vida_Player : MonoBehaviour
         }
     }
 
-    void OnParticleCollision(GameObject other)
-    {
-        if (other.tag == "ShurikenDeFogo")
-        {
-            danoPlayer(3);
-            Debug.Log("KOE");
-        }
-    }
-}
+    
 

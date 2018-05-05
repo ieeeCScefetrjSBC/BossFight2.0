@@ -27,7 +27,7 @@ public class Mascara_Script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        int vida = vidaBoss.getvida();
+        float vida = vidaBoss.getvida();
         
         if (mascara_1 != null)
         {
