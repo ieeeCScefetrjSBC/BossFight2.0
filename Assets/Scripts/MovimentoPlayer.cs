@@ -39,13 +39,13 @@ public class MovimentoPlayer : MonoBehaviour
             speed = 20f;
         else
             speed = 9.0F;
-        if (!InverterControlesAtivado)
+        if (!InverterControlesAtivado)//se InverterControlesAtivado for false, a movimentação do player segue normal
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
         }
-        else
+        else// se InverterControlesAtivado for true ela é invertida
         {
             moveDirection = new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
@@ -73,12 +73,7 @@ public class MovimentoPlayer : MonoBehaviour
         }
     }
 
-    public bool GetInverterControlesAtivado()
-    {
-        return InverterControlesAtivado;
-    }
-
-    public void SetInverterControlesAtivado(bool Inverter)
+    public void SetInverterControlesAtivado(bool Inverter)//usado para settar o atributo InverterControlesAtivado
     {
         InverterControlesAtivado = Inverter;
     }
