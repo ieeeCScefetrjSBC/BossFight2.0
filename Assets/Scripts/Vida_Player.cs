@@ -39,9 +39,12 @@ public class Vida_Player : MonoBehaviour
         }
     }
 
-    private void OnParticleCollision(GameObject other)
+     void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Part.LavaBall")
+        if (other.tag =="ShurikenDeFogo")
+        {
             danoPlayer(3);
+            Debug.Log("KOE");
+        }
     }
 }

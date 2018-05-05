@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &80664003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +453,7 @@ MonoBehaviour:
   Player: {fileID: 1740260954}
   helice: {fileID: 80664004}
   Mov_Vel: 0
+  Mov_Vel_Perto: 0
   Vel_Rotx: 0
   Vel_Roty: 0
   Vel_Rotz: 100
@@ -2244,7 +2245,7 @@ GameObject:
   - component: {fileID: 394238162}
   m_Layer: 0
   m_Name: Particle System (1)
-  m_TagString: Untagged
+  m_TagString: ShurikenDeFogo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2387,7 +2388,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 852138281
+  randomSeed: 413128690
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5703,7 +5704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &400194888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5718,6 +5719,7 @@ MonoBehaviour:
   Player: {fileID: 1740260954}
   helice: {fileID: 400194889}
   Mov_Vel: 0
+  Mov_Vel_Perto: 0
   Vel_Rotx: 0
   Vel_Roty: 0
   Vel_Rotz: 100
@@ -5791,7 +5793,7 @@ GameObject:
   - component: {fileID: 436150081}
   m_Layer: 0
   m_Name: HeliceDeFogo
-  m_TagString: Untagged
+  m_TagString: ShurikenDeFogo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5809,9 +5811,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1740260954}
   helice: {fileID: 436150082}
-  Mov_Vel: 0
+  Mov_Vel: 9.5
+  Mov_Vel_Perto: 1
   Vel_Rotx: 0
-  Vel_Roty: 30
+  Vel_Roty: 10000
   Vel_Rotz: 0
 --- !u!4 &436150082
 Transform:
@@ -6588,7 +6591,7 @@ GameObject:
   - component: {fileID: 719395121}
   m_Layer: 0
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: ShurikenDeFogo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6707,7 +6710,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -856477983
+  randomSeed: 935448040
   InitialModule:
     serializedVersion: 3
     enabled: 1

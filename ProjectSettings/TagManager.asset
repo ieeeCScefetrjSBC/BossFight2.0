@@ -14,6 +14,7 @@ TagManager:
   - CharacterController
   - Grounder
   - PlataformaPulo
+  - ShurikenDeFogo
   layers:
   - Default
   - TransparentFX
