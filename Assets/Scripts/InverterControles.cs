@@ -35,7 +35,7 @@ public class InverterControles : MonoBehaviour {
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.name == "Plataforma(S) (3)" || hit.gameObject.name == "Plataforma(O) (3)" || hit.gameObject.name == "Plataforma(L) (3)" || hit.gameObject.name == "Plataforma(N) (3)" || hit.gameObject.name == "Plataforma(NL)" || hit.gameObject.name == "Plataforma(SO)" || hit.gameObject.name == "Plataforma(SL)" || hit.gameObject.name == "Plataforma(NO)")
+        if (hit.gameObject.name == "Plataforma(S) (3)" || hit.gameObject.name == "Plataforma(O) (3)" || hit.gameObject.name == "Plataforma(L) (3)" || hit.gameObject.name == "Plataforma(N) (3)" || hit.gameObject.name == "Ponte(NL)" || hit.gameObject.name == "Ponte(SO)" || hit.gameObject.name == "Ponte(SL)" || hit.gameObject.name == "Ponte(NO)")
         {
             Colidiu = true;
             Debug.Log("Colidiu atrás");
