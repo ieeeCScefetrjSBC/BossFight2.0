@@ -15,7 +15,6 @@ public class Vida_Mascara_1 : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
 	{
-		
 		if(this.vida < 1f)
         {
             Destroy(this.gameObject);
@@ -24,15 +23,11 @@ public class Vida_Mascara_1 : MonoBehaviour
 
     public void setVida(float dano)
     {
-		if(gameObject!=null)
         vida -= dano;
     }
 
     public float getVida()
     {
-		if (gameObject != null)
-			return vida;
-		else
-			return 0;
+        return vida;
     }
 }

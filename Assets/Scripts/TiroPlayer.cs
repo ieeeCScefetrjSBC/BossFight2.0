@@ -44,18 +44,15 @@ public class TiroPlayer : MonoBehaviour {
          {
             if(bang.transform.name == "ThunderBlue" || bang.transform.name == "Boss")
             {
-				if(mascaraAzul!=null)
-                	mascaraAzul.GetComponent<Vida_Mascara_1>().setVida(2f);
+                mascaraAzul.GetComponent<Vida_Mascara_1>().setVida(2f);
             }
 			if(bang.transform.name == "ThunderGreen" || bang.transform.name == "Boss")
             {
-				if(mascaraVerde!=null)
 				mascaraVerde.GetComponent<Vida_Mascara_2>().setVida(2f);
 
             }
 			if(bang.transform.name == "ThunderRed" || bang.transform.name == "Boss")
             {
-				if(mascaraVermelho!=null)
 				mascaraVermelho.GetComponent<Vida_Mascara_3>().setVida(2f);
             }
             /*GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);

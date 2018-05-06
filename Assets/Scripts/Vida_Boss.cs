@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Vida_Boss : MonoBehaviour {
     private float vida = 1000F;
@@ -12,8 +11,7 @@ public class Vida_Boss : MonoBehaviour {
         if (vida < 0)
         {
             Debug.Log("BOSS MORREU");
-            //Destroy(this.gameObject);
-			SceneManager.LoadScene("Menu");
+            Destroy(this.gameObject);
         }
     }
 

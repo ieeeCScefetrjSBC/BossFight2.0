@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Mascara_Script : MonoBehaviour {
     private GameObject player;
@@ -85,8 +84,7 @@ public class Mascara_Script : MonoBehaviour {
 
         else
         {
-           // Destroy(boss);
-			SceneManager.LoadScene("Menu");
+            Destroy(boss);
         }
 
 

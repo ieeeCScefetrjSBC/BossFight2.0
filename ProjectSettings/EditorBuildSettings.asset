@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Cenas/Cena Principal.unity
     guid: 242c48391588ab94a9714999e294f580
   - enabled: 1
-    path: Assets/Cenas/Menu.unity
-    guid: bba1fb8e22de2074f8ad97c50a25cdfc
-  - enabled: 1
     path: Assets/Cenas/GD Room.unity
     guid: c52d938af86d9c242949644c0554df2f
+  - enabled: 1
+    path: Assets/Cenas/Menu.unity
+    guid: bba1fb8e22de2074f8ad97c50a25cdfc

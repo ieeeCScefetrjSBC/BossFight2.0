@@ -7,7 +7,7 @@ public class MenuPrincipal : MonoBehaviour {
 
     void Start()
     {
-		Cursor.lockState = CursorLockMode.None;
+
     }
 
 

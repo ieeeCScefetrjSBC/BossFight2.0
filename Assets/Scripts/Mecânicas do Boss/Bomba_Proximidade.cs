@@ -35,7 +35,7 @@ public class Bomba_Proximidade : MonoBehaviour {
             Tempo -= Time.deltaTime;//Contagem descendo a cada frame
             if (Tempo<= 1f)
             {
-                
+                Luz.areaSize = new Vector2(200f, 200f);
                 Luz.intensity = 100f;
             }
             if(Tempo<=0f)// Caso tenha acabado o tempo
@@ -51,7 +51,7 @@ public class Bomba_Proximidade : MonoBehaviour {
                 Triggered = false;// Impede sucessivas explosões
                 Duration = 6f;
                 Tempo = 10f;
-               
+                Luz.areaSize = new Vector2(15f, 15f);
                 Luz.intensity = 5f;
                 Luz.enabled = false;
                 this.gameObject.SetActive(false);
@@ -64,13 +64,12 @@ public class Bomba_Proximidade : MonoBehaviour {
             Duration -= Time.deltaTime;
             if (Duration<= 1f)
             {
-                
-
+                Luz.areaSize = new Vector2(200f, 200f);
                 Luz.intensity = 100f;
             }
             if (Duration <= 0f)
             {
-               
+                Luz.areaSize = new Vector2(15f, 15f);
                 Luz.intensity = 5f;
                 Duration = 6f;
                 Tempo = 10f;

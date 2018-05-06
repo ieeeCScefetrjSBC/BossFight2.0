@@ -18,8 +18,8 @@ public class Vida_Player : MonoBehaviour
 		if (vida <= 0)                // Verifica a vida do player
 		{
 			Debug.Log("ACABOOOU");
+			SceneManager.LoadScene(nomeCena);
 			Cursor.lockState = CursorLockMode.None;
-			SceneManager.LoadScene("Menu");
 		}
 
 		if (Regen_Cooldown <= 0) // Caso tenha passado 3 segundos em receber dano, começa a regenerar
@@ -53,9 +53,9 @@ public class Vida_Player : MonoBehaviour
         {
             Debug.Log("CAIIIIU");
             vida = 0;
-			SceneManager.LoadScene("Menu");
+			//SceneManager.LoadScene(nomeCena);
         }
     }
-}
+
     
 
