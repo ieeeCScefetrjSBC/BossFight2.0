@@ -7,10 +7,7 @@ public class Verificar_Colisao : MonoBehaviour {
     // Use this for initialization
     private GameObject Boss;
 	void Start () {
-        Physics.IgnoreCollision(this.gameObject.GetComponent<SphereCollider>(), GameObject.FindGameObjectWithTag("Boss").GetComponent<BoxCollider>()); //Ignora colisão com o Boss
-        Physics.IgnoreCollision(this.gameObject.GetComponent<SphereCollider>(), GameObject.FindGameObjectWithTag("Mascara1").GetComponent<BoxCollider>()); //Ignora colisão com a Mascara1
-        Physics.IgnoreCollision(this.gameObject.GetComponent<SphereCollider>(), GameObject.FindGameObjectWithTag("Mascara2").GetComponent<BoxCollider>()); //Ignora colisão com a Mascara2
-        Physics.IgnoreCollision(this.gameObject.GetComponent<SphereCollider>(), GameObject.FindGameObjectWithTag("Mascara3").GetComponent<BoxCollider>()); //Ignora colisão com a Mascara3
+       
         Boss = GameObject.FindGameObjectWithTag("Boss");
     }
     private void OnCollisionEnter(Collision collision) //Verifica em quem está batendo
