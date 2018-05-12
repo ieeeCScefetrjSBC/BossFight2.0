@@ -7,6 +7,7 @@ public class Comp_Bomba : MonoBehaviour {
     // Use this for initialization
     public GameObject[] Bombas_Fogo;
     public GameObject[] Bombas_Raio;
+    public GameObject[] Bombas_Antidoto;
     private int i=0;// Contador
     private float Ciclo = 5f;// Ciclo de ativação
     private int Pattern_Bomba = 0;// Padrão de aparecimento, sendo 0= nada acontece;
@@ -16,6 +17,7 @@ public class Comp_Bomba : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("Padrão: "+Pattern_Bomba+"\nCiclo: "+Ciclo);
         switch (Pattern_Bomba)
         {
             case 1:
@@ -62,11 +64,34 @@ public class Comp_Bomba : MonoBehaviour {
                     i = 0; // Reseta o contador
                 }
                 break;
+            case 4:
+                Ciclo -= Time.deltaTime;// Ciclo diminuindo contador
+                if (Ciclo <= 0)// Caso acabe o contador
+                {
+                    Ciclo = 2f; // Recomeça a contar
+                    Bombas_Antidoto[i].SetActive(true); // Ativa a bomba
+                    i++; // Passa para a próxima bomba
+                }
+                if (i == 2) // Acabaram as bombas
+                {
+                    Pattern_Bomba = 0; // Acabou o padrão
+                    i = 0; // Reseta o contador
+                }
+                break;
         }
     }
     public int Call(int Comando)
     {
         Pattern_Bomba = Comando;
         return Pattern_Bomba;
+    }
+    public void setCiclo(float Ciclo)
+    {
+        this.Ciclo= Ciclo;
+
+    }
+    public void setContador(int i)
+    {
+        this.i= i;
     }
 }

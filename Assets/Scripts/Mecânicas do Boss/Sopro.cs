@@ -14,7 +14,7 @@ public class Sopro : MonoBehaviour {
     private float ForceMultiplier = 0.1f; // Multiplicador da força
     private float DuracaoSopro = 2f;
     private float TempoAteSopro = 8f;
-    private bool SoproAtivado = false;
+    private bool SoproAtivado = false; // Luciano esteve aqui muahahaha
 
     void Start ()
     {

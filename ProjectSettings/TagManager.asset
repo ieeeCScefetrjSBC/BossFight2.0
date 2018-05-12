@@ -18,6 +18,7 @@ TagManager:
   - Tela_Morte
   - Mira
   - Shuriken_Vento
+  - Bomba_Antidoto
   layers:
   - Default
   - TransparentFX

@@ -21,20 +21,17 @@ public class InverterControles : MonoBehaviour {
         if (Colidiu)//se o player colidiu com uma plataforma externa e ainda não colidiu com alguma outra coisa
         {
             TimerInvert += Time.deltaTime;//começa a contar o tempo
-            Debug.Log(TimerInvert);
         }
         else//se colidiu com alguma outra plataforma
         {
             TimerInvert = 0f;//zera o tempo
+            MovimentoPlayer.SetInverterControlesAtivado(false);
+            Debug.Log(TimerInvert);
         }
-        if(TimerInvert >= TempoAteInverterControles && TimerInvert <= TempoAteInverterControles + TempoDuracaoInversao)//se o timer chegar até o tempo designado e o player ainda estiver la por tras
+        if(TimerInvert >= TempoAteInverterControles)//se o timer chegar até o tempo designado e o player ainda estiver la por tras
         {
             MovimentoPlayer.SetInverterControlesAtivado(true);//o atributo InverterControlesAtivado, pertencente ao script MovimentoPlayer, vai ser setado como true
-        }
-        if(TimerInvert > TempoDuracaoInversao + TempoAteInverterControles || !Colidiu)//se o tempo de duração passou
-        {
-            TimerInvert = 0f;
-            MovimentoPlayer.SetInverterControlesAtivado(false);//o atributo InverterControlesAtivado, pertencente ao script MovimentoPlayer, vai ser setado como false
+            InverterControlesAtivado=true;
         }
     }
 
@@ -49,5 +46,17 @@ public class InverterControles : MonoBehaviour {
         {
             Colidiu = false;
         }
+    }
+
+    public bool getInverterControlesAtivado(){
+    	return this.InverterControlesAtivado;
+    }
+
+    public void setInverterControlesAtivado(bool inverter){
+    	this.InverterControlesAtivado = inverter;
+    }
+
+    public void setTimerInvert(float timer){
+    	this.TimerInvert = timer;
     }
 }
