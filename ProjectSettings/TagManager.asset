@@ -15,6 +15,8 @@ TagManager:
   - Grounder
   - PlataformaPulo
   - ShurikenDeFogo
+  - Tela_Morte
+  - Mira
   layers:
   - Default
   - TransparentFX

@@ -12,13 +12,33 @@ public class Vida_Player : MonoBehaviour
     public AudioSource DanoPlayer;
     string nomeCena = "Menu";
     private GameObject testepart;
+    private GameObject Tela_Morte;// Objeto da tela de morte
+    private GameObject Mira;// Objeto da Mira
+    private Camera MainCamera;// Objeto da câmera principal
+
+    private void Start()
+    {
+        Tela_Morte = GameObject.FindGameObjectWithTag("Tela_Morte");// Define qual é o objeto da tela de morte
+        Tela_Morte.SetActive(false);
+        Mira = GameObject.FindGameObjectWithTag("Mira");
+        MainCamera = Camera.main;// Define quem é a Main Camera
+    }
 
     void Update()
     {
         if (vida <= 0)                // Verifica a vida do player
         {
-            Debug.Log("ACABOOOU");
-            SceneManager.LoadScene(nomeCena);
+            Debug.Log("ACABOOOU");// Acabou
+            Tela_Morte.SetActive(true);// Ativa a tela de morte
+            Time.timeScale = 0;// Pausa o tempo do jogo
+            MainCamera.GetComponent<CamMove>().enabled = false;// Paralisa a movimentação da câmera
+            GetComponent<TiroPlayer>().enabled = false;// Paralisa o tiro do player
+            Mira.SetActive(false);// Remove a mira
+            if (Input.GetKeyDown(KeyCode.A))// Caso aperte A
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene(nomeCena);// Volta para o menu inicial
+            }           
             Cursor.lockState = CursorLockMode.None;
         }
 
