@@ -24,12 +24,24 @@ public class HeliceDeFogo : MonoBehaviour {
         transform.Rotate(Vector3.forward * Time.deltaTime * Vel_Rotz, Space.World);   // rotação em z
         if ((Player.transform.position - transform.position).magnitude >= 4)
         {
-            transform.Translate(Mov_Direção.normalized * Mov_Vel * Time.deltaTime, Space.World);
+            this.gameObject.GetComponent<Rigidbody>().AddForce(Mov_Direção.normalized * Mov_Vel, ForceMode.VelocityChange);
+            if (this.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= Mov_Vel)
+            {
+                this.gameObject.GetComponent<Rigidbody>().velocity = this.gameObject.GetComponent<Rigidbody>().velocity.normalized * Mov_Vel;
+            }
+
+            //transform.Translate(Mov_Direção.normalized * Mov_Vel * Time.deltaTime, Space.World);
             Debug.Log("Fugiu");
         }
         else
         {
-            transform.Translate(new Vector3(Player.transform.position.x - transform.position.x, 0, Player.transform.position.z - transform.position.z) * Mov_Vel_Perto * Time.deltaTime, Space.World);
+            this.gameObject.GetComponent<Rigidbody>().AddForce(Mov_Direção.normalized * Mov_Vel_Perto, ForceMode.VelocityChange);
+            if(this.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= Mov_Vel_Perto)
+            {
+                this.gameObject.GetComponent<Rigidbody>().velocity = this.gameObject.GetComponent<Rigidbody>().velocity.normalized * Mov_Vel_Perto;
+            }
+            
+            //transform.Translate(new Vector3(Player.transform.position.x - transform.position.x, 0, Player.transform.position.z - transform.position.z) * Mov_Vel_Perto * Time.deltaTime, Space.World);
             Debug.Log("DANOUSE");
             //Vida_Player.danoPlayer(1);
         }
