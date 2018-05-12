@@ -40,7 +40,7 @@ public class InverterControles : MonoBehaviour {
 
     private void OnControllerColliderHit(ControllerColliderHit hit)//checa se o player colidiu com alguma das plataformas de trás
     {
-        if (hit.gameObject.name == "Plataforma(S) (3)" || hit.gameObject.name == "Plataforma(O) (3)" || hit.gameObject.name == "Plataforma(L) (3)" || hit.gameObject.name == "Plataforma(N) (3)" || hit.gameObject.name == "Ponte(NL)" || hit.gameObject.name == "Ponte(SO)" || hit.gameObject.name == "Ponte(SL)" || hit.gameObject.name == "Ponte(NO)")
+        if (hit.gameObject.name == "plataforma S (4)" || hit.gameObject.name == "plataforma O (4)" || hit.gameObject.name == "plataforma L (4)" || hit.gameObject.name == "plataforma N (4)" || hit.gameObject.name == "ponte NL" || hit.gameObject.name == "ponte SO" || hit.gameObject.name == "ponte SL" || hit.gameObject.name == "ponte NO")
         {
             Colidiu = true;
             Debug.Log("Colidiu atrás");
