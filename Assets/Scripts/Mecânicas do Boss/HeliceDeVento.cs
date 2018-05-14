@@ -31,12 +31,12 @@ public class HeliceDeVento : MonoBehaviour {
         if ((Player.transform.position - transform.position).magnitude >= 4)     // Verifica se está perto ou distante do player
         {
             transform.Translate(Mov_Direção.normalized * Mov_Vel * Time.deltaTime, Space.World);
-            Debug.Log("Fugiu");
+
         }
         else
         {
             transform.Translate(new Vector3(Player.transform.position.x - transform.position.x, 0, Player.transform.position.z - transform.position.z) * Mov_Vel_Perto * Time.deltaTime, Space.World);
-            Debug.Log("DANOUSE");
+
             //Vida_Player.danoPlayer(1);
         }
 
@@ -45,7 +45,7 @@ public class HeliceDeVento : MonoBehaviour {
         if (direction.magnitude <= DistanciaDeAtivação)
         {
             Player.GetComponent<CharacterController>().Move(direction.normalized * ForceMultiplier);
-            Debug.Log("puxando");
+
         }
     }
 

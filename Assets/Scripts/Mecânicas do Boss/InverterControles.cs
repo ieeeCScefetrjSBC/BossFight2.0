@@ -26,7 +26,7 @@ public class InverterControles : MonoBehaviour {
         {
             TimerInvert = 0f;//zera o tempo
             MovimentoPlayer.SetInverterControlesAtivado(false);
-            Debug.Log(TimerInvert);
+
         }
         if(TimerInvert >= TempoAteInverterControles)//se o timer chegar até o tempo designado e o player ainda estiver la por tras
         {
@@ -40,7 +40,7 @@ public class InverterControles : MonoBehaviour {
         if (hit.gameObject.name == "plataforma S (4)" || hit.gameObject.name == "plataforma O (4)" || hit.gameObject.name == "plataforma L (4)" || hit.gameObject.name == "plataforma N (4)" || hit.gameObject.name == "ponte NL" || hit.gameObject.name == "ponte SO" || hit.gameObject.name == "ponte SL" || hit.gameObject.name == "ponte NO")
         {
             Colidiu = true;
-            Debug.Log("Colidiu atrás");
+
         }
         else
         {
