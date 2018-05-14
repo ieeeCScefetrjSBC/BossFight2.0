@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5a6547dfb145ad54ea5ed7e4001acded
-timeCreated: 1526075854
+guid: 67571a1728683fe4e93b06b7675f64e9
+timeCreated: 1526304970
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -17,11 +17,11 @@ ModelImporter:
     400006: Torus_001
     400008: Torus_002
     400010: Torus_004
-    2100000: Material_004
-    2100002: Material_003
+    2100000: Material_003
+    2100002: Material_001
     2100004: Material__azul_png
-    2100006: Material_001
-    2100008: Material_002
+    2100006: Material_002
+    2100008: Material_004
     2300000: Cone
     2300002: Cube
     2300004: Torus_001
