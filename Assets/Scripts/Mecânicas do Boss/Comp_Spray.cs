@@ -25,7 +25,7 @@ public class Comp_Spray : MonoBehaviour {
         Phi = Random.Range(0, Mathf.PI);// Ângulo vertical aleatório
         Radius = Random.Range(0, ((Center-Origin).magnitude/2f)-6);// Distância do player aleatória
         Convergence = Radius / 40;// Fator de Correção proporcional ao erro
-        Speed = 2*Mathf.Abs((Center - Origin).magnitude)/3;// Velocidade é dois terços da distância
+        Speed = 1.2f*Mathf.Abs((Center - Origin).magnitude)/3;// Velocidade é dois terços da distância
         Finale.x = Player.transform.position.x + Radius * Mathf.Cos(Teta) * Mathf.Sin(Phi); // Posição X do Jogador + Coordenada Esférica
         Finale.y = Player.transform.position.y + Radius * Mathf.Sin(Teta) * Mathf.Sin(Phi);// Posição Y do Jogador + Coordenada Esférica
         Finale.z = Player.transform.position.z + Radius * Mathf.Cos(Phi);// Posição Z do Jogador + Coordenada Esférica        
@@ -35,9 +35,13 @@ public class Comp_Spray : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if ((Center - Origin).magnitude > (transform.position - Origin).magnitude)// Caso o tiro ainda não tenha ultrapassado o player
-            transform.Translate((Direction+(Center-transform.position).normalized/Convergence)*Time.deltaTime*Speed); // Muda a posição do objeto no vetor Direction e converge para a posição do player no momento do lançamento
+            transform.Translate((Direction + (Center - transform.position).normalized / Convergence) * Time.deltaTime * Speed); // Muda a posição do objeto no vetor Direction e converge para a posição do player no momento do lançamento
         else
+        {
             transform.Translate(Direction * Time.deltaTime * Speed); // Muda a posição do objeto no vetor Direction, usando escala temporal e com velocidade "Speed"
+            if ((transform.position - Origin).magnitude > 80)
+                Destroy(this.gameObject);
+        }
     }
     private void OnCollisionEnter(Collision collision) //Verifica em quem está batendo
     {
@@ -46,9 +50,9 @@ public class Comp_Spray : MonoBehaviour {
         {
             collision.gameObject.GetComponent<Vida_Player>().danoPlayer(100);
             Debug.Log("Atingiu");
-            Destroy(this.gameObject);
-            
+     
         }
-       
+        Destroy(this.gameObject);
+
     }
 }
