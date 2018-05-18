@@ -24,7 +24,7 @@ public class HeliceDeVento : MonoBehaviour {
     void Update()
     {
         // MOVIMENTO DA HELICE!!!
-        Mov_Direção = new Vector3(Player.transform.position.x, Player.transform.position.y + 1.5f, Player.transform.position.z) - transform.position;  //Direção de movimento da helice
+        Mov_Direção = new Vector3(Player.transform.position.x, Player.transform.position.y -0.7f, Player.transform.position.z) - transform.position;  //Direção de movimento da helice
         transform.Rotate(Vector3.right * Time.deltaTime * Vel_Rotx, Space.World);   // rotação em x
         transform.Rotate(Vector3.up * Time.deltaTime * Vel_Roty, Space.World);   // rotação em y
         transform.Rotate(Vector3.forward * Time.deltaTime * Vel_Rotz, Space.World);   // rotação em z
