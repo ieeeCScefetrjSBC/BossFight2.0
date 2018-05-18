@@ -41,7 +41,7 @@ public class Comp_Tiro : MonoBehaviour {
     private void FixedUpdate()
     {
         Total_Force += Direction * Velocity;//  Soma uma força em direção ao jogador com uma magnitude de "Velocity"
-        Total_Force -= Wrong_Direction * Velocity / 1.2f;// Soma uam força na direção oposta à direção "errada"
+        Total_Force -= Wrong_Direction * Velocity / 1.2f;// Soma uma força na direção oposta à direção "errada"
         RB.AddForce(Total_Force, ForceMode.VelocityChange);// Aplica a força total ao objeto
     }
     private void OnCollisionEnter(Collision collision) //Verifica em quem está batendo
