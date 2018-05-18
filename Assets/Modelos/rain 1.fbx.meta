@@ -1,26 +1,42 @@
 fileFormatVersion: 2
-guid: 8b5fbf7c457327c48ba5187363241281
-timeCreated: 1526302425
+guid: 2727007fa6b92cc489a976b67af82c59
+timeCreated: 1526604077
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
+    100000: Circle
     100002: Cube
-    100004: Icosphere
-    400000: //RootNode
+    100004: Cube.001
+    100006: //RootNode
+    100008: Suzanne
+    100010: Suzanne.001
+    400000: Circle
     400002: Cube
-    400004: Icosphere
-    2100000: Material_002
-    2100002: Material
-    2300000: Cube
-    2300002: Icosphere
-    3300000: Cube
-    3300002: Icosphere
-    4300000: Icosphere
-    4300002: Cube
-    7400000: Default Take
-    9500000: //RootNode
+    400004: Cube.001
+    400006: //RootNode
+    400008: Suzanne
+    400010: Suzanne.001
+    2100000: Material.001
+    2100002: Material.003
+    2100004: Material.004
+    2100006: Material.002
+    2100008: Material
+    2300000: Circle
+    2300002: Cube
+    2300004: Cube.001
+    2300006: Suzanne
+    2300008: Suzanne.001
+    3300000: Circle
+    3300002: Cube
+    3300004: Cube.001
+    3300006: Suzanne
+    3300008: Suzanne.001
+    4300000: Cube.001
+    4300002: Suzanne.001
+    4300004: Suzanne
+    4300006: Circle
+    4300008: Cube
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -95,7 +111,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

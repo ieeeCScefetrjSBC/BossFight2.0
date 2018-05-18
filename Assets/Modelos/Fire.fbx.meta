@@ -1,44 +1,42 @@
 fileFormatVersion: 2
-guid: 67571a1728683fe4e93b06b7675f64e9
-timeCreated: 1526304970
+guid: 6bd50e9c21f4f0f4baa8a60054c81371
+timeCreated: 1526604426
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cone
+    100000: Circle
     100002: Cube
-    100004: //RootNode
-    100006: Torus_001
-    100008: Torus_002
-    100010: Torus_004
-    400000: Cone
+    100004: Cube.001
+    100006: Cube.002
+    100008: //RootNode
+    100010: Sphere
+    400000: Circle
     400002: Cube
-    400004: //RootNode
-    400006: Torus_001
-    400008: Torus_002
-    400010: Torus_004
-    2100000: Material_003
-    2100002: Material_001
-    2100004: Material__azul_png
-    2100006: Material_002
-    2100008: Material_004
-    2300000: Cone
+    400004: Cube.001
+    400006: Cube.002
+    400008: //RootNode
+    400010: Sphere
+    2100000: Material.004
+    2100002: Material.003
+    2100004: Material.002
+    2100006: Material.001
+    2100008: Material
+    2300000: Circle
     2300002: Cube
-    2300004: Torus_001
-    2300006: Torus_002
-    2300008: Torus_004
-    3300000: Cone
+    2300004: Cube.001
+    2300006: Cube.002
+    2300008: Sphere
+    3300000: Circle
     3300002: Cube
-    3300004: Torus_001
-    3300006: Torus_002
-    3300008: Torus_004
-    4300000: Torus_002
-    4300002: Cone
-    4300004: Cube
-    4300006: Torus_001
-    4300008: Torus_004
-    7400000: Default Take
-    9500000: //RootNode
+    3300004: Cube.001
+    3300006: Cube.002
+    3300008: Sphere
+    4300000: Circle
+    4300002: Sphere
+    4300004: Cube.002
+    4300006: Cube.001
+    4300008: Cube
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -113,7 +111,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
