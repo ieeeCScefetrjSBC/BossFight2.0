@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &424663240
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1001 &767727007
 Prefab:
   m_ObjectHideFlags: 0
@@ -150,26 +192,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4091944522498276, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &814262541 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-  m_PrefabInternal: {fileID: 1186682219}
---- !u!114 &814262543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 814262541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b46c6fce235d4e41aa3bf4e6902112d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1016017372
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,66 +260,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1186682219
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1470.8168
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2721.0015
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3161.589
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.13853535
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.834455
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.2479476
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.4722444
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.20400001
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 33.001003
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -120.926
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: da0a037514fd85c4e8c1c77cce32ae97, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1 &1895604990
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,3 +343,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2099244407 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: d1e5f5db3fb22af44a17dc74f3c3c7d3, type: 3}
+  m_PrefabInternal: {fileID: 424663240}
+--- !u!114 &2099244408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2099244407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb33a9078527b1149b24a0cd0ab1d306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalSpeed: 1
+  amplitude: 1
