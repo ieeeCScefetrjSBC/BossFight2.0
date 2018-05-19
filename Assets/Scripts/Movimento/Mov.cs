@@ -8,12 +8,19 @@ public class Mov : MonoBehaviour {
     private bool Left, Up, Down, Right; // Direções 2D
     private bool StopLeft, StopUp, StopDown, StopRight; // Anti-Direções 2D
     public Rigidbody RB; // Rigidbody do Objeto
-    private float Force = 0.6f, Max = 9f; // Força de aceleração e Velocidade Máxima
+    [SerializeField] private float Force = 0.6f; //Força de aceleração
+    [SerializeField] private float Max = 9f; // Velocidade Máxima
+    [SerializeField] private float Impulso_PlatPulo;  // Impulso pra cima no player ao pisar na plat de pulo
+    [SerializeField] private float JumpForce;
     private float Extra_X=0f, Extra_Y=0f, Extra_Z=0f;
     private float Final_Force_X, Final_Force_Y;
+    private bool InverterControlesAtivado = false;
+    private bool Grounded;  // Guarda a informação de se o player está no chão ou não
+
     void Start()
     {
         RB = GetComponent<Rigidbody>(); // Obtém o Rigidbody
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -83,17 +90,38 @@ public class Mov : MonoBehaviour {
         else if (StopRight)// Caso tecla D tenha sido solta
             Final_Force_X -= Force;
         //Somatório das forças no eixo "Frente/Trás", eixo "Esquerda/Direita" e forças Extras
-        RB.AddForce(RB.transform.forward*Final_Force_Y+RB.transform.right*Final_Force_X + new Vector3(Extra_X,Extra_Y,Extra_Z), ForceMode.VelocityChange);
-        if (RB.velocity.x <= -Max)// Velocidade máxima negativa em X
+        if(!InverterControlesAtivado)
+           // RB.AddForce(RB.transform.forward*Final_Force_Y+RB.transform.right*Final_Force_X + new Vector3(Extra_X,Extra_Y,Extra_Z), ForceMode.VelocityChange);
+            RB.AddForce(RB.transform.forward * Final_Force_Y + RB.transform.right * Final_Force_X, ForceMode.Force);
+        else
+            RB.AddForce(-RB.transform.forward * Final_Force_Y - RB.transform.right * Final_Force_X + new Vector3(Extra_X, Extra_Y, Extra_Z), ForceMode.VelocityChange);
+
+        /*if (RB.velocity.x <= -Max)// Velocidade máxima negativa em X
             RB.velocity = new Vector3(-Max, RB.velocity.y, RB.velocity.z);
         if (RB.velocity.x >= Max)// Velocidade máxima positiva em X
             RB.velocity = new Vector3(Max, RB.velocity.y, RB.velocity.z);
         if (RB.velocity.z >= Max)// Velocidade máxima positiva em Z
             RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y, Max);
         if (RB.velocity.z <= -Max)// Velocidade máxima negativa em Z
-            RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y, -Max);
+            RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y, -Max); */
 
-       
+        /*Speed Limit */
+        Vector3 VelHor = new Vector3(RB.velocity.x, 0, RB.velocity.z);
+        if (VelHor.magnitude >= Max)
+        {
+            RB.velocity = (VelHor.normalized * Max) + new Vector3(0, RB.velocity.y, 0);
+        }
+        Debug.Log(RB.velocity.magnitude);
+
+        /* Jump Mechanic*/
+
+        int layerMask = 1 << 8;
+        Grounded = Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 1.5f, layerMask);
+        Debug.Log(Grounded);
+        if (Input.GetKey(KeyCode.Space) && Grounded && RB.velocity.y >= 0)
+        {
+            RB.AddForce(transform.up * JumpForce, ForceMode.Force);
+        }
 
 
         StopRight = false; // Impede de aplicar várias vezes a força contrária
@@ -101,8 +129,25 @@ public class Mov : MonoBehaviour {
         StopDown = false;
         StopLeft = false;
 
-
     }
+    //////////////////////////////////////////////////
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "PlataformaPulo")
+        {
+            RB.AddForce(Vector3.up * Impulso_PlatPulo, ForceMode.VelocityChange);
+            Debug.Log("KARAAAAI VIADO");
+        }
+    }
+
+    public void SetInverterControlesAtivado(bool Inverter) //usado para settar o atributo InverterControlesAtivado
+    {
+        InverterControlesAtivado = Inverter;
+    }
+
+
+
     public void setExtra_Y(float Extra)
     {
         this.Extra_Y += Extra;
