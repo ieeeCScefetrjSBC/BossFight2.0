@@ -19,7 +19,7 @@ public class Comp_Call : MonoBehaviour {
         Tiro_Boss = this.gameObject.GetComponent<Tiro_Boss>();// Define quem é Tiro_Boss
 		Comp_Helice = this.gameObject.GetComponent<Comp_Helice>(); // Define quem é Comp_Helice
         Mechanics[0] = Call_Bomba;// Espaço 0 é a mecânica de bomba!
-        Mechanics[1] = Call_Helice; // Espaço 1 é a mecânica de helice!
+        //Mechanics[1] = Call_Helice; // Espaço 1 é a mecânica de helice!
     }
 	
 	// Update is called once per frame
