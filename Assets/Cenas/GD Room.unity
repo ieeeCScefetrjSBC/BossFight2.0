@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6494,7 +6494,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 34d176102bb308149b884f77e189ddee, type: 2}
+  - {fileID: 2100000, guid: 21591bb3d6450b34cac987db656f212f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25452,6 +25452,8 @@ MonoBehaviour:
   SomTiro: {fileID: 1740260956}
   mira: {fileID: 780153246}
   alcance: 200
+  cooldownTime: 0.5
+  laserTime: 0.1
 --- !u!114 &1740260958
 MonoBehaviour:
   m_ObjectHideFlags: 0

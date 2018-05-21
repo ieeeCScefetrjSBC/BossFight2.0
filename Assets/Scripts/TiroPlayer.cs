@@ -2,42 +2,91 @@
 using UnityEngine;
 
 public class TiroPlayer : MonoBehaviour {
+    public AudioSource SomTiro;
+    public Camera mira;
+    public float alcance =9200000000000000f;
+    public float cooldownTime = 0.5f;
+    public float laserTime = 0.1f;
 
     private GameObject boss;
     private GameObject mascaraAzul;
     private GameObject mascaraVerde;
     private GameObject mascaraVermelho;
-    public AudioSource SomTiro;
-    public Camera mira;
-    public float alcance =9200000000000000f;
-
-
-
+    private GameObject pontaDaArma;
+    private LineRenderer laserLine;                       //DEBUGAR
+    private Light shotLight;
+    private float lastShotTime = 0f;
+    private float timeSinceShot;
+    private bool justShot = false;
 
     private void Start()
     {
         boss = GameObject.FindGameObjectWithTag("Boss");
         mascaraAzul = GameObject.FindGameObjectWithTag("Mascara1");
         mascaraVerde = GameObject.FindGameObjectWithTag("Mascara2");
-        mascaraVermelho= GameObject.FindGameObjectWithTag("Mascara3");
+        mascaraVermelho = GameObject.FindGameObjectWithTag("Mascara3");
 
+        timeSinceShot = -cooldownTime;
+
+        pontaDaArma = GameObject.Find("Ponta da Arma");
+        laserLine = gameObject.GetComponentInChildren<LineRenderer>();
+        laserLine.enabled = false;
+        shotLight = gameObject.GetComponentInChildren<Light>();
+        shotLight.enabled = false;
     }
 
 
 
     void Update () {
 
+        timeSinceShot = Time.time - lastShotTime;
 
-        if (Input.GetButton("Fire1"))
+        if (justShot)
         {
-            Atira();
+            RenderLaser();
+
+            if (timeSinceShot >= laserTime)
+            {
+                laserLine.enabled = false;
+                shotLight.enabled = false;
+                justShot = false;
+            }
+
         }
-		
+
+        if (Input.GetButtonDown("Fire1") && timeSinceShot >= cooldownTime)
+        {
+            SomTiro.Play();
+            Atira();
+
+            justShot = true;
+            lastShotTime = Time.time;
+
+            laserLine.enabled = true;
+            shotLight.enabled = true;
+        }
+
+        
 	}
+
+    void RenderLaser()
+    {
+        Ray ray = new Ray(pontaDaArma.transform.position, pontaDaArma.transform.forward); // DEBUGAR
+        RaycastHit Hit;
+
+        laserLine.SetPosition(0, ray.origin);
+
+        if (Physics.Raycast(ray, out Hit, 100))
+            laserLine.SetPosition(1, Hit.point);
+        else
+            laserLine.SetPosition(1, ray.GetPoint(100));
+
+        //Line.SetPosition(1, ray.GetPoint(100));
+    }
 
     void Atira()
     {
-        SomTiro.Play();
+        
         RaycastHit bang;
 
          if (Physics.Raycast(mira.transform.position, mira.transform.forward, out bang, alcance))

@@ -6,6 +6,7 @@ public class LaserScript : MonoBehaviour
 {
     LineRenderer Line;
     Light Light;
+    //TiroPlayer scriptTiroPlayer;
 
 
     void Start()
@@ -15,6 +16,8 @@ public class LaserScript : MonoBehaviour
         Line.enabled = false; //sumir a linha do line renderer
         Light = gameObject.GetComponent<Light>();
         Light.enabled = false;
+
+        //scriptTiroPlayer = GameObject.Find("Player").GetComponent<TiroPlayer>();
     }
 
 
@@ -22,8 +25,8 @@ public class LaserScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")) //comando para ativar laser com botão esquerdo do mouse, chama a corrotina
         {
-            StopCoroutine("FireLaser");  //just in case
-            StartCoroutine("FireLaser"); //just in case
+            //StopCoroutine("FireLaser");  //just in case
+            //StartCoroutine("FireLaser"); //just in case
         }
     }
     IEnumerator FireLaser() 
@@ -33,7 +36,10 @@ public class LaserScript : MonoBehaviour
 
         while (Input.GetButton("Fire1")) //para disparos contínuos enquanto o botão está sendo apertado. Loopception
         {
-			//Line.material.mainTextureOffSet = new Vector2 (0, Time.time); //muda a textura de acordo com o tempo
+            //if (scriptTiroPlayer.timeSinceShot > scriptTiroPlayer.cooldownTime)
+            //    break;
+            
+            //Line.material.mainTextureOffSet = new Vector2 (0, Time.time); //muda a textura de acordo com o tempo
 			Ray ray = new Ray(transform.position, transform.forward); //ray inicia na ponta da arma e vai para frene, alinhado com a arma
             RaycastHit Hit;
 
