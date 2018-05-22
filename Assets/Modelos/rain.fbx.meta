@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2727007fa6b92cc489a976b67af82c59
-timeCreated: 1526604077
+guid: 082abf4beb40077488014a5cf1bcfb49
+timeCreated: 1527012656
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -8,36 +8,41 @@ ModelImporter:
     100000: Circle
     100002: Cube
     100004: Cube.001
-    100006: //RootNode
-    100008: Suzanne
-    100010: Suzanne.001
+    100006: Cube.002
+    100008: //RootNode
+    100010: Torus
     400000: Circle
     400002: Cube
     400004: Cube.001
-    400006: //RootNode
-    400008: Suzanne
-    400010: Suzanne.001
-    2100000: Material.001
-    2100002: Material.003
-    2100004: Material.004
+    400006: Cube.002
+    400008: //RootNode
+    400010: Torus
+    2100000: Material.009
+    2100002: Material.007
+    2100004: Material.005
     2100006: Material.002
     2100008: Material
     2300000: Circle
     2300002: Cube
     2300004: Cube.001
-    2300006: Suzanne
-    2300008: Suzanne.001
+    2300006: Cube.002
+    2300008: Torus
     3300000: Circle
     3300002: Cube
     3300004: Cube.001
-    3300006: Suzanne
-    3300008: Suzanne.001
+    3300006: Cube.002
+    3300008: Torus
     4300000: Cube.001
-    4300002: Suzanne.001
-    4300004: Suzanne
+    4300002: Cube.002
+    4300004: Torus
     4300006: Circle
     4300008: Cube
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: d24a1f40dd1001f4ab464b440ae837f2, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
