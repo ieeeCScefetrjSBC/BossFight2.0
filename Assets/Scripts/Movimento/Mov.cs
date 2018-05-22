@@ -92,7 +92,7 @@ public class Mov : MonoBehaviour {
         //Somatório das forças no eixo "Frente/Trás", eixo "Esquerda/Direita" e forças Extras
         if(!InverterControlesAtivado)
            // RB.AddForce(RB.transform.forward*Final_Force_Y+RB.transform.right*Final_Force_X + new Vector3(Extra_X,Extra_Y,Extra_Z), ForceMode.VelocityChange);
-            RB.AddForce(RB.transform.forward * Final_Force_Y + RB.transform.right * Final_Force_X, ForceMode.Force);
+            RB.AddForce(RB.transform.forward * Final_Force_Y * Time.deltaTime + RB.transform.right * Final_Force_X * Time.deltaTime, ForceMode.Force);
         else
             RB.AddForce(-RB.transform.forward * Final_Force_Y - RB.transform.right * Final_Force_X + new Vector3(Extra_X, Extra_Y, Extra_Z), ForceMode.VelocityChange);
 
@@ -120,7 +120,7 @@ public class Mov : MonoBehaviour {
         Debug.Log(Grounded);
         if (Input.GetKey(KeyCode.Space) && Grounded && RB.velocity.y >= 0)
         {
-            RB.AddForce(transform.up * JumpForce, ForceMode.Force);
+            RB.AddForce(transform.up * JumpForce * Time.deltaTime, ForceMode.VelocityChange);
         }
 
 
@@ -136,7 +136,7 @@ public class Mov : MonoBehaviour {
     {
         if(collision.gameObject.tag == "PlataformaPulo")
         {
-            RB.AddForce(Vector3.up * Impulso_PlatPulo, ForceMode.VelocityChange);
+            RB.AddForce(Vector3.up * Impulso_PlatPulo * Time.deltaTime, ForceMode.VelocityChange);
             Debug.Log("KARAAAAI VIADO");
         }
     }
