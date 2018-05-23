@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -21793,6 +21793,7 @@ GameObject:
   - component: {fileID: 1167885503}
   - component: {fileID: 1167885504}
   - component: {fileID: 1167885505}
+  - component: {fileID: 1167885506}
   m_Layer: 0
   m_Name: Ponta da Arma
   m_TagString: Untagged
@@ -21955,6 +21956,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1167885506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1167885501}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68cbaee0ddeb484dbf6dd8728aff85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserLenght: 100
+  laserSpeed: 50
 --- !u!1 &1183718564
 GameObject:
   m_ObjectHideFlags: 0
@@ -35669,6 +35683,7 @@ MonoBehaviour:
   alcance: 200
   cooldownTime: 0.5
   laserTime: 0.1
+  useLaserScript: 0
 --- !u!114 &1740260958
 MonoBehaviour:
   m_ObjectHideFlags: 0

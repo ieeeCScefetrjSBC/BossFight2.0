@@ -1,4 +1,4 @@
-﻿
+
 using UnityEngine;
 
 public class TiroPlayer : MonoBehaviour {
@@ -6,18 +6,21 @@ public class TiroPlayer : MonoBehaviour {
     public Camera mira;
     public float alcance =9200000000000000f;
     public float cooldownTime = 0.5f;
-    public float laserTime = 0.1f;
+    public float laserTime = 0.5f;
 
     private GameObject boss;
     private GameObject mascaraAzul;
     private GameObject mascaraVerde;
     private GameObject mascaraVermelho;
     private GameObject pontaDaArma;
-    private LineRenderer laserLine;                       //DEBUGAR
+    private LineRenderer laserLine;                      
     private Light shotLight;
     private float lastShotTime = 0f;
     private float timeSinceShot;
     private bool justShot = false;
+
+    private Laser laserScript; // DEBUGAR
+    public bool useLaserScript = false;
 
     private void Start()
     {
@@ -30,9 +33,18 @@ public class TiroPlayer : MonoBehaviour {
 
         pontaDaArma = GameObject.Find("Ponta da Arma");
         laserLine = gameObject.GetComponentInChildren<LineRenderer>();
-        laserLine.enabled = false;
         shotLight = gameObject.GetComponentInChildren<Light>();
+        laserLine.enabled = false;
         shotLight.enabled = false;
+
+        /////////////////////
+        //laserScript = gameObject.GetComponentInChildren<Laser>();
+        laserScript = pontaDaArma.GetComponent<Laser>();
+        if (laserScript == null)
+            Debug.Log("LASER SCRIPT MISSING");
+        else
+            Debug.Log("LASER SCRIPT FOUND");
+        /////////////////////
     }
 
 
@@ -41,29 +53,53 @@ public class TiroPlayer : MonoBehaviour {
 
         timeSinceShot = Time.time - lastShotTime;
 
-        if (justShot)
+        if (!useLaserScript)
         {
-            RenderLaser();
-
-            if (timeSinceShot >= laserTime)
+            if (justShot)
             {
-                laserLine.enabled = false;
-                shotLight.enabled = false;
-                justShot = false;
-            }
+                RenderLaser();
 
+                if (timeSinceShot >= laserTime)
+                {
+                    laserLine.enabled = false;
+                    shotLight.enabled = false;
+                    justShot = false;
+                }
+
+            }
         }
 
         if (Input.GetButtonDown("Fire1") && timeSinceShot >= cooldownTime)
         {
             SomTiro.Play();
             Atira();
-
-            justShot = true;
+            
             lastShotTime = Time.time;
 
-            laserLine.enabled = true;
-            shotLight.enabled = true;
+            if (!useLaserScript)
+            {
+                justShot = true;
+                laserLine.enabled = true;
+                shotLight.enabled = true;
+            }
+            ///////////////////////////
+            else
+            {
+                Ray ray = new Ray(pontaDaArma.transform.position, pontaDaArma.transform.forward);
+                RaycastHit Hit;
+                Vector3 target;
+
+                if (Physics.Raycast(ray, out Hit, alcance))
+                    target = Hit.point;
+                else
+                    target = ray.GetPoint(alcance);
+
+                laserScript.ShootLaser(pontaDaArma.transform.position, target);
+            }
+            
+            ///////////////////////////
+
+            
         }
 
         
@@ -71,7 +107,7 @@ public class TiroPlayer : MonoBehaviour {
 
     void RenderLaser()
     {
-        Ray ray = new Ray(pontaDaArma.transform.position, pontaDaArma.transform.forward); // DEBUGAR
+        Ray ray = new Ray(pontaDaArma.transform.position, pontaDaArma.transform.forward);
         RaycastHit Hit;
 
         laserLine.SetPosition(0, ray.origin);
