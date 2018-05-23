@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1279,7 +1279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &125931529
 Transform:
   m_ObjectHideFlags: 0
@@ -1407,7 +1407,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 102588858
+  randomSeed: 1740130861
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2845,8 +2845,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: -4
+      scalar: 1
+      minScalar: -1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2927,8 +2927,8 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: -4
+      scalar: 1
+      minScalar: -1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9910,7 +9910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &520239907
 Transform:
   m_ObjectHideFlags: 0
@@ -9965,7 +9965,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 1
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.03
+  m_MaxParticleSize: 0.06
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -10041,7 +10041,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1521222005
+  randomSeed: 1890213746
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13600,7 +13600,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
       propertyPath: m_TagString
-      value: Mascara3
+      value: Mascara1
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
       propertyPath: m_Layer
@@ -13633,6 +13633,26 @@ Prefab:
     - target: {fileID: 100008, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
       propertyPath: m_Name
       value: Rain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
+      propertyPath: m_Name
+      value: Orelha
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
+      propertyPath: m_Name
+      value: Face
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
+      propertyPath: m_Name
+      value: Olho
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
+      propertyPath: m_Name
+      value: Boca
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
+      propertyPath: m_Name
+      value: Ring
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 082abf4beb40077488014a5cf1bcfb49, type: 3}
@@ -19106,7 +19126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: e1ee041dac9537647843d8f502c8c691, type: 3}
       propertyPath: m_TagString
-      value: Mascara1
+      value: Mascara2
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: e1ee041dac9537647843d8f502c8c691, type: 3}
       propertyPath: m_Layer
@@ -19136,6 +19156,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82ef1a8409bb22942a496c440618de47, type: 2}
+    - target: {fileID: 100000, guid: e1ee041dac9537647843d8f502c8c691, type: 3}
+      propertyPath: m_Name
+      value: Face
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e1ee041dac9537647843d8f502c8c691, type: 3}
+      propertyPath: m_Name
+      value: Boca
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: e1ee041dac9537647843d8f502c8c691, type: 3}
+      propertyPath: m_Name
+      value: Lingua
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: e1ee041dac9537647843d8f502c8c691, type: 3}
+      propertyPath: m_Name
+      value: Olho
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e1ee041dac9537647843d8f502c8c691, type: 3}
   m_IsPrefabParent: 0
@@ -30704,7 +30740,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 222
+    maxNumParticles: 220
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -35824,7 +35860,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1740260954}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -36, y: 9, z: -36}
+  m_LocalPosition: {x: -30.4, y: 9, z: -11.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2015811628}
@@ -36062,7 +36098,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 38414e3f501fbc4438c1dc803161c07c, type: 2}
     - target: {fileID: 100008, guid: ca457462e6185884195345a96451ecd8, type: 3}
       propertyPath: m_TagString
-      value: Mascara2
+      value: Mascara3
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ca457462e6185884195345a96451ecd8, type: 3}
       propertyPath: m_Layer
@@ -36087,6 +36123,30 @@ Prefab:
     - target: {fileID: 100010, guid: ca457462e6185884195345a96451ecd8, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: ca457462e6185884195345a96451ecd8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ca457462e6185884195345a96451ecd8, type: 3}
+      propertyPath: m_Name
+      value: Face
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ca457462e6185884195345a96451ecd8, type: 3}
+      propertyPath: m_Name
+      value: Nariz
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ca457462e6185884195345a96451ecd8, type: 3}
+      propertyPath: m_Name
+      value: Olho
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: ca457462e6185884195345a96451ecd8, type: 3}
+      propertyPath: m_Name
+      value: Boca
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: ca457462e6185884195345a96451ecd8, type: 3}
+      propertyPath: m_Name
+      value: Orelha
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca457462e6185884195345a96451ecd8, type: 3}
