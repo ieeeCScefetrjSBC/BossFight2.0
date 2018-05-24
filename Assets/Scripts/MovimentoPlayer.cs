@@ -87,6 +87,7 @@ public class MovimentoPlayer : MonoBehaviour
         }
         else
             Debug.Log("NotGrounded");
+
         vertVel -= gravity * Time.deltaTime;
         moveDirection.y = vertVel;
         controller.Move(moveDirection * Time.deltaTime);

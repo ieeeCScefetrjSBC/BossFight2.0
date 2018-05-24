@@ -13,7 +13,7 @@ public class HeliceDeFogo : MonoBehaviour {
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Vida_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Vida_Player>();
+        Vida_Player = Player.GetComponent<Vida_Player>();
     }
 
     void Update()

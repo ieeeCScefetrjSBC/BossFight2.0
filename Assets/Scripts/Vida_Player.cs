@@ -8,7 +8,7 @@ public class Vida_Player : MonoBehaviour
     private float Vida_Max = 1000;// Vida Máxima do Player
     private float vida = 1000;// Vida do Player
     private float Regen_Cooldown = 3f;// Tempo para começar a se regenerar;
-    private float Regen_Factor = 100;// Fator de regeneração
+    private float Regen_Factor = 100f;// Fator de regeneração
     public AudioSource DanoPlayer;
     string nomeCena = "Menu";
     private GameObject testepart;

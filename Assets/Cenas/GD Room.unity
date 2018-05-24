@@ -21009,7 +21009,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae2598b9f6bd79844925c58103d1990f, type: 3}
   m_Name: 
@@ -21098,7 +21098,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e2abb3c0f82d26459d7215920e1b82c, type: 3}
   m_Name: 
@@ -21122,7 +21122,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89ba865e85675ed46b90736cc6892f68, type: 3}
   m_Name: 
@@ -21135,7 +21135,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72713b5275cee6e4986dfdf5a47c844f, type: 3}
   m_Name: 
@@ -21157,7 +21157,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 762852957d392d64f800b46fbd42a1da, type: 3}
   m_Name: 
@@ -22004,7 +22004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserLenght: 100
-  laserSpeed: 50
+  laserSpeed: 25
 --- !u!1 &1183718564
 GameObject:
   m_ObjectHideFlags: 0
@@ -35525,17 +35525,18 @@ GameObject:
   m_Component:
   - component: {fileID: 1740260963}
   - component: {fileID: 1740260962}
+  - component: {fileID: 1740260967}
+  - component: {fileID: 1740260961}
   - component: {fileID: 1740260959}
   - component: {fileID: 1740260957}
   - component: {fileID: 1740260956}
   - component: {fileID: 1740260955}
   - component: {fileID: 1740260965}
+  - component: {fileID: 1740260968}
   - component: {fileID: 1740260966}
   - component: {fileID: 1740260960}
-  - component: {fileID: 1740260967}
-  - component: {fileID: 1740260961}
-  - component: {fileID: 1740260958}
   - component: {fileID: 1740260964}
+  - component: {fileID: 1740260958}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -35717,7 +35718,7 @@ MonoBehaviour:
   SomTiro: {fileID: 1740260956}
   mira: {fileID: 780153246}
   alcance: 200
-  cooldownTime: 0.5
+  cooldownTime: 0.2
   laserTime: 0.1
   useLaserScript: 0
 --- !u!114 &1740260958
@@ -35926,6 +35927,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1740260968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740260954}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aaeb83253d070c4d9eac5613b625fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAudio: {fileID: 1740260960}
+  playerAnim: {fileID: 0}
+  sensitivity: 2
 --- !u!1 &1756470255
 GameObject:
   m_ObjectHideFlags: 0
