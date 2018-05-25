@@ -37,12 +37,22 @@ public class MoveRigidbody : MonoBehaviour {
     
     void checkGrounded()
     {
-        int groundLayerMask = 1 << 8;
-        isGrounded = Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 1.5f, groundLayerMask);
+        //int groundLayerMask = 1 << 8;
+        //isGrounded = Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 1.5f, groundLayerMask);
+
+
     }
 
+	void OnCollisionEnter (Collision collision)
+	{
+		string objectTag = collision.gameObject.tag;
+
+		if (objectTag == "Ground" )
+		
+	}
+
     // Update is called once per frame
-    void Update ()
+    void FixedUpdate ()
     {
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         moveDirection = transform.TransformDirection(moveDirection);

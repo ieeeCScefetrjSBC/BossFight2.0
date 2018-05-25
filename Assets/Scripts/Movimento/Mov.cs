@@ -111,16 +111,18 @@ public class Mov : MonoBehaviour {
         {
             RB.velocity = (VelHor.normalized * Max) + new Vector3(0, RB.velocity.y, 0);
         }
-        Debug.Log(RB.velocity.magnitude);
+       // Debug.Log(RB.velocity.magnitude);
 
         /* Jump Mechanic*/
 
         int layerMask = 1 << 8;
-        Grounded = Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 1.5f, layerMask);
-        Debug.Log(Grounded);
-        if (Input.GetKey(KeyCode.Space) && Grounded && RB.velocity.y >= 0)
+        Grounded = Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 1.1f, layerMask);
+        //Debug.Log(Grounded);
+        if (Input.GetKeyDown(KeyCode.Space) && Grounded)
         {
-            RB.AddForce(transform.up * JumpForce * Time.deltaTime, ForceMode.VelocityChange);
+            //RB.AddForce(transform.up * JumpForce, ForceMode.VelocityChange);
+			RB.velocity += new Vector3 (0f, JumpForce, 0f);
+			Debug.Log (RB.velocity.y);
         }
 
 
@@ -136,7 +138,7 @@ public class Mov : MonoBehaviour {
     {
         if(collision.gameObject.tag == "PlataformaPulo")
         {
-            RB.AddForce(Vector3.up * Impulso_PlatPulo * Time.deltaTime, ForceMode.VelocityChange);
+            RB.AddForce(Vector3.up * Impulso_PlatPulo, ForceMode.VelocityChange);
             Debug.Log("KARAAAAI VIADO");
         }
     }

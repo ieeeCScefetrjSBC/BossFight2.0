@@ -5,22 +5,30 @@ using UnityEngine;
 public class FallingPlatform : MonoBehaviour {
 
     bool Touched;
-    float Counting;
+    float Counting = 0f;
     public float TimeToFall;
-    float DownSpeed = 0;
+    float DownSpeed = 0f;
 
 	void Start () {
         Touched = false;
 	}
-	
-    private void OnTriggerEnter(Collider other)
+
+	private void OnCollisionEnter(Collision other)
+	{
+		if (other.gameObject.name == "Player") {
+			Touched = true;
+			Destroy (gameObject, 10);
+		}
+	}
+
+    /*private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Player")
         {
             Touched = true;
             Destroy(gameObject, 10);
         }
-    }
+    }*/
 
     void Update()
     {
