@@ -16,6 +16,7 @@ public class Mov : MonoBehaviour {
     private float Final_Force_X, Final_Force_Y;
     private bool InverterControlesAtivado = false;
     private bool Grounded;  // Guarda a informação de se o player está no chão ou não
+    private bool ActivateJump;
 
     void Start()
     {
@@ -69,6 +70,11 @@ public class Mov : MonoBehaviour {
             StopRight = true;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && Grounded)
+        {
+            ActivateJump = true;
+        }
+
     }
     private void FixedUpdate()
     {
@@ -92,7 +98,7 @@ public class Mov : MonoBehaviour {
         //Somatório das forças no eixo "Frente/Trás", eixo "Esquerda/Direita" e forças Extras
         if(!InverterControlesAtivado)
            // RB.AddForce(RB.transform.forward*Final_Force_Y+RB.transform.right*Final_Force_X + new Vector3(Extra_X,Extra_Y,Extra_Z), ForceMode.VelocityChange);
-            RB.AddForce(RB.transform.forward * Final_Force_Y * Time.deltaTime + RB.transform.right * Final_Force_X * Time.deltaTime, ForceMode.Force);
+            RB.AddForce(RB.transform.forward * Final_Force_Y  + RB.transform.right * Final_Force_X , ForceMode.Force);
         else
             RB.AddForce(-RB.transform.forward * Final_Force_Y - RB.transform.right * Final_Force_X + new Vector3(Extra_X, Extra_Y, Extra_Z), ForceMode.VelocityChange);
 
@@ -118,11 +124,10 @@ public class Mov : MonoBehaviour {
         int layerMask = 1 << 8;
         Grounded = Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 1.1f, layerMask);
         //Debug.Log(Grounded);
-        if (Input.GetKeyDown(KeyCode.Space) && Grounded)
+        if (ActivateJump == true)
         {
-            //RB.AddForce(transform.up * JumpForce, ForceMode.VelocityChange);
-			RB.velocity += new Vector3 (0f, JumpForce, 0f);
-			Debug.Log (RB.velocity.y);
+            RB.velocity += new Vector3 (0f, JumpForce, 0f);
+            ActivateJump = false;
         }
 
 
