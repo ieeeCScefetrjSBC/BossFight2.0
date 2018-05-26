@@ -47,9 +47,7 @@ public class TiroPlayer : MonoBehaviour {
         /////////////////////
     }
 
-
-
-    void Update () {
+    void FixedUpdate () {
 
         timeSinceShot = Time.time - lastShotTime;
 

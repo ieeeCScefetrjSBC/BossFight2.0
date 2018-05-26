@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +47,10 @@ public class MoveRigidbody : MonoBehaviour {
 	{
 		string objectTag = collision.gameObject.tag;
 
-		if (objectTag == "Ground" )
+		if (objectTag == "Ground")
+        {
+
+        }
 		
 	}
 
