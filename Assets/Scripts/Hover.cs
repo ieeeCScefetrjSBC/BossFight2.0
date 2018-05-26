@@ -17,7 +17,7 @@ public class Hover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-  		tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalSpeed)* amplitude;
-  		transform.position = tempPosition + new Vector3 (0,altitude,0);
+		tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalSpeed)* amplitude;
+		transform.position = new Vector3(transform.position.x,tempPosition.y + altitude,transform.position.z);
 	}
 }
