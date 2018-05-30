@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7a683462f1a6a4f44a205c71dec2f2b5
-timeCreated: 1527348962
+guid: de36628a327cb5047994b034416b3538
+timeCreated: 1527643041
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -37,7 +37,27 @@ ModelImporter:
     4300004: Lingua
     4300006: Face
     4300008: Boca
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 82ef1a8409bb22942a496c440618de47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 82762dfb9e221524c9cb7d58721f0f1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 82762dfb9e221524c9cb7d58721f0f1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: c5112397f6f1c0b469d9259d16e7193f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

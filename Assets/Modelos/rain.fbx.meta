@@ -1,48 +1,53 @@
 fileFormatVersion: 2
-guid: 082abf4beb40077488014a5cf1bcfb49
-timeCreated: 1527012656
+guid: 19c9f0cb3f53b9b4c94c6433e4c6025b
+timeCreated: 1527638079
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Circle
-    100002: Cube
-    100004: Cube.001
-    100006: Cube.002
+    100000: Boca
+    100002: Face
+    100004: Olho
+    100006: Orelha
     100008: //RootNode
-    100010: Torus
-    400000: Circle
-    400002: Cube
-    400004: Cube.001
-    400006: Cube.002
+    100010: Ring
+    400000: Boca
+    400002: Face
+    400004: Olho
+    400006: Orelha
     400008: //RootNode
-    400010: Torus
+    400010: Ring
     2100000: Material.009
     2100002: Material.007
     2100004: Material.005
     2100006: Material.002
     2100008: Material
-    2300000: Circle
-    2300002: Cube
-    2300004: Cube.001
-    2300006: Cube.002
-    2300008: Torus
-    3300000: Circle
-    3300002: Cube
-    3300004: Cube.001
-    3300006: Cube.002
-    3300008: Torus
-    4300000: Cube.001
-    4300002: Cube.002
-    4300004: Torus
-    4300006: Circle
-    4300008: Cube
+    2300000: Boca
+    2300002: Face
+    2300004: Olho
+    2300006: Orelha
+    2300008: Ring
+    3300000: Boca
+    3300002: Face
+    3300004: Olho
+    3300006: Orelha
+    3300008: Ring
+    4300000: Olho
+    4300002: Boca
+    4300004: Ring
+    4300006: Orelha
+    4300008: Face
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: d24a1f40dd1001f4ab464b440ae837f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: a24867554e34d0842836195170e3c33c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
