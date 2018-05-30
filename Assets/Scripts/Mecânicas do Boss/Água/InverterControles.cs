@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,11 +9,11 @@ public class InverterControles : MonoBehaviour {
     private float TempoDuracaoInversao = 5f;//Tempo de duração da inversão dos controles
     private bool InverterControlesAtivado = false;
     private bool Colidiu = false;
-    private MovimentoPlayer MovimentoPlayer;
+    private Mov MovimentoPlayer;
 
     // Use this for initialization
     void Start () {
-        MovimentoPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovimentoPlayer>();//Vai pegar o script MovimentoPlayer
+        MovimentoPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Mov>();//Vai pegar o script MovimentoPlayer
     }
 	
 	// Update is called once per frame

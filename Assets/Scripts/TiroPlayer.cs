@@ -32,7 +32,7 @@ public class TiroPlayer : MonoBehaviour {
         timeSinceShot = -cooldownTime;
 
         pontaDaArma = GameObject.Find("Ponta da Arma");
-        laserLine = gameObject.GetComponentInChildren<LineRenderer>();
+        laserLine = GameObject.Find("Laser").GetComponent<LineRenderer>();
         shotLight = gameObject.GetComponentInChildren<Light>();
         laserLine.enabled = false;
         shotLight.enabled = false;
