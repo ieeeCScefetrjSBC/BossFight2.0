@@ -5,9 +5,13 @@ using UnityEngine;
 public class HeliceDeFogo : MonoBehaviour {
     private GameObject Player;
     private Vector3 Mov_Direção;
-    public float Mov_Vel;
-    public float Mov_Vel_Perto;
-    public float Vel_Rotx, Vel_Roty, Vel_Rotz;
+    [SerializeField] private float Vel_Rot;
+    [SerializeField] private float Aceleração;
+    [SerializeField] private float Vel_Max;
+    [SerializeField] private float Impulso_Explosão;
+    private bool Longe = true;
+    private bool Encostou = false;
+    private bool VelMax_Atingida = false;
     private Vida_Player Vida_Player;
 
     void Start()
@@ -18,42 +22,47 @@ public class HeliceDeFogo : MonoBehaviour {
 
     void Update()
     {
+        transform.Rotate(Vector3.up * Time.deltaTime * Vel_Rot, Space.World);   // rotação em y
         Mov_Direção = new Vector3(Player.transform.position.x, Player.transform.position.y + 1.5f, Player.transform.position.z) - transform.position;
-        transform.Rotate(Vector3.right * Time.deltaTime * Vel_Rotx, Space.World);   // rotação em x
-        transform.Rotate(Vector3.up * Time.deltaTime * Vel_Roty, Space.World);   // rotação em y
-        transform.Rotate(Vector3.forward * Time.deltaTime * Vel_Rotz, Space.World);   // rotação em z
-        if ((Player.transform.position - transform.position).magnitude >= 4)
+        if ((Player.transform.position - transform.position).magnitude <= 3.5f)
         {
-            this.gameObject.GetComponent<Rigidbody>().AddForce(Mov_Direção.normalized * Mov_Vel, ForceMode.VelocityChange);
-            if (this.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= Mov_Vel)
-            {
-                this.gameObject.GetComponent<Rigidbody>().velocity = this.gameObject.GetComponent<Rigidbody>().velocity.normalized * Mov_Vel;
-            }
-
-            //transform.Translate(Mov_Direção.normalized * Mov_Vel * Time.deltaTime, Space.World);
-            Debug.Log("Fugiu");
+            Longe = false;
+            Encostou = true;
+            Debug.Log(Encostou);
+        }
+        if(this.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= Vel_Max)
+        {
+            VelMax_Atingida = true;
         }
         else
         {
-            this.gameObject.GetComponent<Rigidbody>().AddForce(Mov_Direção.normalized * Mov_Vel_Perto, ForceMode.VelocityChange);
-            if(this.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= Mov_Vel_Perto)
-            {
-                this.gameObject.GetComponent<Rigidbody>().velocity = this.gameObject.GetComponent<Rigidbody>().velocity.normalized * Mov_Vel_Perto;
-            }
-            
-            //transform.Translate(new Vector3(Player.transform.position.x - transform.position.x, 0, Player.transform.position.z - transform.position.z) * Mov_Vel_Perto * Time.deltaTime, Space.World);
-            Debug.Log("DANOUSE");
-            //Vida_Player.danoPlayer(1);
+            VelMax_Atingida = false;
         }
+        
     }
-    void OnParticleCollision(GameObject other)
+
+    private void FixedUpdate()
     {
-        Rigidbody teste = other.GetComponent<Rigidbody>();
-        if (teste)
+        if (Longe)
         {
-            Vida_Player.danoPlayer(3);
-            Debug.Log("KOE");
+            this.gameObject.GetComponent<Rigidbody>().AddForce(Mov_Direção.normalized * Aceleração, ForceMode.VelocityChange);
+            if (VelMax_Atingida)
+            {
+                this.gameObject.GetComponent<Rigidbody>().velocity = Mov_Direção.normalized * Vel_Max;
+            }
         }
+        if (Encostou)
+        {
+            Destroy(this.gameObject);
+            Player.GetComponent<Rigidbody>().AddForce(((Mov_Direção.normalized) + new Vector3(0, 1f, 0)) * Impulso_Explosão, ForceMode.VelocityChange);
+            Player.gameObject.GetComponent<Vida_Player>().danoPlayer(100);
+            Debug.Log("Atingiu");
+            Encostou = false;
+
+        }
+
     }
+
+
 }
 

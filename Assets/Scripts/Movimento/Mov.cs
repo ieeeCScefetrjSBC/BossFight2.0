@@ -15,7 +15,7 @@ public class Mov : MonoBehaviour {
     private float Extra_X=0f, Extra_Y=0f, Extra_Z=0f;
     private float Final_Force_X, Final_Force_Y;
     private bool InverterControlesAtivado = false;
-    private bool Grounded;  // Guarda a informação de se o player está no chão ou não
+    public bool Grounded;  // Guarda a informação de se o player está no chão ou não
     private bool ActivateJump;
 
     void Start()

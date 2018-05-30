@@ -67,9 +67,9 @@ public class Vida_Player : MonoBehaviour
         return vida;
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit) //Verifica colisão com o chão (BUGADO)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (hit.gameObject.tag == "Chao")
+        if (collision.gameObject.tag == "Chao")
         {
             Debug.Log("CAIIIIU");
             vida = 0;

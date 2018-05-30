@@ -29,7 +29,7 @@ public class Sopro : MonoBehaviour {
         direction = Boss.transform.position - Player.transform.position; //Define o ponto inicial como a posição do jogador e o final como a posição do boss
         direction = direction.normalized; //normaliza o vetor
 
-        if (Player.GetComponent<CharacterController>().isGrounded) //Enquanto o player não sai do chão, inicia o timer 1
+        if (Player.GetComponent<Mov>().Grounded) //Enquanto o player não sai do chão, inicia o timer 1
             TimerGround += Time.deltaTime;
         else
         {
@@ -56,8 +56,8 @@ public class Sopro : MonoBehaviour {
 
         if (RequestForce) // Enquanto o timer estiver entre 5 e 10 segundos
         {
-            
-            Player.GetComponent<CharacterController>().Move(direction*ForceMultiplier);
+
+            Player.GetComponent<Rigidbody>().AddForce(direction.normalized * ForceMultiplier, ForceMode.Force);
             //Player.GetComponent<Mov>().setExtra_Z(-ForceMultiplier);
         }
     }

@@ -37,9 +37,9 @@ public class Bomba_Antidoto : MonoBehaviour {
 
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)//checa se o player colidiu com a bomba antidoto
+    private void OnCollisionEnter(Collision collision)
     {
-        if (hit.gameObject.name == "bomba_antidoto" || hit.gameObject.name == "bomba_antidoto (1)")
+        if (collision.gameObject.name == "bomba_antidoto" || collision.gameObject.name == "bomba_antidoto (1)")
         {
             Colidir = true;
             Debug.Log("Colidiu");
