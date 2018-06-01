@@ -4,61 +4,65 @@ using UnityEngine;
 
 public class MoveRigidbody : MonoBehaviour
 {
-    // PUBLIC VARIABLES
-    public AudioSource moveAudio;                   // Player walking sound
+    // --- PUBLIC VARIABLES ---
+
+    public AudioSource moveAudio;                   // Player's walking sound
     //public Animator playerAnim;
 
-    public float validJumpTime = 0.1f;              // Time during which player will still after jump button is pressed
-    public float groundMoveInputMag = 2f;           // How fast player speed will change when he starts walking        
-    public float airMoveInputMag = 50f;             // How fast player speed will change when he moves midair  
-
-    public float walkSpeed = 9f;                    // Walking speed after full acceleration
-    public float runSpeed = 15f;                    // Running speed after full acceleration
-    public float jumpSpeed = 13f;                   // Initial vertical speed after jumping
-    public float platformJumpSpeed = 30f;           // Initial vertical speed after being propelled by jump platform
-
-    public float minMidairTargetSpeed = 9f;         // How fast player can get midair (horizontal speed) if he jumps while still
-    public float midairAccelFactor = 1.10f;         // Percentual increase in horizontal speed allowed after jump
-    public float groundDeAccelFactor = 11f;         // Base of the power by which speed will be decreased after no input is given while grounded
+    public float validJumpTime        = 0.1f;       // Time during which the player will jump when he touches the ground after a jump command has been issued;
+    public float groundMoveInputMag   = 2f;         // How fast the player's speed will change when he is moved on the ground;
+    public float airMoveInputMag      = 50f;        // How fast the player's speed will change when he is moved midair;
     
-    // PRIVATE VARIABLES
-    private Rigidbody rb;                               // Player Rigidbody
-    private CapsuleCollider capsule;                    // Player Capsule Collider
-    private float capsuleRadius;                        // Capsule radius
-    private float cilinderHalfLenght;                   // Distance from the capsule's center to one of the capsule's half sphere center
-    private float capsuleExtensionMultiplier = 1.01f;   // Capsule's height will be extended when used in Physics.OverlapCapsule()
-                                                        // in order to guarantee ground detection
+    public float walkSpeed            = 9f;         // Walking speed after full acceleration;
+    public float runSpeed             = 15f;        // Running speed after full acceleration;
+    public float jumpSpeed            = 13f;        // Initial vertical speed right after jumping;
+    public float platformJumpSpeed    = 50f;        // Initial vertical speed right after being propelled by jump platform;
 
-    Vector3 moveInput = Vector3.zero;               // Direction of player input
-    private float targetSpeed = 9f;                 // Final speed which player will acquire after full acceleration
-    private float last_xzSpeedOnGround = 0f;        // Horizontal speed player had when he left the ground
-    private float timeJumped = 0f;                  // Time of simulation at which player jumped
+    public float minMidairTargetSpeed = 9f;         // How fast player can get midair (horizontal speed) if he jumps while still;
+    public float midairAccelFactor    = 1.10f;      // Percentual increase in horizontal speed allowed after jump;
+    public float groundDeAccelFactor  = 11f;        // Base of the power by which speed will be decreased after no input is given while grounded;
     
-    private string groundTag;                       // Tag of ground touched object
+    // --- PRIVATE VARIABLES ---
 
-    private bool isGrounded = false;                // True when player is on ground
-    private bool isMoving = false;                  // True when player is moving on the current frame
-    private bool wasMoving = false;                 // True when player is moving on the last frame
-    private bool runKeyPressed = false;             // True when run key is pressed on the current frame
-    private bool hasJumped = false;                 // True when jump command was issued less than validJumpTime secs ago
-    private bool invertedControl = false;           // True when player movement should be inverted
+    private Rigidbody rb;                           // Player's Rigidbody component;
+    private CapsuleCollider capsule;                // Player's Capsule Collider component;
+    private Vector3 moveInput = Vector3.zero;       // Direction of player input;
+
+    private float targetSpeed          = 9f;        // Final speed which player will acquire after full acceleration;
+    private float last_xzSpeedOnGround = 0f;        // Horizontal speed player had when he left the ground;
+    private float timeJumped           = 0f;        // Time of simulation at which player jumped;
+    
+    private string groundTag;                       // Tag of ground object touched;
+
+    private bool isGrounded      = false;           // True when player is on ground;
+    private bool isMoving        = false;           // True when player is moving on the current frame;
+    private bool wasMoving       = false;           // True when player was moving on the last frame;
+    private bool hasJumped       = false;           // True when a jump command was issued less than validJumpTime secs ago;
+    private bool invertedControl = false;           // True when player movement should be inverted;
     
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rb      = gameObject.GetComponent<Rigidbody>();
         capsule = gameObject.GetComponent<CapsuleCollider>();
-        capsuleRadius = capsule.radius;
-        cilinderHalfLenght = (capsule.height / 2) - capsule.radius;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void CheckGrounded()
+    public void SetInvertedControl (bool invertedControlOn)
     {
-        int groundLayerMask = 1 << 8;
+
+    }
+
+    private void CheckGrounded()
+    {
+        int groundLayerMask      = 1 << 8;
+        float capsuleRadius      = capsule.radius;                          // Radius of the capsule;
+        float cilinderHalfLenght = (capsule.height / 2) - capsule.radius;   // Distance from the capsule's center to one of the capsule's half sphere's center;
+        float capsuleExtensionMultiplier = 1.01f;                           // Capsule's height will be extended when used in Physics.OverlapCapsule()
+                                                                            // in order to guarantee ground detection;
 
         Vector3 capsuleCenterPosition = transform.position + capsule.center;
-        Vector3 topCapsulePosition = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleExtensionMultiplier;
+        Vector3 topCapsulePosition    = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleExtensionMultiplier;
         Vector3 bottomCapsulePosition = capsuleCenterPosition - Vector3.up * cilinderHalfLenght * capsuleExtensionMultiplier;
 
         Collider[] collidersTouched = Physics.OverlapCapsule(topCapsulePosition, bottomCapsulePosition, capsuleRadius, groundLayerMask);
@@ -80,7 +84,6 @@ public class MoveRigidbody : MonoBehaviour
 
     void Update()
     {
-
         // -- Evaluating if player should jump --
         float timeSinceJump = Time.time - timeJumped;
         CheckGrounded();
@@ -91,7 +94,7 @@ public class MoveRigidbody : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             timeJumped = Time.time;
-            hasJumped = true;
+            hasJumped  = true;
         }
 
         // -- Setting move speed constraint --
@@ -123,8 +126,6 @@ public class MoveRigidbody : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 xzVelocity;
-        
         // -- Applying horizontal movement --
         if (isGrounded)
             rb.AddForce(moveInput, ForceMode.VelocityChange);
@@ -132,6 +133,8 @@ public class MoveRigidbody : MonoBehaviour
             rb.AddForce(moveInput, ForceMode.Acceleration);
         
         // -- Extracting horizontal velocity --
+        Vector3 xzVelocity;
+
         xzVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         if (isGrounded)
             last_xzSpeedOnGround = xzVelocity.magnitude;

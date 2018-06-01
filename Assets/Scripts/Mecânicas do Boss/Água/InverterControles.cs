@@ -2,61 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InverterControles : MonoBehaviour {
+public class InverterControles : MonoBehaviour
+{
 
-    private float TimerInvert = 0f; // Timer que o player não sai do chão
-    private float TempoAteInverterControles = 10f;//Tempo até o começo da inversão dos controles
-    private float TempoDuracaoInversao = 5f;//Tempo de duração da inversão dos controles
-    private bool InverterControlesAtivado = false;
-    private bool Colidiu = false;
-    private Mov MovimentoPlayer;
+    private MoveRigidbody moveScript;
+
+    private float timeLeftUntilInversion = 0f;     // Timer que o player não sai do chão
+    private float totalTimeUntilInversion = 10f;    //Tempo até o começo da inversão dos controles
+    
+    private bool invertedControlOn = false;
+    private bool collided = false;
 
     // Use this for initialization
-    void Start () {
-        MovimentoPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Mov>();//Vai pegar o script MovimentoPlayer
+    void Start()
+    {
+        moveScript = GameObject.FindGameObjectWithTag("Player").GetComponent<MoveRigidbody>();//Vai pegar o script MovimentoPlayer
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Colidiu)//se o player colidiu com uma plataforma externa e ainda não colidiu com alguma outra coisa
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (collided)//se o player colidiu com uma plataforma externa e ainda não colidiu com alguma outra coisa
         {
-            TimerInvert += Time.deltaTime;//começa a contar o tempo
+            timeLeftUntilInversion += Time.deltaTime;//começa a contar o tempo
         }
         else//se colidiu com alguma outra plataforma
         {
-            TimerInvert = 0f;//zera o tempo
-            MovimentoPlayer.SetInverterControlesAtivado(false);
+            timeLeftUntilInversion = 0f;//zera o tempo
+            moveScript.SetInvertedControl(false);
 
         }
-        if(TimerInvert >= TempoAteInverterControles)//se o timer chegar até o tempo designado e o player ainda estiver la por tras
+        if (timeLeftUntilInversion >= totalTimeUntilInversion)//se o timer chegar até o tempo designado e o player ainda estiver la por tras
         {
-            MovimentoPlayer.SetInverterControlesAtivado(true);//o atributo InverterControlesAtivado, pertencente ao script MovimentoPlayer, vai ser setado como true
-            InverterControlesAtivado=true;
+            moveScript.SetInvertedControl(true);//o atributo InverterControlesAtivado, pertencente ao script MovimentoPlayer, vai ser setado como true
+            invertedControlOn = true;
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)//checa se o player colidiu com alguma das plataformas de trás
+    private void OnCollisionEnter(Collision collision)
     {
-        if (hit.gameObject.name == "plataforma S (4)" || hit.gameObject.name == "plataforma O (4)" || hit.gameObject.name == "plataforma L (4)" || hit.gameObject.name == "plataforma N (4)" || hit.gameObject.name == "ponte NL" || hit.gameObject.name == "ponte SO" || hit.gameObject.name == "ponte SL" || hit.gameObject.name == "ponte NO")
+        if (collision.gameObject.name == "plataforma N (4)" || collision.gameObject.name == "plataforma S (4)"
+         || collision.gameObject.name == "plataforma O (4)" || collision.gameObject.name == "plataforma L (4)"
+         || collision.gameObject.name == "ponte NO" || collision.gameObject.name == "ponte NL"
+         || collision.gameObject.name == "ponte SO" || collision.gameObject.name == "ponte SL")
         {
-            Colidiu = true;
-
+            collided = true;
         }
         else
-        {
-            Colidiu = false;
-        }
+            collided = false;
     }
 
-    public bool getInverterControlesAtivado(){
-    	return this.InverterControlesAtivado;
+    public bool getInverterControlesAtivado()
+    {
+        return this.invertedControlOn;
     }
 
-    public void setInverterControlesAtivado(bool inverter){
-    	this.InverterControlesAtivado = inverter;
+    public void setInverterControlesAtivado(bool inverter)
+    {
+        this.invertedControlOn = inverter;
     }
 
-    public void setTimerInvert(float timer){
-    	this.TimerInvert = timer;
+    public void setTimerInvert(float timer)
+    {
+        this.timerForInversion = timer;
     }
 }

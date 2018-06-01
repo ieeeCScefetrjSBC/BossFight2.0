@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -161,10 +161,13 @@ public class Mov : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "PlataformaPulo")
+        if (this.isActiveAndEnabled)
         {
-            RB.AddForce(Vector3.up * Impulso_PlatPulo, ForceMode.VelocityChange);
-            Debug.Log("KARAAAAI VIADO");
+            if (collision.gameObject.tag == "PlataformaPulo")
+            {
+                RB.AddForce(Vector3.up * Impulso_PlatPulo, ForceMode.VelocityChange);
+                Debug.Log("KARAAAAI VIADO");
+            }
         }
     }
 
