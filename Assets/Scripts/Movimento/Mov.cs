@@ -8,6 +8,7 @@ public class Mov : MonoBehaviour {
     private bool Left, Up, Down, Right; // Direções 2D
     private bool StopLeft, StopUp, StopDown, StopRight; // Anti-Direções 2D
     public Rigidbody RB; // Rigidbody do Objeto
+    public Animator Player_Anim;
     [SerializeField] private float Force; //Força de aceleração
     [SerializeField] private float Max = 9f; // Velocidade Máxima
     [SerializeField] private float Impulso_PlatPulo;  // Impulso pra cima no player ao pisar na plat de pulo
@@ -17,6 +18,8 @@ public class Mov : MonoBehaviour {
     private float ContadorDeTempo;
     private float Tempo_Recuperação;
     private float ValorParaRecuperar;
+    private float InputV;
+    private float InputH;
     private bool InverterControlesAtivado = false;
     public bool Grounded;  // Guarda a informação de se o player está no chão ou não
     private bool Congelado;
@@ -80,6 +83,12 @@ public class Mov : MonoBehaviour {
         {
             ActivateJump = true;
         }
+
+        // ANIMAÇÃO DO PLAYER
+        InputH = Input.GetAxis("Horizontal");
+        InputV = Input.GetAxis("Vertical");
+        Player_Anim.SetFloat("InputH", InputH);
+        Player_Anim.SetFloat("InputV", InputV);
 
     }
     private void FixedUpdate()
