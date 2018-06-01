@@ -11,7 +11,7 @@ public class Sopro : MonoBehaviour {
     private GameObject Boss; // Objeto do boss na cena
     private GameObject Grounder; //Objeto do chão
     private Vector3 direction; // Vetor direção da força
-    private float ForceMultiplier = 0.1f; // Multiplicador da força
+    private float ForceMultiplier = 50; // Multiplicador da força
     private float DuracaoSopro = 2f;
     private float TempoAteSopro = 8f;
     private bool SoproAtivado = false; // Luciano esteve aqui muahahaha
@@ -28,7 +28,7 @@ public class Sopro : MonoBehaviour {
 
         direction = Boss.transform.position - Player.transform.position; //Define o ponto inicial como a posição do jogador e o final como a posição do boss
         direction = direction.normalized; //normaliza o vetor
-
+        Debug.Log(direction);
         if (Player.GetComponent<Mov>().Grounded) //Enquanto o player não sai do chão, inicia o timer 1
             TimerGround += Time.deltaTime;
         else
@@ -37,9 +37,11 @@ public class Sopro : MonoBehaviour {
                 TimerGround = 0f;
         }
 
+        Debug.Log(TimerGround);
             
         if (TimerGround > TempoAteSopro && TimerGround < TempoAteSopro + DuracaoSopro)
         {
+            Debug.Log("Ativou request force");
             RequestForce = true;
             TimerForce += Time.deltaTime;
             SoproAtivado = true;
@@ -54,6 +56,10 @@ public class Sopro : MonoBehaviour {
             SoproAtivado = false;
         }
 
+    }
+
+    private void FixedUpdate()
+    {
         if (RequestForce) // Enquanto o timer estiver entre 5 e 10 segundos
         {
 
