@@ -4,7 +4,7 @@ using UnityEngine;
 public class TiroPlayer : MonoBehaviour {
     public AudioSource SomTiro;
     public Camera mira;
-    public float alcance =9200000000000000f;
+    public float alcance = 9200000000000000f;
     public float cooldownTime = 0.5f;
     public float laserTime = 0.5f;
 
@@ -18,9 +18,6 @@ public class TiroPlayer : MonoBehaviour {
     private float lastShotTime = 0f;
     private float timeSinceShot;
     private bool justShot = false;
-
-    private Laser laserScript; // DEBUGAR
-    public bool useLaserScript = false;
 
     private void Start()
     {
@@ -36,34 +33,21 @@ public class TiroPlayer : MonoBehaviour {
         shotLight = gameObject.GetComponentInChildren<Light>();
         laserLine.enabled = false;
         shotLight.enabled = false;
-
-        /////////////////////
-        //laserScript = gameObject.GetComponentInChildren<Laser>();
-        laserScript = pontaDaArma.GetComponent<Laser>();
-        if (laserScript == null)
-            Debug.Log("LASER SCRIPT MISSING");
-        else
-            Debug.Log("LASER SCRIPT FOUND");
-        /////////////////////
     }
 
     void FixedUpdate () {
 
         timeSinceShot = Time.time - lastShotTime;
 
-        if (!useLaserScript)
+        if (justShot)
         {
-            if (justShot)
+            RenderLaser();
+
+            if (timeSinceShot >= laserTime)
             {
-                RenderLaser();
-
-                if (timeSinceShot >= laserTime)
-                {
-                    laserLine.enabled = false;
-                    shotLight.enabled = false;
-                    justShot = false;
-                }
-
+                laserLine.enabled = false;
+                shotLight.enabled = false;
+                justShot = false;
             }
         }
 
@@ -74,33 +58,10 @@ public class TiroPlayer : MonoBehaviour {
             
             lastShotTime = Time.time;
 
-            if (!useLaserScript)
-            {
-                justShot = true;
-                laserLine.enabled = true;
-                shotLight.enabled = true;
-            }
-            ///////////////////////////
-            else
-            {
-                Ray ray = new Ray(pontaDaArma.transform.position, pontaDaArma.transform.forward);
-                RaycastHit Hit;
-                Vector3 target;
-
-                if (Physics.Raycast(ray, out Hit, alcance))
-                    target = Hit.point;
-                else
-                    target = ray.GetPoint(alcance);
-
-                laserScript.ShootLaser(pontaDaArma.transform.position, target);
-            }
-            
-            ///////////////////////////
-
-            
+            justShot = true;
+            laserLine.enabled = true;
+            shotLight.enabled = true;
         }
-
-        
 	}
 
     void RenderLaser()
@@ -114,8 +75,6 @@ public class TiroPlayer : MonoBehaviour {
             laserLine.SetPosition(1, Hit.point);
         else
             laserLine.SetPosition(1, ray.GetPoint(100));
-
-        //Line.SetPosition(1, ray.GetPoint(100));
     }
 
     void Atira()
