@@ -64,6 +64,6 @@ public class InverterControles : MonoBehaviour
 
     public void setTimerInvert(float timer)
     {
-        this.timerForInversion = timer;
+        this.timeLeftUntilInversion = timer;
     }
 }

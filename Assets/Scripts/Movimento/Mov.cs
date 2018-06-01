@@ -7,7 +7,7 @@ public class Mov : MonoBehaviour {
     // Use this for initialization
     private bool Left, Up, Down, Right; // Direções 2D
     private bool StopLeft, StopUp, StopDown, StopRight; // Anti-Direções 2D
-    public Rigidbody RB; // Rigidbody do Objeto
+    private Rigidbody RB; // Rigidbody do Objeto
     public Animator Player_Anim;
     [SerializeField] private float Force; //Força de aceleração
     [SerializeField] private float Max = 9f; // Velocidade Máxima
