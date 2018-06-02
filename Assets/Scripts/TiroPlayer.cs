@@ -11,9 +11,9 @@ public class TiroPlayer : MonoBehaviour
     public float laserTime    = 0.5f;
 
     private GameObject boss;
-    private GameObject mascaraAzul;
-    private GameObject mascaraVerde;
-    private GameObject mascaraVermelho;
+    private GameObject mascaraFogo;
+    private GameObject mascaraTempestade;
+    private GameObject mascaraAgua;
     private GameObject pontaDaArma;
     private LineRenderer laserLine;                      
     private Light shotLight;
@@ -26,9 +26,9 @@ public class TiroPlayer : MonoBehaviour
     private void Start()
     {
         boss            = GameObject.FindGameObjectWithTag("Boss");
-        mascaraAzul     = GameObject.FindGameObjectWithTag("Mascara1");
-        mascaraVerde    = GameObject.FindGameObjectWithTag("Mascara2");
-        mascaraVermelho = GameObject.FindGameObjectWithTag("Mascara3");
+        mascaraFogo     = GameObject.FindGameObjectWithTag("Mascara1");
+        mascaraTempestade    = GameObject.FindGameObjectWithTag("Mascara2");
+        mascaraAgua = GameObject.FindGameObjectWithTag("Mascara3");
 
         pontaDaArma       = GameObject.Find("Ponta da Arma");
         laserLine         = GameObject.Find("Laser").GetComponent<LineRenderer>();
@@ -87,23 +87,23 @@ public class TiroPlayer : MonoBehaviour
 
          if (Physics.Raycast(mira.transform.position, mira.transform.forward, out bang, alcance))
          {
-            if(bang.transform.name == "ThunderBlue" || bang.transform.name == "Boss")
+            if(bang.transform.gameObject.name == "Fire" || bang.transform.gameObject.tag == "Mascara1")
             {
-                if(mascaraAzul != null)
-                mascaraAzul.GetComponent<Vida_Mascara_1>().setVida(2f);
+                if(mascaraFogo != null)
+                mascaraFogo.GetComponent<Vida_Mascara_1>().setVida(2f);
             }
 
-			if(bang.transform.name == "ThunderGreen" || bang.transform.name == "Boss")
+			if(bang.transform.gameObject.name == "ThunderMask" || bang.transform.gameObject.tag == "Mascara2")
             {
-                if(mascaraVerde != null)
-				mascaraVerde.GetComponent<Vida_Mascara_2>().setVida(2f);
+                if(mascaraTempestade != null)
+				mascaraTempestade.GetComponent<Vida_Mascara_2>().setVida(2f);
 
             }
 
-			if(bang.transform.name == "ThunderRed" || bang.transform.name == "Boss")
+			if(bang.transform.name == "rain" || bang.transform.name == "Mascara3")
             {
-                if(mascaraVermelho != null)
-				mascaraVermelho.GetComponent<Vida_Mascara_3>().setVida(2f);
+                if(mascaraAgua != null)
+				mascaraAgua.GetComponent<Vida_Mascara_3>().setVida(2f);
             }
             /*GameObject tiro = (GameObject)Instantiate(Resources.Load("TiroPlayer"), transform.position, Quaternion.identity);
             tiro.transform.rotation = mira.transform.rotation;

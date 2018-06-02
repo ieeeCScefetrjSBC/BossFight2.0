@@ -50,7 +50,8 @@ public class Comp_Helice : MonoBehaviour {
                         helice[i].GetComponent<HeliceDeFogo>().enabled = true;
                     }
                 }
-                Instanciou_Padrão1 = true;
+                Comp_Call.setTempo(30);
+                Instanciou_Padrão1 = false;
                 break;
             case 2:
                 if (!Instanciou_Padrão2)
@@ -69,7 +70,7 @@ public class Comp_Helice : MonoBehaviour {
                         helice[i].GetComponent<HeliceDeGelo>().enabled = true;
                     }
                 }
-                Instanciou_Padrão2 = true;
+                Instanciou_Padrão2 = false;
                 break;
         }
     }

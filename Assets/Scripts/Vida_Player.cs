@@ -14,8 +14,8 @@ public class Vida_Player : MonoBehaviour
 
     private float vidaMax = 1000;           // Vida Máxima do Player
     private float vida = 1000;              // Vida do Player
-    private float regenCooldown = 3f;       // Tempo para começar a se regenerar;
-    private float regenFactor = 100f;       // Fator de regeneração
+   // private float regenCooldown = 3f;       // Tempo para começar a se regenerar;
+   // private float regenFactor = 100f;       // Fator de regeneração
 
     private void Start()
     {
@@ -49,7 +49,7 @@ public class Vida_Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (regenCooldown <= 0)                        // Caso tenha passado 3 segundos em receber dano, começa a regenerar
+        /*if (regenCooldown <= 0)                        // Caso tenha passado 3 segundos em receber dano, começa a regenerar
         {
             vida += regenFactor * Time.deltaTime;      // Recupera 100 de HP por segundo
             if (vida > vidaMax)                       // Caso o regen tenha ultrapassado a vida máxima
@@ -58,15 +58,14 @@ public class Vida_Player : MonoBehaviour
         else
         {
             regenCooldown -= Time.deltaTime;           // Decai contador para começar a regenerar
-        }
-
+        }*/
     }
 
     public void danoPlayer(float dano)      // Função que tira vida (chamada em outros scripts)
     {
         vida -= dano;
         DanoPlayer.Play();
-        regenCooldown = 3f;                // Reseta contador para regenerar
+        //regenCooldown = 3f;                // Reseta contador para regenerar
     }
 
     public float getvida()                  //Getter da vida pra ser usado em outros scripts
