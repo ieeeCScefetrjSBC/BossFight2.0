@@ -32,7 +32,6 @@ public class Comp_Helice : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(Instanciou_Padrão1);
         switch (Pattern_Helice)
         {
             case 1:     // Padrão para máscara de FOGO!!!!
