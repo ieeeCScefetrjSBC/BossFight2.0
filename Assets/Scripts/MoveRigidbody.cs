@@ -7,6 +7,7 @@ public class MoveRigidbody : MonoBehaviour
     // --- PUBLIC VARIABLES ---
 
     public AudioSource moveAudio;                   // Player's walking sound
+   
     //public Animator playerAnim;
 
     public float validJumpTime        = 0.1f;       // Time during which the player will jump when he touches the ground after a jump command has been issued;
@@ -26,8 +27,9 @@ public class MoveRigidbody : MonoBehaviour
 
     private Rigidbody rb;                           // Player's Rigidbody component;
     private CapsuleCollider capsule;                // Player's Capsule Collider component;
+    private Animator playerAnimator;
     private Vector3 moveInput = Vector3.zero;       // Direction of player input;
-
+    
     private float targetSpeed          = 9f;        // Final speed which player will acquire after full acceleration;
     private float last_xzSpeedOnGround = 0f;        // Horizontal speed player had when he left the ground;
     private float timeJumped           = 0f;        // Time of simulation at which player jumped;
@@ -44,6 +46,7 @@ public class MoveRigidbody : MonoBehaviour
     {
         rb      = gameObject.GetComponent<Rigidbody>();
         capsule = gameObject.GetComponent<CapsuleCollider>();
+        playerAnimator = gameObject.GetComponent<Animator>();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -119,12 +122,21 @@ public class MoveRigidbody : MonoBehaviour
             moveInputMag = airMoveInputMag;
 
         // -- Calculating movement direction from player input --
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        moveInput = new Vector3(playerInput[0], 0f, playerInput[1]);
         moveInput = moveInput.normalized * moveInputMag;
         moveInput = transform.TransformDirection(moveInput);
 
         if (invertedControl)
             moveInput = (-1) * moveInput;
+
+        // -- Animation --
+        if (!isGrounded)
+            playerInput = Vector2.zero;
+
+        playerAnimator.SetFloat("InputH", playerInput[0]);
+        playerAnimator.SetFloat("InputV", playerInput[1]);
     }
 
     void FixedUpdate()
