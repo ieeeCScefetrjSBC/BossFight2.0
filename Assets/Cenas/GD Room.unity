@@ -24622,8 +24622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ba865e85675ed46b90736cc6892f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index_Mechanics: 00000000000000000000000000000000
-  Module: 01000000030000000200000003000000
+  Index_Mechanics: 01000000010000000100000001000000
+  Module: 01000000010000000100000001000000
 --- !u!114 &1024712191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24664,7 +24664,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  Timer_ActivateFogo: 0
+  Timer_ActivateFogo: 2
   Tempo_Fogo: 0
   Tempo_Tempst: 0
   Tempo_Agua: 0

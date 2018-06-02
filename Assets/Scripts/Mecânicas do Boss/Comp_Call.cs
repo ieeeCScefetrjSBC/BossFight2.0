@@ -10,7 +10,7 @@ public class Comp_Call : MonoBehaviour {
     private Tiro_Boss Tiro_Boss;// Script referente ao Tiro_Boss
 	private Comp_Helice Comp_Helice; // Script referente à Comp_Helice
     private delegate void myMechanics(int Pattern);//
-    private myMechanics[] Mechanics= new myMechanics[1];// Variável que guarda métodos
+    private myMechanics[] Mechanics= new myMechanics[2];// Variável que guarda métodos
     private int Contador;// Indica a posição da mecânica a ser ativada e qual padrão será usado
     public int[] Index_Mechanics;// Posição da mecânica no Array Mechanics
     public int[] Module;// Padrão da mecânica(Caso tenha apenas um padrão, colocar 0)
@@ -19,7 +19,7 @@ public class Comp_Call : MonoBehaviour {
         Tiro_Boss = this.gameObject.GetComponent<Tiro_Boss>();// Define quem é Tiro_Boss
 		Comp_Helice = this.gameObject.GetComponent<Comp_Helice>(); // Define quem é Comp_Helice
         Mechanics[0] = Call_Bomba;// Espaço 0 é a mecânica de bomba!
-       // Mechanics[1] = Call_Helice; // Espaço 1 é a mecânica de helice!
+        Mechanics[1] = Call_Helice; // Espaço 1 é a mecânica de helice!
     }
 	
 	// Update is called once per frame
@@ -29,7 +29,7 @@ public class Comp_Call : MonoBehaviour {
         {
             Mechanics[Index_Mechanics[Contador]](Module[Contador]);// Passa o padrão para a mecânica
             if(Contador+1 <= Index_Mechanics.Length)
-            Contador += 1;// Próxima mecânica e padrão
+                Contador += 1;// Próxima mecânica e padrão
             Debug.Log(Contador);
         }
         if(Tiro_Boss.getfireRate()>=1f)// Caso o rate de tiro seja maior ou igual a 1
