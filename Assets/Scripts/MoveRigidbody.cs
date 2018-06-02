@@ -17,25 +17,44 @@ public class MoveRigidbody : MonoBehaviour
     
     public float walkSpeed            = 9f;         // Walking speed after full acceleration;
     public float runSpeed             = 15f;        // Running speed after full acceleration;
-    public float jumpSpeed            = 13f;        // Initial vertical speed right after jumping;
+    public float jumpSpeed            = 16f;        // Initial vertical speed right after jumping;
     public float platformJumpSpeed    = 50f;        // Initial vertical speed right after being propelled by jump platform;
+    public float wallJumpForce        = 7f;
+    public float wallJumpAngle        = 30f;
 
     public float minMidairTargetSpeed = 9f;         // How fast player can get midair (horizontal speed) if he jumps while still;
     public float midairAccelFactor    = 1.10f;      // Percentual increase in horizontal speed allowed after jump;
     public float groundDeAccelFactor  = 11f;        // Base of the power by which speed will be decreased after no input is given while grounded;
+    public float groundCheckDistance  = 0.5f;
+    public float wallCheckDistance    = 1f;
+    public float wallOffset           = 1f;
+
+    public bool wallJumpActive = false;
     
     // --- PRIVATE VARIABLES ---
 
-    private Rigidbody rb;                           // Player's Rigidbody component;
-    private CapsuleCollider capsule;                // Player's Capsule Collider component;
-    private Animator playerAnimator;
+    private Rigidbody rb;                               // Player's Rigidbody component;
+    private CapsuleCollider capsule;                    // Player's Capsule Collider component;
+    private Animator playerAnimator;                    // Player's Animator component;
     //private HeliceDeGelo iceHelixScript;
 
-    private Vector3 moveInput = Vector3.zero;       // Direction of player input;
-    private float targetSpeed          = 9f;        // Final speed which player will acquire after full acceleration;
-    private float last_xzSpeedOnGround = 0f;        // Horizontal speed player had when he left the ground;
-    private float timeJumped           = 0f;        // Time of simulation at which player jumped;
-    
+    private Vector3 moveInput = Vector3.zero;           // Direction of player input;
+    Vector3 capsuleCenterPosition;
+    Vector3 topCapsulePosition;
+    Vector3 bottomCapsulePosition;
+
+    private float capsuleRadius;                        // Radius of the capsule;
+    private float cilinderHalfLenght;                   // Distance from the capsule's center to one of the capsule's half sphere's center;
+    private float capsuleHeightMultiplier = 1.00f;      // Capsule's height will be distorted when used in Physics.CapsuleCast()
+                                                        // in order to guarantee ground detection;
+    private float capsuleRadiusMultiplier = 0.95f;      // Capsule's radius will be extended when used in Physics.CapsuleCast()
+                                                        // in order to guarantee wall detection for wall jumps;
+
+    private float targetSpeed          = 9f;            // Final speed which player will acquire after full acceleration;
+    private float last_xzSpeedOnGround = 0f;            // Horizontal speed player had when he left the ground;
+    private float timeJumped           = 0f;            // Time of simulation at which player jumped;
+    private int   groundLayerMask      = 1 << 8;
+
     private string groundTag;                       // Tag of ground object touched;
 
     private bool isGrounded      = false;           // True when player is on ground;
@@ -54,6 +73,15 @@ public class MoveRigidbody : MonoBehaviour
         rb             = gameObject.GetComponent<Rigidbody>();
         capsule        = gameObject.GetComponent<CapsuleCollider>();
         playerAnimator = gameObject.GetComponent<Animator>();
+
+        // The following must not be changed later
+        capsuleRadius = capsule.radius;
+        cilinderHalfLenght = (capsule.height / 2) - capsule.radius;
+
+        // The following must be updated according to the player's position
+        capsuleCenterPosition = transform.position + capsule.center;
+        topCapsulePosition = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
+        bottomCapsulePosition = capsuleCenterPosition - Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
 
         freezeTimer = 0f;
         Cursor.lockState = CursorLockMode.Locked;
@@ -86,35 +114,25 @@ public class MoveRigidbody : MonoBehaviour
 
     private void CheckGrounded()
     {
-        int groundLayerMask      = 1 << 8;
-        float capsuleRadius      = capsule.radius;                          // Radius of the capsule;
-        float cilinderHalfLenght = (capsule.height / 2) - capsule.radius;   // Distance from the capsule's center to one of the capsule's half sphere's center;
-        float capsuleExtensionMultiplier = 1.01f;                           // Capsule's height will be extended when used in Physics.OverlapCapsule()
-                                                                            // in order to guarantee ground detection;
+        RaycastHit hit;
 
-        Vector3 capsuleCenterPosition = transform.position + capsule.center;
-        Vector3 topCapsulePosition    = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleExtensionMultiplier;
-        Vector3 bottomCapsulePosition = capsuleCenterPosition - Vector3.up * cilinderHalfLenght * capsuleExtensionMultiplier;
-
-        Collider[] collidersTouched = Physics.OverlapCapsule(topCapsulePosition, bottomCapsulePosition, capsuleRadius, groundLayerMask);
-        
-        if (collidersTouched.Length == 0)
+        if (Physics.CapsuleCast(topCapsulePosition, bottomCapsulePosition, capsuleRadius * capsuleRadiusMultiplier,
+                                Vector3.down, out hit, groundCheckDistance, groundLayerMask))
         {
-            isGrounded = false;
-            return;
-        }
-
-        foreach (Collider collider in collidersTouched)
-        {
-            groundTag = collider.gameObject.tag;
-
+            groundTag = hit.collider.tag;
             isGrounded = true;
-            break;
         }
+        else
+            isGrounded = false;
     }
 
     void Update()
     {
+        // -- Updating variables --
+        capsuleCenterPosition = transform.position + capsule.center;
+        topCapsulePosition = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
+        bottomCapsulePosition = capsuleCenterPosition - Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
+
         // -- Evaluating if player should jump --
         float timeSinceJump = Time.time - timeJumped;
         CheckGrounded();
@@ -168,7 +186,7 @@ public class MoveRigidbody : MonoBehaviour
         playerAnimator.SetFloat("InputH", playerInput[0]);
         playerAnimator.SetFloat("InputV", playerInput[1]);
 
-        // -- Freeze Mechanics --
+        // -- Set freeze mechanics --
         if (isFrozen)
         {
             freezeTimer += Time.deltaTime;
@@ -226,6 +244,62 @@ public class MoveRigidbody : MonoBehaviour
 
             rb.velocity = new Vector3(rb.velocity.x, ySpeed, rb.velocity.z);
             hasJumped = false;
+        }
+
+        // -- Wall jumping --
+        RaycastHit hit;
+
+        if (wallJumpActive && moveInput != Vector3.zero && !isGrounded)
+        {
+            if (Physics.CapsuleCast(topCapsulePosition, bottomCapsulePosition, capsuleRadius * capsuleRadiusMultiplier,
+                                    moveInput, out hit, wallCheckDistance))
+            {
+                Debug.Log("Wall");
+
+                Vector3 wallNormal = hit.normal;
+                //Vector3 wallHitPoint = hit.point;
+
+                if (hasJumped)
+                {
+                    float angleInRad = wallJumpAngle * Mathf.Deg2Rad;
+                    Vector3 wallJumpDirection = wallNormal * Mathf.Cos(angleInRad) + Vector3.up * Mathf.Sin(angleInRad);
+
+                    Debug.Log("WALLLLLLLLLLLLLLL");
+                    //Debug.Log("wall speed: " + wallJumpVelocity.magnitude);
+                    //Debug.Log("wall direction: " + wallJumpVelocity.normalized);
+
+                    rb.AddForce(wallJumpDirection * wallJumpForce, ForceMode.VelocityChange);
+                }
+                //else
+                //    rb.velocity = Vector3.ProjectOnPlane(xzVelocity, wallNormal) + new Vector3(0f, rb.velocity.y, 0f);
+                else
+                {
+                    Vector3 nextPosition = transform.position + rb.velocity * Time.deltaTime;
+                    float dist2wall = (transform.position - hit.point).magnitude;
+                    float nextDist2wall = (nextPosition - hit.point).magnitude;
+                    Debug.Log("STUCK");
+                    Debug.Log("dist: " + nextDist2wall);
+
+                    if (dist2wall < wallOffset * 0.9f)
+                    {
+                        Debug.Log("STUCK1");
+                        Debug.Log("hit.point + wallNormal * wallOffset * 0.1f: " + (hit.point + wallNormal * wallOffset * 0.1f));
+
+                        transform.position = transform.position + wallNormal * wallOffset * 0.1f;
+                    }
+                    if (nextDist2wall < wallOffset)
+                    {
+                        Debug.Log("STUCK2");
+                        //transform.position = hit.point + wallNormal * wallOffset;
+                        rb.AddForce(-moveInput, ForceMode.Acceleration);
+                        //rb.velocity = Vector3.ProjectOnPlane(xzVelocity, wallNormal)
+                        //              + new Vector3(0f, rb.velocity.y, 0f);
+                                      //-Vector3.Project(xzVelocity, wallNormal);
+                    }
+                }
+                //rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+                //rb.velocity = Vector3.ProjectOnPlane(xzVelocity, wallNormal) + new Vector3(0f, rb.velocity.y, 0f);
+            }
         }
     }
 }

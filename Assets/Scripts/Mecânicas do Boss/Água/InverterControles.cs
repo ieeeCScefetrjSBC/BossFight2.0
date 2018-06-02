@@ -45,29 +45,32 @@ public class InverterControles : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        string objectName = collision.gameObject.name;
-
-        if (objectName == "plataforma N (4)" || objectName == "plataforma S (4)"
-         || objectName == "plataforma O (4)" || objectName == "plataforma L (4)"
-         || objectName == "ponte NO"         || objectName == "ponte NL"
-         || objectName == "ponte SO"         || objectName == "ponte SL"
-         || objectName == "Parede 1"         || objectName == "Parede 2"
-         || objectName == "Parede 3"         || objectName == "Parede 4")
+        if (this.isActiveAndEnabled)
         {
-            if (!timerOn)
+            string objectName = collision.gameObject.name;
+
+            if (objectName == "plataforma N (4)" || objectName == "plataforma S (4)"
+             || objectName == "plataforma O (4)" || objectName == "plataforma L (4)"
+             || objectName == "ponte NO" || objectName == "ponte NL"
+             || objectName == "ponte SO" || objectName == "ponte SL"
+             || objectName == "Parede 1" || objectName == "Parede 2"
+             || objectName == "Parede 3" || objectName == "Parede 4")
             {
-                timeLeftUntilInversion = totalTimeUntilInversion;
-                timerOn = true;
+                if (!timerOn)
+                {
+                    timeLeftUntilInversion = totalTimeUntilInversion;
+                    timerOn = true;
 
-                Debug.Log("CONTAGEM PARA INVERSÃO INICIADA");
+                    Debug.Log("CONTAGEM PARA INVERSÃO INICIADA");
+                }
             }
-        }
-        else
-        {
-            timerOn = false;
-            invertedControlOn = false;
+            else
+            {
+                timerOn = false;
+                invertedControlOn = false;
 
-            Debug.Log("INVERSÃO DESATIVADA");
+                Debug.Log("INVERSÃO DESATIVADA");
+            }
         }
     }
 
