@@ -50,7 +50,7 @@ public class MoveRigidbody : MonoBehaviour
 
     public void SetInvertedControl (bool invertedControlOn)
     {
-
+        invertedControl = invertedControlOn;
     }
 
     private void CheckGrounded()
@@ -122,6 +122,9 @@ public class MoveRigidbody : MonoBehaviour
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         moveInput = moveInput.normalized * moveInputMag;
         moveInput = transform.TransformDirection(moveInput);
+
+        if (invertedControl)
+            moveInput = (-1) * moveInput;
     }
 
     void FixedUpdate()
@@ -169,6 +172,7 @@ public class MoveRigidbody : MonoBehaviour
                 ySpeed = jumpSpeed;
 
             rb.velocity = new Vector3(rb.velocity.x, ySpeed, rb.velocity.z);
+            //rb.velocity += new Vector3(0f, ySpeed, 0f);
             hasJumped = false;
         }
     }
