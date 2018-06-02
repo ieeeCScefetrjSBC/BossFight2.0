@@ -20,6 +20,8 @@ public class Comp_Helice : MonoBehaviour {
 	private int Pattern_Helice = 0 ;  // Padrão de aparecimento, sendo 0 = nada acontece
     private bool Instanciou_Padrão1 = false;
     private bool Instanciou_Padrão2 = false;
+    private bool AtivouScriptFogo = false;
+    private bool AtivouScriptGelo = false;
 
     private Comp_Call Comp_Call;
 
@@ -43,12 +45,13 @@ public class Comp_Helice : MonoBehaviour {
                 }
                 if (Timer_ActivateFogo >= 0)
                     Timer_ActivateFogo -= Time.deltaTime;
-                else if(Timer_ActivateFogo < 0 && !Instanciou_Padrão1)
+                else if(Timer_ActivateFogo < 0 && !AtivouScriptFogo)
                 {
                     for (int i = 0; i<HelicesFogo_offset.Length; i++)
                     {
                         helice[i].GetComponent<HeliceDeFogo>().enabled = true;
                     }
+                    AtivouScriptFogo = true;
                 }
                 Instanciou_Padrão1 = true;
                 Comp_Call.setTempo(30);
@@ -63,11 +66,12 @@ public class Comp_Helice : MonoBehaviour {
                 }
                 if ( Timer_ActivateGelo>= 0)
                      Timer_ActivateGelo -= Time.deltaTime;
-                else
+                else if(Timer_ActivateGelo < 0 && !AtivouScriptGelo)
                 {
                     for (int i = 0; i < HelicesGelo_offset.Length; i++)
                     {
                         helice[i].GetComponent<HeliceDeGelo>().enabled = true;
+                        AtivouScriptGelo = true;
                     }
                 }
                 Instanciou_Padrão2 = true;
