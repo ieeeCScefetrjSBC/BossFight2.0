@@ -15,6 +15,7 @@ public class HeliceDeGelo : MonoBehaviour
     [SerializeField] private float Intens_CongelamentoTotal;  // Intensidade do congelamento total
     [SerializeField] private float DistanciaDeAtivação; // Distância em que o sopro da hélice é ativado
     [SerializeField] private float Dano_HeliceDeGelo;   // Dano causado pela helice de gelo
+    [SerializeField] private float Tempo_de_Vida;       // Tempo para auto destruição
     public float TempoCongelado;   // Tempo que o player permanece congelado
     private bool Longe = true;
     private bool Encostou = false;
@@ -34,6 +35,16 @@ public class HeliceDeGelo : MonoBehaviour
 
     void Update()
     {
+        // TEMPO PARA AUTO DESTUIÇÃO !!!
+        if (Tempo_de_Vida > 0)
+        {
+            Tempo_de_Vida -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         // MOVIMENTO DA HELICE!!!
         Mov_Direção = new Vector3(Player.transform.position.x, Player.transform.position.y + 1.5f, Player.transform.position.z) - transform.position;  //Direção de movimento da helice
         transform.Rotate(Vector3.up * Time.deltaTime * Vel_Rot, Space.World);   // rotação em y

@@ -9,6 +9,7 @@ public class HeliceDeFogo : MonoBehaviour {
     [SerializeField] private float Aceleração;
     [SerializeField] private float Vel_Max;
     [SerializeField] private float Impulso_Explosão;
+    [SerializeField] private float Tempo_de_Vida;   // Tempo para auto destruição
     private bool Longe = true;
     private bool Encostou = false;
     private bool VelMax_Atingida = false;
@@ -22,6 +23,14 @@ public class HeliceDeFogo : MonoBehaviour {
 
     void Update()
     {
+        if(Tempo_de_Vida > 0)
+        {
+            Tempo_de_Vida -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         transform.Rotate(Vector3.up * Time.deltaTime * Vel_Rot, Space.World);   // rotação em y
         Mov_Direção = new Vector3(Player.transform.position.x, Player.transform.position.y + 1.5f, Player.transform.position.z) - transform.position;
         if ((Player.transform.position - transform.position).magnitude <= 3.5f)

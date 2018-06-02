@@ -13,6 +13,7 @@ public class HeliceDeVento : MonoBehaviour {
     [SerializeField] private float ForçaDoSopro; // Força do Sopro
     [SerializeField] private float DistanciaDeAtivação; // Distância em que o sopro da hélice é ativado.
     [SerializeField] private float Impulso_Tornado;     // Força com que o player é jogado ao alto
+    [SerializeField] private float Tempo_de_Vida;       //Tempo para auto destruição
     private bool Longe = true;
     private bool Encostou = false;
     private bool Ativar_Sopro = false;      // Verifica se pode ou não ativar o sopro da helice de vento
@@ -27,6 +28,16 @@ public class HeliceDeVento : MonoBehaviour {
 
     void Update()
     {
+        // TEMPO PARA AUTO DESTUIÇÃO !!!
+        if (Tempo_de_Vida > 0)
+        {
+            Tempo_de_Vida -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         // MOVIMENTO DA HELICE!!!
         Mov_Direção = new Vector3(Player.transform.position.x, Player.transform.position.y + 1.5f, Player.transform.position.z) - transform.position;  //Direção de movimento da helice
         transform.Rotate(Vector3.up * Time.deltaTime * Vel_Rot, Space.World);   // rotação em y
