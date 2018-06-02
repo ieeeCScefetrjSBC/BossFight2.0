@@ -32,7 +32,7 @@ public class Comp_Helice : MonoBehaviour {
         {
             case 1:     // Padrão para máscara de FOGO!!!!
                 if (!Instanciou_Padrão1)
-                    for (int i = 0; helice[i] != null; i++)
+                    for (int i = 0; i<HelicesFogo_offset.Length; i++)
                     {
                         helice[i] = (GameObject)Instantiate(Helice_Fogo, this.gameObject.transform.position + HelicesFogo_offset[i], Quaternion.identity, this.gameObject.transform);
                     }
@@ -40,7 +40,7 @@ public class Comp_Helice : MonoBehaviour {
                     Timer_ActivateFogo -= Time.deltaTime;
                 else
                 {
-                    for (int i = 0; helice[i] != null; i++)
+                    for (int i = 0; i<HelicesFogo_offset.Length; i++)
                     {
                         helice[i].GetComponent<HeliceDeFogo>().enabled = true;
                     }
