@@ -7,20 +7,28 @@ public class Sopro : MonoBehaviour {
     private float TimerGround=0f; // Timer que o player não sai do chão
     private float TimerForce = 0f; // Tempo que a força é aplicada
     private bool RequestForce = false;
+
     private GameObject Player; // Objeto do jogador na cena
     private GameObject Boss; // Objeto do boss na cena
     private GameObject Grounder; //Objeto do chão
     private Vector3 direction; // Vetor direção da força
+
     private float ForceMultiplier = 50; // Multiplicador da força
     private float DuracaoSopro = 2f;
     private float TempoAteSopro = 8f;
     private bool SoproAtivado = false; // Luciano esteve aqui muahahaha
+
+    private int Pattern_Sopro = 0;
+    private Comp_Call Comp_Call;// Script referente ao Comp_Call
 
     void Start ()
     {
         Player = GameObject.FindGameObjectWithTag("Player"); // Encontra o player via tag
         Boss = GameObject.FindGameObjectWithTag("Boss"); // Encontra o Boss via tag
         Grounder = GameObject.FindWithTag("Grounder"); //Identifica o objeto Grounder
+
+        Comp_Call=this.gameObject.GetComponent<Comp_Call>();
+
     }
 
     void Update()
@@ -62,10 +70,24 @@ public class Sopro : MonoBehaviour {
     {
         if (RequestForce) // Enquanto o timer estiver entre 5 e 10 segundos
         {
-
-            Player.GetComponent<Rigidbody>().AddForce(direction.normalized * ForceMultiplier, ForceMode.Force);
-            Debug.Log("sopro");
+            switch (Pattern_Sopro)
+            {
+                case 1:
+                    Player.GetComponent<Rigidbody>().AddForce(direction.normalized * ForceMultiplier, ForceMode.Force);
+                    break;
+                case 2:
+                    Player.GetComponent<Rigidbody>().AddForce(-direction.normalized * ForceMultiplier, ForceMode.Force);
+                    break;
+            }
         }
+    }
+
+    public int Call (int Comando)
+    {
+        Pattern_Sopro = Comando; //Define qual será o padrao do sopro
+        Comp_Call.setTempo(30f); //Define o tempo até a próxima mecanica
+
+        return Pattern_Sopro;
     }
 
 }
