@@ -11,8 +11,9 @@ public class MoveRigidbody : MonoBehaviour
     //public Animator playerAnim;
 
     public float validJumpTime        = 0.1f;       // Time during which the player will jump when he touches the ground after a jump command has been issued;
-    public float groundMoveInputMag   = 2f;         // How fast the player's speed will change when he is moved on the ground;
-    public float airMoveInputMag      = 50f;        // How fast the player's speed will change when he is moved midair;
+    public float velocityInputMag     = 2f;         // How fast the player's speed will change when he is moved on the ground;
+    public float forceInputMag        = 50f;        // How fast the player's speed will change when he is moved midair;
+    public float frozenForceInputMag  = 100f;       // DEBUG
     
     public float walkSpeed            = 9f;         // Walking speed after full acceleration;
     public float runSpeed             = 15f;        // Running speed after full acceleration;
@@ -28,8 +29,9 @@ public class MoveRigidbody : MonoBehaviour
     private Rigidbody rb;                           // Player's Rigidbody component;
     private CapsuleCollider capsule;                // Player's Capsule Collider component;
     private Animator playerAnimator;
+    //private HeliceDeGelo iceHelixScript;
+
     private Vector3 moveInput = Vector3.zero;       // Direction of player input;
-    
     private float targetSpeed          = 9f;        // Final speed which player will acquire after full acceleration;
     private float last_xzSpeedOnGround = 0f;        // Horizontal speed player had when he left the ground;
     private float timeJumped           = 0f;        // Time of simulation at which player jumped;
@@ -42,18 +44,44 @@ public class MoveRigidbody : MonoBehaviour
     private bool hasJumped       = false;           // True when a jump command was issued less than validJumpTime secs ago;
     private bool invertedControl = false;           // True when player movement should be inverted;
     
+    private float freezeTimer = 0f;
+    private float freezeRecoveryTime = 5f;
+    private float forceRecoveryValue = 5f;
+    private bool  isFrozen = false;
+
     void Start()
     {
-        rb      = gameObject.GetComponent<Rigidbody>();
-        capsule = gameObject.GetComponent<CapsuleCollider>();
+        rb             = gameObject.GetComponent<Rigidbody>();
+        capsule        = gameObject.GetComponent<CapsuleCollider>();
         playerAnimator = gameObject.GetComponent<Animator>();
 
+        freezeTimer = 0f;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void SetInvertedControl (bool invertedControlOn)
+    public void SetInvertedControl(bool invertedControlOn)
     {
-        invertedControl = invertedControlOn;
+        this.invertedControl = invertedControlOn;
+    }
+
+    public void setForce_Congelamento(float force)
+    {
+        this.frozenForceInputMag -= force;
+    }
+
+    public void setBool_Congelado(bool frozen)
+    {
+        this.isFrozen = frozen;
+    }
+
+    public void setTempo_Recuperacao(float time)
+    {
+        this.freezeRecoveryTime = time; 
+    }
+
+    public void setValorParaRecuperar(float value)
+    {
+        this.forceRecoveryValue = value;
     }
 
     private void CheckGrounded()
@@ -116,10 +144,12 @@ public class MoveRigidbody : MonoBehaviour
         // -- Checking if ground or air control --
         float moveInputMag;
 
-        if (isGrounded)
-            moveInputMag = groundMoveInputMag;
+        if (isFrozen) // DEBUG
+            moveInputMag = frozenForceInputMag;
+        else if (isGrounded)
+            moveInputMag = velocityInputMag;
         else
-            moveInputMag = airMoveInputMag;
+            moveInputMag = forceInputMag;
 
         // -- Calculating movement direction from player input --
         Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -137,6 +167,17 @@ public class MoveRigidbody : MonoBehaviour
 
         playerAnimator.SetFloat("InputH", playerInput[0]);
         playerAnimator.SetFloat("InputV", playerInput[1]);
+
+        // -- Freeze Mechanics --
+        if (isFrozen)
+        {
+            freezeTimer += Time.deltaTime;
+            if (freezeTimer >= freezeRecoveryTime)
+            {
+                frozenForceInputMag += forceRecoveryValue;
+                isFrozen = false;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -184,7 +225,6 @@ public class MoveRigidbody : MonoBehaviour
                 ySpeed = jumpSpeed;
 
             rb.velocity = new Vector3(rb.velocity.x, ySpeed, rb.velocity.z);
-            //rb.velocity += new Vector3(0f, ySpeed, 0f);
             hasJumped = false;
         }
     }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -93,7 +93,7 @@ public class HeliceDeGelo : MonoBehaviour
         if(Alterou_Total == true)
         {
             Player.GetComponent<Mov>().setBool_Congelado(true);
-            Player.GetComponent<Mov>().setTempo_Recuperação(TempoCongelado);
+            Player.GetComponent<Mov>().setTempo_Recuperacao(TempoCongelado);
             Player.GetComponent<Mov>().setValorParaRecuperar(Intens_CongelamentoTotal);
         }
     }

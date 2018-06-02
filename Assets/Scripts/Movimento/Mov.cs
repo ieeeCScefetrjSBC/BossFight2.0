@@ -196,7 +196,7 @@ public class Mov : MonoBehaviour {
         this.Congelado = Congelado;
     }
 
-    public void setTempo_Recuperação(float tempo_Recuperação)
+    public void setTempo_Recuperacao(float tempo_Recuperação)
     {
         this.Tempo_Recuperação = tempo_Recuperação;
     }
