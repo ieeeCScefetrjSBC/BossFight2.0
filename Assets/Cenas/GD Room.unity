@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -53498,7 +53498,7 @@ MonoBehaviour:
   DanoPlayer: {fileID: 1740260955}
   Slider: {fileID: 1253939711}
   flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: 0.278}
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   imagemDano: {fileID: 1021842970}
 --- !u!82 &1740260960
 AudioSource:
