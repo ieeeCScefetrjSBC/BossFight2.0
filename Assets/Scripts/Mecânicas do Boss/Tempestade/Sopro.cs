@@ -64,6 +64,7 @@ public class Sopro : MonoBehaviour {
         {
 
             Player.GetComponent<Rigidbody>().AddForce(direction.normalized * ForceMultiplier, ForceMode.Force);
+            Debug.Log("sopro");
             //Player.GetComponent<Mov>().setExtra_Z(-ForceMultiplier);
         }
     }
