@@ -28,10 +28,10 @@ public class InGameMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
-
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             camMoveScript.enabled    = false;
             tiroPlayerScript.enabled = false;
-
             inGameMenu.enabled = true;
             mira.enabled       = false;
         }
