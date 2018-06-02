@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sopro : MonoBehaviour {
 
     private float TimerGround=0f; // Timer que o player não sai do chão
-    //private float TimerAir = 0f; //Timer que o Player está no ar
+    private float TimerAir = 0f; //Timer que o Player está no ar
     private float TimerForce = 0f; // Tempo que a força é aplicada
     private bool RequestForce = false;
 
@@ -48,12 +48,16 @@ public class Sopro : MonoBehaviour {
 
         direction = Boss.transform.position - Player.transform.position; //Define o ponto inicial como a posição do jogador e o final como a posição do boss
         direction = direction.normalized; //normaliza o vetor
-        if (Player.GetComponent<Mov>().Grounded) //Enquanto o player não sai do chão, inicia o timer 1
+        if (Player.GetComponent<Mov>().Grounded || TimerAir < 0.5f) //Enquanto o player não sai do chão, inicia o timer 1
         {
             TimerGround += Time.deltaTime;
+            TimerAir = 0;
         }       
         else
         {
+            TimerAir += Time.deltaTime;
+            Debug.Log(TimerAir);
+
             if (!SoproAtivado)
                 TimerGround = 0f;
             else

@@ -22,6 +22,7 @@ TagManager:
   - Slider
   - Pull
   - Push
+  - Tela_Vitoria
   layers:
   - Default
   - TransparentFX
