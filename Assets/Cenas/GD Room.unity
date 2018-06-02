@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -831,7 +831,8 @@ MonoBehaviour:
   Vel_Rot: 2000
   "For\xE7aDoSopro": 50
   "DistanciaDeAtiva\xE7\xE3o": 15
-  Impulso_Tornado: 30
+  Impulso_Tornado: 20
+  Tempo_de_Vida: 10
 --- !u!4 &80664004
 Transform:
   m_ObjectHideFlags: 0
@@ -12892,6 +12893,7 @@ MonoBehaviour:
   "Acelera\xE7\xE3o": 3
   Vel_Max: 6
   "Impulso_Explos\xE3o": 15
+  Tempo_de_Vida: 10
 --- !u!4 &436150082
 Transform:
   m_ObjectHideFlags: 0
@@ -24661,13 +24663,13 @@ MonoBehaviour:
   Helice_Tempestade: {fileID: 80664002}
   Helice_Gelo: {fileID: 1915282346}
   HelicesFogo_offset:
-  - {x: 0, y: 10, z: 4}
-  - {x: 0, y: 10, z: -4}
-  - {x: 0, y: 10, z: -4}
+  - {x: 0, y: 10, z: 10}
+  - {x: 0, y: 10, z: -10}
+  - {x: -10, y: 10, z: 0}
   HelicesGelo_offset:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 10, z: 10}
+  - {x: 0, y: 10, z: -10}
+  - {x: -10, y: 10, z: 0}
   Timer_ActivateFogo: 2
   Timer_ActivateGelo: 2
   Tempo_Fogo: 1
@@ -54590,6 +54592,7 @@ MonoBehaviour:
   Intens_CongelamentoTotal: 100
   "DistanciaDeAtiva\xE7\xE3o": 15
   Dano_HeliceDeGelo: 100
+  Tempo_de_Vida: 10
   TempoCongelado: 1
 --- !u!54 &1915282348
 Rigidbody:
