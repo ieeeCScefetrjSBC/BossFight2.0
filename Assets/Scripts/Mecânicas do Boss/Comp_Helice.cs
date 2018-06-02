@@ -43,7 +43,7 @@ public class Comp_Helice : MonoBehaviour {
                 }
                 if (Timer_ActivateFogo >= 0)
                     Timer_ActivateFogo -= Time.deltaTime;
-                else
+                else if(Timer_ActivateFogo < 0 && !Instanciou_Padrão1)
                 {
                     for (int i = 0; i<HelicesFogo_offset.Length; i++)
                     {

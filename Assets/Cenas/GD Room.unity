@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -826,12 +826,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379144310e98a6f409f70438a8193d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "Acelera\xE7\xE3o": 0
-  Vel_Max: 0
-  Vel_Rot: 0
-  "For\xE7aDoSopro": 0
+  "Acelera\xE7\xE3o": 3
+  Vel_Max: 6
+  Vel_Rot: 2000
+  "For\xE7aDoSopro": 50
   "DistanciaDeAtiva\xE7\xE3o": 15
-  Impulso_Tornado: 0
+  Impulso_Tornado: 30
 --- !u!4 &80664004
 Transform:
   m_ObjectHideFlags: 0
@@ -12888,10 +12888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55745a32c324b0b4fac356eed6e292c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Vel_Rot: 0
-  "Acelera\xE7\xE3o": 0
-  Vel_Max: 0
-  "Impulso_Explos\xE3o": 0
+  Vel_Rot: 2000
+  "Acelera\xE7\xE3o": 3
+  Vel_Max: 6
+  "Impulso_Explos\xE3o": 15
 --- !u!4 &436150082
 Transform:
   m_ObjectHideFlags: 0
@@ -24617,7 +24617,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89ba865e85675ed46b90736cc6892f68, type: 3}
   m_Name: 
@@ -24630,7 +24630,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72713b5275cee6e4986dfdf5a47c844f, type: 3}
   m_Name: 
@@ -24659,17 +24659,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Helice_Fogo: {fileID: 436150080}
   Helice_Tempestade: {fileID: 80664002}
-  Helice_Gelo: {fileID: 0}
+  Helice_Gelo: {fileID: 1915282346}
   HelicesFogo_offset:
+  - {x: 0, y: 10, z: 4}
+  - {x: 0, y: 10, z: -4}
+  - {x: 0, y: 10, z: -4}
+  HelicesGelo_offset:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  HelicesGelo_offset: []
   Timer_ActivateFogo: 2
-  Timer_ActivateGelo: 0
+  Timer_ActivateGelo: 2
   Tempo_Fogo: 0
-  Tempo_Tempst: 0
-  Tempo_Gelo: 0
+  Tempo_Tempst: 30
+  Tempo_Gelo: 30
 --- !u!1 &1053952034
 GameObject:
   m_ObjectHideFlags: 0
@@ -53657,9 +53660,15 @@ MonoBehaviour:
   runSpeed: 15
   jumpSpeed: 16
   platformJumpSpeed: 50
+  wallJumpForce: 7
+  wallJumpAngle: 30
   minMidairTargetSpeed: 9
   midairAccelFactor: 1.1
   groundDeAccelFactor: 11
+  groundCheckDistance: 0.5
+  wallCheckDistance: 1
+  wallOffset: 1
+  wallJumpActive: 0
 --- !u!114 &1740260969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54574,14 +54583,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d94300f93dc4d48829005f15236deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "Acelera\xE7\xE3o": 0
-  Vel_Max: 0
-  Vel_Rot: 0
-  Intens_CongelamentoParcial: 0
-  Intens_CongelamentoTotal: 0
-  "DistanciaDeAtiva\xE7\xE3o": 0
-  Dano_HeliceDeGelo: 0
-  TempoCongelado: 0
+  "Acelera\xE7\xE3o": 3
+  Vel_Max: 6
+  Vel_Rot: 2000
+  Intens_CongelamentoParcial: 40
+  Intens_CongelamentoTotal: 100
+  "DistanciaDeAtiva\xE7\xE3o": 15
+  Dano_HeliceDeGelo: 100
+  TempoCongelado: 1
 --- !u!54 &1915282348
 Rigidbody:
   m_ObjectHideFlags: 0
