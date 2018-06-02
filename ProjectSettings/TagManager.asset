@@ -20,6 +20,7 @@ TagManager:
   - Shuriken_Vento
   - Bomba_Antidoto
   - Sopro
+  - Slider
   layers:
   - Default
   - TransparentFX

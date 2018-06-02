@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Vida_Player : MonoBehaviour
 {
     public AudioSource DanoPlayer;
 
+    public Slider Slider; //faz referência ao slider de health
+    public float flashSpeed = 5f; // velocidade com que a cor vai aparecer na tela
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f); // cor em rgb
+    public Image imagemDano;
     private GameObject telaMorte;           // Objeto da tela de morte
     private GameObject mira;                // Objeto da Mira
     private CamMove    camMoveScript;       // Objeto da câmera principal
     private TiroPlayer tiroPlayerScript;
-
+    private bool Dano;
     private float vidaMax = 1000;           // Vida Máxima do Player
     private float vida = 1000;              // Vida do Player
     private float regenCooldown = 3f;       // Tempo para começar a se regenerar;
@@ -29,6 +34,17 @@ public class Vida_Player : MonoBehaviour
 
     void Update()
     {
+        if (Dano)
+        {
+            imagemDano.color = flashColour;
+        }
+        else
+        {
+            imagemDano.color = Color.Lerp(imagemDano.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        Dano = false;
+        Slider.value = vida;
+
         if (vida <= 0)                                              // Verifica a vida do player
         {
             Debug.Log("ACABOOOU");                                  // Acabou
@@ -67,7 +83,11 @@ public class Vida_Player : MonoBehaviour
         vida -= dano;
         DanoPlayer.Play();
         regenCooldown = 3f;                // Reseta contador para regenerar
+
+        Dano = true;
+
     }
+
 
     public float getvida()                  //Getter da vida pra ser usado em outros scripts
     {
