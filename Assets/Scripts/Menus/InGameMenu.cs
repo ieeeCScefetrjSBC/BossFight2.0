@@ -48,4 +48,9 @@ public class InGameMenu : MonoBehaviour
         mira.enabled       = true;
         Cursor.lockState   = CursorLockMode.Locked;
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }

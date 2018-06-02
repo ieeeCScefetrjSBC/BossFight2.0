@@ -24,7 +24,7 @@ public class MenuPrincipal : MonoBehaviour {
 
     public void Sair()
     {
-        Debug.Log("Sair");
+        Application.Quit();
     }
 
     public void Creditos()
