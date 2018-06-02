@@ -28,7 +28,7 @@ public class Comp_Call : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Tempo -= Time.deltaTime; // Descendo o contador
-        Debug.Log(Tempo);
+      
         if(Tempo<=0) // Ativou a mecânica
         {
             Mechanics[Index_Mechanics[Contador]](Module[Contador]);// Passa o padrão para a mecânica

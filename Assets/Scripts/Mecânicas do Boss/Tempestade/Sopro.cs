@@ -38,15 +38,15 @@ public class Sopro : MonoBehaviour {
         direction = direction.normalized; //normaliza o vetor
         Debug.Log(direction);
         if (Player.GetComponent<Mov>().Grounded) //Enquanto o player não sai do chão, inicia o timer 1
+        {
             TimerGround += Time.deltaTime;
+        }       
         else
         {
             if (!SoproAtivado)
                 TimerGround = 0f;
         }
-
-        Debug.Log(TimerGround);
-            
+  
         if (TimerGround > TempoAteSopro && TimerGround < TempoAteSopro + DuracaoSopro)
         {
             Debug.Log("Ativou request force");
