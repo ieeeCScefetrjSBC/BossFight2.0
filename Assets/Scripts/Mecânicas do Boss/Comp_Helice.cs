@@ -16,6 +16,7 @@ public class Comp_Helice : MonoBehaviour {
     [SerializeField] private float Tempo_Tempst;    //Tempo de duração da helice de tempestade
     [SerializeField] private float Tempo_Agua;      //Tempo de duração da helice de água
 	private int Pattern_Helice = 0 ;  // Padrão de aparecimento, sendo 0 = nada acontece
+    private bool Instanciou_Padrão1 = false;
 
     private Comp_Call Comp_Call;
 
@@ -30,23 +31,22 @@ public class Comp_Helice : MonoBehaviour {
         switch (Pattern_Helice)
         {
             case 1:     // Padrão para máscara de FOGO!!!!
-                for (int i = 0; i<HelicesFogo_offset.Length; i++)
-                {
-                   
-                    helice[i] = (GameObject)Instantiate(Helice_Fogo, this.gameObject.transform.position + HelicesFogo_offset[i], Quaternion.identity, this.gameObject.transform);
-                    helice[i].GetComponent<HeliceDeFogo>().enabled = true;
-                }
+                if (!Instanciou_Padrão1)
+                    for (int i = 0; helice[i] != null; i++)
+                    {
+                        helice[i] = (GameObject)Instantiate(Helice_Fogo, this.gameObject.transform.position + HelicesFogo_offset[i], Quaternion.identity, this.gameObject.transform);
+                    }
                 if (Timer_ActivateFogo >= 0)
                     Timer_ActivateFogo -= Time.deltaTime;
                 else
                 {
-                    for(int i=0; helice[i] != null; i++)
+                    for (int i = 0; helice[i] != null; i++)
                     {
                         helice[i].GetComponent<HeliceDeFogo>().enabled = true;
                     }
                 }
+                Instanciou_Padrão1 = true;
                 break;
-
         }
     }
 
