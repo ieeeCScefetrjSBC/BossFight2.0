@@ -30,7 +30,7 @@ public class Comp_Helice : MonoBehaviour {
 
     void Update()
     {
-        
+        Debug.Log(Instanciou_Padrão1);
         switch (Pattern_Helice)
         {
             case 1:     // Padrão para máscara de FOGO!!!!
@@ -38,7 +38,7 @@ public class Comp_Helice : MonoBehaviour {
                 {
                     for (int i = 0; i < HelicesFogo_offset.Length; i++)
                     {
-                        helice[i] = (GameObject)Instantiate(Helice_Fogo, this.gameObject.transform.position + HelicesFogo_offset[i], Quaternion.identity, this.gameObject.transform);
+                        helice[i] = (GameObject)Instantiate(Helice_Fogo, this.gameObject.transform.position + HelicesFogo_offset[i], Quaternion.identity);
                     }
                 }
                 if (Timer_ActivateFogo >= 0)
@@ -50,15 +50,15 @@ public class Comp_Helice : MonoBehaviour {
                         helice[i].GetComponent<HeliceDeFogo>().enabled = true;
                     }
                 }
+                Instanciou_Padrão1 = true;
                 Comp_Call.setTempo(30);
-                Instanciou_Padrão1 = false;
                 break;
             case 2:
                 if (!Instanciou_Padrão2)
                 {
                     for (int i = 0; i < HelicesGelo_offset.Length; i++)
                     {
-                        helice[i] = (GameObject)Instantiate(Helice_Gelo, this.gameObject.transform.position + HelicesGelo_offset[i], Quaternion.identity, this.gameObject.transform);
+                        helice[i] = (GameObject)Instantiate(Helice_Gelo, this.gameObject.transform.position + HelicesGelo_offset[i], Quaternion.identity);
                     }
                 }
                 if ( Timer_ActivateGelo>= 0)
@@ -70,7 +70,8 @@ public class Comp_Helice : MonoBehaviour {
                         helice[i].GetComponent<HeliceDeGelo>().enabled = true;
                     }
                 }
-                Instanciou_Padrão2 = false;
+                Instanciou_Padrão2 = true;
+                Comp_Call.setTempo(30);
                 break;
         }
     }
