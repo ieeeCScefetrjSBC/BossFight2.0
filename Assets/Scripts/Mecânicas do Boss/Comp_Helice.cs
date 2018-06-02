@@ -69,8 +69,8 @@ public class Comp_Helice : MonoBehaviour {
                     for (int i = 0; i < HelicesGelo_offset.Length; i++)
                     {
                         helice[i].GetComponent<HeliceDeGelo>().enabled = true;
-                        AtivouScriptGelo = true;
                     }
+                    AtivouScriptGelo = true;
                 }
                 Instanciou_Padrão2 = true;
                 break;
