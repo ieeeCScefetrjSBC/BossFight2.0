@@ -36,7 +36,6 @@ public class Sopro : MonoBehaviour {
 
         direction = Boss.transform.position - Player.transform.position; //Define o ponto inicial como a posição do jogador e o final como a posição do boss
         direction = direction.normalized; //normaliza o vetor
-        Debug.Log(direction);
         if (Player.GetComponent<Mov>().Grounded) //Enquanto o player não sai do chão, inicia o timer 1
         {
             TimerGround += Time.deltaTime;
@@ -85,7 +84,7 @@ public class Sopro : MonoBehaviour {
     public int Call (int Comando)
     {
         Pattern_Sopro = Comando; //Define qual será o padrao do sopro
-        Comp_Call.setTempo(30f); //Define o tempo até a próxima mecanica
+        Comp_Call.setTempo(10f); //Define o tempo até a próxima mecanica
 
         return Pattern_Sopro;
     }

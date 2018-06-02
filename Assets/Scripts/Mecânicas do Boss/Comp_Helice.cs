@@ -53,7 +53,6 @@ public class Comp_Helice : MonoBehaviour {
                     AtivouScriptFogo = true;
                 }
                 Instanciou_Padrão1 = true;
-                Comp_Call.setTempo(30);
                 break;
             case 2:
                 if (!Instanciou_Padrão2)
@@ -74,7 +73,6 @@ public class Comp_Helice : MonoBehaviour {
                     }
                 }
                 Instanciou_Padrão2 = true;
-                Comp_Call.setTempo(30);
                 break;
         }
     }

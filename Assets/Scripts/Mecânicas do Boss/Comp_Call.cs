@@ -31,10 +31,15 @@ public class Comp_Call : MonoBehaviour {
       
         if(Tempo<=0) // Ativou a mecânica
         {
-            Mechanics[Index_Mechanics[Contador]](Module[Contador]);// Passa o padrão para a mecânica
-            if(Contador+1 <= Index_Mechanics.Length &&  Contador <= 2)
-                Contador += 1;// Próxima mecânica e padrão
             Debug.Log(Contador);
+            Mechanics[Index_Mechanics[Contador]](Module[Contador]);// Passa o padrão para a mecânica
+            if(Contador+1 < Index_Mechanics.Length)
+                Contador += 1;// Próxima mecânica e padrão
+            else
+            {
+                Contador = 0;
+            }
+            
         }
         if(Tiro_Boss.getfireRate()>=1f)// Caso o rate de tiro seja maior ou igual a 1
         {
