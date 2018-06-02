@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sopro : MonoBehaviour {
 
     private float TimerGround=0f; // Timer que o player não sai do chão
+    //private float TimerAir = 0f; //Timer que o Player está no ar
     private float TimerForce = 0f; // Tempo que a força é aplicada
     private bool RequestForce = false;
 
@@ -14,12 +15,16 @@ public class Sopro : MonoBehaviour {
     private Vector3 direction; // Vetor direção da força
 
     private float ForceMultiplier = 50; // Multiplicador da força
-    private float DuracaoSopro = 2f;
+    private float DuracaoSopro = 5f;
     private float TempoAteSopro = 8f;
     private bool SoproAtivado = false; // Luciano esteve aqui muahahaha
 
     private int Pattern_Sopro = 0;
     private Comp_Call Comp_Call;// Script referente ao Comp_Call
+
+    private GameObject Tell_Push;
+    private GameObject Tell_Pull;
+    private bool Tell_On = false; 
 
     void Start ()
     {
@@ -28,6 +33,13 @@ public class Sopro : MonoBehaviour {
         Grounder = GameObject.FindWithTag("Grounder"); //Identifica o objeto Grounder
 
         Comp_Call=this.gameObject.GetComponent<Comp_Call>();
+
+        Tell_Push = GameObject.FindGameObjectWithTag("Push");
+        Tell_Pull = GameObject.FindGameObjectWithTag("Pull");
+
+        Tell_Pull.SetActive(false);
+        Tell_Push.SetActive(false);
+
 
     }
 
@@ -44,11 +56,13 @@ public class Sopro : MonoBehaviour {
         {
             if (!SoproAtivado)
                 TimerGround = 0f;
+            else
+                TimerGround += Time.deltaTime;
         }
   
         if (TimerGround > TempoAteSopro && TimerGround < TempoAteSopro + DuracaoSopro)
         {
-            Debug.Log("Ativou request force");
+            //Debug.Log("Ativou request force");
             RequestForce = true;
             TimerForce += Time.deltaTime;
             SoproAtivado = true;
@@ -58,9 +72,14 @@ public class Sopro : MonoBehaviour {
         {
             RequestForce = false;
             TimerForce = 0f;
+            
             if(TimerGround >= 10)
                 TimerGround = 0f;
             SoproAtivado = false;
+
+            Tell_On = false;
+            Tell_Pull.SetActive(false);
+            Tell_Push.SetActive(false);
         }
 
     }
@@ -73,9 +92,19 @@ public class Sopro : MonoBehaviour {
             {
                 case 1:
                     Player.GetComponent<Rigidbody>().AddForce(direction.normalized * ForceMultiplier, ForceMode.Force);
+                    if (!Tell_On)
+                    {
+                        Tell_Pull.SetActive(true);
+                        Tell_On = true;
+                    }
                     break;
                 case 2:
                     Player.GetComponent<Rigidbody>().AddForce(-direction.normalized * ForceMultiplier, ForceMode.Force);
+                    if (!Tell_On)
+                    {
+                        Tell_Push.SetActive(true);
+                        Tell_On = true;
+                    }
                     break;
             }
         }

@@ -19,8 +19,9 @@ TagManager:
   - Mira
   - Shuriken_Vento
   - Bomba_Antidoto
-  - Sopro
   - Slider
+  - Pull
+  - Push
   layers:
   - Default
   - TransparentFX
