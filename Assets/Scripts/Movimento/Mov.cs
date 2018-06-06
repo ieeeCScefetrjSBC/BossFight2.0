@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,21 +7,30 @@ public class Mov : MonoBehaviour {
     // Use this for initialization
     private bool Left, Up, Down, Right; // Direções 2D
     private bool StopLeft, StopUp, StopDown, StopRight; // Anti-Direções 2D
-    public Rigidbody RB; // Rigidbody do Objeto
-    [SerializeField] private float Force = 0.6f; //Força de aceleração
+    private Rigidbody RB; // Rigidbody do Objeto
+    public Animator Player_Anim;
+    [SerializeField] private float Force; //Força de aceleração
     [SerializeField] private float Max = 9f; // Velocidade Máxima
     [SerializeField] private float Impulso_PlatPulo;  // Impulso pra cima no player ao pisar na plat de pulo
     [SerializeField] private float JumpForce;
     private float Extra_X=0f, Extra_Y=0f, Extra_Z=0f;
     private float Final_Force_X, Final_Force_Y;
+    private float ContadorDeTempo;
+    private float Tempo_Recuperação;
+    private float ValorParaRecuperar;
+    private float InputV;
+    private float InputH;
     private bool InverterControlesAtivado = false;
-    private bool Grounded;  // Guarda a informação de se o player está no chão ou não
+    public bool Grounded;  // Guarda a informação de se o player está no chão ou não
+    private bool Congelado;
     private bool ActivateJump;
+    private HeliceDeGelo HeliceDeGelo;
 
     void Start()
     {
         RB = GetComponent<Rigidbody>(); // Obtém o Rigidbody
         Cursor.lockState = CursorLockMode.Locked;
+        ContadorDeTempo = 0;
     }
 
     // Update is called once per frame
@@ -74,6 +83,12 @@ public class Mov : MonoBehaviour {
         {
             ActivateJump = true;
         }
+
+        // ANIMAÇÃO DO PLAYER
+        InputH = Input.GetAxis("Horizontal");
+        InputV = Input.GetAxis("Vertical");
+        Player_Anim.SetFloat("InputH", InputH);
+        Player_Anim.SetFloat("InputV", InputV);
 
     }
     private void FixedUpdate()
@@ -131,6 +146,20 @@ public class Mov : MonoBehaviour {
         }
 
 
+
+        /*Recuperação do Congelamento*/
+        if (Congelado)
+        {
+            ContadorDeTempo += Time.deltaTime;
+            if(ContadorDeTempo >= Tempo_Recuperação)
+            {
+                Force += ValorParaRecuperar;
+                Congelado = false;
+            }
+        }
+
+
+
         StopRight = false; // Impede de aplicar várias vezes a força contrária
         StopUp = false;
         StopDown = false;
@@ -141,10 +170,13 @@ public class Mov : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "PlataformaPulo")
+        if (this.isActiveAndEnabled)
         {
-            RB.AddForce(Vector3.up * Impulso_PlatPulo, ForceMode.VelocityChange);
-            Debug.Log("KARAAAAI VIADO");
+            if (collision.gameObject.tag == "PlataformaPulo")
+            {
+                RB.AddForce(Vector3.up * Impulso_PlatPulo, ForceMode.VelocityChange);
+                Debug.Log("KARAAAAI VIADO");
+            }
         }
     }
 
@@ -154,6 +186,25 @@ public class Mov : MonoBehaviour {
     }
 
 
+    public void setForce_Congelamento(float Força_Congelamento)
+    {
+        this.Force -= Força_Congelamento;
+    }
+
+    public void setBool_Congelado(bool Congelado)
+    {
+        this.Congelado = Congelado;
+    }
+
+    public void setTempo_Recuperacao(float tempo_Recuperação)
+    {
+        this.Tempo_Recuperação = tempo_Recuperação;
+    }
+
+    public void setValorParaRecuperar(float valor_recuperação)
+    {
+        this.ValorParaRecuperar = valor_recuperação;
+    }
 
     public void setExtra_Y(float Extra)
     {

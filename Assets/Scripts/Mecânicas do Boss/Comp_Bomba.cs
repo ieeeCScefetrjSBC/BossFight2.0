@@ -84,10 +84,11 @@ public class Comp_Bomba : MonoBehaviour {
     public int Call(int Comando)
     {
         Pattern_Bomba = Comando;// Define qual será o padrão de bomba
+        i = 0;
         if(Pattern_Bomba!=4)
-            Comp_Call.setTempo(25f);// Tempo para as Bombas Fogo e Raio
+            Comp_Call.setTempo(1f);// Tempo para as Bombas Fogo e Raio
         else
-            Comp_Call.setTempo(10f);// Tempo para a Bomba Antídoto
+            Comp_Call.setTempo(1f);// Tempo para a Bomba Antídoto
         return Pattern_Bomba;
     }
     public void setCiclo(float Ciclo)// Modifica o valor do Ciclo(tempo entre spawn de bomba)

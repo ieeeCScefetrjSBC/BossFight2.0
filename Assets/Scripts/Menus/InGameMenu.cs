@@ -1,40 +1,56 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public class InGameMenu : MonoBehaviour {
-    private GameObject Player;
-    private Camera MainCamera;
-    public Canvas InGame_Menu;
-    public Canvas Mira;
+public class InGameMenu : MonoBehaviour
+{
+    public Canvas inGameMenu;
+    public Canvas mira;
 
-	void Start () {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        MainCamera = Player.GetComponentInChildren<Camera>();
-        InGame_Menu.enabled = false;
+    private GameObject Player;
+    private CamMove    camMoveScript;
+    private TiroPlayer tiroPlayerScript;
+
+	void Start ()
+    {
+        Player           = GameObject.FindGameObjectWithTag("Player");
+        camMoveScript    = Camera.main.GetComponent<CamMove>();
+        tiroPlayerScript = Player.GetComponent<TiroPlayer>();
+
+        inGameMenu.enabled = false;
 	}
 	
-	void Update () {
+	void Update ()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
-            MainCamera.GetComponent<CamMove>().enabled = false;
-            Player.GetComponent<TiroPlayer>().enabled = false;
-            InGame_Menu.enabled = true;
-            Mira.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            camMoveScript.enabled    = false;
+            tiroPlayerScript.enabled = false;
+            inGameMenu.enabled = true;
+            mira.enabled       = false;
         }
 	}
 
     public void Continue()
     {
-        InGame_Menu.enabled = false;
-        Mira.enabled = true;
         Time.timeScale = 1;
-        MainCamera.GetComponent<CamMove>().enabled = true;
-        Player.GetComponent<TiroPlayer>().enabled = true;
-        Cursor.lockState = CursorLockMode.Locked;
+
+        camMoveScript.enabled    = true;
+        tiroPlayerScript.enabled = true;
+
+        inGameMenu.enabled = false;
+        mira.enabled       = true;
+        Cursor.lockState   = CursorLockMode.Locked;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
