@@ -14,6 +14,9 @@ public class Mascara_Script : MonoBehaviour {
     private Quaternion rotateQuat;
     public float speed = 1f;
 
+    private GameObject particle_2;
+    private GameObject particle_3;
+
     // Use this for initialization 
     void Start () {
         vidaBoss = this.gameObject.GetComponent<Vida_Boss>();
@@ -22,6 +25,12 @@ public class Mascara_Script : MonoBehaviour {
         mascara_2 = GameObject.FindGameObjectWithTag("Mascara2"); //Objeto mascara 2 atribuido
         mascara_3 = GameObject.FindGameObjectWithTag("Mascara3"); //Objeto mascara 3 atribuido
         boss = GameObject.FindGameObjectWithTag("Boss");
+
+        particle_2 = GameObject.FindGameObjectWithTag("particle2");
+        particle_3 = GameObject.FindGameObjectWithTag("particle3");
+        particle_2.SetActive(false);
+        particle_3.SetActive(false);
+
     }
 	
 	// Update is called once per frame
@@ -57,6 +66,7 @@ public class Mascara_Script : MonoBehaviour {
             //Faz a mascara 2 ser a principal
             if (setMascara == false)
             {
+                particle_2.SetActive(true);
                 this.transform.DetachChildren();
                 transform.LookAt(mascara_2.transform);
                 transform.rotation = Quaternion.LookRotation(this.transform.position - mascara_2.transform.position);
@@ -70,9 +80,10 @@ public class Mascara_Script : MonoBehaviour {
         {
             //Boss vira na direçao do player
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
-            //Faz a mascara 2 ser a principal
+            //Faz a mascara 3 ser a principal
             if (setMascara == true)
             {
+                particle_3.SetActive(true);
                 this.transform.DetachChildren();
                 this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(mascara_3.transform.forward), Time.time * speed);
                 //mascara_1.transform.SetParent(this.transform);
