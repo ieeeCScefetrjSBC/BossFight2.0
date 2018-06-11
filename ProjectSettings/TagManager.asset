@@ -23,6 +23,8 @@ TagManager:
   - Pull
   - Push
   - Tela_Vitoria
+  - particle2
+  - particle3
   layers:
   - Default
   - TransparentFX
