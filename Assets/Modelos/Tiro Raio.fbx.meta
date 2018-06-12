@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: d773d80322b446e478da76ce4b3d453f
-timeCreated: 1528567900
+guid: bd7bc742a3a484b4ab389e657cf66230
+timeCreated: 1528815153
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: unnamed
+    2100000: Material.001
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Circle
-    7400000: Default Take
-    9500000: //RootNode
-  externalObjects: {}
+    4300000: Tiro
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 7ffff1a33d1ca334e9f19715cb872966, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -87,7 +90,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
