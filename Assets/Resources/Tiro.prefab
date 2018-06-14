@@ -1107,7 +1107,7 @@ ParticleSystem:
         atime1: 61487
         atime2: 65535
         atime3: 65535
-        atime4: 65535
+        atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
