@@ -51,15 +51,14 @@ public class Sopro : MonoBehaviour {
         direction = Boss.transform.position - Player.transform.position; //Define o ponto inicial como a posição do jogador e o final como a posição do boss
         direction = direction.normalized; //normaliza o vetor
 
-        if (moveScript.IsGrounded() || TimerAir < 0.5f) //Enquanto o player não sai do chão, inicia o timer 1
+        if (moveScript.IsGrounded()) //Enquanto o player não sai do chão, inicia o timer 1
         {
             TimerGround += Time.deltaTime;
-            TimerAir = 0;
+           // TimerAir = 0;
         }       
         else
         {
-            TimerAir += Time.deltaTime;
-            Debug.Log(TimerAir);
+           // TimerAir += Time.deltaTime;
 
             if (!SoproAtivado)
                 TimerGround = 0f;
