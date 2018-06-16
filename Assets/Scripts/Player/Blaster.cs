@@ -32,6 +32,7 @@ public class Blaster : MonoBehaviour {
         if (Physics.Raycast(MainCamera.transform.position, MainCamera.transform.forward))
         {
             GameObject Projetil = (GameObject)GameObject.Instantiate(Tiro, Ponta_Arma.transform.position + Ponta_Arma.transform.forward.normalized * 2, Quaternion.Euler(MainCamera.transform.rotation.eulerAngles + new Vector3(90,0,0)));
+            Projetil.GetComponent<Tiro_Blaster>().enabled = true;
             Projetil.GetComponent<Tiro_Blaster>().set_Direction(MainCamera.transform.forward);
         }
     }

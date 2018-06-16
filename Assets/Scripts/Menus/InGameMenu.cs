@@ -12,14 +12,14 @@ public class InGameMenu : MonoBehaviour
 
     private GameObject Player;
     private CamMove    camMoveScript;
-    private TiroPlayer tiroPlayerScript;
+    private Blaster blasterScript;
     private bool isPaused = false;
 
 	void Start ()
     {
         Player           = GameObject.FindGameObjectWithTag("Player");
         camMoveScript    = Camera.main.GetComponent<CamMove>();
-        tiroPlayerScript = Player.GetComponent<TiroPlayer>();
+        blasterScript = Player.GetComponent<Blaster>();
 
         inGameMenu.enabled = false;
 	}
@@ -33,7 +33,7 @@ public class InGameMenu : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             camMoveScript.enabled    = false;
-            tiroPlayerScript.enabled = false;
+            blasterScript.enabled = false;
             inGameMenu.enabled = true;
             mira.enabled       = false;
         }
@@ -44,7 +44,7 @@ public class InGameMenu : MonoBehaviour
         Time.timeScale = 1;
 
         camMoveScript.enabled    = true;
-        tiroPlayerScript.enabled = true;
+        blasterScript.enabled = true;
 
         inGameMenu.enabled = false;
         mira.enabled       = true;

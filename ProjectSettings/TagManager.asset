@@ -27,6 +27,7 @@ TagManager:
   - particle3
   - Tiro_Player
   - Arma
+  - Hitmark
   layers:
   - Default
   - TransparentFX

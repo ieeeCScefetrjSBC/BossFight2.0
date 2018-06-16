@@ -11,7 +11,7 @@ public class Vida_Player : MonoBehaviour
     private GameObject deathScreen;           // Objeto da tela de morte
     private GameObject aim;                // Objeto da Mira
     private CamMove    camMoveScript;       // Objeto da câmera principal
-    private TiroPlayer tiroPlayerScript;
+    private Blaster blasterScript;
     public Slider Slider; //faz referência ao slider de health
     public float flashSpeed = 5f; // velocidade com que a cor vai aparecer na tela
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f); // cor em rgb
@@ -27,7 +27,7 @@ public class Vida_Player : MonoBehaviour
         deathScreen      = GameObject.FindGameObjectWithTag("Tela_Morte");    // Define qual é o objeto da tela de morte
         aim              = GameObject.FindGameObjectWithTag("Mira");
         camMoveScript    = Camera.main.GetComponent<CamMove>();               // Define quem é a Main Camera
-        tiroPlayerScript = gameObject.GetComponent<TiroPlayer>();
+        blasterScript = gameObject.GetComponent<Blaster>();
 
         deathScreen.SetActive(false);
     }
@@ -75,7 +75,7 @@ public class Vida_Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         camMoveScript.enabled    = false;                       // Paralisa a movimentação da câmera
-        tiroPlayerScript.enabled = false;                       // Paralisa o tiro do player
+        blasterScript.enabled = false;                       // Paralisa o tiro do player
 
         if (Input.GetKeyDown(KeyCode.A))                        // Caso aperte A
         {
