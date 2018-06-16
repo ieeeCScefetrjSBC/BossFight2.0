@@ -47790,7 +47790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7a8991449120e49b62f2f27dfce3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tiro_Speed: 30
+  Tiro_Speed: 50
 --- !u!1 &1141129944
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class MenuPrincipal : MonoBehaviour {
     {
         Debug.Log("Jogar");
         SceneManager.LoadScene("GD Room");
+        Time.timeScale = 1;
     }
 
     public void Sair()
