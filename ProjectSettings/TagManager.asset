@@ -28,6 +28,7 @@ TagManager:
   - Tiro_Player
   - Arma
   - Hitmark
+  - Luz
   layers:
   - Default
   - TransparentFX

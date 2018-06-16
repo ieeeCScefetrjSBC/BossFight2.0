@@ -9,10 +9,13 @@ public class Blaster : MonoBehaviour {
     private GameObject Tiro;
     private Vector3 Direction;
 
+    private GameObject Luz;
+
 	void Start () {
         Tiro = GameObject.FindGameObjectWithTag("Tiro_Player");
         Ponta_Arma = GameObject.FindGameObjectWithTag("Arma");
         MainCamera = Camera.main;
+
 	}
 	
 	void Update () {

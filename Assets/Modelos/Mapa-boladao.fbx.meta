@@ -12,6 +12,8 @@ ModelImporter:
     100008: Plane.001
     100010: Plane.010
     100012: Plane.012
+    100014: Camera
+    100016: Lamp
     400000: Circle.001
     400002: Circle.005
     400004: //RootNode
@@ -19,7 +21,11 @@ ModelImporter:
     400008: Plane.001
     400010: Plane.010
     400012: Plane.012
+    400014: Camera
+    400016: Lamp
+    2000000: Camera
     2100000: No Name
+    2100002: Material.001
     2300000: Circle.001
     2300002: Circle.005
     2300004: Nivel 1-2.001
@@ -38,7 +44,13 @@ ModelImporter:
     4300006: Circle.005
     4300008: Plane.012
     4300010: Circle.001
-  externalObjects: {}
+    10800000: Lamp
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: e2e6721233538414b90f6f10db547fdb, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
