@@ -59,6 +59,7 @@ public class Vida_Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))                        // Caso aperte A
             {
                 Time.timeScale = 1;
+                Debug.Log("vaisefode");
                 SceneManager.LoadScene("Menu");                   // Volta para o menu inicial
             }
             
@@ -95,6 +96,7 @@ public class Vida_Player : MonoBehaviour
         if (collision.gameObject.tag == "Chao")
         {
             Debug.Log("CAIIIIU");
+            Debug.Log("vaisefode3");
             vida = 0;
             //SceneManager.LoadScene(nomeCena);
         }

@@ -51,6 +51,7 @@ public class InGameMenu : MonoBehaviour
 
     public void MainMenu()
     {
+        Debug.Log("vaisefode2");
         SceneManager.LoadScene("Menu");
     }
 }

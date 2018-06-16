@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveRigidbody : MonoBehaviour
 {
+    // ESSE SCRIPT EST� SENDO CHAMADO NOS SCRIPTS "InverterControles", "HeliceDeGelo" E "Sopro"
+    
     // --- PUBLIC VARIABLES ---
 
     public AudioSource moveAudio;                   // Player's walking sound
@@ -11,23 +13,23 @@ public class MoveRigidbody : MonoBehaviour
     //public Animator playerAnim;
 
     public float validJumpTime        = 0.1f;       // Time during which the player will jump when he touches the ground after a jump command has been issued;
-    public float velocityInputMag     = 2f;         // How fast the player's speed will change when he is moved on the ground;
-    public float forceInputMag        = 50f;        // How fast the player's speed will change when he is moved midair;
+    public float groundInputMag       = 2f;         // Determines how fast the player's speed will change when he is moved on the ground;
+    public float airInputMag          = 50f;        // Determines how fast the player's speed will change when he is moved midair;
     public float frozenForceInputMag  = 100f;       // DEBUG
     
     public float walkSpeed            = 9f;         // Walking speed after full acceleration;
     public float runSpeed             = 15f;        // Running speed after full acceleration;
     public float jumpSpeed            = 16f;        // Initial vertical speed right after jumping;
     public float platformJumpSpeed    = 50f;        // Initial vertical speed right after being propelled by jump platform;
-    public float wallJumpForce        = 7f;
-    public float wallJumpAngle        = 30f;
+    public float wallJumpForce        = 20f;
+    public float wallJumpAngle        = 60f;
 
     public float minMidairTargetSpeed = 9f;         // How fast player can get midair (horizontal speed) if he jumps while still;
-    public float midairAccelFactor    = 1.10f;      // Percentual increase in horizontal speed allowed after jump;
-    public float groundDeAccelFactor  = 11f;        // Base of the power by which speed will be decreased after no input is given while grounded;
+    public float midairAccelAllowed   = 1.10f;      // Percentual increase in horizontal speed allowed (after reaching target speed) after jump;
+    public float groundMoveDamp       = 11f;        // Base of the power by which speed will be decreased after no input is given while grounded;
     public float groundCheckDistance  = 0.5f;
-    public float wallCheckDistance    = 1f;
     public float wallOffset           = 1f;
+    public float wallJumpDamp         = 0.3f;
 
     public bool wallJumpActive = false;
     
@@ -39,9 +41,10 @@ public class MoveRigidbody : MonoBehaviour
     //private HeliceDeGelo iceHelixScript;
 
     private Vector3 moveInput = Vector3.zero;           // Direction of player input;
-    Vector3 capsuleCenterPosition;
-    Vector3 topCapsulePosition;
-    Vector3 bottomCapsulePosition;
+    private Vector3 capsuleCenterPosition;
+    private Vector3 topCapsulePosition;
+    private Vector3 bottomCapsulePosition;
+    private RaycastHit wallHit;
 
     private float capsuleRadius;                        // Radius of the capsule;
     private float cilinderHalfLenght;                   // Distance from the capsule's center to one of the capsule's half sphere's center;
@@ -53,6 +56,7 @@ public class MoveRigidbody : MonoBehaviour
     private float targetSpeed          = 9f;            // Final speed which player will acquire after full acceleration;
     private float last_xzSpeedOnGround = 0f;            // Horizontal speed player had when he left the ground;
     private float timeJumped           = 0f;            // Time of simulation at which player jumped;
+    private float currentWallJumpForce = 0f;
     private int   groundLayerMask      = 1 << 8;
 
     private string groundTag;                       // Tag of ground object touched;
@@ -61,6 +65,7 @@ public class MoveRigidbody : MonoBehaviour
     private bool isMoving        = false;           // True when player is moving on the current frame;
     private bool wasMoving       = false;           // True when player was moving on the last frame;
     private bool hasJumped       = false;           // True when a jump command was issued less than validJumpTime secs ago;
+    private bool wallApproach    = false;
     private bool invertedControl = false;           // True when player movement should be inverted;
     
     private float freezeTimer = 0f;
@@ -75,14 +80,15 @@ public class MoveRigidbody : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
 
         // The following must not be changed later
-        capsuleRadius = capsule.radius;
+        capsuleRadius      = capsule.radius;
         cilinderHalfLenght = (capsule.height / 2) - capsule.radius;
 
         // The following must be updated according to the player's position
         capsuleCenterPosition = transform.position + capsule.center;
-        topCapsulePosition = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
+        topCapsulePosition    = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
         bottomCapsulePosition = capsuleCenterPosition - Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
 
+        currentWallJumpForce = wallJumpForce;
         freezeTimer = 0f;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -112,6 +118,11 @@ public class MoveRigidbody : MonoBehaviour
         this.forceRecoveryValue = value;
     }
 
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
+
     private void CheckGrounded()
     {
         RaycastHit hit;
@@ -128,15 +139,18 @@ public class MoveRigidbody : MonoBehaviour
 
     void Update()
     {
-        // -- Updating variables --
+        // -- Updating variables for Physics.CapsuleCast() --
         capsuleCenterPosition = transform.position + capsule.center;
-        topCapsulePosition = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
+        topCapsulePosition    = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
         bottomCapsulePosition = capsuleCenterPosition - Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
 
         // -- Evaluating if player should jump --
         float timeSinceJump = Time.time - timeJumped;
         CheckGrounded();
-        
+
+        if (isGrounded)
+            currentWallJumpForce = wallJumpForce;
+
         if (timeSinceJump > validJumpTime)
             hasJumped = false;
 
@@ -150,9 +164,9 @@ public class MoveRigidbody : MonoBehaviour
         if (!isGrounded)
         {
             if (last_xzSpeedOnGround < minMidairTargetSpeed)
-                targetSpeed = minMidairTargetSpeed * midairAccelFactor;
+                targetSpeed = minMidairTargetSpeed * midairAccelAllowed;
             else
-                targetSpeed = last_xzSpeedOnGround * midairAccelFactor;
+                targetSpeed = last_xzSpeedOnGround * midairAccelAllowed;
         }
         else if (Input.GetKey(KeyCode.LeftShift))
             targetSpeed = runSpeed;
@@ -165,9 +179,9 @@ public class MoveRigidbody : MonoBehaviour
         if (isFrozen) // DEBUG
             moveInputMag = frozenForceInputMag;
         else if (isGrounded)
-            moveInputMag = velocityInputMag;
+            moveInputMag = groundInputMag;
         else
-            moveInputMag = forceInputMag;
+            moveInputMag = airInputMag;
 
         // -- Calculating movement direction from player input --
         Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -179,6 +193,15 @@ public class MoveRigidbody : MonoBehaviour
         if (invertedControl)
             moveInput = (-1) * moveInput;
 
+        // -- Checking if is moving towards wall midair --
+        Vector3 checkDirection = moveInput;
+
+        if (moveInput == Vector3.zero)
+            checkDirection = Vector3.up;
+
+        wallApproach = (Physics.CapsuleCast(topCapsulePosition, bottomCapsulePosition, capsuleRadius * capsuleRadiusMultiplier,
+                             checkDirection, out wallHit, wallOffset) && !isGrounded);
+
         // -- Animation --
         if (!isGrounded)
             playerInput = Vector2.zero;
@@ -186,7 +209,7 @@ public class MoveRigidbody : MonoBehaviour
         playerAnimator.SetFloat("InputH", playerInput[0]);
         playerAnimator.SetFloat("InputV", playerInput[1]);
 
-        // -- Set freeze mechanics --
+        // -- Setting freeze mechanics --
         if (isFrozen)
         {
             freezeTimer += Time.deltaTime;
@@ -220,12 +243,11 @@ public class MoveRigidbody : MonoBehaviour
         // -- DeAccelerating player to a stop if there's no input when grounded --
         if (moveInput == Vector3.zero && rb.velocity.magnitude > 0f && isGrounded)
         {
-            float stoppingSpeed = 0.01f;
             float newSpeed = xzVelocity.magnitude;
 
-            newSpeed *= 1 / Mathf.Pow(groundDeAccelFactor, Time.deltaTime);
+            newSpeed *= 1 / Mathf.Pow(groundMoveDamp, Time.deltaTime);
 
-            if (newSpeed < stoppingSpeed)
+            if (newSpeed < 0.01f)
                 newSpeed = 0f;
 
             xzVelocity = xzVelocity.normalized * newSpeed;
@@ -246,59 +268,36 @@ public class MoveRigidbody : MonoBehaviour
             hasJumped = false;
         }
 
-        // -- Wall jumping --
-        RaycastHit hit;
+        // -- Wall jumping and fixing wall sticking --
 
-        if (wallJumpActive && moveInput != Vector3.zero && !isGrounded)
+        if (wallApproach)
         {
-            if (Physics.CapsuleCast(topCapsulePosition, bottomCapsulePosition, capsuleRadius * capsuleRadiusMultiplier,
-                                    moveInput, out hit, wallCheckDistance))
+            Vector3 wallNormal = wallHit.normal;
+
+            if (hasJumped && currentWallJumpForce > 0f && wallJumpActive)
             {
-                Debug.Log("Wall");
+                float angleInRad = wallJumpAngle * Mathf.Deg2Rad;
 
-                Vector3 wallNormal = hit.normal;
-                //Vector3 wallHitPoint = hit.point;
+                Vector3 wallJumpDirection = wallNormal * Mathf.Cos(angleInRad) + Vector3.up * Mathf.Sin(angleInRad);
+                rb.AddForce(wallJumpDirection * currentWallJumpForce, ForceMode.VelocityChange);
 
-                if (hasJumped)
-                {
-                    float angleInRad = wallJumpAngle * Mathf.Deg2Rad;
-                    Vector3 wallJumpDirection = wallNormal * Mathf.Cos(angleInRad) + Vector3.up * Mathf.Sin(angleInRad);
+                currentWallJumpForce *= wallJumpDamp;
+                if (currentWallJumpForce < 0.01f)
+                    currentWallJumpForce = 0f;
 
-                    Debug.Log("WALLLLLLLLLLLLLLL");
-                    //Debug.Log("wall speed: " + wallJumpVelocity.magnitude);
-                    //Debug.Log("wall direction: " + wallJumpVelocity.normalized);
+                hasJumped = false;
+            }
+            else
+            {
+                Vector3 nextPosition = transform.position + rb.velocity * Time.deltaTime;
+                float dist2wall = (transform.position - wallHit.point).magnitude;
+                float nextDist2wall = (nextPosition - wallHit.point).magnitude;
 
-                    rb.AddForce(wallJumpDirection * wallJumpForce, ForceMode.VelocityChange);
-                }
-                //else
-                //    rb.velocity = Vector3.ProjectOnPlane(xzVelocity, wallNormal) + new Vector3(0f, rb.velocity.y, 0f);
-                else
-                {
-                    Vector3 nextPosition = transform.position + rb.velocity * Time.deltaTime;
-                    float dist2wall = (transform.position - hit.point).magnitude;
-                    float nextDist2wall = (nextPosition - hit.point).magnitude;
-                    Debug.Log("STUCK");
-                    Debug.Log("dist: " + nextDist2wall);
-
-                    if (dist2wall < wallOffset * 0.9f)
-                    {
-                        Debug.Log("STUCK1");
-                        Debug.Log("hit.point + wallNormal * wallOffset * 0.1f: " + (hit.point + wallNormal * wallOffset * 0.1f));
-
-                        transform.position = transform.position + wallNormal * wallOffset * 0.1f;
-                    }
-                    if (nextDist2wall < wallOffset)
-                    {
-                        Debug.Log("STUCK2");
-                        //transform.position = hit.point + wallNormal * wallOffset;
-                        rb.AddForce(-moveInput, ForceMode.Acceleration);
-                        //rb.velocity = Vector3.ProjectOnPlane(xzVelocity, wallNormal)
-                        //              + new Vector3(0f, rb.velocity.y, 0f);
-                                      //-Vector3.Project(xzVelocity, wallNormal);
-                    }
-                }
-                //rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
-                //rb.velocity = Vector3.ProjectOnPlane(xzVelocity, wallNormal) + new Vector3(0f, rb.velocity.y, 0f);
+                if (dist2wall < wallOffset * 0.75f)
+                    transform.position = transform.position + wallNormal * wallOffset * 0.1f;
+                
+                if (nextDist2wall < wallOffset)
+                    rb.AddForce(-moveInput, ForceMode.Acceleration);
             }
         }
     }

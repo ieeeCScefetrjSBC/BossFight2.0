@@ -61180,28 +61180,28 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1740260954}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1aaeb83253d070c4d9eac5613b625fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveAudio: {fileID: 1740260960}
   validJumpTime: 0.1
-  velocityInputMag: 2
-  forceInputMag: 50
+  groundInputMag: 2
+  airInputMag: 50
   frozenForceInputMag: 100
   walkSpeed: 9
   runSpeed: 15
   jumpSpeed: 16
   platformJumpSpeed: 50
-  wallJumpForce: 7
-  wallJumpAngle: 30
+  wallJumpForce: 20
+  wallJumpAngle: 60
   minMidairTargetSpeed: 9
-  midairAccelFactor: 1.1
-  groundDeAccelFactor: 11
+  midairAccelAllowed: 1.1
+  groundMoveDamp: 11
   groundCheckDistance: 0.5
-  wallCheckDistance: 1
   wallOffset: 1
+  wallJumpDamp: 0.3
   wallJumpActive: 0
 --- !u!114 &1740260969
 MonoBehaviour:
