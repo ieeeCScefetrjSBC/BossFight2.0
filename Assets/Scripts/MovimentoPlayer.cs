@@ -9,6 +9,7 @@ public class MovimentoPlayer : MonoBehaviour
     public Animator Player_Anim;
     //public GameObject eyes;
 
+
     float rotX;
     float rotY;
 

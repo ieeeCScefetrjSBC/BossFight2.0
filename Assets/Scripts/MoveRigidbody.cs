@@ -32,7 +32,6 @@ public class MoveRigidbody : MonoBehaviour
     public float wallJumpDamp         = 0.3f;
 
     public bool wallJumpActive = false;
-    public bool wallStickFixActive  = true;
     
     // --- PRIVATE VARIABLES ---
 
@@ -288,7 +287,7 @@ public class MoveRigidbody : MonoBehaviour
 
                 hasJumped = false;
             }
-            else if (wallStickFixActive)
+            else
             {
                 Vector3 nextPosition = transform.position + rb.velocity * Time.deltaTime;
                 float dist2wall = (transform.position - wallHit.point).magnitude;

@@ -13,7 +13,6 @@ public class InGameMenu : MonoBehaviour
     private GameObject Player;
     private CamMove    camMoveScript;
     private TiroPlayer tiroPlayerScript;
-    private bool isPaused = false;
 
 	void Start ()
     {
@@ -28,7 +27,6 @@ public class InGameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = true;
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -49,16 +47,11 @@ public class InGameMenu : MonoBehaviour
         inGameMenu.enabled = false;
         mira.enabled       = true;
         Cursor.lockState   = CursorLockMode.Locked;
-
-        isPaused = false;
     }
 
     public void MainMenu()
     {
-        if (isPaused)
-        {
-            Debug.Log("vaisefode2");
-            SceneManager.LoadScene("Menu");
-        }
+        Debug.Log("vaisefode2");
+        SceneManager.LoadScene("Menu");
     }
 }
