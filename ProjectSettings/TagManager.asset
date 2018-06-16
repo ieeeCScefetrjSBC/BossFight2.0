@@ -25,6 +25,8 @@ TagManager:
   - Tela_Vitoria
   - particle2
   - particle3
+  - Tiro_Player
+  - Arma
   layers:
   - Default
   - TransparentFX
