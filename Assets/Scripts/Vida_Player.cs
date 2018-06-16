@@ -8,8 +8,8 @@ public class Vida_Player : MonoBehaviour
 {
     public AudioSource DanoPlayer;
 
-    private GameObject telaMorte;           // Objeto da tela de morte
-    private GameObject mira;                // Objeto da Mira
+    private GameObject deathScreen;           // Objeto da tela de morte
+    private GameObject aim;                // Objeto da Mira
     private CamMove    camMoveScript;       // Objeto da câmera principal
     private TiroPlayer tiroPlayerScript;
     public Slider Slider; //faz referência ao slider de health
@@ -24,57 +24,65 @@ public class Vida_Player : MonoBehaviour
 
     private void Start()
     {
-        telaMorte        = GameObject.FindGameObjectWithTag("Tela_Morte");    // Define qual é o objeto da tela de morte
-        mira             = GameObject.FindGameObjectWithTag("Mira");
+        deathScreen      = GameObject.FindGameObjectWithTag("Tela_Morte");    // Define qual é o objeto da tela de morte
+        aim              = GameObject.FindGameObjectWithTag("Mira");
         camMoveScript    = Camera.main.GetComponent<CamMove>();               // Define quem é a Main Camera
         tiroPlayerScript = gameObject.GetComponent<TiroPlayer>();
 
-        telaMorte.SetActive(false);
+        deathScreen.SetActive(false);
     }
 
     void Update()
     {
-        if (Dano)
-        {
-            imagemDano.color = flashColour;
-        }
-        else
-        {
-            imagemDano.color = Color.Lerp(imagemDano.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
-        Dano = false;
-        Slider.value = vida;
-
         if (vida <= 0)                                              // Verifica a vida do player
-        {
-            Debug.Log("ACABOOOU");                                  // Acabou
+            ManageDeathScreen();
 
-            Time.timeScale = 0;                                     // Pausa o tempo do jogo
-            telaMorte.SetActive(true);                              // Ativa a tela de morte
-            mira.SetActive(false);                                  // Remove a mira
-
-            camMoveScript.enabled    = false;                       // Paralisa a movimentação da câmera
-            tiroPlayerScript.enabled = false;                       // Paralisa o tiro do player
-
-            if (Input.GetKeyDown(KeyCode.A))                        // Caso aperte A
-            {
-                Time.timeScale = 1;
-                Debug.Log("vaisefode");
-                SceneManager.LoadScene("Menu");                   // Volta para o menu inicial
-            }
-            
-            Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (regenCooldown <= 0)                        // Caso tenha passado 3 segundos em receber dano, começa a regenerar
-        {
-            vida += regenFactor * Time.deltaTime;      // Recupera 100 de HP por segundo
-            if (vida > vidaMax)                       // Caso o regen tenha ultrapassado a vida máxima
-                vida = vidaMax;
-        }
         else
         {
-            regenCooldown -= Time.deltaTime;           // Decai contador para começar a regenerar
+            if (Dano)
+            {
+                imagemDano.color = flashColour;
+            }
+            else
+            {
+                imagemDano.color = Color.Lerp(imagemDano.color, Color.clear, flashSpeed * Time.deltaTime);
+            }
+            Dano = false;
+            Slider.value = vida;
+
+
+            if (regenCooldown <= 0)                        // Caso tenha passado 3 segundos em receber dano, começa a regenerar
+            {
+                vida += regenFactor * Time.deltaTime;      // Recupera 100 de HP por segundo
+                if (vida > vidaMax)                       // Caso o regen tenha ultrapassado a vida máxima
+                    vida = vidaMax;
+            }
+            else
+            {
+                regenCooldown -= Time.deltaTime;           // Decai contador para começar a regenerar
+            }
+        }
+    }
+
+    private void ManageDeathScreen()
+    {
+        Debug.Log("ACABOOOU");                                  // Acabou
+
+        Time.timeScale = 0;                                     // Pausa o tempo do jogo
+
+        deathScreen.SetActive(true);                            // Ativa a tela de morte
+        aim.SetActive(false);                                   // Remove a mira
+        Cursor.lockState = CursorLockMode.None;
+
+        camMoveScript.enabled    = false;                       // Paralisa a movimentação da câmera
+        tiroPlayerScript.enabled = false;                       // Paralisa o tiro do player
+
+        if (Input.GetKeyDown(KeyCode.A))                        // Caso aperte A
+        {
+            Debug.Log("vaisefode");
+
+            Time.timeScale = 1;
+            SceneManager.LoadScene("Menu");                   // Volta para o menu inicial
         }
     }
 
