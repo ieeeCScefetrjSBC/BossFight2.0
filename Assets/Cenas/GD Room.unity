@@ -36883,7 +36883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 392386122}
-  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
+  Explosion: {fileID: 1621648987863378, guid: 2c71e46199fc73648b1831c1d3fcdd96, type: 2}
   ExplosionSound: {fileID: 775688842}
 --- !u!23 &775688844
 MeshRenderer:
@@ -36939,7 +36939,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 775688841}
   m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
-  m_LocalPosition: {x: -36, y: 10, z: 36}
+  m_LocalPosition: {x: -36, y: 16, z: 36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 392386123}
@@ -37889,7 +37889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &864998808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43096,7 +43096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 822357754}
-  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
+  Explosion: {fileID: 1621648987863378, guid: 2c71e46199fc73648b1831c1d3fcdd96, type: 2}
   ExplosionSound: {fileID: 1020847670}
 --- !u!23 &1020847672
 MeshRenderer:
@@ -43152,7 +43152,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1020847669}
   m_LocalRotation: {x: 0.06698733, y: 0.25000006, z: 0.25000006, w: 0.9330127}
-  m_LocalPosition: {x: 36, y: 10, z: -36}
+  m_LocalPosition: {x: 36, y: 16, z: -36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 822357755}
@@ -71791,7 +71791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 1916672674}
-  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
+  Explosion: {fileID: 1621648987863378, guid: 2c71e46199fc73648b1831c1d3fcdd96, type: 2}
   ExplosionSound: {fileID: 1559309685}
 --- !u!23 &1559309687
 MeshRenderer:
@@ -71847,7 +71847,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1559309684}
   m_LocalRotation: {x: 0.06698728, y: -0.24999997, z: -0.24999997, w: 0.9330127}
-  m_LocalPosition: {x: -36, y: 10, z: -36}
+  m_LocalPosition: {x: -36, y: 16, z: -36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1916672675}
@@ -76571,7 +76571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jogador: {fileID: 1740260963}
   Luz: {fileID: 1713560091}
-  Explosion: {fileID: 1621648987863378, guid: ef6919ab3e60cab498f735f068e3ff56, type: 2}
+  Explosion: {fileID: 1621648987863378, guid: 2c71e46199fc73648b1831c1d3fcdd96, type: 2}
   ExplosionSound: {fileID: 1682652961}
 --- !u!23 &1682652963
 MeshRenderer:
@@ -76627,7 +76627,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1682652960}
   m_LocalRotation: {x: -0.066987306, y: -0.24999997, z: 0.25000006, w: 0.9330127}
-  m_LocalPosition: {x: 36, y: 10, z: 36}
+  m_LocalPosition: {x: 36, y: 16, z: 36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1713560092}
