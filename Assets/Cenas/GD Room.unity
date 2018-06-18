@@ -8727,6 +8727,11 @@ Prefab:
       propertyPath: m_Name
       value: Plataforma_2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 23480709775574824, guid: 38bb5b2eb23371743b4b8f71bc2e5fb6,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eda9e60a7d176374892f5e64f76cc582, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38bb5b2eb23371743b4b8f71bc2e5fb6, type: 2}
   m_IsPrefabParent: 0
@@ -9304,6 +9309,11 @@ Prefab:
       propertyPath: m_TagString
       value: Plataforma
       objectReference: {fileID: 0}
+    - target: {fileID: 23977276822562600, guid: d6e88f358906e7c48895319f4ef6177a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 34d176102bb308149b884f77e189ddee, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6e88f358906e7c48895319f4ef6177a, type: 2}
   m_IsPrefabParent: 0
@@ -36605,6 +36615,11 @@ Prefab:
       propertyPath: m_Name
       value: Plataforma_2.2
       objectReference: {fileID: 0}
+    - target: {fileID: 23480709775574824, guid: 38bb5b2eb23371743b4b8f71bc2e5fb6,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eda9e60a7d176374892f5e64f76cc582, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38bb5b2eb23371743b4b8f71bc2e5fb6, type: 2}
   m_IsPrefabParent: 0
@@ -43693,7 +43708,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89ba865e85675ed46b90736cc6892f68, type: 3}
   m_Name: 
@@ -55728,6 +55743,11 @@ Prefab:
       propertyPath: m_TagString
       value: Plataforma
       objectReference: {fileID: 0}
+    - target: {fileID: 23042201752146478, guid: a9d5f143af712ea4c9d0094419b52ac1,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc09ea46b54a9f645ab3db118d515e2c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9d5f143af712ea4c9d0094419b52ac1, type: 2}
   m_IsPrefabParent: 0
@@ -82194,6 +82214,11 @@ Prefab:
       propertyPath: m_TagString
       value: Plataforma
       objectReference: {fileID: 0}
+    - target: {fileID: 23977276822562600, guid: d6e88f358906e7c48895319f4ef6177a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 34d176102bb308149b884f77e189ddee, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6e88f358906e7c48895319f4ef6177a, type: 2}
   m_IsPrefabParent: 0
