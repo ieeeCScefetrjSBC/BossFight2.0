@@ -7,6 +7,7 @@ public class Blaster : MonoBehaviour {
     public AudioSource shotSound;
     public float coolDownTime = 0.1f;
     public float lightTime = 0.1f;
+    public bool automaticFire = false;
 
     private GameObject Ponta_Arma;
     private GameObject Tiro;
@@ -14,8 +15,7 @@ public class Blaster : MonoBehaviour {
     private Light shotLight;
 
     private Vector3 Direction;
-    private float lastShotTime = 0f;
-    private float timeSinceShot;
+    private float lastShotTime;
 
 	void Start ()
     {
@@ -25,28 +25,34 @@ public class Blaster : MonoBehaviour {
         shotLight = Ponta_Arma.GetComponent<Light>();
 
         shotLight.enabled = false;
-        timeSinceShot = -coolDownTime;
-	}
+        lastShotTime = -coolDownTime;
+    }
 	
 	void Update ()
     {
-        timeSinceShot = Time.time - lastShotTime;
+        bool shotFired = false;
+        float timeSinceShot = Time.time - lastShotTime;
 
         if (timeSinceShot >= lightTime)
             shotLight.enabled = false;
 
-        if (Input.GetMouseButtonDown(0) && timeSinceShot >= coolDownTime)
+        if (automaticFire)
+            shotFired = Input.GetMouseButton(0);
+        else
+            shotFired = Input.GetMouseButtonDown(0);
+
+        if (shotFired && timeSinceShot >= coolDownTime)
         {
             lastShotTime = Time.time;
             shotLight.enabled = true;
             shotSound.Play();
 
-            Atira();
+            Shoot();
         }
 
     }
 
-    void Atira()
+    void Shoot()
     {
         RaycastHit Hit;
         

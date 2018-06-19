@@ -43524,7 +43524,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae2598b9f6bd79844925c58103d1990f, type: 3}
   m_Name: 
@@ -77305,8 +77305,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotSound: {fileID: 1740260956}
-  coolDownTime: 0.1
-  lightTime: 0.1
+  coolDownTime: 0.15
+  lightTime: 0.15
+  automaticFire: 1
 --- !u!95 &1740260962
 Animator:
   serializedVersion: 3
@@ -77391,8 +77392,8 @@ MonoBehaviour:
   groundMoveDamp: 11
   groundCheckDistance: 0.5
   wallOffset: 1
-  wallJumpDamp: 0.3
-  wallJumpActive: 0
+  wallJumpDamp: 0.9
+  wallJumpActive: 1
   wallStickFixActive: 1
 --- !u!114 &1740260969
 MonoBehaviour:
