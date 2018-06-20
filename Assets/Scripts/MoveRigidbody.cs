@@ -9,8 +9,6 @@ public class MoveRigidbody : MonoBehaviour
     // --- PUBLIC VARIABLES ---
 
     public AudioSource moveAudio;                   // Player's walking sound
-   
-    //public Animator playerAnim;
 
     public float validJumpTime        = 0.1f;       // Time during which the player will jump when he touches the ground after a jump command has been issued;
     public float groundInputMag       = 2f;         // Determines how fast the player's speed will change when he is moved on the ground;
@@ -31,13 +29,10 @@ public class MoveRigidbody : MonoBehaviour
     public float groundCheckDistance  = 0.5f;
     public float wallOffset           = 1f;
     public float wallJumpDamp         = 0.3f;
+    public float stepTimeCoefficient  = 5f;
 
-    //public float walkingStepLength    = 1f;         //DEBUG
-    //public float runningStepLength    = 3f;         //DEBUG
-    public float stepTimeCoefficient  = 1f;         //DEBUG
-
-    public bool wallJumpActive = false;
-    public bool wallStickFixActive  = true;
+    public bool wallJumpActive        = false;
+    public bool wallStickFixActive    = true;
     
     // --- PRIVATE VARIABLES ---
 
@@ -63,8 +58,10 @@ public class MoveRigidbody : MonoBehaviour
     private float last_xzSpeedOnGround = 0f;            // Horizontal speed player had when he left the ground;
     private float timeJumped           = 0f;            // Time of simulation at which player jumped;
     private float currentWallJumpForce = 0f;
-    private int   groundLayerMask      = 1 << 8;
+    private float timeStepped          = 0f;
+    private float nextStepTime         = 0f;
 
+    private int groundLayerMask = 1 << 8;
     private string groundTag;                       // Tag of ground object touched;
 
     private bool isGrounded      = false;           // True when player is on ground;
@@ -73,15 +70,11 @@ public class MoveRigidbody : MonoBehaviour
     private bool wallApproach    = false;
     private bool invertedControl = false;           // True when player movement should be inverted;
 
-    private float timeStepped  = 0f;
-    private float nextStepTime = 0f;
-    //private bool  isMoving     = false;              // True when player is moving on the current frame;
-    //private bool wasMoving       = false;           // True when player was moving on the last frame;
-
-    private float freezeTimer = 0f;
+    
+    private float freezeTimer        = 0f;
     private float freezeRecoveryTime = 5f;
     private float forceRecoveryValue = 5f;
-    private bool  isFrozen = false;
+    private bool  isFrozen           = false;
 
     void Start()
     {
@@ -234,12 +227,6 @@ public class MoveRigidbody : MonoBehaviour
                 nextStepTime = timeStepped + stepTimeDelta;
             }
         }
-        //else
-        //{
-        //    moveAudio.Stop();
-        //    timeStepped = Time.time;
-        //    nextStepTime = timeStepped;
-        //}
 
         // -- Setting freeze mechanics --
         if (isFrozen)
@@ -301,7 +288,6 @@ public class MoveRigidbody : MonoBehaviour
         }
 
         // -- Wall jumping and fixing wall sticking --
-
         if (wallApproach)
         {
             Vector3 wallNormal = wallHit.normal;
