@@ -27,9 +27,14 @@ public class MoveRigidbody : MonoBehaviour
     public float minMidairTargetSpeed = 9f;         // How fast player can get midair (horizontal speed) if he jumps while still;
     public float midairAccelAllowed   = 1.10f;      // Percentual increase in horizontal speed allowed (after reaching target speed) after jump;
     public float groundMoveDamp       = 11f;        // Base of the power by which speed will be decreased after no input is given while grounded;
+
     public float groundCheckDistance  = 0.5f;
     public float wallOffset           = 1f;
     public float wallJumpDamp         = 0.3f;
+
+    //public float walkingStepLength    = 1f;         //DEBUG
+    //public float runningStepLength    = 3f;         //DEBUG
+    public float stepTimeCoefficient  = 1f;         //DEBUG
 
     public bool wallJumpActive = false;
     public bool wallStickFixActive  = true;
@@ -63,12 +68,16 @@ public class MoveRigidbody : MonoBehaviour
     private string groundTag;                       // Tag of ground object touched;
 
     private bool isGrounded      = false;           // True when player is on ground;
-    private bool isMoving        = false;           // True when player is moving on the current frame;
-    private bool wasMoving       = false;           // True when player was moving on the last frame;
+    private bool wasGrounded     = false;
     private bool hasJumped       = false;           // True when a jump command was issued less than validJumpTime secs ago;
     private bool wallApproach    = false;
     private bool invertedControl = false;           // True when player movement should be inverted;
-    
+
+    private float timeStepped  = 0f;
+    private float nextStepTime = 0f;
+    //private bool  isMoving     = false;              // True when player is moving on the current frame;
+    //private bool wasMoving       = false;           // True when player was moving on the last frame;
+
     private float freezeTimer = 0f;
     private float freezeRecoveryTime = 5f;
     private float forceRecoveryValue = 5f;
@@ -127,6 +136,7 @@ public class MoveRigidbody : MonoBehaviour
     private void CheckGrounded()
     {
         RaycastHit hit;
+        wasGrounded = isGrounded;
 
         if (Physics.CapsuleCast(topCapsulePosition, bottomCapsulePosition, capsuleRadius * capsuleRadiusMultiplier,
                                 Vector3.down, out hit, groundCheckDistance, groundLayerMask))
@@ -209,6 +219,27 @@ public class MoveRigidbody : MonoBehaviour
 
         playerAnimator.SetFloat("InputH", playerInput[0]);
         playerAnimator.SetFloat("InputV", playerInput[1]);
+
+        // -- Moving sound --
+        float xzSpeed = new Vector3(rb.velocity.x, 0f, rb.velocity.z).magnitude;
+        if (xzSpeed > 0.5f && isGrounded)
+        {
+            if (Time.time >= nextStepTime)
+            {
+                if (wasGrounded)
+                    moveAudio.Play();
+
+                float stepTimeDelta = stepTimeCoefficient / targetSpeed;
+                timeStepped = Time.time;
+                nextStepTime = timeStepped + stepTimeDelta;
+            }
+        }
+        //else
+        //{
+        //    moveAudio.Stop();
+        //    timeStepped = Time.time;
+        //    nextStepTime = timeStepped;
+        //}
 
         // -- Setting freeze mechanics --
         if (isFrozen)
