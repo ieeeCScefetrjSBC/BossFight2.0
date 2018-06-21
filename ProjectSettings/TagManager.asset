@@ -29,6 +29,7 @@ TagManager:
   - Arma
   - Hitmark
   - Luz
+  - Plataforma_Exemplo
   layers:
   - Default
   - TransparentFX

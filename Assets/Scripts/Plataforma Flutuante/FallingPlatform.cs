@@ -2,24 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingPlatform : MonoBehaviour {
+public class FallingPlatform : MonoBehaviour
+{
 
     bool Touched;
     float Counting = 0f;
     public float TimeToFall;
     float DownSpeed = 0f;
 
-	void Start () {
+    void Start()
+    {
         Touched = false;
-	}
+    }
 
-	private void OnCollisionEnter(Collision other)
-	{
-		if (other.gameObject.name == "Player") {
-			Touched = true;
-			Destroy (gameObject, 10);
-		}
-	}
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "Player")
+        {
+            Touched = true;
+        }
+    }
 
     /*private void OnTriggerEnter(Collider other)
     {
@@ -32,13 +34,13 @@ public class FallingPlatform : MonoBehaviour {
 
     void Update()
     {
-        if(Touched == true)
+        if (Touched == true)
         {
             Counting += Time.deltaTime;
         }
-        if(Counting >= TimeToFall && Touched == true)
+        if (Counting >= TimeToFall && Touched == true)
         {
-            DownSpeed += Time.deltaTime/5;
+            DownSpeed += Time.deltaTime / 5;
         }
         //Debug.Log(Touched);
     }
@@ -46,5 +48,10 @@ public class FallingPlatform : MonoBehaviour {
     private void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y - DownSpeed, transform.position.z);
+    }
+
+    public bool getTouchedBool()
+    {
+        return this.Touched;
     }
 }
