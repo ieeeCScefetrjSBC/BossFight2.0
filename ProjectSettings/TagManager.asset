@@ -30,6 +30,7 @@ TagManager:
   - Hitmark
   - Luz
   - Plataforma_Exemplo
+  - PointLight
   layers:
   - Default
   - TransparentFX

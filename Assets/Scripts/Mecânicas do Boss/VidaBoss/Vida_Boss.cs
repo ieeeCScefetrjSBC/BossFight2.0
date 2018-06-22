@@ -6,7 +6,8 @@ public class Vida_Boss : MonoBehaviour {
 
     // VARIÁVEIS PÚBLICAS
     public AudioSource DanoBoss;
-    public float deathAnimTime = 5f;
+    public float deathAnimTime = 15f;
+    public float TimeToFirework = 5f;
 
     // VARIÁVEIS PRIVADAS
     private GameObject telaVitoria;
@@ -34,18 +35,27 @@ public class Vida_Boss : MonoBehaviour {
             telaVitoria.SetActive(true);
         }
 
+        if(timeSinceVictory > TimeToFirework && victory)
+        {
+            core.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
         if (victory)
         {
-            Light light = core.GetComponent<Light>();
-            light.enabled = true;
-            light.intensity = timeSinceVictory;
+            /* Light light = core.GetComponent<Light>();
+             light.enabled = true;
+             core.GetComponent<Animator>().enabled = true;
+             light.intensity = timeSinceVictory; */
+            Light light = GameObject.FindGameObjectWithTag("PointLight").GetComponent<Light>();
+            core.GetComponent<Animator>().enabled = true;
+            light.intensity -= timeSinceVictory/50;
         }
 
         if (Mascara.BossMorto && !victory)
         {
             Debug.Log("BOSS MORREU");
 
-            core.GetComponent<MeshRenderer>().enabled = false;
+            //core.GetComponent<MeshRenderer>().enabled = false;
 
             timeOfVictory = Time.time;
             victory = true;
