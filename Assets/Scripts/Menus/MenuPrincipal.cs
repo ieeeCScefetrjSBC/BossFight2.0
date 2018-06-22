@@ -31,6 +31,7 @@ public class MenuPrincipal : MonoBehaviour {
     public void Creditos()
     {
         Debug.Log("Créditos");
+        SceneManager.LoadScene("Creditos");
     }
 
     public void Opcoes()

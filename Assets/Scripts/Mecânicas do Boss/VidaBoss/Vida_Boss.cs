@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Vida_Boss : MonoBehaviour {
 
@@ -13,6 +14,8 @@ public class Vida_Boss : MonoBehaviour {
     private GameObject telaVitoria;
     private GameObject core;
     private Mascara_Script Mascara;
+    private CamMove camMoveScript;       // Objeto da câmera principal
+    private Blaster blasterScript;
 
     private float vida = 1000F;
     private float timeOfVictory = Mathf.Infinity;
@@ -24,6 +27,8 @@ public class Vida_Boss : MonoBehaviour {
         telaVitoria = GameObject.FindGameObjectWithTag("Tela_Vitoria");
         telaVitoria.SetActive(false);
         Mascara = GameObject.FindGameObjectWithTag("Boss").GetComponent<Mascara_Script>();
+        camMoveScript = Camera.main.GetComponent<CamMove>();
+        blasterScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Blaster>();
         core = GameObject.Find("Core");
 
     }
@@ -32,41 +37,53 @@ public class Vida_Boss : MonoBehaviour {
 
         if (timeSinceVictory > deathAnimTime && victory)
         {
-            telaVitoria.SetActive(true);
+            ManageVictoryScreen();
         }
 
-        if(timeSinceVictory > TimeToFirework && victory)
+        else
         {
-            core.transform.GetChild(0).gameObject.SetActive(true);
-        }
+            if(timeSinceVictory > TimeToFirework && victory)
+            {
+                core.transform.GetChild(0).gameObject.SetActive(true);
+            }
 
-        if (victory)
+            if (victory)
+            {
+                Light light = GameObject.FindGameObjectWithTag("PointLight").GetComponent<Light>();
+                core.GetComponent<Animator>().enabled = true;
+                light.intensity -= timeSinceVictory/50;
+            }
+
+            if (Mascara.BossMorto && !victory)
+            {
+                Debug.Log("BOSS MORREU");
+
+                timeOfVictory = Time.time;
+                victory = true;
+            }
+        }
+    }
+
+    void ManageVictoryScreen()
+    {
+        Debug.Log("ACABOOOU");                                  // Acabou
+
+        Time.timeScale = 0;                                     // Pausa o tempo do jogo
+
+        telaVitoria.SetActive(true);                            // Ativa a tela de morte
+        Cursor.lockState = CursorLockMode.None;
+
+        camMoveScript.enabled = false;                       // Paralisa a movimentação da câmera
+        blasterScript.enabled = false;                       // Paralisa o tiro do player
+
+        if (Input.GetKeyDown(KeyCode.Return))                        // Caso aperte A
         {
-            /* Light light = core.GetComponent<Light>();
-             light.enabled = true;
-             core.GetComponent<Animator>().enabled = true;
-             light.intensity = timeSinceVictory; */
-            Light light = GameObject.FindGameObjectWithTag("PointLight").GetComponent<Light>();
-            core.GetComponent<Animator>().enabled = true;
-            light.intensity -= timeSinceVictory/50;
+            Debug.Log("vaisefode");
+
+            Time.timeScale = 1;
+            Cursor.visible = true;
+            SceneManager.LoadScene("Menu");                   // Volta para o menu inicial
         }
-
-        if (Mascara.BossMorto && !victory)
-        {
-            Debug.Log("BOSS MORREU");
-
-            //core.GetComponent<MeshRenderer>().enabled = false;
-
-            timeOfVictory = Time.time;
-            victory = true;
-        }
-        //if (vida < 0)
-        //{
-        //    Debug.Log("BOSS MORREU");
-        //    Destroy(this.gameObject);
-
-        //    telaVitoria.SetActive(true);
-        //}
     }
 
     public void danoBoss(float dano)

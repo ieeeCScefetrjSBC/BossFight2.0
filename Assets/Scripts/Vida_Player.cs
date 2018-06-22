@@ -74,14 +74,15 @@ public class Vida_Player : MonoBehaviour
         aim.SetActive(false);                                   // Remove a mira
         Cursor.lockState = CursorLockMode.None;
 
-        camMoveScript.enabled    = false;                       // Paralisa a movimentação da câmera
+        camMoveScript.enabled = false;                       // Paralisa a movimentação da câmera
         blasterScript.enabled = false;                       // Paralisa o tiro do player
 
-        if (Input.GetKeyDown(KeyCode.A))                        // Caso aperte A
+        if (Input.GetKeyDown(KeyCode.Return))                        // Caso aperte A
         {
             Debug.Log("vaisefode");
 
             Time.timeScale = 1;
+            Cursor.visible = true;
             SceneManager.LoadScene("Menu");                   // Volta para o menu inicial
         }
     }

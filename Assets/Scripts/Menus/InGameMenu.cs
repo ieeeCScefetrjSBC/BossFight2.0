@@ -11,7 +11,7 @@ public class InGameMenu : MonoBehaviour
     public Canvas mira;
 
     private GameObject Player;
-    private CamMove    camMoveScript;
+    private CamMove camMoveScript;
     private Blaster blasterScript;
     private bool isPaused = false;
 

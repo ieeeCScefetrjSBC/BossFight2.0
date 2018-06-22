@@ -23,6 +23,9 @@ public class Mascara_Script : MonoBehaviour {
     public bool Masc3;
     public bool BossMorto;
 
+    private GameObject[] masks = new GameObject[3];
+    private int currentMaskIdx = 0;
+
 
     // Use this for initialization 
     void Start () {
@@ -43,6 +46,28 @@ public class Mascara_Script : MonoBehaviour {
         particle_3 = GameObject.FindGameObjectWithTag("particle3");
         particle_2.SetActive(false);
         particle_3.SetActive(false);
+
+
+        masks[0] = GameObject.FindGameObjectWithTag("Mascara1");
+        masks[1] = GameObject.FindGameObjectWithTag("Mascara2");
+        masks[2] = GameObject.FindGameObjectWithTag("Mascara3");
+    }
+
+    public void ChooseMask(int maskIndex)
+    {
+        GameObject mask;
+
+        mask = masks[maskIndex];
+        transform.rotation = Quaternion.LookRotation(mask.transform.forward, mask.transform.up);
+
+
+    }
+
+    private void ChangeMask()
+    {
+        int idx = currentMaskIdx;
+        idx++;
+        if (idx >= 3) idx = 0;
 
     }
 	
