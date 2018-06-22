@@ -58,21 +58,33 @@ public class Mascara_Script : MonoBehaviour {
         GameObject mask;
 
         mask = masks[maskIndex];
+        currentMaskIdx = maskIndex;
         transform.rotation = Quaternion.LookRotation(mask.transform.forward, mask.transform.up);
-
-
     }
 
     private void ChangeMask()
     {
+        bool chosen = false;
         int idx = currentMaskIdx;
-        idx++;
-        if (idx >= 3) idx = 0;
 
+        while (!chosen)
+        {
+            idx++;
+            if (idx >= 3)
+                idx = 0;
+
+            if (masks[idx] != null)
+                chosen = true;
+        }
+       
+        ChooseMask(idx);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        //if (Input.GetKeyDown(KeyCode.Backspace))
+        //    ChangeMask();
+
         if(mascara_1 == null)
         {
             Masc1 = false;
@@ -95,11 +107,13 @@ public class Mascara_Script : MonoBehaviour {
 
 
         float vida = vidaBoss.getvida();
-        
+        //lalalala
+        //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
+
         if (Masc1)
         {
             //Boss vira na direçao do player
-            
+
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
 
             //Faz a mascara 1 ser a principal
@@ -108,7 +122,7 @@ public class Mascara_Script : MonoBehaviour {
                 transform.DetachChildren();
                 //transform.LookAt(mascara_1.transform);
                 transform.rotation = Quaternion.LookRotation(mascara_1.transform.forward, mascara_1.transform.up);
-                
+
                 mascara_1.transform.SetParent(this.transform);
                 mascara_2.transform.SetParent(this.transform);
                 mascara_3.transform.SetParent(this.transform);
@@ -116,7 +130,7 @@ public class Mascara_Script : MonoBehaviour {
                 setMascara = false;
             }
         }
-        else if(Masc2)
+        else if (Masc2)
         {
             //Boss vira na direçao do player
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
@@ -134,7 +148,7 @@ public class Mascara_Script : MonoBehaviour {
                 setMascara = true;
             }
         }
-        else if(Masc3)
+        else if (Masc3)
         {
             //Boss vira na direçao do player
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
@@ -151,12 +165,5 @@ public class Mascara_Script : MonoBehaviour {
                 setMascara = true;
             }
         }
-
-        else
-        {
-            //Destroy(boss);
-        }
-
-
     }
 }

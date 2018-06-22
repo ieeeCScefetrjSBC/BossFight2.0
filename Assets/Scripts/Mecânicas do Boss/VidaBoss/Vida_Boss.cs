@@ -60,6 +60,8 @@ public class Vida_Boss : MonoBehaviour {
 
                 timeOfVictory = Time.time;
                 victory = true;
+                GetComponent<Tiro_Boss>().enabled = false;
+                GetComponent<Comp_Call>().enabled = false;
             }
         }
     }
