@@ -23,6 +23,7 @@ public class Controller : MonoBehaviour {
         {
             PlataformaFlutuante = (GameObject)GameObject.Instantiate(Plataforma_Exemplo, PosiçãoInicial, RotaçãoInicial, this.transform);
             PlataformaFlutuante.tag = "Plataforma";
+            PlataformaFlutuante.GetComponent<Animator>().enabled = true;
         }
         if (PlataformaFlutuante != null & PlataformaFlutuante.GetComponent<FallingPlatform>().getTouchedBool())
         {
