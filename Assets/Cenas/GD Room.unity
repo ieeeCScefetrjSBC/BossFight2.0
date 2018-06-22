@@ -4127,7 +4127,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 614890096
+  randomSeed: -1424486629
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -20042,7 +20042,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1496106015
+  randomSeed: 1109554556
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -49918,7 +49918,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.9632353, g: 0.5779412, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.7
   m_Range: 14.37
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -49932,7 +49932,7 @@ Light:
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -85891,8 +85891,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 3
-  scale: 3
-  timeScale: 1
+  scale: 0.5
+  timeScale: 0.5
 --- !u!114 &1444168236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86040,7 +86040,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.9632353, g: 0.5779412, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.7
   m_Range: 14.37
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -86054,7 +86054,7 @@ Light:
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -110886,7 +110886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1960953601
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110902,8 +110902,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 0, y: -131}
+  m_SizeDelta: {x: 420, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1960953602
 MonoBehaviour:
@@ -110917,7 +110917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6666667, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -110925,7 +110925,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 779b75b4c2ed453459e4c32968b483b2, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 1
@@ -110937,7 +110937,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Game Over \n\"A\" para reiniciar"
+  m_Text: Aperte ENTER para reiniciar
 --- !u!222 &1960953603
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -111187,7 +111187,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.9632353, g: 0.5779412, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.7
   m_Range: 14.37
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -111201,7 +111201,7 @@ Light:
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -111350,7 +111350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2000188857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -111359,14 +111359,14 @@ RectTransform:
   m_GameObject: {fileID: 2000188856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 864998811}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 152, y: 39}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2000188858
@@ -111381,7 +111381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.43529412, g: 0.79607844, b: 0.09019608, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -111389,11 +111389,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 779b75b4c2ed453459e4c32968b483b2, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -111401,7 +111401,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Uhuuuuul vc ganhou otario
+  m_Text: "Aperte ENTER \npara reiniciar"
 --- !u!222 &2000188859
 CanvasRenderer:
   m_ObjectHideFlags: 0
