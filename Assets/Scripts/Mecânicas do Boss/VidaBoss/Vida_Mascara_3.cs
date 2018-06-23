@@ -23,7 +23,8 @@ public class Vida_Mascara_3 : MonoBehaviour
 
     public void setVida(float dano)
     {
-        vida -= dano;
+        if (GameObject.FindGameObjectWithTag("Boss").GetComponent<Mascara_Script>().GetActiveMask() == gameObject)
+            vida -= dano;
     }
 
     public float getVida()
