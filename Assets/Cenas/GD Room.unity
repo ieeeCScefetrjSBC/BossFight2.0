@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3914,8 +3914,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.9632353, g: 0.5779412, b: 0, a: 1}
-  m_Intensity: 0.7
-  m_Range: 14.37
+  m_Intensity: 0.8
+  m_Range: 8
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3927,8 +3927,8 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -20715,7 +20715,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1109554556
+  randomSeed: -1458456878
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -46642,6 +46642,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a0efc89fc25de154bbeb43a56432f77c, type: 2}
+    - target: {fileID: 33165674396075016, guid: 794d34cb47b95a448bf16ebb2bc3171c,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300018, guid: 373ac176a58c7344687fb931412766f6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 794d34cb47b95a448bf16ebb2bc3171c, type: 2}
   m_IsPrefabParent: 0
@@ -50215,6 +50220,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a0efc89fc25de154bbeb43a56432f77c, type: 2}
+    - target: {fileID: 33165674396075016, guid: 794d34cb47b95a448bf16ebb2bc3171c,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300018, guid: 373ac176a58c7344687fb931412766f6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 794d34cb47b95a448bf16ebb2bc3171c, type: 2}
   m_IsPrefabParent: 0
@@ -51006,7 +51016,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.9632353, g: 0.5779412, b: 0, a: 1}
   m_Intensity: 0.7
-  m_Range: 14.37
+  m_Range: 8
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -51018,8 +51028,8 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -51272,7 +51282,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 169.57
+  m_Range: 30.16
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -57042,7 +57052,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9dd3d147837ca2745920f77a21355100, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e7d78cecd4112749867ba5c3f1eccdc, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -82837,6 +82847,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a0efc89fc25de154bbeb43a56432f77c, type: 2}
+    - target: {fileID: 33165674396075016, guid: 794d34cb47b95a448bf16ebb2bc3171c,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300018, guid: 373ac176a58c7344687fb931412766f6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 794d34cb47b95a448bf16ebb2bc3171c, type: 2}
   m_IsPrefabParent: 0
@@ -88014,7 +88029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12690ccadc12fe74a87c19669343e16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 160
+  size: 250
   gridSize: 16
 --- !u!23 &1444168237
 MeshRenderer:
@@ -88030,7 +88045,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 422da5dd477141a408e97fabe0d8d518, type: 2}
+  - {fileID: 2100000, guid: 37c80850f05bdfe47ac8fe2885a1283f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88237,8 +88252,8 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -107271,6 +107286,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a0efc89fc25de154bbeb43a56432f77c, type: 2}
+    - target: {fileID: 33165674396075016, guid: 794d34cb47b95a448bf16ebb2bc3171c,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300018, guid: 373ac176a58c7344687fb931412766f6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 794d34cb47b95a448bf16ebb2bc3171c, type: 2}
   m_IsPrefabParent: 0
@@ -113847,8 +113867,8 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
