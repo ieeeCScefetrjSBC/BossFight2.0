@@ -9,6 +9,7 @@ public class Vida_Player : MonoBehaviour
     public AudioSource DanoPlayer;
 
     private GameObject deathScreen;           // Objeto da tela de morte
+    private Text Tempo_Derrota;             // Tempo em que o player foi derrotado
     private GameObject aim;                // Objeto da Mira
     private CamMove    camMoveScript;       // Objeto da câmera principal
     private Blaster blasterScript;
@@ -21,10 +22,12 @@ public class Vida_Player : MonoBehaviour
     private bool Dano;
     private float regenCooldown = 3f;       // Tempo para começar a se regenerar;
     private float regenFactor = 100f;       // Fator de regeneração
+    private float TimeSinceStart;
 
     private void Start()
     {
         deathScreen      = GameObject.FindGameObjectWithTag("Tela_Morte");    // Define qual é o objeto da tela de morte
+        Tempo_Derrota = GameObject.FindGameObjectWithTag("Tempo_Derrota").GetComponent<Text>();
         aim              = GameObject.FindGameObjectWithTag("Mira");
         camMoveScript    = Camera.main.GetComponent<CamMove>();               // Define quem é a Main Camera
         blasterScript = gameObject.GetComponent<Blaster>();
@@ -34,6 +37,7 @@ public class Vida_Player : MonoBehaviour
 
     void Update()
     {
+        TimeSinceStart = Time.time;
         if (vida <= 0)                                              // Verifica a vida do player
             ManageDeathScreen();
 
@@ -66,11 +70,12 @@ public class Vida_Player : MonoBehaviour
 
     private void ManageDeathScreen()
     {
-        Debug.Log("ACABOOOU");                                  // Acabou
+        //Debug.Log("ACABOOOU");                                  // Acabou
 
         Time.timeScale = 0;                                     // Pausa o tempo do jogo
 
         deathScreen.SetActive(true);                            // Ativa a tela de morte
+        Tempo_Derrota.text = "Sobreviveu\npor  \n" + ((int)(TimeSinceStart / 60)).ToString() + "M e " + ((int)(TimeSinceStart % 60)).ToString() + "S";
         aim.SetActive(false);                                   // Remove a mira
         Cursor.lockState = CursorLockMode.None;
 

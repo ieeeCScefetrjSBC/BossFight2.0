@@ -17,7 +17,7 @@ public class Sopro : MonoBehaviour {
 
     private float ForceMultiplier = 50; // Multiplicador da força
     private float DuracaoSopro = 5f;
-    private float TempoAteSopro = 8f;
+    private float TempoAteSopro = 5f;
     private bool SoproAtivado = false; // Luciano esteve aqui muahahaha
 
     private int Pattern_Sopro = 0;
@@ -119,7 +119,10 @@ public class Sopro : MonoBehaviour {
     public int Call (int Comando)
     {
         Pattern_Sopro = Comando; //Define qual será o padrao do sopro
-        Comp_Call.setTempo(10f); //Define o tempo até a próxima mecanica
+        if (Comando != 0)
+            Comp_Call.setTempo(10f); //Define o tempo até a próxima mecanica
+        else
+            Comp_Call.setTempo(0); 
 
         return Pattern_Sopro;
     }

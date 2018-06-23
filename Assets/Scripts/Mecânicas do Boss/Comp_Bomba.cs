@@ -39,7 +39,7 @@ public class Comp_Bomba : MonoBehaviour {
                 Ciclo -= Time.deltaTime;// Ciclo diminuindo contador
                 if (Ciclo <= 0) // Caso acabe o contador
                 {
-                    Debug.Log(i);
+                    //Debug.Log(i);
                     Ciclo = 5f;// Recomeça a contar
                     Bombas_Fogo[i + 3].SetActive(true); // Ativa a bomba
                     i--;// Passa para a próxima

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Vida_Boss : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class Vida_Boss : MonoBehaviour {
 
     // VARIÁVEIS PRIVADAS
     private GameObject telaVitoria;
+    private Text Tempo_Vitoria;
     private GameObject core;
     private Mascara_Script Mascara;
     private CamMove camMoveScript;       // Objeto da câmera principal
@@ -19,12 +21,14 @@ public class Vida_Boss : MonoBehaviour {
 
     private float vida = 1000F;
     private float timeOfVictory = Mathf.Infinity;
+    private float TimeSinceStart;
     private bool victory = false;
 
     // Use this for initialization
     private void Start()
     {
         telaVitoria = GameObject.FindGameObjectWithTag("Tela_Vitoria");
+        Tempo_Vitoria = GameObject.FindGameObjectWithTag("Tempo_Vitória").GetComponent<Text>();
         telaVitoria.SetActive(false);
         Mascara = GameObject.FindGameObjectWithTag("Boss").GetComponent<Mascara_Script>();
         camMoveScript = Camera.main.GetComponent<CamMove>();
@@ -34,12 +38,11 @@ public class Vida_Boss : MonoBehaviour {
     }
     void Update () {
         float timeSinceVictory = Time.time - timeOfVictory;
-
+        TimeSinceStart = Time.time;
         if (timeSinceVictory > deathAnimTime && victory)
         {
             ManageVictoryScreen();
         }
-
         else
         {
             if(timeSinceVictory > TimeToFirework && victory)
@@ -65,14 +68,14 @@ public class Vida_Boss : MonoBehaviour {
             }
         }
     }
-
     void ManageVictoryScreen()
     {
-        Debug.Log("ACABOOOU");                                  // Acabou
+        //Debug.Log("ACABOOOU");                                  // Acabou
 
         Time.timeScale = 0;                                     // Pausa o tempo do jogo
 
         telaVitoria.SetActive(true);                            // Ativa a tela de morte
+        Tempo_Vitoria.text = "Xibalba conquistada em  \n" + ((int)(TimeSinceStart/60)).ToString() + "M e " +  ((int)(TimeSinceStart%60 - 15)).ToString() + "S";
         Cursor.lockState = CursorLockMode.None;
 
         camMoveScript.enabled = false;                       // Paralisa a movimentação da câmera

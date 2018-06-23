@@ -80,14 +80,16 @@ public class Comp_Helice : MonoBehaviour {
     public int Call(int Comando)
     {
         Pattern_Helice = Comando;
-        if(Pattern_Helice == 1)
+        if (Pattern_Helice == 1)
         {
             Comp_Call.setTempo(Tempo_Fogo);
         }
-        else if(Pattern_Helice == 2)
+        else if (Pattern_Helice == 2)
         {
             Comp_Call.setTempo(Tempo_Gelo);
         }
+        else
+            Comp_Call.setTempo(0);
         return Pattern_Helice;
     }
 }

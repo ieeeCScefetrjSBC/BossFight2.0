@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vida_Mascara_3 : MonoBehaviour
 {
-    private float vida = 4f; //Vida da máscara3
+    private float vida = 400; //Vida da máscara3
 
     // Use this for initialization
     void Start()
