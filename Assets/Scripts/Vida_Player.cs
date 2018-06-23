@@ -16,7 +16,6 @@ public class Vida_Player : MonoBehaviour
     private Image HealthBar; //faz referência à health bar
     public float flashSpeed = 5f; // velocidade com que a cor vai aparecer na tela
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f); // cor em rgb
-    public Image imagemDano;
     private float vidaMax = 1000;           // Vida Máxima do Player
     private float vida = 1000;              // Vida do Player
     private bool Dano;
@@ -40,33 +39,9 @@ public class Vida_Player : MonoBehaviour
     {
         TimeSinceStart += Time.deltaTime;
         HealthBar.fillAmount = vida / 1000;
+        HealthBar.color = Color.Lerp(Color.green, Color.red, 1 - HealthBar.fillAmount);
         if (vida <= 0)                                              // Verifica a vida do player
             ManageDeathScreen();
-
-        else
-        {
-            if (Dano)
-            {
-                imagemDano.color = flashColour;
-            }
-            else
-            {
-                imagemDano.color = Color.Lerp(imagemDano.color, Color.clear, flashSpeed * Time.deltaTime);
-            }
-            Dano = false;
-
-
-            if (regenCooldown <= 0)                        // Caso tenha passado 3 segundos em receber dano, começa a regenerar
-            {
-                vida += regenFactor * Time.deltaTime;      // Recupera 100 de HP por segundo
-                if (vida > vidaMax)                       // Caso o regen tenha ultrapassado a vida máxima
-                    vida = vidaMax;
-            }
-            else
-            {
-                regenCooldown -= Time.deltaTime;           // Decai contador para começar a regenerar
-            }
-        }
     }
 
     private void ManageDeathScreen()
