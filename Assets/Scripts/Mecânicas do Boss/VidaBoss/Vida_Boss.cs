@@ -8,7 +8,7 @@ public class Vida_Boss : MonoBehaviour {
 
     // VARIÁVEIS PÚBLICAS
     public AudioSource DanoBoss;
-    public float deathAnimTime = 15f;
+    public float deathAnimTime = 10f;
     public float TimeToFirework = 5f;
 
     // VARIÁVEIS PRIVADAS

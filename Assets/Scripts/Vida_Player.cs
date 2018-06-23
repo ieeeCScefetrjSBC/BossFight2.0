@@ -13,7 +13,7 @@ public class Vida_Player : MonoBehaviour
     private GameObject aim;                // Objeto da Mira
     private CamMove    camMoveScript;       // Objeto da câmera principal
     private Blaster blasterScript;
-    public Slider Slider; //faz referência ao slider de health
+    private Image HealthBar; //faz referência à health bar
     public float flashSpeed = 5f; // velocidade com que a cor vai aparecer na tela
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f); // cor em rgb
     public Image imagemDano;
@@ -31,13 +31,14 @@ public class Vida_Player : MonoBehaviour
         aim              = GameObject.FindGameObjectWithTag("Mira");
         camMoveScript    = Camera.main.GetComponent<CamMove>();               // Define quem é a Main Camera
         blasterScript = gameObject.GetComponent<Blaster>();
-
+        HealthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Image>();
         deathScreen.SetActive(false);
     }
 
     void Update()
     {
         TimeSinceStart = Time.time;
+        HealthBar.fillAmount = vida / 1000;
         if (vida <= 0)                                              // Verifica a vida do player
             ManageDeathScreen();
 
@@ -52,7 +53,6 @@ public class Vida_Player : MonoBehaviour
                 imagemDano.color = Color.Lerp(imagemDano.color, Color.clear, flashSpeed * Time.deltaTime);
             }
             Dano = false;
-            Slider.value = vida;
 
 
             if (regenCooldown <= 0)                        // Caso tenha passado 3 segundos em receber dano, começa a regenerar

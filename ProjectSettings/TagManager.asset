@@ -34,6 +34,10 @@ TagManager:
   - particle1
   - Tempo_Derrota
   - Tempo_Vitoria
+  - HealthBar
+  - Mask1_Health
+  - Mask2_Health
+  - Mask3_Health
   layers:
   - Default
   - TransparentFX
