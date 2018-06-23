@@ -65,7 +65,7 @@ public class Comp_Bomba : MonoBehaviour {
                     i = 0; // Reseta o contador
                 }
                 break;
-            case 4:
+            /*case 4:
                 Ciclo -= Time.deltaTime;// Ciclo diminuindo contador
                 if (Ciclo <= 0)// Caso acabe o contador
                 {
@@ -78,17 +78,17 @@ public class Comp_Bomba : MonoBehaviour {
                     Pattern_Bomba = 0; // Acabou o padrão
                     i = 0; // Reseta o contador
                 }
-                break;
+                break;*/
         }
     }
     public int Call(int Comando)
     {
         Pattern_Bomba = Comando;// Define qual será o padrão de bomba
         i = 0;
-        if(Pattern_Bomba!=4)
-            Comp_Call.setTempo(1f);// Tempo para as Bombas Fogo e Raio
+        if(Pattern_Bomba!=4 && Pattern_Bomba != 0)
+            Comp_Call.setTempo(16);// Tempo para as Bombas Fogo e Raio
         else
-            Comp_Call.setTempo(1f);// Tempo para a Bomba Antídoto
+            Comp_Call.setTempo(0);// Tempo entre desativação e próxima mecânica
         return Pattern_Bomba;
     }
     public void setCiclo(float Ciclo)// Modifica o valor do Ciclo(tempo entre spawn de bomba)

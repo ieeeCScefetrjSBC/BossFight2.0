@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -38208,10 +38208,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vel_Rot: 2000
-  "Acelera\xE7\xE3o": 3
-  Vel_Max: 6
+  "Acelera\xE7\xE3o": 6
+  Vel_Max: 10
   "Impulso_Explos\xE3o": 15
-  Tempo_de_Vida: 10
+  Tempo_de_Vida: 13
 --- !u!4 &436150082
 Transform:
   m_ObjectHideFlags: 0
@@ -68468,13 +68468,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024712179}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89ba865e85675ed46b90736cc6892f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index_Mechanics: 000000000100000000000000020000000200000001000000
-  Module: 010000000100000003000000010000000200000002000000
+  Index_Mechanics: 000000000000000000000000020000000200000001000000
+  Module: 010000000200000000000000010000000200000002000000
 --- !u!114 &1024712191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68521,9 +68521,9 @@ MonoBehaviour:
   - {x: -10, y: 10, z: 0}
   Timer_ActivateFogo: 2
   Timer_ActivateGelo: 2
-  Tempo_Fogo: 1
+  Tempo_Fogo: 13
   Tempo_Tempst: 1
-  Tempo_Gelo: 1
+  Tempo_Gelo: 15
 --- !u!1 &1053952034
 GameObject:
   m_ObjectHideFlags: 0
@@ -110594,13 +110594,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "Acelera\xE7\xE3o": 3
-  Vel_Max: 6
+  Vel_Max: 7
   Vel_Rot: 2000
   Intens_CongelamentoParcial: 40
   Intens_CongelamentoTotal: 100
   "DistanciaDeAtiva\xE7\xE3o": 15
   Dano_HeliceDeGelo: 100
-  Tempo_de_Vida: 10
+  Tempo_de_Vida: 15
   TempoCongelado: 1
 --- !u!54 &1915282348
 Rigidbody:
