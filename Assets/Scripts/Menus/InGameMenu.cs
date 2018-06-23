@@ -17,8 +17,8 @@ public class InGameMenu : MonoBehaviour
 
 	void Start ()
     {
-        Player           = GameObject.FindGameObjectWithTag("Player");
-        camMoveScript    = Camera.main.GetComponent<CamMove>();
+        Player        = GameObject.FindGameObjectWithTag("Player");
+        camMoveScript = Camera.main.GetComponent<CamMove>();
         blasterScript = Player.GetComponent<Blaster>();
 
         inGameMenu.enabled = false;
@@ -28,14 +28,20 @@ public class InGameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = true;
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            camMoveScript.enabled    = false;
-            blasterScript.enabled = false;
-            inGameMenu.enabled = true;
-            mira.enabled       = false;
+            if (isPaused)
+                Continue();
+
+            else
+            {
+                isPaused = true;
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                camMoveScript.enabled    = false;
+                blasterScript.enabled = false;
+                inGameMenu.enabled = true;
+                mira.enabled       = false;
+            }
         }
 	}
 
@@ -57,7 +63,6 @@ public class InGameMenu : MonoBehaviour
     {
         if (isPaused)
         {
-            Debug.Log("vaisefode2");
             SceneManager.LoadScene("Menu");
         }
     }
