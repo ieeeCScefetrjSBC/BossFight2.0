@@ -101,7 +101,7 @@ public class Mascara_Script : MonoBehaviour {
         int maskIdx = maskNum - 1;
 
         if (maskIdx < 0 || maskIdx > 2)
-            Debug.Log("ESSA MASCARA NAO EXISTE OTARIO");
+            //Debug.Log("ESSA MASCARA NAO EXISTE OTARIO");
 
         if (masks[maskIdx] == null)
             return;
@@ -127,12 +127,12 @@ public class Mascara_Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+      /*  if (Input.GetKeyDown(KeyCode.Alpha1))
             ChooseMask(1);
         if (Input.GetKeyDown(KeyCode.Alpha2))
             ChooseMask(2);
         if (Input.GetKeyDown(KeyCode.Alpha3))
-            ChooseMask(3);
+            ChooseMask(3);*/
         
         if (activeMask == null)
         {

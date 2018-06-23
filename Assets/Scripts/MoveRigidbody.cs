@@ -181,7 +181,7 @@ public class MoveRigidbody : MonoBehaviour
 
     void Update()
     {
-        Test();
+       // Test();
         
         // -- Updating variables for Physics.CapsuleCast() --
         capsuleCenterPosition = transform.position + capsule.center;
