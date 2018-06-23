@@ -5,6 +5,9 @@ using UnityEngine;
 public class HeliceDeGelo : MonoBehaviour
 {
 
+    public float partialFreezeDist = 15f;
+    public float totalFreezeDist = 3.5f;
+
     private GameObject Player;
     private Vector3 Mov_Direção; //Vetor direção do movimento
     private Vector3 direction; // Vetor direção da força
@@ -28,11 +31,18 @@ public class HeliceDeGelo : MonoBehaviour
     private bool VelMax_Atingida = false;
     private Vida_Player Vida_Player;
 
+    private float dist2Player = Mathf.Infinity;
+
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Vida_Player = Player.GetComponent<Vida_Player>();
         moveScript = Player.GetComponent<MoveRigidbody>();
+    }
+
+    public float GetDistToPlayer()
+    {
+        return dist2Player;
     }
 
     void Update()
@@ -50,7 +60,7 @@ public class HeliceDeGelo : MonoBehaviour
         // MOVIMENTO DA HELICE!!!
         Mov_Direção = new Vector3(Player.transform.position.x, Player.transform.position.y + 1.5f, Player.transform.position.z) - transform.position;  //Direção de movimento da helice
         transform.Rotate(Vector3.up * Time.deltaTime * Vel_Rot, Space.World);   // rotação em y
-        if ((Player.transform.position - transform.position).magnitude <= 3.5)     // Verifica se está perto ou distante do player
+        if ((Player.transform.position - transform.position).magnitude <= totalFreezeDist)     // Verifica se está perto ou distante do player
         {
             Longe = false;
             Encostou = true;
@@ -64,51 +74,73 @@ public class HeliceDeGelo : MonoBehaviour
             VelMax_Atingida = false;
         }
 
+        dist2Player = (transform.position - Player.transform.position).magnitude;
+        if (dist2Player < totalFreezeDist)
+        {
+            Vida_Player.danoPlayer(Dano_HeliceDeGelo);
+            moveScript.SetFreezeState(FreezeStates.isFrozen);
+            Destroy(gameObject);
+        }
+        else if (dist2Player < partialFreezeDist && moveScript.GetFreezeState() != FreezeStates.isFrozen)
+        {
+            moveScript.SetFreezeState(FreezeStates.isFreezing);
+        }
+
+        //if (Encostou)
+        //{
+        //    if (dist2Player == moveScript.GetDist2IceHelix())
+        //        moveScript.SetDist2IceHelix(Mathf.Infinity);
+
+        //    Vida_Player.danoPlayer(Dano_HeliceDeGelo);
+        //    Destroy(gameObject);
+        //}
+
         // CONGELAMENTO PARCIAL -- > DIMINUI VELOCIDADE DE MOVIMENTO
-        direction = transform.position - Player.transform.position;  // Direção do player à helice
-        if (direction.magnitude <= DistanciaDeAtivação)
-        {
-            Ativar_CongelamentoParcial = true;
-        }
-        else
-        {
-            Ativar_CongelamentoParcial = false;
-        }
-        if(Ativar_CongelamentoParcial == true && Velocidade_Normal == true)
-        {
-            Alterou_Parcial = true;
-            Velocidade_Normal = false;
-            moveScript.setForce_Congelamento(Intens_CongelamentoParcial);                // Ativa o congelamento parcial caso entre no raio de ação
-        }
-        if(Ativar_CongelamentoParcial == false && Velocidade_Normal == false && Alterou_Total == false)
-        {
-            Alterou_Parcial = false;
-            Velocidade_Normal = true;
-            moveScript.setForce_Congelamento(-Intens_CongelamentoParcial);              // Desativa o congelamento caso saia do raio de ação
-        }
-        if (Encostou)
-        {
-            Destroy(this.gameObject);
-            Player.gameObject.GetComponent<Vida_Player>().danoPlayer(Dano_HeliceDeGelo);
-            Ativar_CongelamentoParcial = false;
-            Alterou_Parcial = false;
-            Ativar_CongelamentoTotal = true;
-            Debug.Log("Atingiu");
-            Encostou = false;
-        }
-        if(Ativar_CongelamentoTotal == true)
-        {
-            Alterou_Total = true;
-            moveScript.setForce_Congelamento(-Intens_CongelamentoParcial);  // Desativa o congelamento parcial para ficar apenas o efeito do congelamento total
-            moveScript.setForce_Congelamento(Intens_CongelamentoTotal);     // Ativa o congelamento total caso a helice encoste com sucesso no player
-            Ativar_CongelamentoTotal = false;
-        }
-        if(Alterou_Total == true)
-        {
-            moveScript.setBool_Congelado(true);
-            moveScript.setTempo_Recuperacao(TempoCongelado);
-            moveScript.setValorParaRecuperar(Intens_CongelamentoTotal);
-        }
+        //direction = transform.position - Player.transform.position;  // Direção do player à helice
+        //if (direction.magnitude <= DistanciaDeAtivação)
+        //{
+        //    Ativar_CongelamentoParcial = true;
+        //}
+        //else
+        //{
+        //    Ativar_CongelamentoParcial = false;
+        //}
+
+        //if(Ativar_CongelamentoParcial == true && Velocidade_Normal == true)
+        //{
+        //    Alterou_Parcial = true;
+        //    Velocidade_Normal = false;
+        //    moveScript.setForce_Congelamento(Intens_CongelamentoParcial);                // Ativa o congelamento parcial caso entre no raio de ação
+        //}
+        //if(Ativar_CongelamentoParcial == false && Velocidade_Normal == false && Alterou_Total == false)
+        //{
+        //    Alterou_Parcial = false;
+        //    Velocidade_Normal = true;
+        //    moveScript.setForce_Congelamento(-Intens_CongelamentoParcial);              // Desativa o congelamento caso saia do raio de ação
+        //}
+        //if (Encostou)
+        //{
+        //    Destroy(this.gameObject);
+        //    Player.gameObject.GetComponent<Vida_Player>().danoPlayer(Dano_HeliceDeGelo);
+        //    Ativar_CongelamentoParcial = false;
+        //    Alterou_Parcial = false;
+        //    Ativar_CongelamentoTotal = true;
+        //    Debug.Log("Atingiu");
+        //    Encostou = false;
+        //}
+        //if(Ativar_CongelamentoTotal == true)
+        //{
+        //    Alterou_Total = true;
+        //    moveScript.setForce_Congelamento(-Intens_CongelamentoParcial);  // Desativa o congelamento parcial para ficar apenas o efeito do congelamento total
+        //    moveScript.setForce_Congelamento(Intens_CongelamentoTotal);     // Ativa o congelamento total caso a helice encoste com sucesso no player
+        //    Ativar_CongelamentoTotal = false;
+        //}
+        //if(Alterou_Total == true)
+        //{
+        //    moveScript.setBool_Congelado(true);
+        //    moveScript.setTempo_Recuperacao(TempoCongelado);
+        //    moveScript.setValorParaRecuperar(Intens_CongelamentoTotal);
+        //}
     }
 
     private void FixedUpdate()

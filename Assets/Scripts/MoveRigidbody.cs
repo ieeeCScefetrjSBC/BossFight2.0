@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FreezeStates {NotFrozen, isFrozen, isFreezing}
+
 public class MoveRigidbody : MonoBehaviour
 {
     // ESSE SCRIPT EST� SENDO CHAMADO NOS SCRIPTS "InverterControles", "HeliceDeGelo" E "Sopro"
@@ -33,13 +35,21 @@ public class MoveRigidbody : MonoBehaviour
 
     public bool wallJumpActive        = false;
     public bool wallStickFixActive    = true;
-    
+
+    public float xPos_Helix = 0f;
+    public float yPos_Helix = 5f;
+    public float zPos_Helix = 20f;
+
+    public float freezeRecoveryTime   = 1.25f;
+    public float freezingMoveInputMag = 2f;
+    public float freezingSpeed        = 6f;
+
     // --- PRIVATE VARIABLES ---
 
     private Rigidbody rb;                               // Player's Rigidbody component;
     private CapsuleCollider capsule;                    // Player's Capsule Collider component;
     private Animator playerAnimator;                    // Player's Animator component;
-    //private HeliceDeGelo iceHelixScript;
+    private GameObject iceHelix;
 
     private Vector3 moveInput = Vector3.zero;           // Direction of player input;
     private Vector3 capsuleCenterPosition;
@@ -70,17 +80,17 @@ public class MoveRigidbody : MonoBehaviour
     private bool wallApproach    = false;
     private bool invertedControl = false;           // True when player movement should be inverted;
 
-    
-    private float freezeTimer        = 0f;
-    private float freezeRecoveryTime = 5f;
-    private float forceRecoveryValue = 5f;
-    private bool  isFrozen           = false;
+    //private float dist2IceHelix        = Mathf.Infinity;
+    private float freezeTimer          = 0f;
+
+    private FreezeStates FreezeState;
 
     void Start()
     {
         rb             = gameObject.GetComponent<Rigidbody>();
         capsule        = gameObject.GetComponent<CapsuleCollider>();
         playerAnimator = gameObject.GetComponent<Animator>();
+        iceHelix = GameObject.Find("HeliceDeGelo");
 
         // The following must not be changed later
         capsuleRadius      = capsule.radius;
@@ -93,6 +103,7 @@ public class MoveRigidbody : MonoBehaviour
 
         currentWallJumpForce = wallJumpForce;
         freezeTimer = 0f;
+        FreezeState = FreezeStates.NotFrozen;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -101,29 +112,44 @@ public class MoveRigidbody : MonoBehaviour
         this.invertedControl = invertedControlOn;
     }
 
-    public void setForce_Congelamento(float force)
-    {
-        this.frozenForceInputMag -= force;
-    }
+    //public void setForce_Congelamento(float force)
+    //{
+    //    this.frozenForceInputMag -= force;
+    //}
 
-    public void setBool_Congelado(bool frozen)
-    {
-        this.isFrozen = frozen;
-    }
+    //public void setBool_Congelado(bool frozen)
+    //{
+    //    this.isFrozen = frozen;
+    //}
 
-    public void setTempo_Recuperacao(float time)
-    {
-        this.freezeRecoveryTime = time; 
-    }
+    //public void setTempo_Recuperacao(float time)
+    //{
+    //    this.freezeRecoveryTime = time; 
+    //}
 
-    public void setValorParaRecuperar(float value)
-    {
-        this.forceRecoveryValue = value;
-    }
+    //public void setValorParaRecuperar(float value)
+    //{
+    //    this.forceRecoveryValue = value;
+    //}
 
     public bool IsGrounded()
     {
         return isGrounded;
+    }
+    
+    public FreezeStates GetFreezeState()
+    {
+        return FreezeState;
+    }
+
+    public void SetFreezeState(FreezeStates state)
+    {
+        FreezeState = state;
+
+        if (FreezeState == FreezeStates.isFrozen)
+            freezeTimer = freezeRecoveryTime;
+
+        Debug.Log("FreezeState: " + FreezeState);
     }
 
     private void CheckGrounded()
@@ -141,12 +167,37 @@ public class MoveRigidbody : MonoBehaviour
             isGrounded = false;
     }
 
+    private void Test()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            GameObject helix;
+            helix = (GameObject)Instantiate(iceHelix,
+                                            transform.position + transform.TransformDirection(new Vector3(xPos_Helix, yPos_Helix, zPos_Helix)), 
+                                            Quaternion.identity);
+            helix.GetComponent<HeliceDeGelo>().enabled = true;
+        }
+    }
+
     void Update()
     {
+        Test();
+        
         // -- Updating variables for Physics.CapsuleCast() --
         capsuleCenterPosition = transform.position + capsule.center;
         topCapsulePosition    = capsuleCenterPosition + Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
         bottomCapsulePosition = capsuleCenterPosition - Vector3.up * cilinderHalfLenght * capsuleHeightMultiplier;
+
+        // -- Updating freeze state --
+        if (FreezeState == FreezeStates.isFrozen)
+        {
+            freezeTimer -= Time.deltaTime;
+            if (freezeTimer <= 0f)
+            {
+                freezeTimer = 0f;
+                SetFreezeState(FreezeStates.NotFrozen);
+            }
+        }
 
         // -- Evaluating if player should jump --
         float timeSinceJump = Time.time - timeJumped;
@@ -158,13 +209,15 @@ public class MoveRigidbody : MonoBehaviour
         if (timeSinceJump > validJumpTime)
             hasJumped = false;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && FreezeState != FreezeStates.isFrozen)
         {
             timeJumped = Time.time;
             hasJumped  = true;
         }
 
         // -- Setting move speed constraint --
+        float xzSpeed = new Vector3(rb.velocity.x, 0f, rb.velocity.z).magnitude;
+
         if (!isGrounded)
         {
             if (last_xzSpeedOnGround < minMidairTargetSpeed)
@@ -172,6 +225,8 @@ public class MoveRigidbody : MonoBehaviour
             else
                 targetSpeed = last_xzSpeedOnGround * midairAccelAllowed;
         }
+        else if (FreezeState == FreezeStates.isFreezing)
+            targetSpeed = freezingSpeed;
         else if (Input.GetKey(KeyCode.LeftShift))
             targetSpeed = runSpeed;
         else
@@ -180,8 +235,10 @@ public class MoveRigidbody : MonoBehaviour
         // -- Checking if ground or air control --
         float moveInputMag;
 
-        if (isFrozen) // DEBUG
-            moveInputMag = frozenForceInputMag;
+        if (FreezeState == FreezeStates.isFrozen) // DEBUG
+            moveInputMag = 0f;
+        else if (FreezeState == FreezeStates.isFreezing)
+            moveInputMag = freezingMoveInputMag;
         else if (isGrounded)
             moveInputMag = groundInputMag;
         else
@@ -214,7 +271,7 @@ public class MoveRigidbody : MonoBehaviour
         playerAnimator.SetFloat("InputV", playerInput[1]);
 
         // -- Moving sound --
-        float xzSpeed = new Vector3(rb.velocity.x, 0f, rb.velocity.z).magnitude;
+        //float xzSpeed = new Vector3(rb.velocity.x, 0f, rb.velocity.z).magnitude;
         if (xzSpeed > 0.5f && isGrounded)
         {
             if (Time.time >= nextStepTime)
@@ -225,17 +282,6 @@ public class MoveRigidbody : MonoBehaviour
                 float stepTimeDelta = stepTimeCoefficient / targetSpeed;
                 timeStepped = Time.time;
                 nextStepTime = timeStepped + stepTimeDelta;
-            }
-        }
-
-        // -- Setting freeze mechanics --
-        if (isFrozen)
-        {
-            freezeTimer += Time.deltaTime;
-            if (freezeTimer >= freezeRecoveryTime)
-            {
-                frozenForceInputMag += forceRecoveryValue;
-                isFrozen = false;
             }
         }
     }

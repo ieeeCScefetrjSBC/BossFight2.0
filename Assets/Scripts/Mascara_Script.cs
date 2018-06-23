@@ -105,9 +105,7 @@ public class Mascara_Script : MonoBehaviour {
 
         if (masks[maskIdx] == null)
             return;
-
-        //masksOn[currentMaskIdx] = false;
-        //masksOn[maskIdx] = true;
+        
         if (activeMask != null)
             particles[currentMaskIdx].SetActive(false);
         particles[maskIdx].SetActive(true);
@@ -157,6 +155,5 @@ public class Mascara_Script : MonoBehaviour {
         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, 
                                                   Quaternion.LookRotation(this.transform.position - player.transform.position),
                                                   Time.time * speed);
-        
     }
 }
