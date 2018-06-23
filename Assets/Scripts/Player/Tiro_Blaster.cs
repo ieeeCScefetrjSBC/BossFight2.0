@@ -30,11 +30,11 @@ public class Tiro_Blaster : MonoBehaviour {
         Destroy(gameObject);
         if(collision.gameObject.tag == "Mascara1")
         {
-            Debug.Log("OPAA");
+            //Debug.Log("OPAA");
             if (mascaraFogo != null)
             {
                 mascaraFogo.GetComponent<Vida_Mascara_1>().setVida(2f);
-                Debug.Log("OPA");
+                //Debug.Log("OPA");
             }
         }
         if (collision.gameObject.tag == "Mascara2")
@@ -42,7 +42,7 @@ public class Tiro_Blaster : MonoBehaviour {
             if (mascaraTempestade != null)
             {
                 mascaraTempestade.GetComponent<Vida_Mascara_2>().setVida(2f);
-                Debug.Log("OPA");
+               // Debug.Log("OPA");
             }
         }
         if (collision.gameObject.tag == "Mascara3")
@@ -50,10 +50,10 @@ public class Tiro_Blaster : MonoBehaviour {
             if (mascaraAgua != null)
             {
                 mascaraAgua.GetComponent<Vida_Mascara_3>().setVida(2f);
-                Debug.Log("OPA");
+                //Debug.Log("OPA");
             }
         }
-        Debug.Log("Ativa particula");
+        //Debug.Log("Ativa particula");
     }
 
     public void set_Direction(Vector3 direction)

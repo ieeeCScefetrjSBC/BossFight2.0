@@ -36,7 +36,7 @@ public class Comp_Call : MonoBehaviour {
         Tempo -= Time.deltaTime; // Descendo o contador
         if(Tempo<=0) // Ativou a mecânica
         {
-            if (Contador + 1 <= Index_Mechanics.Length)
+            if (Contador + 1 < Index_Mechanics.Length)
             {
                 Contador += 1;
                 switch(Contador)
