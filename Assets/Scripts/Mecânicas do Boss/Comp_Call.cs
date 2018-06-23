@@ -43,12 +43,18 @@ public class Comp_Call : MonoBehaviour {
                 {
                     case 5:
                         mascara_Script.ChooseMask(3);
+                        Tiro_Boss.setTiro("Tiro Agua");
+                        Tiro_Boss.setSpray_Tiro("Spray_Tiro Agua");
                         break;
                     case 7:
                         mascara_Script.ChooseMask(2);
+                        Tiro_Boss.setTiro("Tiro Raio");
+                        Tiro_Boss.setSpray_Tiro("Spray_Tiro Raio");
                         break;
                     case 12:
                         mascara_Script.ChooseMask(1);
+                        Tiro_Boss.setTiro("Tiro");
+                        Tiro_Boss.setSpray_Tiro("Spray_Tiro");
                         break;
                 }
             }
