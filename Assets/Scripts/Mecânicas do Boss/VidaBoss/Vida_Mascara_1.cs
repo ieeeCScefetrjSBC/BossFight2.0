@@ -17,6 +17,7 @@ public class Vida_Mascara_1 : MonoBehaviour
 	{
 		if(this.vida < 1f)
         {
+            GameObject.FindGameObjectWithTag("Boss").GetComponent<Mascara_Script>().SetMasc1(false);
             Destroy(this.gameObject);
         }
 	}

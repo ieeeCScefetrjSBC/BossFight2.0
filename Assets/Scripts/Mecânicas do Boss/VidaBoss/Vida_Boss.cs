@@ -54,7 +54,7 @@ public class Vida_Boss : MonoBehaviour {
                 light.intensity -= timeSinceVictory/50;
             }
 
-            if (Mascara.BossMorto && !victory)
+            if (Mascara.GetBossMorto() && !victory)
             {
                 Debug.Log("BOSS MORREU");
 

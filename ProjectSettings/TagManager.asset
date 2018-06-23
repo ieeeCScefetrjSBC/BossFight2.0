@@ -31,6 +31,7 @@ TagManager:
   - Luz
   - Plataforma_Exemplo
   - PointLight
+  - particle1
   layers:
   - Default
   - TransparentFX

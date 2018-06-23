@@ -15,21 +15,19 @@ public class Mascara_Script : MonoBehaviour {
     private Quaternion rotateQuat;
     public float speed = 1f;
 
+    private GameObject particle_1;
     private GameObject particle_2;
     private GameObject particle_3;
 
-    public bool Masc1;
-    public bool Masc2;
-    public bool Masc3;
-    public bool BossMorto;
+    private bool Masc1;
+    private bool Masc2;
+    private bool Masc3;
+    private bool BossMorto;
 
     private GameObject[] masks = new GameObject[3];
     private GameObject[] particles = new GameObject[3];
     private GameObject activeMask;
-    private bool[] masksOn = new bool[3];
     private int currentMaskIdx = 0;
-    private bool maskSet = false;
-
 
     // Use this for initialization 
     void Start () {
@@ -45,18 +43,12 @@ public class Mascara_Script : MonoBehaviour {
         Masc2 = true;
         Masc3 = true;
         BossMorto = false;
-
-        particle_2 = GameObject.FindGameObjectWithTag("particle2");
-        particle_3 = GameObject.FindGameObjectWithTag("particle3");
-        particle_2.SetActive(false);
-        particle_3.SetActive(false);
-
-
+        
         masks[0] = GameObject.FindGameObjectWithTag("Mascara1");
         masks[1] = GameObject.FindGameObjectWithTag("Mascara2");
         masks[2] = GameObject.FindGameObjectWithTag("Mascara3");
         activeMask = masks[0];
-
+        
         particles[0] = GameObject.FindGameObjectWithTag("particle1");
         particles[1] = GameObject.FindGameObjectWithTag("particle2");
         particles[2] = GameObject.FindGameObjectWithTag("particle3");
@@ -65,10 +57,38 @@ public class Mascara_Script : MonoBehaviour {
         particles[1].SetActive(false);
         particles[2].SetActive(false);
 
-        //masksOn[0] = Masc1;
-        //masksOn[1] = Masc2;
-        //masksOn[2] = Masc3;
+        ChooseMask(1);
     }
+
+    public bool GetMasc1 ()
+    {
+        return Masc1;
+    }
+    public bool GetMasc2()
+    {
+        return Masc2;
+    }
+    public bool GetMasc3()
+    {
+        return Masc3;
+    }
+    public bool GetBossMorto()
+    {
+        return BossMorto;
+    }
+    public void SetMasc1(bool val)
+    {
+        Masc1 = val;
+    }
+    public void SetMasc2(bool val)
+    {
+        Masc2 = val;
+    }
+    public void SetMasc3(bool val)
+    {
+        Masc3 = val;
+    }
+
 
     public GameObject GetActiveMask()
     {
@@ -80,19 +100,24 @@ public class Mascara_Script : MonoBehaviour {
         GameObject mask;
         int maskIdx = maskNum - 1;
 
-        if (maskNum < 0 || maskNum > 2)
+        if (maskIdx < 0 || maskIdx > 2)
             Debug.Log("ESSA MASCARA NAO EXISTE OTARIO");
+
+        if (masks[maskIdx] == null)
+            return;
 
         //masksOn[currentMaskIdx] = false;
         //masksOn[maskIdx] = true;
+        if (activeMask != null)
+            particles[currentMaskIdx].SetActive(false);
+        particles[maskIdx].SetActive(true);
 
         mask = masks[maskIdx];
         activeMask = mask;
-        //currentMaskIdx = maskIdx;
+        currentMaskIdx = maskIdx;
 
         transform.DetachChildren();
         transform.rotation = Quaternion.LookRotation(mask.transform.forward, mask.transform.up);
-        //particles[maskNum-1].SetActive(true);
         core.transform.SetParent(this.transform);
 
         for (int idx = 0; idx < 3; idx++)
@@ -110,99 +135,28 @@ public class Mascara_Script : MonoBehaviour {
             ChooseMask(2);
         if (Input.GetKeyDown(KeyCode.Alpha3))
             ChooseMask(3);
+        
+        if (activeMask == null)
+        {
+            for (int idx = 0; idx < 3; idx++)
+            {
+                if (masks[idx] != null)
+                {
+                    ChooseMask(idx + 1);
+                    break;
+                }
+            }
+        }
 
-        if (mascara_1 == null)
-        {
-            Masc1 = false;
-            maskSet = false;
-            Debug.Log("M1 MORREUU");
-        }
-        if (mascara_2 == null)
-        {
-            Masc2 = false;
-            maskSet = false;
-            Debug.Log("M2 MORREUU");
-        }
-        if (mascara_3 == null)
-        {
-            Masc3 = false;
-            maskSet = false;
-            Debug.Log("M3 MORREUU");
-        }
         if(!Masc1 && !Masc2 && !Masc3)
         {
             BossMorto = true;
         }
 
         float vida = vidaBoss.getvida();
-        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
-
-        if (!maskSet)
-        {
-            if (Masc1)
-                ChooseMask(1);
-            else if (Masc2)
-                ChooseMask(2);
-            else if (Masc3)
-                ChooseMask(3);
-
-            maskSet = true;
-        }
-
-        //if (Masc1)
-        //{
-        //    //Boss vira na direçao do player
-
-        //    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
-
-        //    //Faz a mascara 1 ser a principal
-        //    if (setMascara == true)
-        //    {
-        //        transform.DetachChildren();
-        //        //transform.LookAt(mascara_1.transform);
-        //        transform.rotation = Quaternion.LookRotation(mascara_1.transform.forward, mascara_1.transform.up);
-
-        //        mascara_1.transform.SetParent(this.transform);
-        //        mascara_2.transform.SetParent(this.transform);
-        //        mascara_3.transform.SetParent(this.transform);
-        //        core.transform.SetParent(this.transform);
-        //        setMascara = false;
-        //    }
-        //}
-        //else if (Masc2)
-        //{
-        //    //Boss vira na direçao do player
-        //    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
-
-        //    //Faz a mascara 2 ser a principal
-        //    if (setMascara == false)
-        //    {
-        //        particle_2.SetActive(true);
-        //        transform.DetachChildren();
-        //        transform.rotation = Quaternion.LookRotation(mascara_2.transform.forward, mascara_2.transform.up);
-
-        //        mascara_2.transform.SetParent(this.transform);
-        //        mascara_3.transform.SetParent(this.transform);
-        //        core.transform.SetParent(this.transform);
-        //        setMascara = true;
-        //    }
-        //}
-        //else if (Masc3)
-        //{
-        //    //Boss vira na direçao do player
-        //    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(this.transform.position - player.transform.position), Time.time * speed);
-
-        //    //Faz a mascara 3 ser a principal
-        //    if (setMascara == true)
-        //    {
-        //        particle_3.SetActive(true);
-        //        transform.DetachChildren();
-        //        transform.rotation = Quaternion.LookRotation(mascara_3.transform.forward, mascara_3.transform.up);
-
-        //        mascara_3.transform.SetParent(this.transform);
-        //        core.transform.SetParent(this.transform);
-        //        setMascara = true;
-        //    }
-        //}
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, 
+                                                  Quaternion.LookRotation(this.transform.position - player.transform.position),
+                                                  Time.time * speed);
+        
     }
 }
