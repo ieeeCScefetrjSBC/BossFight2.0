@@ -38,6 +38,8 @@ TagManager:
   - Mask1_Health
   - Mask2_Health
   - Mask3_Health
+  - tutorial
+  - MenuPrincipal
   layers:
   - Default
   - TransparentFX
