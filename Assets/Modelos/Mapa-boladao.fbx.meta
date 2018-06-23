@@ -16,6 +16,14 @@ ModelImporter:
     100016: Lamp
     100018: Plane.000
     100020: Circle.000
+    100022: Circle.002
+    100024: Circle.003
+    100026: Circle.004
+    100028: Nivel 1-2.000
+    100030: Plane.002
+    100032: Plane.003
+    100034: Plane.004
+    100036: Plane.005
     400000: Circle.001
     400002: Circle.005
     400004: //RootNode
@@ -27,6 +35,14 @@ ModelImporter:
     400016: Lamp
     400018: Plane.000
     400020: Circle.000
+    400022: Circle.002
+    400024: Circle.003
+    400026: Circle.004
+    400028: Nivel 1-2.000
+    400030: Plane.002
+    400032: Plane.003
+    400034: Plane.004
+    400036: Plane.005
     2000000: Camera
     2100000: No Name
     2100002: Material.001
@@ -38,6 +54,14 @@ ModelImporter:
     2300010: Plane.012
     2300012: Plane.000
     2300014: Circle.000
+    2300016: Circle.002
+    2300018: Circle.003
+    2300020: Circle.004
+    2300022: Nivel 1-2.000
+    2300024: Plane.002
+    2300026: Plane.003
+    2300028: Plane.004
+    2300030: Plane.005
     3300000: Circle.001
     3300002: Circle.005
     3300004: Nivel 1-2.001
@@ -46,6 +70,14 @@ ModelImporter:
     3300010: Plane.012
     3300012: Plane.000
     3300014: Circle.000
+    3300016: Circle.002
+    3300018: Circle.003
+    3300020: Circle.004
+    3300022: Nivel 1-2.000
+    3300024: Plane.002
+    3300026: Plane.003
+    3300028: Plane.004
+    3300030: Plane.005
     4300000: Plane.010
     4300002: Plane.001
     4300004: Nivel 1-2.001
@@ -54,6 +86,14 @@ ModelImporter:
     4300010: Circle.001
     4300012: Plane.000
     4300014: Circle.000
+    4300016: Circle.004
+    4300018: Plane.005
+    4300020: Circle.003
+    4300022: Nivel 1-2.000
+    4300024: Plane.004
+    4300026: Plane.003
+    4300028: Plane.002
+    4300030: Circle.002
     10800000: Lamp
   externalObjects:
   - first:
