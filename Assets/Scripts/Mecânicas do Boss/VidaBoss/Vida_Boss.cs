@@ -28,7 +28,7 @@ public class Vida_Boss : MonoBehaviour {
     private void Start()
     {
         telaVitoria = GameObject.FindGameObjectWithTag("Tela_Vitoria");
-        Tempo_Vitoria = GameObject.FindGameObjectWithTag("Tempo_Vitória").GetComponent<Text>();
+        Tempo_Vitoria = GameObject.FindGameObjectWithTag("Tempo_Vitoria").GetComponent<Text>();
         telaVitoria.SetActive(false);
         Mascara = GameObject.FindGameObjectWithTag("Boss").GetComponent<Mascara_Script>();
         camMoveScript = Camera.main.GetComponent<CamMove>();

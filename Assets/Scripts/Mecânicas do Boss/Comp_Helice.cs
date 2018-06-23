@@ -35,6 +35,7 @@ public class Comp_Helice : MonoBehaviour {
         switch (Pattern_Helice)
         {
             case 1:     // Padrão para máscara de FOGO!!!!
+
                 if (!Instanciou_Padrão1)
                 {
                     for (int i = 0; i < HelicesFogo_offset.Length; i++)

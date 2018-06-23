@@ -32,6 +32,8 @@ TagManager:
   - Plataforma_Exemplo
   - PointLight
   - particle1
+  - Tempo_Derrota
+  - Tempo_Vitoria
   layers:
   - Default
   - TransparentFX
