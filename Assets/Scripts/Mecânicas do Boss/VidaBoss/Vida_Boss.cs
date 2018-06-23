@@ -34,11 +34,11 @@ public class Vida_Boss : MonoBehaviour {
         camMoveScript = Camera.main.GetComponent<CamMove>();
         blasterScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Blaster>();
         core = GameObject.Find("Core");
-
+        TimeSinceStart = 0;
     }
     void Update () {
         float timeSinceVictory = Time.time - timeOfVictory;
-        TimeSinceStart = Time.time;
+        TimeSinceStart += Time.deltaTime;
         if (timeSinceVictory > deathAnimTime && victory)
         {
             ManageVictoryScreen();

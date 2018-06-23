@@ -33,11 +33,12 @@ public class Vida_Player : MonoBehaviour
         blasterScript = gameObject.GetComponent<Blaster>();
         HealthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Image>();
         deathScreen.SetActive(false);
+        TimeSinceStart = 0;
     }
 
     void Update()
     {
-        TimeSinceStart = Time.time;
+        TimeSinceStart += Time.deltaTime;
         HealthBar.fillAmount = vida / 1000;
         if (vida <= 0)                                              // Verifica a vida do player
             ManageDeathScreen();
