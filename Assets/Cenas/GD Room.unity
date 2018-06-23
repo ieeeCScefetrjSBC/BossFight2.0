@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88014,7 +88014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12690ccadc12fe74a87c19669343e16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 160
+  size: 240
   gridSize: 16
 --- !u!23 &1444168237
 MeshRenderer:
@@ -113471,7 +113471,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.35, y: 1, z: 1.35}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1920451132
 MeshFilter:
