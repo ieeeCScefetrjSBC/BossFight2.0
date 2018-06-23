@@ -64,6 +64,7 @@ public class InGameMenu : MonoBehaviour
         if (isPaused)
         {
             SceneManager.LoadScene("Menu");
+            Time.timeScale = 1;
         }
     }
 }
