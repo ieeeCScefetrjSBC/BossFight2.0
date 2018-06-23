@@ -33,7 +33,7 @@ public class MenuPrincipal : MonoBehaviour {
 
     public void Jogar()
     {
-        Debug.Log("Jogar");
+        //Debug.Log("Jogar");
         menuPrincipal.SetActive(false);
         tutorial.enabled = true;
         tutorialAtivado = true;
@@ -46,7 +46,7 @@ public class MenuPrincipal : MonoBehaviour {
 
     public void Creditos()
     {
-        Debug.Log("Créditos");
+        //Debug.Log("Créditos");
         SceneManager.LoadScene("Creditos");
     }
 
