@@ -10,6 +10,7 @@ public class Comp_Call : MonoBehaviour {
     private Tiro_Boss Tiro_Boss;// Script referente ao Tiro_Boss
 	private Comp_Helice Comp_Helice; // Script referente à Comp_Helice
     private Sopro Comp_Sopro; // Script referente ao sopro
+    private Mascara_Script mascara_Script;
 
     private delegate void myMechanics(int Pattern);//
     private myMechanics[] Mechanics= new myMechanics[3];// Variável que guarda métodos
@@ -22,6 +23,7 @@ public class Comp_Call : MonoBehaviour {
         Tiro_Boss = this.gameObject.GetComponent<Tiro_Boss>();// Define quem é Tiro_Boss
 		Comp_Helice = this.gameObject.GetComponent<Comp_Helice>(); // Define quem é Comp_Helice
         Comp_Sopro = this.gameObject.GetComponent<Sopro>(); // Define que é Cómp_Sopro
+        mascara_Script = this.gameObject.GetComponent<Mascara_Script>(); // Define o que é mascara_Script
 
         Mechanics[0] = Call_Bomba;// Espaço 0 é a mecânica de bomba!
         Mechanics[1] = Call_Helice; // Espaço 1 é a mecânica de helice!
@@ -34,8 +36,22 @@ public class Comp_Call : MonoBehaviour {
         Tempo -= Time.deltaTime; // Descendo o contador
         if(Tempo<=0) // Ativou a mecânica
         {
-            if (Contador +1 <= Index_Mechanics.Length)
+            if (Contador + 1 <= Index_Mechanics.Length)
+            {
                 Contador += 1;
+                switch(Contador)
+                {
+                    case 5:
+                        mascara_Script.ChooseMask(3);
+                        break;
+                    case 7:
+                        mascara_Script.ChooseMask(2);
+                        break;
+                    case 12:
+                        mascara_Script.ChooseMask(1);
+                        break;
+                }
+            }
             else
                 Contador = 0;// Próxima mecânica e padrão
 
