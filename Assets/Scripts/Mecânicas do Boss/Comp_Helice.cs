@@ -34,6 +34,12 @@ public class Comp_Helice : MonoBehaviour {
     {
         switch (Pattern_Helice)
         {
+            case 0:
+                Instanciou_Padrão1 = false;
+                Instanciou_Padrão2 = false;
+                AtivouScriptFogo = false;
+                AtivouScriptGelo = false;
+                break;
             case 1:     // Padrão para máscara de FOGO!!!!
 
                 if (!Instanciou_Padrão1)
@@ -95,4 +101,13 @@ public class Comp_Helice : MonoBehaviour {
             Comp_Call.setTempo(0);
         return Pattern_Helice;
     }
+    
+    /*public void setBool_padrao1(bool Booleana)
+    {
+        this.Instanciou_Padrão1 = Booleana;
+    }
+    public void setBool_Padrao2(bool Booleana)
+    {
+        this.Instanciou_Padrão2 = Booleana;
+    }*/
 }
