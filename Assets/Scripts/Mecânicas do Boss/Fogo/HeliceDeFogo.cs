@@ -37,7 +37,7 @@ public class HeliceDeFogo : MonoBehaviour {
         {
             Longe = false;
             Encostou = true;
-            Debug.Log(Encostou);
+            //Debug.Log(Encostou);
         }
         if(this.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= Vel_Max)
         {
@@ -65,7 +65,7 @@ public class HeliceDeFogo : MonoBehaviour {
             Destroy(this.gameObject);
             Player.GetComponent<Rigidbody>().AddForce(((Mov_Direção.normalized) + new Vector3(0, 1f, 0)) * Impulso_Explosão, ForceMode.VelocityChange);
             Player.gameObject.GetComponent<Vida_Player>().danoPlayer(100);
-            Debug.Log("Atingiu");
+            //Debug.Log("Atingiu");
             Encostou = false;
 
         }

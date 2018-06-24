@@ -102,6 +102,7 @@ public class Sopro : MonoBehaviour {
                     {
                         Tell_Pull.SetActive(true);
                         Tell_On = true;
+                        //Debug.Log("Sopro");
                     }
                     break;
                 case 2:
@@ -110,6 +111,7 @@ public class Sopro : MonoBehaviour {
                     {
                         Tell_Push.SetActive(true);
                         Tell_On = true;
+                        //Debug.Log("Anti Sopro");
                     }
                     break;
             }
@@ -120,7 +122,10 @@ public class Sopro : MonoBehaviour {
     {
         Pattern_Sopro = Comando; //Define qual será o padrao do sopro
         if (Comando != 0)
+        {
             Comp_Call.setTempo(10f); //Define o tempo até a próxima mecanica
+            //Debug.Log("Sopro chamado");
+        }
         else
             Comp_Call.setTempo(0); 
 

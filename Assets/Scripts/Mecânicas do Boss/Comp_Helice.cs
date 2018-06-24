@@ -84,10 +84,12 @@ public class Comp_Helice : MonoBehaviour {
         if (Pattern_Helice == 1)
         {
             Comp_Call.setTempo(Tempo_Fogo);
+            //Debug.Log("Helice de fogo chamada");
         }
         else if (Pattern_Helice == 2)
         {
             Comp_Call.setTempo(Tempo_Gelo);
+            //Debug.Log("Helice de gelo chamada");
         }
         else
             Comp_Call.setTempo(0);

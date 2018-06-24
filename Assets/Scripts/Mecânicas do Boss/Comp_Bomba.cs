@@ -27,6 +27,7 @@ public class Comp_Bomba : MonoBehaviour {
                 {
                     Ciclo = 5f; // Recomeça a contar
                     Bombas_Fogo[i].SetActive(true); // Ativa a bomba
+                    Debug.Log("Bomba de fogo sentido horário");
                     i++; // Passa para a próxima bomba
                 }
                 if (i == 4) // Acabaram as bombas
@@ -42,6 +43,7 @@ public class Comp_Bomba : MonoBehaviour {
                     //Debug.Log(i);
                     Ciclo = 5f;// Recomeça a contar
                     Bombas_Fogo[i + 3].SetActive(true); // Ativa a bomba
+                    Debug.Log("Bomba de fogo sentido horário");                    
                     i--;// Passa para a próxima
 
                 }
@@ -57,6 +59,7 @@ public class Comp_Bomba : MonoBehaviour {
                 {
                     Ciclo = 5f; // Recomeça a contar
                     Bombas_Raio[i].SetActive(true); // Ativa a bomba
+                    Debug.Log("Bomba de raio");
                     i++; // Passa para a próxima bomba
                 }
                 if (i == 4) // Acabaram as bombas
@@ -86,7 +89,10 @@ public class Comp_Bomba : MonoBehaviour {
         Pattern_Bomba = Comando;// Define qual será o padrão de bomba
         i = 0;
         if(Pattern_Bomba!=4 && Pattern_Bomba != 0)
+        {
             Comp_Call.setTempo(16);// Tempo para as Bombas Fogo e Raio
+            Debug.Log("Bomba chamada");
+        }
         else
             Comp_Call.setTempo(0);// Tempo entre desativação e próxima mecânica
         return Pattern_Bomba;

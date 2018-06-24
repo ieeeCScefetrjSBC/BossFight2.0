@@ -55,7 +55,7 @@ public class Blaster : MonoBehaviour {
     {
         RaycastHit Hit;
         
-        Debug.Log("OPA");
+        //Debug.Log("OPA");
         if (Physics.Raycast(MainCamera.transform.position, MainCamera.transform.forward))
         {
             GameObject Projetil = (GameObject)GameObject.Instantiate(Tiro, Ponta_Arma.transform.position + Ponta_Arma.transform.forward.normalized * 2,

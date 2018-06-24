@@ -85,8 +85,7 @@ public class Vida_Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Chao")
         {
-            Debug.Log("CAIIIIU");
-            Debug.Log("vaisefode3");
+            //Debug.Log("CAIIIIU");
             vida = 0;
             //SceneManager.LoadScene(nomeCena);
         }

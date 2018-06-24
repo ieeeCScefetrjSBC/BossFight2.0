@@ -34,10 +34,12 @@ public class Comp_Call : MonoBehaviour {
 	void Update () {
 
         Tempo -= Time.deltaTime; // Descendo o contador
+        Debug.Log(Tempo);
         if(Tempo<=0) // Ativou a mecânica
         {
-            if (Contador + 1 < Index_Mechanics.Length)
+            if (Contador + 1 <= Index_Mechanics.Length)
             {
+                Mechanics[Index_Mechanics[Contador]](Module[Contador]);// Passa o padrão para a mecânica
                 Contador += 1;
                 switch(Contador)
                 {
@@ -59,9 +61,10 @@ public class Comp_Call : MonoBehaviour {
                 }
             }
             else
+            {
                 Contador = 0;// Próxima mecânica e padrão
-
-         Mechanics[Index_Mechanics[Contador]](Module[Contador]);// Passa o padrão para a mecânica
+                //Debug.Log("Condição else");
+            }
 
          Debug.Log(Contador);
         }

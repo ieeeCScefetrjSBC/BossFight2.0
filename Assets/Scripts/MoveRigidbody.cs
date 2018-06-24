@@ -149,7 +149,7 @@ public class MoveRigidbody : MonoBehaviour
         if (FreezeState == FreezeStates.isFrozen)
             freezeTimer = freezeRecoveryTime;
 
-        Debug.Log("FreezeState: " + FreezeState);
+        //Debug.Log("FreezeState: " + FreezeState);
     }
 
     private void CheckGrounded()
