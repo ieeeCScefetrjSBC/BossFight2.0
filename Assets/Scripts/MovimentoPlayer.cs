@@ -5,9 +5,9 @@ using UnityEngine;
 public class MovimentoPlayer : MonoBehaviour
 {
     public float sensitivity = 2f;
-	public AudioSource MoviSound; 
+	public AudioSource MoviSound;
+    public Animator Player_Anim;
     //public GameObject eyes;
-
 
     float rotX;
     float rotY;
@@ -15,6 +15,8 @@ public class MovimentoPlayer : MonoBehaviour
     private float speed = 9.0F;
     private float jumpSpeed = 20F;
     private float gravity = 45.0F;
+    private float InputV;
+    private float InputH;
     private Vector3 moveDirection = Vector3.zero;
     private float vertVel = 0f;//velocidade vertical do player (precisa disso para poder mexer enquanto está no pulo)
     private bool platPulo = false;//vSariavel que detecta a colisão com a plataforma de pulo
@@ -72,7 +74,7 @@ public class MovimentoPlayer : MonoBehaviour
 			MoviSound.Stop ();
 
 		wasMoving = isMoving;
-		//////////////////////////////
+        //////////////////////////////
 
         if (controller.isGrounded)
         {
@@ -80,10 +82,22 @@ public class MovimentoPlayer : MonoBehaviour
                 vertVel = jumpSpeed;
             else
                 vertVel = moveDirection.y;
+            Debug.Log("Grounded");
         }
+        else
+            Debug.Log("NotGrounded");
+
         vertVel -= gravity * Time.deltaTime;
         moveDirection.y = vertVel;
         controller.Move(moveDirection * Time.deltaTime);
+        //////////////////////////////
+        // ANIMAÇÃO DO PLAYER
+        InputH = Input.GetAxis("Horizontal");
+        InputV = Input.GetAxis("Vertical");
+
+        Player_Anim.SetFloat("InputH", InputH);
+        Player_Anim.SetFloat("InputV", InputV);
+
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit) {//detecta colisão do player com a plataforma de pulo

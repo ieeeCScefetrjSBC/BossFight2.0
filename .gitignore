@@ -37,3 +37,68 @@ Assets/LowPolyWater_Pack/Scripts.meta
 
 Assets/LowPolyWater_Pack.meta
 Assets/LowPolyWater_Pack.meta
+Assets/_Test.meta
+Assets/_Test/Materials Test.meta
+Assets/_Test/Materials Test/CubeMaterial.mat
+Assets/_Test/Materials Test/CubeMaterial.mat.meta
+Assets/_Test/Materials Test/GroundMaterial.mat
+Assets/_Test/Materials Test/GroundMaterial.mat.meta
+Assets/_Test/Materials Test/PoleMaterial.mat
+Assets/_Test/Materials Test/PoleMaterial.mat.meta
+Assets/_Test/Prefabs Test.meta
+Assets/_Test/Prefabs Test/InGameMenu 1.prefab
+Assets/_Test/Prefabs Test/InGameMenu 1.prefab.meta
+Assets/_Test/Prefabs Test/JumpPlatform 1.prefab
+Assets/_Test/Prefabs Test/JumpPlatform 1.prefab.meta
+Assets/_Test/Prefabs Test/Mira 1.prefab
+Assets/_Test/Prefabs Test/Mira 1.prefab.meta
+Assets/_Test/Prefabs Test/Player.prefab
+Assets/_Test/Prefabs Test/Player.prefab.meta
+Assets/_Test/Prefabs Test/Tela de Morte (1) 1.prefab
+Assets/_Test/Prefabs Test/Tela de Morte (1) 1.prefab.meta
+Assets/_Test/Scripts Test.meta
+Assets/_Test/Scripts Test/CamMove_Test.cs
+Assets/_Test/Scripts Test/CamMove_Test.cs.meta
+Assets/_Test/Scripts Test/Destruir_Test.cs
+Assets/_Test/Scripts Test/Destruir_Test.cs.meta
+Assets/_Test/Scripts Test/FallingPlatform_Test.cs
+Assets/_Test/Scripts Test/FallingPlatform_Test.cs.meta
+Assets/_Test/Scripts Test/Hover_Test.cs
+Assets/_Test/Scripts Test/Hover_Test.cs.meta
+Assets/_Test/Scripts Test/LightFade_Test.cs
+Assets/_Test/Scripts Test/LightFade_Test.cs.meta
+Assets/_Test/Scripts Test/Mascara_Script.cs
+Assets/_Test/Scripts Test/Mascara_Script.cs.meta
+Assets/_Test/Scripts Test/Menus.meta
+Assets/_Test/Scripts Test/Menus/MenuPrincipal_Test.cs
+Assets/_Test/Scripts Test/Menus/MenuPrincipal_Test.cs.meta
+Assets/_Test/Scripts Test/Movimento.meta
+Assets/_Test/Scripts Test/Movimento/Jump_Test.cs
+Assets/_Test/Scripts Test/Movimento/Jump_Test.cs.meta
+Assets/_Test/Scripts Test/OnCollision_Test.cs
+Assets/_Test/Scripts Test/OnCollision_Test.cs.meta
+Assets/_Test/Scripts Test/Tiro_Boss_Test.cs
+Assets/_Test/Scripts Test/Tiro_Boss_Test.cs.meta
+Assets/_Test/Scripts Test/Verificar_Colisao_Test.cs
+Assets/_Test/Scripts Test/Verificar_Colisao_Test.cs.meta
+Assets/_Test/Scripts Test/Verificar_Colisao_Tiro_Player_Test.cs
+Assets/_Test/Scripts Test/Verificar_Colisao_Tiro_Player_Test.cs.meta
+Assets/_Test/Scripts Used.meta
+Assets/_Test/Scripts Used/Grounded_Test.cs
+Assets/_Test/Scripts Used/Grounded_Test.cs.meta
+Assets/_Test/Scripts Used/InGameMenu_Test.cs
+Assets/_Test/Scripts Used/InGameMenu_Test.cs.meta
+Assets/_Test/Scripts Used/Mov_Test.cs
+Assets/_Test/Scripts Used/Mov_Test.cs.meta
+Assets/_Test/Scripts Used/MovementRigidbody.cs
+Assets/_Test/Scripts Used/MovementRigidbody.cs.meta
+Assets/_Test/Scripts Used/MoveRigidbody.cs
+Assets/_Test/Scripts Used/MoveRigidbody.cs.meta
+Assets/_Test/Scripts Used/MovimentoPlayer_Test.cs
+Assets/_Test/Scripts Used/MovimentoPlayer_Test.cs.meta
+Assets/_Test/Scripts Used/TiroPlayer_Test3.cs
+Assets/_Test/Scripts Used/TiroPlayer_Test3.cs.meta
+Assets/_Test/Scripts Used/Vida_Player_Test.cs
+Assets/_Test/Scripts Used/Vida_Player_Test.cs.meta
+Assets/_Test/TestScene.unity
+Assets/_Test/TestScene.unity.meta

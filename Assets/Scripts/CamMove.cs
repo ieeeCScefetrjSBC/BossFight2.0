@@ -14,6 +14,7 @@ public class CamMove : MonoBehaviour {
 	void Start () {
         Player1 = this.transform.parent.gameObject;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 	
 	// Update is called once per frame
